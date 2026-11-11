@@ -1,0 +1,16 @@
+{
+  "profile_id": "libero-v10-teacher-reference",
+  "robot_model": "robosuite_panda",
+  "gripper_model": "franka_panda",
+  "arm_joint_count": 7,
+  "minimum_input_points": 16,
+  "model_sample_points": 2048,
+  "observation_mode": "teacher",
+  "goal_logic": "all",
+  "required_features": ["robot_state", "robot_model", "joint_limits", "collision_geometry", "local_ik", "contacts", "preview_restore", "tcp_tracking", "gripper_control", "native_success"],
+  "additional_features_for_pick_place": ["target_cloud", "object_pose", "goal_region"],
+  "additional_features_for_push": ["object_pose", "goal_region"],
+  "additional_features_for_articulation": ["articulation_state"],
+  "supported_predicates": ["on", "in", "open", "close", "turnon", "turnoff"],
+  "note": "This profile describes existing LIBERO/Panda requirements. It is not a declaration of support for other robots or an adapter registration. It does not replace v10 policy configuration."
+}

@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-11-11T17:24:58.947099+00:00",
+  "archive": "grasp-pipeline-v10-handoff-20261112.zip",
+  "archive_sha256": "35f5678699319fbedb6de378687f96de7bbd897dfea05dceb5f85e164d521065",
+  "archive_bytes": 597450,
+  "manifest_files_verified": 224,
+  "frozen_baseline_files": 50,
+  "final_code_config_references_match_cpu_tested_files": 92,
+  "independent_temporary_extraction": true,
+  "commands": [
+    {
+      "name": "manifest_before",
+      "returncode": 0
+    },
+    {
+      "name": "preservation",
+      "returncode": 0
+    },
+    {
+      "name": "documentation",
+      "returncode": 0
+    },
+    {
+      "name": "runtime_config_tests",
+      "returncode": 0
+    },
+    {
+      "name": "deployment_tool_tests",
+      "returncode": 0
+    },
+    {
+      "name": "manifest_after",
+      "returncode": 0
+    }
+  ],
+  "test_source_path": "Extracted package src; no original workspace path",
+  "markdown_files_checked": 24,
+  "local_document_links_checked": 108,
+  "readme_template_verified_at_archive_root": true,
+  "unwanted_files_found": 0,
+  "cpu_tests_on_matching_candidate": 121,
+  "full_task_rollouts_started": 0,
+  "gpu_egl_validated": false,
+  "scope": "Exact final ZIP CRC/SHA/manifest, independent extraction, package documentation links, CPU-tested source identity and 12 lightweight tests. 121-test CPU acceptance used byte-identical candidate source, preserved in package."
+}

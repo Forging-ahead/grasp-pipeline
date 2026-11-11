@@ -1,0 +1,42 @@
+{
+  "checked_at_utc": "2026-11-11T17:20:05.860741+00:00",
+  "scope": "Read-only observation of existing server, no installation or rollout",
+  "repositories": {
+    "LIBERO": {
+      "path": "/mnt/public/changwei/Graspgen/LIBERO",
+      "repository_url": "https://github.com/Lifelong-Robot-Learning/LIBERO",
+      "commit": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+      "tracked_worktree_clean": true
+    },
+    "graspgen-curobo-collect": {
+      "path": "/mnt/public/changwei/Graspgen/graspgen-curobo-collect",
+      "repository_url": "https://github.com/juchuanqi/graspgen-curobo-collect",
+      "commit": "b69b3133badefd80e7c13c57119a487c97fec614",
+      "tracked_worktree_clean": true,
+      "embedded_GraspGen_tree": "b05ce51c2cd42e2bac64fb67aad29a192d7240b8"
+    },
+    "cuRobo": {
+      "path": "/mnt/public/changwei/Graspgen/setup/deps/curobo",
+      "repository_url": "https://github.com/NVlabs/curobo",
+      "commit": "d64c4b005459db10c5dd867d8b30a87d5bda9bdb",
+      "tracked_worktree_clean": true
+    }
+  },
+  "file_sha256": {
+    "/mnt/public/changwei/Graspgen/LIBERO/libero/libero/__init__.py": "0f3263e04e58acef0a2184a8b73639292fe9ded83e87ff5d786606ca75bcfb94",
+    "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/third_party/GraspGen/grasp_gen/grasp_server.py": "c9d8679891f7ed16f6fed49d20148fc924fe7054688a00660dcbe82aae0bbac9",
+    "/mnt/public/changwei/Graspgen/setup/deps/curobo/src/curobo/__init__.py": "184595d417850c97d870de7bb5d780470ddf7fe17c774fbc9fb4d4c78b3e0ba4",
+    "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/models/checkpoints/graspgen_franka_panda.yml": "3b666d28ffb91001ddb6ba24a2e0c11458478a986b808b493cf6fa9a987c2abd"
+  },
+  "embedded_source_note": "third_party/GraspGen is an embedded tree in the fork, not an independently checked out git repository",
+  "platform": "Linux-5.15.0-94-generic-x86_64-with-glibc2.35",
+  "cuda_toolchain_observation": {
+    "wrapper_cuda_home": "/usr/local/cuda-12.4",
+    "directory_exists": true,
+    "version_json_exists": false,
+    "nvcc_exists": true,
+    "nvcc_returncode": 0,
+    "nvcc_version": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Thu_Mar_28_02:18:24_PDT_2024\nCuda compilation tools, release 12.4, V12.4.131\nBuild cuda_12.4.r12.4/compiler.34097967_0",
+    "note": "Observation only; no CUDA compilation or GPU smoke test performed"
+  }
+}

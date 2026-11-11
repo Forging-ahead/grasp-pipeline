@@ -1,0 +1,8 @@
+{
+  "tasks": 130,
+  "native_success": 88,
+  "full_pipeline_success": 86,
+  "candidate_success": 85,
+  "sft_eligible": 0,
+  "source": "Unmodified existing v10 records; no new execution"
+}

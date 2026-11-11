@@ -1,0 +1,195 @@
+{
+  "existing_sources": [
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/runtime/cli.py",
+      "symbol": "main",
+      "line": 20,
+      "sha256": "45be5518abdb8cbc0dd67c7eff9be40abc698a5c37dc980c1271360e50069567",
+      "integration_work": "新增环境入口或dispatch，当前没有插件路由"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/runtime/config.py",
+      "symbol": "load_task",
+      "line": 40,
+      "sha256": "73f2f4dede1678fb1a1f831aa87dabc41da9aed34af3e38140cc099fc75963e6",
+      "integration_work": "本环境配置/任务目录加载"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/adapters/libero/env_adapter.py",
+      "symbol": "EnvAdapter.make_env",
+      "line": 103,
+      "sha256": "486172f2eb32236a24ea9e58c396440d564b7a74057af50ac0bfc121713335e0",
+      "integration_work": "原生环境和初始化"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/policy/evaluate.py",
+      "symbol": "PickPlace.__init__",
+      "line": 61,
+      "sha256": "58e28af1de5d88be672272494e87c07b2e53d517015ac74e311d441c65eeef91",
+      "integration_work": "解除固定EnvAdapter构造及内部耦合"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/perception/pointcloud.py",
+      "symbol": "depth_to_world_points",
+      "line": 28,
+      "sha256": "9d728deffbe2423878e14905dfbb127c0b19f934739fa6d144771c911c46b24e",
+      "integration_work": "复用反投影，替换本环境观测获取"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/adapters/libero/scene.py",
+      "symbol": "export_scene",
+      "line": 141,
+      "sha256": "a92fd3d4c1c5b046b1c5c001da921d805beb91004cead12c576cc98aa9b28c92",
+      "integration_work": "本引擎场景和资源导出"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/adapters/libero/regions.py",
+      "symbol": "support_surface",
+      "line": 6,
+      "sha256": "f8afc48c0c066dee29f35fc2ea742fb0ac496d9c22701dcf165e78d282183f4d",
+      "integration_work": "本环境区域和支撑面"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/adapters/libero/placement_geometry.py",
+      "symbol": "gravity_frame",
+      "line": 7,
+      "sha256": "97449fdd58aa7c5e36aca51010e7e1ff7684f14c8bb4d073733f1070b84fbbee",
+      "integration_work": "区域轴向和几何映射"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/adapters/libero/articulation.py",
+      "symbol": "discover",
+      "line": 32,
+      "sha256": "71ea35dbec0bf8c3ec4be78b645461f04b3f8c327d2700bcb45c1861fdbe19b2",
+      "integration_work": "关节、把手和原生目标规则"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/planning/planning_geometry.py",
+      "symbol": "PandaMJCF",
+      "line": 186,
+      "sha256": "3cc90c5876063bc1f9688e2ac49bb248dca2de4cbc0ac1c2338cd47e797d12fb",
+      "integration_work": "机器人运动学与碰撞模型"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/planning/planner_worker.py",
+      "symbol": "BridgePlanner.plan_pose",
+      "line": 301,
+      "sha256": "749ae95dc2bccb1e1762caf37100d8b2daea974f9875c91b2a6b6b99bb77e8a4",
+      "integration_work": "规划器、命名关节与场景版本"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/planning/cartesian.py",
+      "symbol": "plan_cartesian",
+      "line": 111,
+      "sha256": "43e0a38c4069ad77f81571219392a44d4cda545641fc245a814b6c55331cfb3c",
+      "integration_work": "局部IK、引擎操作与预演恢复"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/planning/grasp_contact.py",
+      "symbol": "preview_grasp_contacts",
+      "line": 10,
+      "sha256": "a306e7299c8b21912115e03bd25e1e3949929655457fc4a7a070acd631659de1",
+      "integration_work": "本引擎抓取接触预检"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/control/controller.py",
+      "symbol": "Controller.follow_path",
+      "line": 340,
+      "sha256": "9f37df05c00e2366863b83b394e7674f7e57140c6cfd1558099887ba8e3beae0",
+      "integration_work": "路径到原生动作闭环执行"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/policy/skills.py",
+      "symbol": "ContactSkill.articulate",
+      "line": 189,
+      "sha256": "59cdf370bd587d97e0063b6ac5a486a93083ab2ac4b0302277d0c435586e2f9b",
+      "integration_work": "技能接触执行和原生判定"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/policy/surface_packing.py",
+      "symbol": "surface_slots",
+      "line": 33,
+      "sha256": "4ba8c43d8e427667a304f9c57f77be0e182f66d8d74823c0ca30a22fc0562f92",
+      "integration_work": "布局所需几何查询"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/policy/task_policy.py",
+      "symbol": "schedule",
+      "line": 24,
+      "sha256": "31b6f508283ed3a9cb5f32575a51a005f5b030f272819dacf3b4dac14fa59f4c",
+      "integration_work": "目标语义、支持技能与顺序"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/models/graspgen_worker.py",
+      "symbol": "GraspGenWorker.load",
+      "line": 31,
+      "sha256": "fc7d3ca7d39d672df67271b3b24e447d8ce9515953c8fb6e0a30250305382d95",
+      "integration_work": "夹爪和权重兼容性"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/contracts/validation.py",
+      "symbol": "readiness",
+      "line": 175,
+      "sha256": "2b3797f85cf7d3f81d94c15431ee1a6e2e9ce55430d2f78fb20b11df60972add",
+      "integration_work": "本环境能力检查，现函数固定teacher profile"
+    },
+    {
+      "kind": "existing",
+      "source": "src/graspgen_libero_bridge/common/layout.py",
+      "symbol": "source_root",
+      "line": 10,
+      "sha256": "a44923aebbaf69eb224d03b626fcd78ce5dd5ed09251eaba82c1035503253ba3",
+      "integration_work": "源码和worker搜索路径"
+    },
+    {
+      "kind": "existing",
+      "source": "apps/libero/run_task.py",
+      "symbol": "switch_target",
+      "line": 48,
+      "sha256": "4afd5f26fa3484853fc13d0aa72ad1165a8231ddc4b37bf5a4545e82740a8324",
+      "integration_work": "新环境任务和阶段编排参考，不作为可导入库执行"
+    }
+  ],
+  "proposed_paths": [
+    {
+      "kind": "proposed_not_implemented",
+      "path_pattern": "src/graspgen_libero_bridge/adapters/<bench>/"
+    },
+    {
+      "kind": "proposed_not_implemented",
+      "path_pattern": "apps/<bench>/run_task.py"
+    },
+    {
+      "kind": "proposed_not_implemented",
+      "path_pattern": "src/graspgen_libero_bridge/planning/<bench>_worker.py"
+    },
+    {
+      "kind": "proposed_not_implemented",
+      "path_pattern": "configs/<bench>/"
+    },
+    {
+      "kind": "proposed_not_implemented",
+      "path_pattern": "tests/<bench>/"
+    }
+  ],
+  "note": "Source-change guidance only; no benchmark integration implemented"
+}

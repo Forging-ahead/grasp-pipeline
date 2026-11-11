@@ -1,0 +1,1036 @@
+{
+  "task_catalog": "baseline/v10/ALL_TASKS.json",
+  "task_count": 130,
+  "catalog_common": {
+    "approach_distances_m": [
+      0.1,
+      0.05
+    ],
+    "camera_size": 256,
+    "grasp_control_offset_m": 0.097,
+    "grasp_control_target_margin_m": 0.01,
+    "grasp_repo": "/mnt/public/changwei/Graspgen/graspgen-curobo-collect",
+    "graspgen_config": "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/models/checkpoints/graspgen_franka_panda.yml",
+    "graspgen_python": "/mnt/public/changwei/Graspgen/setup/grasp-model/bin/python",
+    "init_state_id": 0,
+    "input_camera": "agentview",
+    "input_mode": "rgbd",
+    "joint_recovery_reference_margin_rad": 0.2,
+    "joint_recovery_steps": 100,
+    "joint_reference_margin_rad": 0.02,
+    "libero_repo": "/mnt/public/changwei/Graspgen/LIBERO",
+    "lift_height_m": 0.15,
+    "max_candidates_per_round": 20,
+    "minimum_downward_approach": 0.25,
+    "model_gpu": 6,
+    "native_candidates_per_round": 8,
+    "native_descent_fallback": true,
+    "num_grasps": 200,
+    "plan_timeout_s": 12,
+    "planner_gpu": 7,
+    "planner_python": "/mnt/public/changwei/Graspgen/setup/planner-python-wrapper",
+    "planning_joint_margin_rad": 0.0001,
+    "position_integral_bound_m": 0.008,
+    "position_integral_gain": 0.8,
+    "prepare_open_gripper": true,
+    "seed": 0,
+    "selection_rounds": 4,
+    "selection_timeout_s": 180,
+    "settle_steps": 10,
+    "simulation_gpu": 6,
+    "transfer_heights_m": [
+      0.12,
+      0.08,
+      0.04,
+      0.16,
+      0.2
+    ],
+    "transfer_yaw_degrees": [
+      0,
+      45,
+      -45,
+      90,
+      -90,
+      180
+    ],
+    "unsupported_skill": false,
+    "waypoint_max_steps": 120
+  },
+  "catalog_varying": {
+    "destination": [
+      {
+        "value": "basket_1",
+        "tasks": 22
+      },
+      {
+        "value": "living_room_table",
+        "tasks": 2
+      },
+      {
+        "value": "desk_caddy_1",
+        "tasks": 11
+      },
+      {
+        "value": "wooden_cabinet_1",
+        "tasks": 16
+      },
+      {
+        "value": "plate_1",
+        "tasks": 23
+      },
+      {
+        "value": "akita_black_bowl_2",
+        "tasks": 2
+      },
+      {
+        "value": "akita_black_bowl_3",
+        "tasks": 1
+      },
+      {
+        "value": "flat_stove_1",
+        "tasks": 12
+      },
+      {
+        "value": "white_cabinet_1",
+        "tasks": 10
+      },
+      {
+        "value": "wine_rack_1",
+        "tasks": 2
+      },
+      {
+        "value": "kitchen_table",
+        "tasks": 2
+      },
+      {
+        "value": "wooden_two_layer_shelf_1",
+        "tasks": 8
+      },
+      {
+        "value": "wooden_tray_1",
+        "tasks": 8
+      },
+      {
+        "value": "plate_2",
+        "tasks": 2
+      },
+      {
+        "value": "study_table",
+        "tasks": 3
+      },
+      {
+        "value": "akita_black_bowl_1",
+        "tasks": 2
+      },
+      {
+        "value": "microwave_1",
+        "tasks": 3
+      },
+      {
+        "value": "main_table",
+        "tasks": 1
+      }
+    ],
+    "goal_destination": [
+      {
+        "value": "basket_1_contain_region",
+        "tasks": 22
+      },
+      {
+        "value": "living_room_table_plate_right_region",
+        "tasks": 1
+      },
+      {
+        "value": "desk_caddy_1_front_contain_region",
+        "tasks": 3
+      },
+      {
+        "value": "desk_caddy_1_back_contain_region",
+        "tasks": 2
+      },
+      {
+        "value": "wooden_cabinet_1_top_region",
+        "tasks": 9
+      },
+      {
+        "value": "plate_1",
+        "tasks": 23
+      },
+      {
+        "value": "wooden_cabinet_1_top_side",
+        "tasks": 5
+      },
+      {
+        "value": "akita_black_bowl_2",
+        "tasks": 2
+      },
+      {
+        "value": "akita_black_bowl_3",
+        "tasks": 1
+      },
+      {
+        "value": "flat_stove_1_cook_region",
+        "tasks": 8
+      },
+      {
+        "value": "white_cabinet_1_bottom_region",
+        "tasks": 5
+      },
+      {
+        "value": "white_cabinet_1_top_side",
+        "tasks": 2
+      },
+      {
+        "value": "wine_rack_1_top_region",
+        "tasks": 2
+      },
+      {
+        "value": "white_cabinet_1_top_region",
+        "tasks": 3
+      },
+      {
+        "value": "kitchen_table_porcelain_mug_front_region",
+        "tasks": 1
+      },
+      {
+        "value": "kitchen_table_plate_right_region",
+        "tasks": 1
+      },
+      {
+        "value": "wooden_two_layer_shelf_1_top_region",
+        "tasks": 3
+      },
+      {
+        "value": "wooden_two_layer_shelf_1_top_side",
+        "tasks": 3
+      },
+      {
+        "value": "wooden_two_layer_shelf_1_bottom_region",
+        "tasks": 2
+      },
+      {
+        "value": "wooden_tray_1_contain_region",
+        "tasks": 8
+      },
+      {
+        "value": "plate_2",
+        "tasks": 2
+      },
+      {
+        "value": "living_room_table_plate_left_region",
+        "tasks": 1
+      },
+      {
+        "value": "desk_caddy_1_left_contain_region",
+        "tasks": 3
+      },
+      {
+        "value": "desk_caddy_1_right_contain_region",
+        "tasks": 3
+      },
+      {
+        "value": "study_table_desk_caddy_right_region",
+        "tasks": 3
+      },
+      {
+        "value": "akita_black_bowl_1",
+        "tasks": 2
+      },
+      {
+        "value": "microwave_1_heating_region",
+        "tasks": 1
+      },
+      {
+        "value": "wooden_cabinet_1_bottom_region",
+        "tasks": 1
+      },
+      {
+        "value": "flat_stove_1",
+        "tasks": 4
+      },
+      {
+        "value": "microwave_1",
+        "tasks": 2
+      },
+      {
+        "value": "wooden_cabinet_1_middle_region",
+        "tasks": 1
+      },
+      {
+        "value": "main_table_stove_front_region",
+        "tasks": 1
+      }
+    ],
+    "goal_relation": [
+      {
+        "value": "in",
+        "tasks": 58
+      },
+      {
+        "value": "on",
+        "tasks": 72
+      }
+    ],
+    "max_steps": [
+      {
+        "value": 1500,
+        "tasks": 122
+      },
+      {
+        "value": 3000,
+        "tasks": 8
+      }
+    ],
+    "target_object": [
+      {
+        "value": "orange_juice_1",
+        "tasks": 2
+      },
+      {
+        "value": "chocolate_pudding_1",
+        "tasks": 5
+      },
+      {
+        "value": "black_book_1",
+        "tasks": 12
+      },
+      {
+        "value": "akita_black_bowl_1",
+        "tasks": 29
+      },
+      {
+        "value": "akita_black_bowl_3",
+        "tasks": 1
+      },
+      {
+        "value": "akita_black_bowl_2",
+        "tasks": 4
+      },
+      {
+        "value": "chefmate_8_frypan_1",
+        "tasks": 6
+      },
+      {
+        "value": "moka_pot_1",
+        "tasks": 4
+      },
+      {
+        "value": "wine_bottle_1",
+        "tasks": 4
+      },
+      {
+        "value": "ketchup_1",
+        "tasks": 4
+      },
+      {
+        "value": "white_yellow_mug_1",
+        "tasks": 4
+      },
+      {
+        "value": "white_bowl_1",
+        "tasks": 3
+      },
+      {
+        "value": "alphabet_soup_1",
+        "tasks": 6
+      },
+      {
+        "value": "cream_cheese_1",
+        "tasks": 5
+      },
+      {
+        "value": "tomato_sauce_1",
+        "tasks": 4
+      },
+      {
+        "value": "butter_1",
+        "tasks": 4
+      },
+      {
+        "value": "milk_1",
+        "tasks": 2
+      },
+      {
+        "value": "new_salad_dressing_1",
+        "tasks": 1
+      },
+      {
+        "value": "red_coffee_mug_1",
+        "tasks": 4
+      },
+      {
+        "value": "porcelain_mug_1",
+        "tasks": 5
+      },
+      {
+        "value": "yellow_book_2",
+        "tasks": 1
+      },
+      {
+        "value": "yellow_book_1",
+        "tasks": 2
+      },
+      {
+        "value": "bbq_sauce_1",
+        "tasks": 1
+      },
+      {
+        "value": "salad_dressing_1",
+        "tasks": 1
+      },
+      {
+        "value": "wooden_cabinet_1",
+        "tasks": 5
+      },
+      {
+        "value": "butter_2",
+        "tasks": 1
+      },
+      {
+        "value": "flat_stove_1",
+        "tasks": 4
+      },
+      {
+        "value": "white_cabinet_1",
+        "tasks": 3
+      },
+      {
+        "value": "microwave_1",
+        "tasks": 2
+      },
+      {
+        "value": "plate_1",
+        "tasks": 1
+      }
+    ],
+    "task_name": [
+      {
+        "value": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE6_put_the_chocolate_pudding_to_the_right_of_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE10_put_the_black_bowl_in_the_top_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE1_put_the_black_bowl_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE1_put_the_black_bowl_on_top_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE2_put_the_black_bowl_at_the_back_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE2_put_the_black_bowl_at_the_front_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE2_put_the_middle_black_bowl_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE2_put_the_middle_black_bowl_on_top_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE2_stack_the_black_bowl_at_the_front_on_the_black_bowl_in_the_middle",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE2_stack_the_middle_black_bowl_on_the_back_black_bowl",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE3_put_the_frying_pan_on_the_stove",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE3_put_the_moka_pot_on_the_stove",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE4_put_the_black_bowl_on_top_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE4_put_the_wine_bottle_in_the_bottom_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE4_put_the_wine_bottle_on_the_wine_rack",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE5_put_the_black_bowl_in_the_top_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE5_put_the_black_bowl_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE5_put_the_black_bowl_on_top_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE5_put_the_ketchup_in_the_top_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_to_the_front_of_the_white_mug",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE7_put_the_white_bowl_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE7_put_the_white_bowl_to_the_right_of_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE8_put_the_right_moka_pot_on_the_stove",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE9_put_the_frying_pan_on_the_cabinet_shelf",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE9_put_the_frying_pan_on_top_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE9_put_the_frying_pan_under_the_cabinet_shelf",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE9_put_the_white_bowl_on_top_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE1_pick_up_the_alphabet_soup_and_put_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE1_pick_up_the_cream_cheese_box_and_put_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE1_pick_up_the_ketchup_and_put_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE1_pick_up_the_tomato_sauce_and_put_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE2_pick_up_the_alphabet_soup_and_put_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE2_pick_up_the_butter_and_put_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE2_pick_up_the_milk_and_put_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE2_pick_up_the_orange_juice_and_put_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE2_pick_up_the_tomato_sauce_and_put_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE3_pick_up_the_alphabet_soup_and_put_it_in_the_tray",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE3_pick_up_the_butter_and_put_it_in_the_tray",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE3_pick_up_the_cream_cheese_and_put_it_in_the_tray",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE3_pick_up_the_ketchup_and_put_it_in_the_tray",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE3_pick_up_the_tomato_sauce_and_put_it_in_the_tray",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE4_pick_up_the_black_bowl_on_the_left_and_put_it_in_the_tray",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE4_pick_up_the_chocolate_pudding_and_put_it_in_the_tray",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE4_pick_up_the_salad_dressing_and_put_it_in_the_tray",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE5_put_the_red_mug_on_the_left_plate",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE5_put_the_red_mug_on_the_right_plate",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE5_put_the_yellow_and_white_mug_on_the_right_plate",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE6_put_the_chocolate_pudding_to_the_left_of_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE6_put_the_red_mug_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE1_pick_up_the_yellow_and_white_mug_and_place_it_to_the_right_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE3_pick_up_the_red_mug_and_place_it_to_the_right_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE3_pick_up_the_white_mug_and_place_it_to_the_right_of_the_caddy",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE4_pick_up_the_book_in_the_middle_and_place_it_on_the_cabinet_shelf",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE4_pick_up_the_book_on_the_left_and_place_it_on_top_of_the_shelf",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_on_the_cabinet_shelf",
+        "tasks": 1
+      },
+      {
+        "value": "STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_under_the_cabinet_shelf",
+        "tasks": 1
+      },
+      {
+        "value": "put_the_bowl_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "put_the_bowl_on_the_stove",
+        "tasks": 1
+      },
+      {
+        "value": "put_the_bowl_on_top_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "put_the_cream_cheese_in_the_bowl",
+        "tasks": 1
+      },
+      {
+        "value": "put_the_wine_bottle_on_the_rack",
+        "tasks": 1
+      },
+      {
+        "value": "put_the_wine_bottle_on_top_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_butter_and_place_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_ketchup_and_place_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_milk_and_place_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet_and_put_the_black_bowl_on_top_of_it",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE10_put_the_butter_at_the_back_in_the_top_drawer_of_the_cabinet_and_close_it",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE10_put_the_butter_at_the_front_in_the_top_drawer_of_the_cabinet_and_close_it",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE10_put_the_chocolate_pudding_in_the_top_drawer_of_the_cabinet_and_close_it",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE1_open_the_bottom_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet_and_put_the_bowl_in_it",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE2_open_the_top_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE3_turn_on_the_stove",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_frying_pan_on_it",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet_and_open_the_top_drawer",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE5_close_the_top_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE6_close_the_microwave",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE7_open_the_microwave",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE8_turn_off_the_stove",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE9_turn_on_the_stove",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE9_turn_on_the_stove_and_put_the_frying_pan_on_it",
+        "tasks": 1
+      },
+      {
+        "value": "open_the_middle_drawer_of_the_cabinet",
+        "tasks": 1
+      },
+      {
+        "value": "open_the_top_drawer_and_put_the_bowl_inside",
+        "tasks": 1
+      },
+      {
+        "value": "push_the_plate_to_the_front_of_the_stove",
+        "tasks": 1
+      },
+      {
+        "value": "turn_on_the_stove",
+        "tasks": 1
+      },
+      {
+        "value": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE4_stack_the_left_bowl_on_the_right_bowl_and_place_them_in_the_tray",
+        "tasks": 1
+      },
+      {
+        "value": "LIVING_ROOM_SCENE4_stack_the_right_bowl_on_the_left_bowl_and_place_them_in_the_tray",
+        "tasks": 1
+      }
+    ],
+    "task_suite": [
+      {
+        "value": "libero_object",
+        "tasks": 10
+      },
+      {
+        "value": "libero_90",
+        "tasks": 90
+      },
+      {
+        "value": "libero_10",
+        "tasks": 10
+      },
+      {
+        "value": "libero_goal",
+        "tasks": 10
+      },
+      {
+        "value": "libero_spatial",
+        "tasks": 10
+      }
+    ]
+  },
+  "driver_overrides": {
+    "simulation_gpu": {
+      "expression": "args.gpu",
+      "line": 20
+    },
+    "model_gpu": {
+      "expression": "args.gpu",
+      "line": 20
+    },
+    "planner_gpu": {
+      "expression": "args.gpu",
+      "line": 20
+    },
+    "init_state_id": {
+      "expression": "args.init",
+      "line": 21
+    },
+    "unsupported_skill": {
+      "literal": false,
+      "line": 21
+    },
+    "max_steps": {
+      "literal": 5000,
+      "line": 21
+    },
+    "composite_subgoal_execution": {
+      "literal": true,
+      "line": 22
+    },
+    "geometric_placement_search": {
+      "literal": true,
+      "line": 22
+    },
+    "surface_release_search": {
+      "literal": true,
+      "line": 22
+    },
+    "open_container_release_search": {
+      "literal": true,
+      "line": 23
+    },
+    "container_xy_search": {
+      "literal": true,
+      "line": 23
+    },
+    "static_container_candidate_search": {
+      "literal": true,
+      "line": 23
+    },
+    "minimum_downward_approach": {
+      "literal": 0.0,
+      "line": 23
+    },
+    "selection_rounds": {
+      "literal": 6,
+      "line": 24
+    },
+    "max_candidates_per_round": {
+      "literal": 30,
+      "line": 24
+    },
+    "native_candidates_per_round": {
+      "literal": 12,
+      "line": 24
+    },
+    "selection_timeout_s": {
+      "literal": 180,
+      "line": 25
+    },
+    "place_tracking_extra_steps": {
+      "literal": 240,
+      "line": 25
+    },
+    "place_tracking_extension_radius_m": {
+      "literal": 0.015,
+      "line": 25
+    }
+  },
+  "precedence": [
+    "catalog row.config",
+    "run_task.py dict overrides including --gpu and --init",
+    "destination bootstrapped to target_object",
+    "per-stage target/destination/region/relation and optional surface packing"
+  ],
+  "caveat": "server.json is an older single-task example. Config reads/defaults are not an exhaustive inventory of numeric constants in source."
+}

@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-11-11T15:05:56.264298+00:00",
+  "remote_root": "/mnt/public/changwei/Graspgen/grasp-pipeline-contract-phase3-20261111T150425Z",
+  "python": "3.11.10 (main, Oct 16 2024, 04:38:48) [Clang 18.1.8 ]",
+  "commands": [
+    {
+      "label": "contracts",
+      "returncode": 0
+    },
+    {
+      "label": "tests",
+      "returncode": 0
+    },
+    {
+      "label": "preservation",
+      "returncode": 0
+    }
+  ],
+  "tests": {
+    "passed": 113,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+  },
+  "tested_source_and_contract_files": 85,
+  "full_task_rollouts_started": 0,
+  "gpu_visible": "",
+  "scope": "Contract/schema/reference acceptance, all current CPU tests and unchanged v10 configuration/algorithm preservation"
+}

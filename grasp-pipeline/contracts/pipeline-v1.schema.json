@@ -1,0 +1,2104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Grasp pipeline integration contract v1",
+  "description": "Transport contract and reference data. Not an implemented universal adapter or a runtime policy change.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/Observation"
+    },
+    {
+      "$ref": "#/$defs/RobotSpec"
+    },
+    {
+      "$ref": "#/$defs/TaskSpec"
+    },
+    {
+      "$ref": "#/$defs/SceneSnapshot"
+    },
+    {
+      "$ref": "#/$defs/Capabilities"
+    },
+    {
+      "$ref": "#/$defs/PlanRequest"
+    },
+    {
+      "$ref": "#/$defs/PlanResult"
+    },
+    {
+      "$ref": "#/$defs/ExecuteRequest"
+    },
+    {
+      "$ref": "#/$defs/ExecutionReport"
+    },
+    {
+      "$ref": "#/$defs/PreviewResult"
+    },
+    {
+      "$ref": "#/$defs/ReadinessReport"
+    },
+    {
+      "$ref": "#/$defs/TaskOutcome"
+    },
+    {
+      "$ref": "#/$defs/TrajectoryRecord"
+    },
+    {
+      "$ref": "#/$defs/ReferenceBundle"
+    }
+  ],
+  "$defs": {
+    "Source": {
+      "type": "object",
+      "properties": {
+        "types": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "sensor",
+              "robot_state",
+              "configuration",
+              "task_definition",
+              "simulator_truth",
+              "estimation",
+              "memory",
+              "code_policy"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "types",
+        "evidence",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "Artifact": {
+      "type": "object",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "minLength": 1
+        },
+        "media_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "availability": {
+          "enum": [
+            "local",
+            "external",
+            "missing"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "uri",
+        "media_type",
+        "sha256",
+        "availability",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "Failure": {
+      "type": "object",
+      "properties": {
+        "domain": {
+          "enum": [
+            "perception",
+            "task",
+            "configuration",
+            "planning",
+            "preflight",
+            "control",
+            "grasp_check",
+            "goal_check",
+            "budget",
+            "integration",
+            "unknown"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "phase": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "details": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "domain",
+        "code",
+        "phase",
+        "message",
+        "details"
+      ],
+      "additionalProperties": false
+    },
+    "RobotState": {
+      "type": "object",
+      "properties": {
+        "robot_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "joint_names": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "q": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1
+        },
+        "qvel": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "finger_joint_names": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "finger_q": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 0
+        },
+        "world_T_base": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "world_T_tcp": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      },
+      "required": [
+        "robot_id",
+        "joint_names",
+        "q",
+        "qvel",
+        "finger_joint_names",
+        "finger_q",
+        "world_T_base",
+        "world_T_tcp",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "Camera": {
+      "type": "object",
+      "properties": {
+        "camera_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rgb": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Artifact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "depth_m": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Artifact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "instance_mask": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Artifact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "intrinsic": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "world_T_camera": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 4,
+                "maxItems": 4
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "convention": {
+          "enum": [
+            "opencv",
+            "unknown"
+          ]
+        },
+        "capture_state_index": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unavailable_reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      },
+      "required": [
+        "camera_id",
+        "rgb",
+        "depth_m",
+        "instance_mask",
+        "intrinsic",
+        "world_T_camera",
+        "convention",
+        "capture_state_index",
+        "unavailable_reason",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "Cloud": {
+      "type": "object",
+      "properties": {
+        "target_entity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "const": "world"
+        },
+        "units": {
+          "const": "m"
+        },
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "minItems": 1
+        },
+        "sample_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "partial": {
+          "type": "boolean"
+        },
+        "capture_state_index": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      },
+      "required": [
+        "target_entity_id",
+        "frame",
+        "units",
+        "points",
+        "sample_count",
+        "partial",
+        "capture_state_index",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "Observation": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "Observation"
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sim_time_s": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "observation_mode": {
+          "enum": [
+            "teacher",
+            "sensor"
+          ]
+        },
+        "robot_state": {
+          "$ref": "#/$defs/RobotState"
+        },
+        "cameras": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Camera"
+          },
+          "minItems": 0
+        },
+        "target_cloud": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Cloud"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "episode_id",
+        "observation_id",
+        "state_index",
+        "sim_time_s",
+        "observation_mode",
+        "robot_state",
+        "cameras",
+        "target_cloud"
+      ],
+      "additionalProperties": false
+    },
+    "Joint": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "revolute",
+            "continuous",
+            "prismatic"
+          ]
+        },
+        "units": {
+          "enum": [
+            "rad",
+            "m"
+          ]
+        },
+        "lower": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "upper": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "kind",
+        "units",
+        "lower",
+        "upper"
+      ],
+      "additionalProperties": false
+    },
+    "RobotSpec": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "RobotSpec"
+        },
+        "robot_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "robot_model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_ref": {
+          "$ref": "#/$defs/Artifact"
+        },
+        "model_format": {
+          "type": "string",
+          "minLength": 1
+        },
+        "base_frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tcp_frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "arm_joints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Joint"
+          },
+          "minItems": 1
+        },
+        "finger_joints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Joint"
+          },
+          "minItems": 0
+        },
+        "collision_geometry_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "gripper_model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "grasp_T_tcp": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "action_encoding": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action_dimension": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "control_hz": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "robot_id",
+        "robot_model",
+        "model_ref",
+        "model_format",
+        "base_frame",
+        "tcp_frame",
+        "arm_joints",
+        "finger_joints",
+        "collision_geometry_ids",
+        "gripper_model",
+        "grasp_T_tcp",
+        "action_encoding",
+        "action_dimension",
+        "control_hz",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "Goal": {
+      "type": "object",
+      "properties": {
+        "goal_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "predicate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      },
+      "required": [
+        "goal_id",
+        "predicate",
+        "arguments",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "TaskSpec": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "TaskSpec"
+        },
+        "benchmark": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "type": "string",
+          "minLength": 1
+        },
+        "definition_ref": {
+          "$ref": "#/$defs/Artifact"
+        },
+        "entity_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "region_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "goal_logic": {
+          "enum": [
+            "all",
+            "any"
+          ]
+        },
+        "goals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Goal"
+          },
+          "minItems": 1
+        },
+        "required_order": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 0
+        },
+        "instruction_constraints_complete": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "benchmark",
+        "task_id",
+        "language",
+        "definition_ref",
+        "entity_ids",
+        "region_ids",
+        "goal_logic",
+        "goals",
+        "required_order",
+        "instruction_constraints_complete"
+      ],
+      "additionalProperties": false
+    },
+    "Region": {
+      "type": "object",
+      "properties": {
+        "region_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_entity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_T_region": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "bounds_min_m": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "bounds_max_m": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      },
+      "required": [
+        "region_id",
+        "owner_entity_id",
+        "owner_T_region",
+        "bounds_min_m",
+        "bounds_max_m",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "Geometry": {
+      "type": "object",
+      "properties": {
+        "geometry_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_entity_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "world_T_geometry": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "shape": {
+          "enum": [
+            "box",
+            "sphere",
+            "cylinder",
+            "mesh"
+          ]
+        },
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "dims_m": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "radius_m": {
+              "type": "number"
+            },
+            "length_m": {
+              "type": "number"
+            },
+            "mesh": {
+              "$ref": "#/$defs/Artifact"
+            },
+            "scale": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "representation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      },
+      "required": [
+        "geometry_id",
+        "owner_entity_id",
+        "world_T_geometry",
+        "shape",
+        "parameters",
+        "representation",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "EntityPose": {
+      "type": "object",
+      "properties": {
+        "entity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "world_T_object": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      },
+      "required": [
+        "entity_id",
+        "world_T_object",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "Articulation": {
+      "type": "object",
+      "properties": {
+        "articulation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_entity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "joint_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "hinge",
+            "slide"
+          ]
+        },
+        "units": {
+          "enum": [
+            "rad",
+            "m"
+          ]
+        },
+        "q": {
+          "type": "number"
+        },
+        "limits": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "axis_world": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "anchor_world_m": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "handle_geometry_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "native_goal_rule_ref": {
+          "$ref": "#/$defs/Artifact"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      },
+      "required": [
+        "articulation_id",
+        "owner_entity_id",
+        "joint_name",
+        "kind",
+        "units",
+        "q",
+        "limits",
+        "axis_world",
+        "anchor_world_m",
+        "handle_geometry_ids",
+        "native_goal_rule_ref",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "SceneSnapshot": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "SceneSnapshot"
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scene_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_index": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gravity_world_m_s2": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "coverage": {
+          "enum": [
+            "complete_simulator_collision_world",
+            "observed",
+            "mapped",
+            "unknown"
+          ]
+        },
+        "unknown_space_policy": {
+          "enum": [
+            "not_applicable",
+            "reject",
+            "observe_first",
+            "assume_free_explicit"
+          ]
+        },
+        "geometries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Geometry"
+          },
+          "minItems": 0
+        },
+        "entity_poses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EntityPose"
+          },
+          "minItems": 0
+        },
+        "regions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Region"
+          },
+          "minItems": 0
+        },
+        "articulations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Articulation"
+          },
+          "minItems": 0
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "episode_id",
+        "scene_id",
+        "state_index",
+        "gravity_world_m_s2",
+        "coverage",
+        "unknown_space_policy",
+        "geometries",
+        "entity_poses",
+        "regions",
+        "articulations",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "Capabilities": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "Capabilities"
+        },
+        "benchmark": {
+          "type": "string",
+          "minLength": 1
+        },
+        "binding_status": {
+          "enum": [
+            "reference_mapping_only",
+            "implemented"
+          ]
+        },
+        "features": {
+          "type": "object",
+          "properties": {
+            "target_cloud": {
+              "type": "boolean"
+            },
+            "robot_state": {
+              "type": "boolean"
+            },
+            "robot_model": {
+              "type": "boolean"
+            },
+            "joint_limits": {
+              "type": "boolean"
+            },
+            "object_pose": {
+              "type": "boolean"
+            },
+            "collision_geometry": {
+              "type": "boolean"
+            },
+            "goal_region": {
+              "type": "boolean"
+            },
+            "local_ik": {
+              "type": "boolean"
+            },
+            "contacts": {
+              "type": "boolean"
+            },
+            "preview_restore": {
+              "type": "boolean"
+            },
+            "tcp_tracking": {
+              "type": "boolean"
+            },
+            "gripper_control": {
+              "type": "boolean"
+            },
+            "native_success": {
+              "type": "boolean"
+            },
+            "articulation_state": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "target_cloud",
+            "robot_state",
+            "robot_model",
+            "joint_limits",
+            "object_pose",
+            "collision_geometry",
+            "goal_region",
+            "local_ik",
+            "contacts",
+            "preview_restore",
+            "tcp_tracking",
+            "gripper_control",
+            "native_success",
+            "articulation_state"
+          ],
+          "additionalProperties": false
+        },
+        "available_skills": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "pick_place",
+              "articulate",
+              "push"
+            ]
+          },
+          "minItems": 0
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "benchmark",
+        "binding_status",
+        "features",
+        "available_skills",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "GoalPose": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "tcp_pose"
+            },
+            "world_T_tcp": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 4,
+                "maxItems": 4
+              },
+              "minItems": 4,
+              "maxItems": 4
+            }
+          },
+          "required": [
+            "kind",
+            "world_T_tcp"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "joint"
+            },
+            "joint_names": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "q": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "kind",
+            "joint_names",
+            "q"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ContactPolicy": {
+      "type": "object",
+      "properties": {
+        "optimizer_excluded_geometry_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "allowed_contact_pairs": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 0
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entity_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "tcp_T_object": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 4,
+                  "maxItems": 4
+                },
+                "minItems": 4,
+                "maxItems": 4
+              },
+              "geometry_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "entity_id",
+              "tcp_T_object",
+              "geometry_ids"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "optimizer_excluded_geometry_ids",
+        "allowed_contact_pairs",
+        "attachments",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "PlanRequest": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "PlanRequest"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "scene_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "robot_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "phase": {
+          "type": "string",
+          "minLength": 1
+        },
+        "backend": {
+          "type": "string",
+          "minLength": 1
+        },
+        "goal": {
+          "$ref": "#/$defs/GoalPose"
+        },
+        "contact_policy": {
+          "$ref": "#/$defs/ContactPolicy"
+        },
+        "timeout_s": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "request_id",
+        "episode_id",
+        "state_index",
+        "scene_id",
+        "robot_id",
+        "phase",
+        "backend",
+        "goal",
+        "contact_policy",
+        "timeout_s"
+      ],
+      "additionalProperties": false
+    },
+    "Waypoint": {
+      "type": "object",
+      "properties": {
+        "q": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1
+        },
+        "world_T_tcp": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "q",
+        "world_T_tcp"
+      ],
+      "additionalProperties": false
+    },
+    "PlanResult": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "PlanResult"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "plan_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "scene_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "backend": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "planned",
+            "no_path",
+            "invalid_start",
+            "unsupported",
+            "budget_exhausted",
+            "error"
+          ]
+        },
+        "waypoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Waypoint"
+          },
+          "minItems": 0
+        },
+        "wall_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "failure": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Failure"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "request_id",
+        "plan_id",
+        "episode_id",
+        "state_index",
+        "scene_id",
+        "backend",
+        "status",
+        "waypoints",
+        "wall_seconds",
+        "failure"
+      ],
+      "additionalProperties": false
+    },
+    "ExecuteRequest": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "ExecuteRequest"
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "plan_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_state_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "phase": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gripper_command": {
+          "enum": [
+            "open",
+            "close",
+            "hold"
+          ]
+        },
+        "max_control_steps": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "episode_id",
+        "plan_id",
+        "expected_state_index",
+        "phase",
+        "gripper_command",
+        "max_control_steps"
+      ],
+      "additionalProperties": false
+    },
+    "ExecutionReport": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "ExecutionReport"
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "plan_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "phase": {
+          "type": "string",
+          "minLength": 1
+        },
+        "backend": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "reached",
+            "not_reached",
+            "collision",
+            "timeout",
+            "episode_ended",
+            "error"
+          ]
+        },
+        "start_state_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_state_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "actions_executed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "final_robot_state": {
+          "$ref": "#/$defs/RobotState"
+        },
+        "terminated": {
+          "type": "boolean"
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "grasp_assessment": {
+          "enum": [
+            "not_attempted",
+            "unmeasured",
+            "lift_verified",
+            "lift_failed"
+          ]
+        },
+        "failure": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Failure"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "episode_id",
+        "plan_id",
+        "phase",
+        "backend",
+        "status",
+        "start_state_index",
+        "end_state_index",
+        "actions_executed",
+        "final_robot_state",
+        "terminated",
+        "truncated",
+        "grasp_assessment",
+        "failure"
+      ],
+      "additionalProperties": false
+    },
+    "PreviewResult": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "PreviewResult"
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "plan_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_index_before": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "state_index_after": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "passed": {
+          "type": "boolean"
+        },
+        "state_restored": {
+          "type": "boolean"
+        },
+        "failure": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Failure"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "episode_id",
+        "plan_id",
+        "state_index_before",
+        "state_index_after",
+        "passed",
+        "state_restored",
+        "failure"
+      ],
+      "additionalProperties": false
+    },
+    "ReadinessReport": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "ReadinessReport"
+        },
+        "transport_valid": {
+          "type": "boolean"
+        },
+        "execution_ready": {
+          "type": "boolean"
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "transport_valid",
+        "execution_ready",
+        "blockers",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "TaskOutcome": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "TaskOutcome"
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pipeline_complete": {
+          "type": "boolean"
+        },
+        "native_success": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "steps_executed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "instruction_order": {
+          "enum": [
+            "not_checked",
+            "satisfied",
+            "violated",
+            "not_applicable"
+          ]
+        },
+        "trajectory_quality": {
+          "enum": [
+            "not_checked",
+            "accepted",
+            "rejected"
+          ]
+        },
+        "observation_records_complete": {
+          "type": "boolean"
+        },
+        "failure": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Failure"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_record": {
+          "$ref": "#/$defs/Artifact"
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "episode_id",
+        "pipeline_complete",
+        "native_success",
+        "steps_executed",
+        "instruction_order",
+        "trajectory_quality",
+        "observation_records_complete",
+        "failure",
+        "source_record"
+      ],
+      "additionalProperties": false
+    },
+    "Keypoint": {
+      "type": "object",
+      "properties": {
+        "action_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "state_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "phase": {
+          "type": "string",
+          "minLength": 1
+        },
+        "world_T_tcp": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "pose_source": {
+          "const": "measured_post_action"
+        },
+        "label_source": {
+          "enum": [
+            "code_policy",
+            "vlm"
+          ]
+        },
+        "decision_record": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Artifact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "action_index",
+        "state_index",
+        "phase",
+        "world_T_tcp",
+        "pose_source",
+        "label_source",
+        "decision_record"
+      ],
+      "additionalProperties": false
+    },
+    "TrajectoryRecord": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "TrajectoryRecord"
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "action_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "phase_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "states_ref": {
+          "$ref": "#/$defs/Artifact"
+        },
+        "trajectory_ref": {
+          "$ref": "#/$defs/Artifact"
+        },
+        "video_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Artifact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "keypoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Keypoint"
+          },
+          "minItems": 0
+        },
+        "raw_observations_complete": {
+          "type": "boolean"
+        },
+        "action_label_source": {
+          "enum": [
+            "code_policy",
+            "vlm"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "episode_id",
+        "state_count",
+        "action_count",
+        "phase_count",
+        "states_ref",
+        "trajectory_ref",
+        "video_ref",
+        "keypoints",
+        "raw_observations_complete",
+        "action_label_source",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "ReferenceBundle": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "payload_type": {
+          "const": "ReferenceBundle"
+        },
+        "observation": {
+          "$ref": "#/$defs/Observation"
+        },
+        "robot": {
+          "$ref": "#/$defs/RobotSpec"
+        },
+        "task": {
+          "$ref": "#/$defs/TaskSpec"
+        },
+        "scene": {
+          "$ref": "#/$defs/SceneSnapshot"
+        },
+        "capabilities": {
+          "$ref": "#/$defs/Capabilities"
+        },
+        "outcome": {
+          "$ref": "#/$defs/TaskOutcome"
+        },
+        "recording": {
+          "$ref": "#/$defs/TrajectoryRecord"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "payload_type",
+        "observation",
+        "robot",
+        "task",
+        "scene",
+        "capabilities",
+        "outcome",
+        "recording",
+        "limitations"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

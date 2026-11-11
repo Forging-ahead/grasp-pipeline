@@ -1,0 +1,56 @@
+{
+  "kind": "historical v10 core runtime observation, not a fresh-install lockfile",
+  "roles": {
+    "simulation": {
+      "python": "3.11.10",
+      "modules": {
+        "numpy": "1.26.4",
+        "scipy": "1.16.2",
+        "torch": "2.6.0+cu124",
+        "mujoco": "3.3.7",
+        "robosuite": "1.4.1",
+        "cv2": "4.11.0",
+        "PIL": "12.0.0",
+        "imageio_ffmpeg": "0.6.0"
+      }
+    },
+    "graspgen": {
+      "python": "3.11.10",
+      "modules": {
+        "numpy": "1.26.4",
+        "scipy": "1.16.2",
+        "torch": "2.6.0+cu124",
+        "omegaconf": "2.3.1"
+      }
+    },
+    "curobo": {
+      "python": "3.11.10",
+      "modules": {
+        "numpy": "1.26.4",
+        "scipy": "1.17.1",
+        "torch": "2.6.0+cu124",
+        "curobo": "0.7.8"
+      }
+    }
+  },
+  "weight_sha256": {
+    "generator": "0597583b89b322d42ceb4e596967d6ed68d1b56cba4039895909ccd5bdc66eff",
+    "discriminator": "e47d703c63b54c2d11fbc1effd43898f251b4147250888541e3b16e9c0d19e1c"
+  },
+  "external_source_and_config_fingerprints": {
+    "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/third_party/GraspGen/grasp_gen/grasp_server.py": "c9d8679891f7ed16f6fed49d20148fc924fe7054688a00660dcbe82aae0bbac9",
+    "/mnt/public/changwei/Graspgen/setup/deps/curobo/src/curobo/__init__.py": "184595d417850c97d870de7bb5d780470ddf7fe17c774fbc9fb4d4c78b3e0ba4",
+    "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/models/checkpoints/graspgen_franka_panda.yml": "3b666d28ffb91001ddb6ba24a2e0c11458478a986b808b493cf6fa9a987c2abd",
+    "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/models/checkpoints/graspgen_franka_panda_dis.pth": "e47d703c63b54c2d11fbc1effd43898f251b4147250888541e3b16e9c0d19e1c",
+    "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/models/checkpoints/graspgen_franka_panda_gen.pth": "0597583b89b322d42ceb4e596967d6ed68d1b56cba4039895909ccd5bdc66eff"
+  },
+  "required_external_resources": [
+    "LIBERO source, BDDL, initial states, assets",
+    "graspgen-curobo-collect with third_party/GraspGen",
+    "Official Panda generator/discriminator and YAML",
+    "cuRobo 0.7.8 source/assets and CUDA extension toolchain",
+    "robosuite 1.4.1 Panda/PandaGripper assets",
+    "three compatible Python process environments",
+    "Linux NVIDIA driver/CUDA/EGL/video encoder support"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-11-11T17:21:54.402565+00:00",
+  "jsonschema_version": "4.25.1",
+  "normalized_outcomes_validated": 130,
+  "reference_bundle_valid": true,
+  "original_success_counts": {
+    "tasks": 130,
+    "native_success": 88,
+    "full_pipeline_success": 86,
+    "candidate_success": 85
+  },
+  "phase2_files_unchanged": 71,
+  "source_anchors_checked": 11,
+  "reference_readiness": {
+    "schema_version": "1.0",
+    "payload_type": "ReadinessReport",
+    "transport_valid": true,
+    "execution_ready": false,
+    "blockers": [
+      "adapter_binding_not_implemented",
+      "target_cloud_freshness_unverified",
+      "goal_region_geometry_missing",
+      "gravity_not_exported"
+    ],
+    "description": "Checks the declared contract and current teacher profile; does not test reachability or guarantee success."
+  },
+  "live_adapter_implemented": false,
+  "gpu_rollouts_started": 0
+}

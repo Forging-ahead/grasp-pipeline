@@ -1,0 +1,2913 @@
+[
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_10_KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 926,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_10_KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "941ae0de77ba189a9675ec89aa7e8a8a289f722482d0b2400da3921f6d2c0f55",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_10_KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 484,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "Forbidden contact: [{'geom1': 'akita_black_bowl_1_g18', 'geom2': 'gripper0_hand_collision', 'distance_m': -0.0010156585241439396}]",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_10_KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "e690c5a441a027e9a7e8d78f7fb3d5b12058ec496f03fc86504205e4ccab8bad",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_10_KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 1109,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "OSC target timeout in place: position=0.00875, rotation=0.0024",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_10_KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "1668d43c736cecbec46ceaeaaf4872bafbdc9b0afe7c5899d68e8d9641995ba2",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_10_KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 1072,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_10_KITCHEN_SCENE8_put_both_moka_pots_on_the_stove/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "9dc3f3f56c0fe96670892b6ef7912419b4aa0b8754bfab7c9a281c190365faeb",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_10_LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 911,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "Object was not lifted: 0.0000 m",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_10_LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "ee22be3d1d70b2008cd7628b2ecf25a1300eb08e9af480d39f02b6e79bac39ce",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_10_LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 239,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "lift planning failed: {'success': False, 'reason': 'invalid_start_state', 'status': 'MotionGenStatus.INVALID_START_STATE_SELF_COLLISION', 'contact_policy': {'obstacle_names': ['basket_1_g1', 'basket_1_g2', 'basket_1_g3', 'basket_1_g4', 'basket_1_g5', 'butter_1_g1', 'cream_cheese_1_g1', 'floor', 'geom_11', 'geom_12', 'geom_13', 'geom_14', 'geom_15', 'ketchup_1_g1', 'ketchup_1_g10', 'ketchup_1_g11', 'ketchup_1_g12', 'ketchup_1_g2', 'ketchup_1_g3', 'ketchup_1_g4', 'ketchup_1_g5', 'ketchup_1_g6', 'ketchup_1_g7', 'ketchup_1_g8', 'ketchup_1_g9', 'milk_1_g1', 'milk_1_g2', 'milk_1_g3', 'milk_1_g4', 'orange_juice_1_g1', 'orange_juice_1_g2', 'orange_juice_1_g3', 'orange_juice_1_g4', 'tomato_sauce_1_g1', 'tomato_sauce_1_g10', 'tomato_sauce_1_g11', 'tomato_sauce_1_g12', 'tomato_sauce_1_g13', 'tomato_sauce_1_g14', 'tomato_sauce_1_g15', 'tomato_sauce_1_g16', 'tomato_sauce_1_g17', 'tomato_sauce_1_g18', 'tomato_sauce_1_g19', 'tomato_sauce_1_g2', 'tomato_sauce_1_g20', 'tomato_sauce_1_g21', 'tomato_sauce_1_g22', 'tomato_sauce_1_g23', 'tomato_sauce_1_g24', 'tomato_sauce_1_g3', 'tomato_sauce_1_g4', 'tomato_sauce_1_g5', 'tomato_sauce_1_g6', 'tomato_sauce_1_g7', 'tomato_sauce_1_g8', 'tomato_sauce_1_g9'], 'target_in_world': False, 'target_attached': True, 'ignored_obstacles': ['geom_10'], 'allow_target_contact': True, 'approximations': [], 'target_contact_limitation': None, 'robot_collision_model': 'conservative per-geom AABB sphere cover; fixed base omitted', 'path_validation': 'sampled cuRobo sphere-world/self constraints, not a continuous exact-mesh certificate'}}",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_10_LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "da3394a89da52b2e418d27ee9efe10d27756dc9e68ea588fc4988e78cb5af4a0",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_10_LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 20,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "No executable path found in checked candidates; grasp not executed",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_10_LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "970e429216bfdc7ab68fd17715128f0de9080abf96f91f3f94a2609fc865dd2c",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_10_LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 1112,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_10_LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "65f09dcdb48d87a3c583041e048c718291cce4538097fdd106482f798b5f7a1c",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_10_LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 1532,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_10_LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "938eb8b80cd7a3b07a1098f5a5d0496f93071657bf7c796d24f48888e0ac8347",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_10_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 340,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "No bounded object orientation fits the goal opening",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_10_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "6bbe0586bbf7eb1cb4b5d9bfcd276df9655f31f258016ccb66ec3661502e6d46",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 503,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "81b1403cd3d4a06b8522dd02419001c088ee771a4eafd07b310915b4907c4885",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet_and_put_the_black_bowl_on_top_of_it",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 532,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "No executable path found in checked candidates; grasp not executed",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet_and_put_the_black_bowl_on_top_of_it/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "f60367f8161271a674e93912a52ae4be06beff0d317ec61abcc05da657223cca",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE10_put_the_black_bowl_in_the_top_drawer_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 579,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE10_put_the_black_bowl_in_the_top_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "73aa3c394fa302918554d9503dd7d6f13c788cdccc080f33539fd1ffc98b738c",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE10_put_the_butter_at_the_back_in_the_top_drawer_of_the_cabinet_and_close_it",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 20,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "No executable path found in checked candidates; grasp not executed",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE10_put_the_butter_at_the_back_in_the_top_drawer_of_the_cabinet_and_close_it/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "a2a00e3fa80781793d2fffb49480cdfe5cf414e2a018d6291b8aa5ae9d4a22a9",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE10_put_the_butter_at_the_front_in_the_top_drawer_of_the_cabinet_and_close_it",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 691,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "contact_approach_exhausted",
+      "phase": "approach",
+      "message": "No executable approach/engagement in shared skill candidates",
+      "details": {
+        "native_status": "failed",
+        "original_failure": {
+          "code": "contact_approach_exhausted",
+          "category": "planning",
+          "phase": "approach",
+          "details": {}
+        }
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE10_put_the_butter_at_the_front_in_the_top_drawer_of_the_cabinet_and_close_it/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "ce0d44851fe65956589f4a64b6c7c2e7cbd209b39628214ab67de8e7f15d17af",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE10_put_the_chocolate_pudding_in_the_top_drawer_of_the_cabinet_and_close_it",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 20,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "No executable path found in checked candidates; grasp not executed",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE10_put_the_chocolate_pudding_in_the_top_drawer_of_the_cabinet_and_close_it/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "46d6546a03610f8910dcae82df787319736ffc0b3ec4b7f484e632eded2d34d5",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE1_open_the_bottom_drawer_of_the_cabinet",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 40,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "contact_approach_exhausted",
+      "phase": "approach",
+      "message": "No executable approach/engagement in shared skill candidates",
+      "details": {
+        "native_status": "failed",
+        "original_failure": {
+          "code": "contact_approach_exhausted",
+          "category": "planning",
+          "phase": "approach",
+          "details": {}
+        }
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE1_open_the_bottom_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "1ea5a515d1ec492c7fa7cd90f342d389fbd251af627751c49dca8bab40e11bc1",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 509,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "f5446cd21c48a25df9fe7fa279d1e3c958564971c3b51870111f41e9be848a2c",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet_and_put_the_bowl_in_it",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 658,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "lift planning failed: {'success': False, 'status': 'MotionGenStatus.IK_FAIL', 'wall_s': 7.9340825304389, 'contact_policy': {'obstacle_names': ['floor', 'plate_1_g1', 'plate_1_g10', 'plate_1_g2', 'plate_1_g3', 'plate_1_g4', 'plate_1_g5', 'plate_1_g6', 'plate_1_g7', 'plate_1_g8', 'plate_1_g9', 'wooden_cabinet_1_g1', 'wooden_cabinet_1_g11', 'wooden_cabinet_1_g12', 'wooden_cabinet_1_g13', 'wooden_cabinet_1_g14', 'wooden_cabinet_1_g15', 'wooden_cabinet_1_g16', 'wooden_cabinet_1_g18', 'wooden_cabinet_1_g19', 'wooden_cabinet_1_g2', 'wooden_cabinet_1_g20', 'wooden_cabinet_1_g22', 'wooden_cabinet_1_g23', 'wooden_cabinet_1_g24', 'wooden_cabinet_1_g25', 'wooden_cabinet_1_g26', 'wooden_cabinet_1_g27', 'wooden_cabinet_1_g29', 'wooden_cabinet_1_g3', 'wooden_cabinet_1_g30', 'wooden_cabinet_1_g31', 'wooden_cabinet_1_g33', 'wooden_cabinet_1_g34', 'wooden_cabinet_1_g35', 'wooden_cabinet_1_g36', 'wooden_cabinet_1_g37', 'wooden_cabinet_1_g38', 'wooden_cabinet_1_g4', 'wooden_cabinet_1_g40', 'wooden_cabinet_1_g41', 'wooden_cabinet_1_g42', 'wooden_cabinet_1_g5', 'wooden_cabinet_1_g6', 'wooden_cabinet_1_g7', 'wooden_cabinet_1_g8', 'wooden_cabinet_1_g9'], 'target_in_world': False, 'target_attached': True, 'ignored_obstacles': ['table_collision'], 'allow_target_contact': True, 'approximations': [], 'target_contact_limitation': None, 'robot_collision_model': 'conservative per-geom AABB sphere cover; fixed base omitted', 'path_validation': 'sampled cuRobo sphere-world/self constraints, not a continuous exact-mesh certificate'}, 'reason': 'curobo_plan_failed'}",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet_and_put_the_bowl_in_it/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "9dd649e954baeb8bc41f3f53751c4e47878f1b36a6107153d688a96eba648673",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE1_put_the_black_bowl_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 548,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE1_put_the_black_bowl_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "a68fef95454c3b77c5e0108c437e251fcbbe9243249821bc150f073c31b884d4",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE1_put_the_black_bowl_on_top_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 584,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE1_put_the_black_bowl_on_top_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "e899932dc184219bc8cbbb360239f5a0cae345e2c214f49241694aadd0d99690",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE2_open_the_top_drawer_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 513,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE2_open_the_top_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "288dece7f4c1c8397a14c9d999f9290b22a2f1f22f59ad4cbd8d0331ed1e28d1",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE2_put_the_black_bowl_at_the_back_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 539,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE2_put_the_black_bowl_at_the_back_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "41e51249b3bd8288bb7e88d6b67e35d0fbb773a7aaaf926e3587a0aaf55183ee",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE2_put_the_black_bowl_at_the_front_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 573,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE2_put_the_black_bowl_at_the_front_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "09d054978ebb511ec759f1ad9a5a696c7e3f47316a7786144647cfd463c02f7a",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE2_put_the_middle_black_bowl_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 553,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE2_put_the_middle_black_bowl_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "7e8d81f4e539a92bcf5bacf40327eb6169d056c230f53ee26f3a74cbde9c36b0",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE2_put_the_middle_black_bowl_on_top_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 659,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE2_put_the_middle_black_bowl_on_top_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "2e42085e2b6f2fe106c38758d41c321b6eca1626a122fdfdcb8a06383ccce940",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE2_stack_the_black_bowl_at_the_front_on_the_black_bowl_in_the_middle",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 524,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE2_stack_the_black_bowl_at_the_front_on_the_black_bowl_in_the_middle/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "4f4db31f506e4f783a1c8890bc65f95eef93edca1992db68a5644179f3a74b97",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE2_stack_the_middle_black_bowl_on_the_back_black_bowl",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 567,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE2_stack_the_middle_black_bowl_on_the_back_black_bowl/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "2d82a804603fd618b0c8b4cca89df091a92618a86b1a836707e9717adf42d0ee",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE3_put_the_frying_pan_on_the_stove",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 795,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE3_put_the_frying_pan_on_the_stove/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "4cc39267fce7c2d43ad830290171d324e8f1b4314c77dbcfb2b9dfc7432e827c",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE3_put_the_moka_pot_on_the_stove",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 510,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE3_put_the_moka_pot_on_the_stove/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "981377e963fe89dd5aedf9c3403fb168955cf7dc0dcaf360944457fb7114fc78",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE3_turn_on_the_stove",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 369,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE3_turn_on_the_stove/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "b44f8f8cfe565537e92c7caeb632a22cfe60e94d204cf1e9789a22930007a47a",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE3_turn_on_the_stove_and_put_the_frying_pan_on_it",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 1135,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE3_turn_on_the_stove_and_put_the_frying_pan_on_it/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "2fdab862343e111db6848beea5ecec06bed1080f3d5186e9096d01d6da1d057a",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 40,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "contact_approach_exhausted",
+      "phase": "approach",
+      "message": "No executable approach/engagement in shared skill candidates",
+      "details": {
+        "native_status": "failed",
+        "original_failure": {
+          "code": "contact_approach_exhausted",
+          "category": "planning",
+          "phase": "approach",
+          "details": {}
+        }
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "84fa9419fb3c134ac805d60fe330d4625350d4245149ee1fc919bd27f181b3ea",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet_and_open_the_top_drawer",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 40,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "contact_approach_exhausted",
+      "phase": "approach",
+      "message": "No executable approach/engagement in shared skill candidates",
+      "details": {
+        "native_status": "failed",
+        "original_failure": {
+          "code": "contact_approach_exhausted",
+          "category": "planning",
+          "phase": "approach",
+          "details": {}
+        }
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet_and_open_the_top_drawer/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "8fab346850f5ee9c41aacd8bed3baeb759d3588f83defc946e3cef68d8eafc86",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 492,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "Forbidden contact: [{'geom1': 'akita_black_bowl_1_g17', 'geom2': 'gripper0_hand_collision', 'distance_m': -0.002006848609265582}, {'geom1': 'akita_black_bowl_1_g35', 'geom2': 'gripper0_hand_collision', 'distance_m': -0.0018832995891347427}]",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "44128982acfff10ebcbd5b724836b22d0c81f4fa46e42f60254722778d5ae2d1",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE4_put_the_black_bowl_on_top_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 611,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE4_put_the_black_bowl_on_top_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "bb962a8ddab04b84f6f7485ef297f698f4fe12b4cec32aa8bf4f2ceeed587dc7",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE4_put_the_wine_bottle_in_the_bottom_drawer_of_the_cabinet",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 241,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "Object was not lifted: 0.0000 m",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE4_put_the_wine_bottle_in_the_bottom_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "df260b51ba86b6d376c2876e16ddbd9f098c01674612634e228d929cde688a8d",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE4_put_the_wine_bottle_on_the_wine_rack",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 519,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "LIBERO official task predicate was false after release and settling",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE4_put_the_wine_bottle_on_the_wine_rack/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "85831795c13370c89f6334387031a25449c283029dd5365b73e548723f408af2",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE5_close_the_top_drawer_of_the_cabinet",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 40,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "contact_approach_exhausted",
+      "phase": "approach",
+      "message": "No executable approach/engagement in shared skill candidates",
+      "details": {
+        "native_status": "failed",
+        "original_failure": {
+          "code": "contact_approach_exhausted",
+          "category": "planning",
+          "phase": "approach",
+          "details": {}
+        }
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE5_close_the_top_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "3438605c59a55db99047ed2920f07dac6523da19557f3a3ec7a602e4be9c5764",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE5_put_the_black_bowl_in_the_top_drawer_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 584,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE5_put_the_black_bowl_in_the_top_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "e069a3c89c9596eb9660dead337868838af555c0945f1a5d9b1dcf004e054ba9",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE5_put_the_black_bowl_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 564,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE5_put_the_black_bowl_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "7c7ae75bf5034cc0d89c9edbb2dde1785fb1e6a25082e828a1dae0239258c5b0",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE5_put_the_black_bowl_on_top_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 609,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE5_put_the_black_bowl_on_top_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "dfd4ebf9d347ed71faaf5c5595b5ec29840a660632bac4567e028caa3c89b30e",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE5_put_the_ketchup_in_the_top_drawer_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 608,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE5_put_the_ketchup_in_the_top_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "1fe483e0fff1726a68c7b3e0de1c2e6a9e3ec2da85b5a23aa1eb959db27d20de",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE6_close_the_microwave",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 40,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "contact_approach_exhausted",
+      "phase": "approach",
+      "message": "No executable approach/engagement in shared skill candidates",
+      "details": {
+        "native_status": "failed",
+        "original_failure": {
+          "code": "contact_approach_exhausted",
+          "category": "planning",
+          "phase": "approach",
+          "details": {}
+        }
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE6_close_the_microwave/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "820c6c9737f6a529d289f9c3ace9b892af6f4e88687db42f0d43776059fa264f",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE6_put_the_yellow_and_white_mug_to_the_front_of_the_white_mug",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 567,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE6_put_the_yellow_and_white_mug_to_the_front_of_the_white_mug/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "c8e1dd89defffa0ecf2ae5a7ed68f85aa95ad2c85d2ce7361fa24c46fd188e32",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE7_open_the_microwave",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 40,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "contact_approach_exhausted",
+      "phase": "approach",
+      "message": "No executable approach/engagement in shared skill candidates",
+      "details": {
+        "native_status": "failed",
+        "original_failure": {
+          "code": "contact_approach_exhausted",
+          "category": "planning",
+          "phase": "approach",
+          "details": {}
+        }
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE7_open_the_microwave/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "c3f15f923ec9f9ce249d7058649a10184ad97f444ab089e434d72d725c006f49",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE7_put_the_white_bowl_on_the_plate",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 20,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "Bridge run interrupted; partial results preserved",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE7_put_the_white_bowl_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "9bf7c9c5545cb9cc700c8074bc05b1cd77dc25debc2c34ed12c965bda98937c2",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE7_put_the_white_bowl_to_the_right_of_the_plate",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 20,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "Bridge run interrupted; partial results preserved",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE7_put_the_white_bowl_to_the_right_of_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "88170af7576b3ae6ed0fb1031a091494650f8ce5870ec6b03f70b762e3e95214",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE8_put_the_right_moka_pot_on_the_stove",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 592,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE8_put_the_right_moka_pot_on_the_stove/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "7fddec967311ebb291b364a7d612b5a07d7d53d198f8aed1f12a72c126ead21f",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE8_turn_off_the_stove",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 446,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE8_turn_off_the_stove/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "36b657f8198b18d865a6be5ff2c42b8da77a370d8c511497ac258ec90934e760",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE9_put_the_frying_pan_on_the_cabinet_shelf",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 1076,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "LIBERO official task predicate was false after release and settling",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE9_put_the_frying_pan_on_the_cabinet_shelf/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "a8d40ddaa5b5083aca87d9ef3af3e84c0dc8abeda7446110f295577f8a5a2dcd",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE9_put_the_frying_pan_on_top_of_the_cabinet",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 317,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "transfer planning failed: {'success': False, 'planner': 'mujoco_cartesian_dls', 'state_restored': True, 'collision_checks': 2790, 'accepted_ik_steps': 110, 'allow_finger_target': True, 'path_validation': 'sampled actual MuJoCo contacts; existing monitor tolerance and phase permissions', 'limitation': 'Kinematic contact-phase preview; actual execution must use closed-loop control and contact monitoring', 'linear_distance_m': 0.45405809318468554, 'rotation_distance_rad': 3.0879303724871794, 'linear_waypoints': 103, 'max_linear_step_m': 0.005, 'held': True, 'allowed_support_geoms': [], 'joint_names': ['robot0_joint1', 'robot0_joint2', 'robot0_joint3', 'robot0_joint4', 'robot0_joint5', 'robot0_joint6', 'robot0_joint7'], 'position_tolerance_m': 0.0004, 'rotation_tolerance_rad': 0.003, 'held_target': 'chefmate_8_frypan_1', 'eef_T_target': [[0.18095112853983292, 0.755254531579655, -0.629958158617345, -0.052684096656742174], [0.976482154709199, -0.061627636877596356, 0.20660260382522438, -0.030499962585251006], [0.11721472012780791, -0.652527874424747, -0.7486441627930327, 0.09100905086089117], [0.0, 0.0, 0.0, 1.0]], 'reason': 'cartesian_ik_stalled', 'failed_waypoint': 50, 'failed_iteration': 39, 'position_error_m': 0.002470700990944872, 'rotation_error_rad': 0.0043219830745963115, 'wall_s': 1.2296655997633934}",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE9_put_the_frying_pan_on_top_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "b4a0417d1fd74cfc76912d837a0954ac108de0a8612dedb0630017837100ed90",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE9_put_the_frying_pan_under_the_cabinet_shelf",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 20,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "Bridge run interrupted; partial results preserved",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE9_put_the_frying_pan_under_the_cabinet_shelf/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "f2c855b960e2fe8fbe706ec13f82e7bd79cc46156018a9004ea5cedfded06e0e",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE9_put_the_white_bowl_on_top_of_the_cabinet",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 20,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "No executable path found in checked candidates; grasp not executed",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE9_put_the_white_bowl_on_top_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "64ba56ae94030240246a58b6c7cdf9465eaca34632c2b3a79867ca53a89d5688",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE9_turn_on_the_stove",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 401,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE9_turn_on_the_stove/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "332fffdad08bdfa48b299f2a8f2f0a27fde76ca82bd4dfb214e1b17b4a91562d",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_KITCHEN_SCENE9_turn_on_the_stove_and_put_the_frying_pan_on_it",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 1047,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_KITCHEN_SCENE9_turn_on_the_stove_and_put_the_frying_pan_on_it/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "aa8b2b0f7311e05d4dfddf8d104a0709329b54951c2c9e99dd910cb2c1392830",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE1_pick_up_the_alphabet_soup_and_put_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 557,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE1_pick_up_the_alphabet_soup_and_put_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "2d4dcc45b48172c561a8060daa9788867eb8487b03542d3fb8688d85baae6f51",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE1_pick_up_the_cream_cheese_box_and_put_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 612,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE1_pick_up_the_cream_cheese_box_and_put_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "0ed12b7d4b65a0b1bdcbd4b9c3256cbe2c4b1dd8e91098894b8c34ce6c6d7cbd",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE1_pick_up_the_ketchup_and_put_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 566,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE1_pick_up_the_ketchup_and_put_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "22cd41263186a806126f1ffa6c3ad0033efcf285882c3307a421344a4dc2ea9a",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE1_pick_up_the_tomato_sauce_and_put_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 688,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE1_pick_up_the_tomato_sauce_and_put_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "a65b46bc580b6d3a0ba79030b5a3694a3c45d3b0be187aa35d3f8d0dda9be577",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE2_pick_up_the_alphabet_soup_and_put_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 586,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE2_pick_up_the_alphabet_soup_and_put_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "708435732c184b01574ec1c6d16b7e9032670aec1648553a20893213956ffdbc",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE2_pick_up_the_butter_and_put_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 723,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE2_pick_up_the_butter_and_put_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "eedc5a3e8507af96ac8dfafd90ba1294e3eacd955bff7b3e9e32f432fa81ed86",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE2_pick_up_the_milk_and_put_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 599,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE2_pick_up_the_milk_and_put_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "da49fc495e621024e04701630ac16bfed5842b6ccb35cebeaf1c519753ac220f",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE2_pick_up_the_orange_juice_and_put_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 710,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE2_pick_up_the_orange_juice_and_put_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "6d00beb8e8c88ab603f8a2903ce93fe1d329134cf615412a609242b33af0959d",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE2_pick_up_the_tomato_sauce_and_put_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 464,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE2_pick_up_the_tomato_sauce_and_put_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "6b102a5b5367fb181cb95e5153fe557dc5e24f5438c3c9d3905bc6344a6bde05",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE3_pick_up_the_alphabet_soup_and_put_it_in_the_tray",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 524,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE3_pick_up_the_alphabet_soup_and_put_it_in_the_tray/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "a04ea3867834b0e6868f0aba36cb08dbb8ae6e622b899ace3969cd8cac7cbaa5",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE3_pick_up_the_butter_and_put_it_in_the_tray",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 652,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE3_pick_up_the_butter_and_put_it_in_the_tray/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "71b6a4ad0ce4e441f4fa2df5761d5aa07b4a07e1d07d8398b19cb6ea7ca8f13e",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE3_pick_up_the_cream_cheese_and_put_it_in_the_tray",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 823,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE3_pick_up_the_cream_cheese_and_put_it_in_the_tray/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "5191326ddc5e63e4e7c82578047ebb163c6bebd30f625f5a20596048b2c07550",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE3_pick_up_the_ketchup_and_put_it_in_the_tray",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 608,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE3_pick_up_the_ketchup_and_put_it_in_the_tray/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "62d6fb3c9ffb7b25aee4158d150b3cb4c85760836e6b0239b8d24da72c1df139",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE3_pick_up_the_tomato_sauce_and_put_it_in_the_tray",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 455,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE3_pick_up_the_tomato_sauce_and_put_it_in_the_tray/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "a1d7a1f29b3ee687ec62a5a9c34e71b3b31bf49eaacec6b1ca96f21a3a8259c2",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE4_pick_up_the_black_bowl_on_the_left_and_put_it_in_the_tray",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 605,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE4_pick_up_the_black_bowl_on_the_left_and_put_it_in_the_tray/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "67b03f9f73d2ebc9cad673189b25c790ea8fcd9aa5f10661737738abce23fa1f",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE4_pick_up_the_chocolate_pudding_and_put_it_in_the_tray",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 746,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE4_pick_up_the_chocolate_pudding_and_put_it_in_the_tray/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "dd786a06fe343fe58ed6a9ab81215be05c11d40592cfc0c63fd9a3bfa1cfcf3f",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE4_pick_up_the_salad_dressing_and_put_it_in_the_tray",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 576,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE4_pick_up_the_salad_dressing_and_put_it_in_the_tray/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "5cb7a74034293b6e57499ae40ba7fd253dc1c47993d4ae06753f64eaf446d46e",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE4_stack_the_left_bowl_on_the_right_bowl_and_place_them_in_the_tray",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 1170,
+    "instruction_order": "violated",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE4_stack_the_left_bowl_on_the_right_bowl_and_place_them_in_the_tray/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "ff8ea7841d9feffeea717371ad57b92304e948c7a4870a29aefd6002f611c5bc",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE4_stack_the_right_bowl_on_the_left_bowl_and_place_them_in_the_tray",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 251,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "lift planning failed: {'success': False, 'reason': 'invalid_start_state', 'status': 'MotionGenStatus.INVALID_START_STATE_WORLD_COLLISION', 'contact_policy': {'obstacle_names': ['akita_black_bowl_2_g1', 'akita_black_bowl_2_g10', 'akita_black_bowl_2_g11', 'akita_black_bowl_2_g12', 'akita_black_bowl_2_g13', 'akita_black_bowl_2_g14', 'akita_black_bowl_2_g15', 'akita_black_bowl_2_g16', 'akita_black_bowl_2_g17', 'akita_black_bowl_2_g18', 'akita_black_bowl_2_g19', 'akita_black_bowl_2_g2', 'akita_black_bowl_2_g20', 'akita_black_bowl_2_g21', 'akita_black_bowl_2_g22', 'akita_black_bowl_2_g23', 'akita_black_bowl_2_g24', 'akita_black_bowl_2_g25', 'akita_black_bowl_2_g26', 'akita_black_bowl_2_g27', 'akita_black_bowl_2_g28', 'akita_black_bowl_2_g29', 'akita_black_bowl_2_g3', 'akita_black_bowl_2_g30', 'akita_black_bowl_2_g31', 'akita_black_bowl_2_g32', 'akita_black_bowl_2_g33', 'akita_black_bowl_2_g34', 'akita_black_bowl_2_g35', 'akita_black_bowl_2_g36', 'akita_black_bowl_2_g37', 'akita_black_bowl_2_g38', 'akita_black_bowl_2_g39', 'akita_black_bowl_2_g4', 'akita_black_bowl_2_g40', 'akita_black_bowl_2_g5', 'akita_black_bowl_2_g6', 'akita_black_bowl_2_g7', 'akita_black_bowl_2_g8', 'akita_black_bowl_2_g9', 'chocolate_pudding_1_g1', 'floor', 'geom_11', 'geom_12', 'geom_13', 'geom_14', 'geom_15', 'new_salad_dressing_1_g1', 'new_salad_dressing_1_g10', 'new_salad_dressing_1_g11', 'new_salad_dressing_1_g12', 'new_salad_dressing_1_g13', 'new_salad_dressing_1_g14', 'new_salad_dressing_1_g15', 'new_salad_dressing_1_g2', 'new_salad_dressing_1_g3', 'new_salad_dressing_1_g4', 'new_salad_dressing_1_g5', 'new_salad_dressing_1_g6', 'new_salad_dressing_1_g7', 'new_salad_dressing_1_g8', 'new_salad_dressing_1_g9', 'wooden_tray_1_g1', 'wooden_tray_1_g10', 'wooden_tray_1_g11', 'wooden_tray_1_g12', 'wooden_tray_1_g13', 'wooden_tray_1_g14', 'wooden_tray_1_g15', 'wooden_tray_1_g2', 'wooden_tray_1_g3', 'wooden_tray_1_g4', 'wooden_tray_1_g5', 'wooden_tray_1_g6', 'wooden_tray_1_g7', 'wooden_tray_1_g8', 'wooden_tray_1_g9'], 'target_in_world': False, 'target_attached': True, 'ignored_obstacles': ['geom_10'], 'allow_target_contact': True, 'approximations': [], 'target_contact_limitation': None, 'robot_collision_model': 'conservative per-geom AABB sphere cover; fixed base omitted', 'path_validation': 'sampled cuRobo sphere-world/self constraints, not a continuous exact-mesh certificate'}, 'world_collision_diagnostics': {'minimum_signed_clearance_m': -0.013647772153819168, 'blocking_pairs': [{'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g22', 'sphere_index': 1, 'signed_clearance_m': -0.013647772153819168, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [0.025207449789618155, 0.015143186851490964, 0.024007403496550367], 'point_signed_distance_m': 0.025176181652378414, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g23', 'sphere_index': 1, 'signed_clearance_m': -0.013643308961726518, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [0.02552302975396553, 0.013561724352654292, -0.024090171029277505], 'point_signed_distance_m': 0.025180644844471065, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g24', 'sphere_index': 1, 'signed_clearance_m': -0.004128500711267552, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [0.01574920091930282, 0.04075182866298993, -0.021527356704908546], 'point_signed_distance_m': 0.03469545309493003, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g21', 'sphere_index': 1, 'signed_clearance_m': -0.0038518781917411676, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [0.015355027702339298, -0.04124283648023047, -0.021423703887365635], 'point_signed_distance_m': 0.034972075614456415, 'method': 'exact_obb_sdf'}], 'closest_pairs': [{'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g22', 'sphere_index': 1, 'signed_clearance_m': -0.013647772153819168, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [0.025207449789618155, 0.015143186851490964, 0.024007403496550367], 'point_signed_distance_m': 0.025176181652378414, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g23', 'sphere_index': 1, 'signed_clearance_m': -0.013643308961726518, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [0.02552302975396553, 0.013561724352654292, -0.024090171029277505], 'point_signed_distance_m': 0.025180644844471065, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g24', 'sphere_index': 1, 'signed_clearance_m': -0.004128500711267552, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [0.01574920091930282, 0.04075182866298993, -0.021527356704908546], 'point_signed_distance_m': 0.03469545309493003, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g21', 'sphere_index': 1, 'signed_clearance_m': -0.0038518781917411676, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [0.015355027702339298, -0.04124283648023047, -0.021423703887365635], 'point_signed_distance_m': 0.034972075614456415, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g6', 'sphere_index': 1, 'signed_clearance_m': 0.009748779769991757, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.012945321008872912, 0.014808447877637798, -0.05862158226435682], 'point_signed_distance_m': 0.04857273357618934, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g5', 'sphere_index': 1, 'signed_clearance_m': 0.009801247265177594, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.014014334827592467, -0.020113830030552615, -0.05751527010912718], 'point_signed_distance_m': 0.048625201071375176, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g25', 'sphere_index': 0, 'signed_clearance_m': 0.013811652988167403, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.42883020831792684, 0.021251937445457045, 0.10486291356540794], 'center_geometry': [-0.025961899821225154, -0.04271920139375547, 0.05110954014106381], 'point_signed_distance_m': 0.052635606794364985, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g20', 'sphere_index': 1, 'signed_clearance_m': 0.014502084497493496, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.0032743641999539996, 0.06262873119717405, 0.016539477465962037], 'point_signed_distance_m': 0.05332603830369108, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g7', 'sphere_index': 1, 'signed_clearance_m': 0.015420390020340013, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.019612166788268576, 0.047268537125841864, -0.04636990873088964], 'point_signed_distance_m': 0.054244343826537596, 'method': 'exact_obb_sdf'}, {'link': 'attached_object', 'obstacle': 'geom_15', 'sphere_index': 72, 'signed_clearance_m': 0.016739583191922904, 'sphere_radius_m': 0.017644957494989892, 'center_base': [0.4295314494692795, -0.14141156807107796, 0.027364540686913002], 'center_geometry': [0.2432245406869128, -0.1695314494692795, 0.391411568071078], 'point_signed_distance_m': 0.034384540686912796, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g4', 'sphere_index': 1, 'signed_clearance_m': 0.016926788896867738, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.022085609564669345, 0.05002561918622078, 0.04416191752392611], 'point_signed_distance_m': 0.05575074270306532, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g26', 'sphere_index': 0, 'signed_clearance_m': 0.027240769547477874, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.42883020831792684, 0.021251937445457045, 0.10486291356540794], 'center_geometry': [-0.04290106231733931, -0.052383772889625625, 0.04666896235178092], 'point_signed_distance_m': 0.06606472335367546, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g19', 'sphere_index': 0, 'signed_clearance_m': 0.02915487382113046, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.42883020831792684, 0.021251937445457045, 0.10486291356540794], 'center_geometry': [-0.04566673436002594, -0.05305879208049463, -0.04594569887796508], 'point_signed_distance_m': 0.06797882762732804, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g39', 'sphere_index': 1, 'signed_clearance_m': 0.02923586557078183, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.04632979107015768, 0.05308561530023231, -0.03445544225875341], 'point_signed_distance_m': 0.06805981937697941, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g8', 'sphere_index': 1, 'signed_clearance_m': 0.03042580389566487, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.03261673159901807, -0.07030335882113274, 0.02333034021803937], 'point_signed_distance_m': 0.06924975770186245, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g37', 'sphere_index': 1, 'signed_clearance_m': 0.03215971983106864, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.046329791070157667, -0.014205442258753476, -0.07118561530023229], 'point_signed_distance_m': 0.07098367363726622, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g3', 'sphere_index': 1, 'signed_clearance_m': 0.03237258502632175, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.03574509600636916, 0.07131965840061105, 0.02032997268572434], 'point_signed_distance_m': 0.07119653883251933, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g36', 'sphere_index': 1, 'signed_clearance_m': 0.03378345810565362, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.0463297910701577, -0.03366544225875345, -0.07118561530023226], 'point_signed_distance_m': 0.0726074119118512, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'geom_15', 'sphere_index': 1, 'signed_clearance_m': 0.03386582898129006, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [0.28152978278748764, -0.17833390420659118, 0.25075672619200673], 'point_signed_distance_m': 0.07268978278748764, 'method': 'exact_obb_sdf'}, {'link': 'panda_link7', 'obstacle': 'new_salad_dressing_1_g10', 'sphere_index': 2, 'signed_clearance_m': 0.03767286051673716, 'sphere_radius_m': 0.04129854351080021, 'center_base': [0.3577946538180904, -0.05332208490367301, 0.15780409842061982], 'center_geometry': [-0.061173648564722946, -0.06018724418586613, -0.014124262143385247], 'point_signed_distance_m': 0.07897140402753737, 'method': 'exact_obb_sdf'}, {'link': 'panda_link7', 'obstacle': 'new_salad_dressing_1_g5', 'sphere_index': 2, 'signed_clearance_m': 0.038624453404373225, 'sphere_radius_m': 0.04129854351080021, 'center_base': [0.3577946538180904, -0.05332208490367301, 0.15780409842061982], 'center_geometry': [-0.07944486183776839, -0.027859002685224198, 0.014124262143385247], 'point_signed_distance_m': 0.07992299691517343, 'method': 'exact_obb_sdf'}, {'link': 'panda_rightfinger', 'obstacle': 'geom_15', 'sphere_index': 29, 'signed_clearance_m': 0.04001453720355792, 'sphere_radius_m': 0.00971266586521076, 'center_base': [0.4473860260156082, -0.07679591122932933, 0.042707203068768865], 'center_geometry': [0.2585672030687687, -0.18738602601560816, 0.3267959112293294], 'point_signed_distance_m': 0.04972720306876868, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g27', 'sphere_index': 0, 'signed_clearance_m': 0.04075343222303086, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.42883020831792684, 0.021251937445457045, 0.10486291356540794], 'center_geometry': [-0.0621836687019634, 0.055172082177558895, -0.04161315265128179], 'point_signed_distance_m': 0.07957738602922844, 'method': 'exact_obb_sdf'}, {'link': 'panda_link7', 'obstacle': 'new_salad_dressing_1_g1', 'sphere_index': 2, 'signed_clearance_m': 0.04152243646753092, 'sphere_radius_m': 0.04129854351080021, 'center_base': [0.3577946538180904, -0.05332208490367301, 0.15780409842061982], 'center_geometry': [-0.09380486183776837, 0.027859002685224198, -0.014124262143385191], 'point_signed_distance_m': 0.08282097997833113, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g18', 'sphere_index': 0, 'signed_clearance_m': 0.04244166801208852, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.42883020831792684, 0.021251937445457045, 0.10486291356540794], 'center_geometry': [-0.06491446617712271, -0.05477331533555259, -0.04089881173981048], 'point_signed_distance_m': 0.0812656218182861, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g40', 'sphere_index': 1, 'signed_clearance_m': 0.04301019698946552, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.04632979107015772, 0.049315442258753506, 0.07118561530023226], 'point_signed_distance_m': 0.0818341507956631, 'method': 'exact_obb_sdf'}, {'link': 'panda_link7', 'obstacle': 'new_salad_dressing_1_g11', 'sphere_index': 2, 'signed_clearance_m': 0.04379939307223903, 'sphere_radius_m': 0.04129854351080021, 'center_base': [0.3577946538180904, -0.05332208490367301, 0.15780409842061982], 'center_geometry': [-0.02308496671164359, -0.090264842109433, 0.014124262143385247], 'point_signed_distance_m': 0.08509793658303924, 'method': 'exact_obb_sdf'}, {'link': 'panda_link7', 'obstacle': 'new_salad_dressing_1_g3', 'sphere_index': 2, 'signed_clearance_m': 0.04542166278128904, 'sphere_radius_m': 0.04129854351080021, 'center_base': [0.3577946538180904, -0.05332208490367301, 0.15780409842061982], 'center_geometry': [0.027499002685224164, 0.09400486183776824, -0.05989426214338518], 'point_signed_distance_m': 0.08672020629208925, 'method': 'exact_obb_sdf'}, {'link': 'panda_hand', 'obstacle': 'akita_black_bowl_2_g9', 'sphere_index': 1, 'signed_clearance_m': 0.0463216230940608, 'sphere_radius_m': 0.03882395380619758, 'center_base': [0.4383339042065912, -0.0007567261920066251, 0.06566978278748781], 'center_geometry': [-0.04959327761945986, -0.07963509474178908, -0.006297137006103293], 'point_signed_distance_m': 0.08514557690025838, 'method': 'exact_obb_sdf'}, {'link': 'panda_link7', 'obstacle': 'new_salad_dressing_1_g6', 'sphere_index': 2, 'signed_clearance_m': 0.04648704517831103, 'sphere_radius_m': 0.04129854351080021, 'center_base': [0.3577946538180904, -0.05332208490367301, 0.15780409842061982], 'center_geometry': [0.012658090545272026, 0.09494593267565526, -0.014124262143385247], 'point_signed_distance_m': 0.08778558868911124, 'method': 'exact_obb_sdf'}], 'sphere_count': 376, 'interpretation': 'planning sphere proxies vs exported world, not MuJoCo physical contacts', 'includes_attachment': True, 'robot_sphere_buffer_m': 0.001}}",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE4_stack_the_right_bowl_on_the_left_bowl_and_place_them_in_the_tray/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "05d129dd17b1b7a43be6e79182255b5704f17b5ebb11af1df05469f95d36e397",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE5_put_the_red_mug_on_the_left_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 601,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE5_put_the_red_mug_on_the_left_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "5447049016ecba1cbfd4ba4fb9c4ba2c5c44935806bcce14f09441e201d0f8a2",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE5_put_the_red_mug_on_the_right_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 602,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE5_put_the_red_mug_on_the_right_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "6ed25564bfc80294bfe3dbc146965e992b29cc23ec97fd062afffb6427cb5c96",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 499,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "55c71211fe151bbb14fcd1deedcda14ae13f5cbfea9da677f07e8ee1a240539b",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE5_put_the_yellow_and_white_mug_on_the_right_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 517,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE5_put_the_yellow_and_white_mug_on_the_right_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "e3cdd79f87b8c2f1aeda26e93a408a829c4782932a22b655057c0ce32da00623",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE6_put_the_chocolate_pudding_to_the_left_of_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 613,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE6_put_the_chocolate_pudding_to_the_left_of_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "ce380a065137238a1dee0fc904a270c0e5c93c49dcc9e6a7f63b4f4a35e83f2a",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE6_put_the_chocolate_pudding_to_the_right_of_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 508,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE6_put_the_chocolate_pudding_to_the_right_of_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "ef0de3074971ff3dac10b06426c0cd1012e569fb85ca4f4a520ff6eb21bf5805",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE6_put_the_red_mug_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 608,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE6_put_the_red_mug_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "5b2347fc2fd6a5cbdf0b6a2f8fbd6407dbeaa403c02daed0b2280e4daf20f47f",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 530,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "13084e92f060dc956a33269f0ded5e4288f313e1a5d1aa2c7bbf837601f68752",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 990,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "Forbidden contact: [{'geom1': 'black_book_1_g1', 'geom2': 'gripper0_hand_collision', 'distance_m': -0.0010478811007637477}]",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "50107e5cae7b50e9c672783a181465183a0441c8258eee3015e0847c340df5d3",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 589,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "18a613d2677b76157abcdef34edfd972cf7e7a328873392f4c229c154042f9b4",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 692,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "Forbidden contact: [{'geom1': 'black_book_1_g1', 'geom2': 'gripper0_hand_collision', 'distance_m': -0.0010164925153615585}]",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "a2a3210641cfd23ecca662f2566cabad325acd7cdd032f88ff9b59cf8f04861f",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE1_pick_up_the_yellow_and_white_mug_and_place_it_to_the_right_of_the_caddy",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 663,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE1_pick_up_the_yellow_and_white_mug_and_place_it_to_the_right_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "92fc7db3ae8cb94a0472df24dbb9cfcac914f17812f61f742296cc6d9f4bbe6c",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 210,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "No bounded object orientation fits the goal opening",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "2146022855b5367ab91260ee66d1624a0bff6ff3d3b43e689c51c0e3bbe88ae0",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 566,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "6c65c7a32cfbb14f66c6d8bae6aef9b3c240062b72d24b99d6c871a1981768cc",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 488,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "4d063fc437612d732af2cadbb4beb43944fcc9257500c290536ff8e7354e32af",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 223,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "transfer planning failed: {'success': False, 'planner': 'mujoco_cartesian_dls', 'state_restored': True, 'collision_checks': 200, 'accepted_ik_steps': 11, 'allow_finger_target': True, 'path_validation': 'sampled actual MuJoCo contacts; existing monitor tolerance and phase permissions', 'limitation': 'Kinematic contact-phase preview; actual execution must use closed-loop control and contact monitoring', 'linear_distance_m': 0.21927722137496022, 'rotation_distance_rad': 1.1743782705500385, 'linear_waypoints': 44, 'max_linear_step_m': 0.005, 'held': True, 'allowed_support_geoms': [], 'joint_names': ['robot0_joint1', 'robot0_joint2', 'robot0_joint3', 'robot0_joint4', 'robot0_joint5', 'robot0_joint6', 'robot0_joint7'], 'position_tolerance_m': 0.0004, 'rotation_tolerance_rad': 0.003, 'held_target': 'black_book_1', 'eef_T_target': [[-0.9999965781893628, -0.0023848524042080848, 0.001075215597081945, -0.0006356942952088773], [-0.0024337680641619143, 0.9988417181154905, -0.048055165436290244, -0.010026002114846139], [-0.0009593657175085435, -0.04805761782599616, -0.9988441044458916, 0.13368136572762546], [0.0, 0.0, 0.0, 1.0]], 'reason': 'cartesian_ik_collision_blocked', 'failed_waypoint': 9, 'failed_iteration': 3, 'position_error_m': 0.003402267730142509, 'rotation_error_rad': 0.018179659639249994, 'collisions': [{'geom1': 'black_book_1_g1', 'geom2': 'desk_caddy_1_g9', 'distance_m': -0.00102592031340381, 'held_object_collision': True}], 'wall_s': 0.07419858127832413}",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "6909da32b35390865ab4a9e47fcfa5e761d603755a12950bfe745de62b117ed2",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 562,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "754e800561a73fa3239e673c5184c93a8d9ad3e4094a554c8d7908aa56d3f71a",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 579,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "18245ef7f16b4583f6129325c276e1145b6b11d73677b72c209f1aa21a031819",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 797,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "OSC target timeout in place: position=0.00508, rotation=0.0025",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "1f83754b4e5d0780f05c8e9a2d58ab05f022e490f04286fe61eb0fd02e884aac",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE3_pick_up_the_red_mug_and_place_it_to_the_right_of_the_caddy",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 700,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE3_pick_up_the_red_mug_and_place_it_to_the_right_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "eac46f9ac5771c9e524079825b27a8644cd1711e8586e931ee91453cbaf0fc78",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE3_pick_up_the_white_mug_and_place_it_to_the_right_of_the_caddy",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 20,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "No executable path found in checked candidates; grasp not executed",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE3_pick_up_the_white_mug_and_place_it_to_the_right_of_the_caddy/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "4e21ffb902843184e2abafb52fb7e9351f056964cf8bce5e0b0db85fdcb08441",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE4_pick_up_the_book_in_the_middle_and_place_it_on_the_cabinet_shelf",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 1092,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "Forbidden contact: [{'geom1': 'black_book_1_g1', 'geom2': 'gripper0_hand_collision', 'distance_m': -0.0010009380920203226}]",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE4_pick_up_the_book_in_the_middle_and_place_it_on_the_cabinet_shelf/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "dcf748b30a198807b0c04a0ea97d2f7615ee8ec1208e3f8639d9762c28b4936e",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE4_pick_up_the_book_on_the_left_and_place_it_on_top_of_the_shelf",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 673,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE4_pick_up_the_book_on_the_left_and_place_it_on_top_of_the_shelf/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "a7e9e36f612a9b6f579f53a238495285b091a78cd9cf0a519ee2a4e4a8dcc9f1",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_on_the_cabinet_shelf",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 217,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "transfer planning failed: {'success': False, 'planner': 'mujoco_cartesian_dls', 'state_restored': True, 'collision_checks': 2777, 'accepted_ik_steps': 147, 'allow_finger_target': True, 'path_validation': 'sampled actual MuJoCo contacts; existing monitor tolerance and phase permissions', 'limitation': 'Kinematic contact-phase preview; actual execution must use closed-loop control and contact monitoring', 'linear_distance_m': 0.30958903371946245, 'rotation_distance_rad': 1.6703717059734147, 'linear_waypoints': 62, 'max_linear_step_m': 0.005, 'held': True, 'allowed_support_geoms': [], 'joint_names': ['robot0_joint1', 'robot0_joint2', 'robot0_joint3', 'robot0_joint4', 'robot0_joint5', 'robot0_joint6', 'robot0_joint7'], 'position_tolerance_m': 0.0004, 'rotation_tolerance_rad': 0.003, 'held_target': 'yellow_book_1', 'eef_T_target': [[-0.9999999997507504, 1.1926579023235513e-05, -1.8874837652380672e-05, 0.001656832372063044], [1.3126007688464295e-05, 0.997893225361554, -0.06487765875265529, 0.03137778383165696], [1.8061304099129184e-05, -0.06487765898423571, -0.9978932252693763, 0.11017572324032421], [0.0, 0.0, 0.0, 1.0]], 'reason': 'cartesian_ik_stalled', 'failed_waypoint': 36, 'failed_iteration': 76, 'position_error_m': 0.0029022124708836393, 'rotation_error_rad': 0.004128579331948422, 'wall_s': 1.4670786336064339}",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_on_the_cabinet_shelf/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "dc4c9895ab9ae4005be06d4661e156c4a58a9adf68a9ab6a17331f1a8d1eedf8",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_90_STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_under_the_cabinet_shelf",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 420,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "transfer planning failed: {'success': False, 'planner': 'mujoco_cartesian_dls', 'state_restored': True, 'collision_checks': 185, 'accepted_ik_steps': 5, 'allow_finger_target': True, 'path_validation': 'sampled actual MuJoCo contacts; existing monitor tolerance and phase permissions', 'limitation': 'Kinematic contact-phase preview; actual execution must use closed-loop control and contact monitoring', 'linear_distance_m': 0.3080385919972791, 'rotation_distance_rad': 1.5777495626815439, 'linear_waypoints': 62, 'max_linear_step_m': 0.005, 'held': True, 'allowed_support_geoms': [], 'joint_names': ['robot0_joint1', 'robot0_joint2', 'robot0_joint3', 'robot0_joint4', 'robot0_joint5', 'robot0_joint6', 'robot0_joint7'], 'position_tolerance_m': 0.0004, 'rotation_tolerance_rad': 0.003, 'held_target': 'yellow_book_1', 'eef_T_target': [[0.9999999999974476, -1.171513370894868e-06, 1.932830716956601e-06, -0.0016083559400908148], [-1.0546350423633017e-07, -0.8784331425823617, -0.47786526763604464, 0.027345090220610935], [2.257688111340609e-06, 0.4778652676346203, -0.8784331425802414, 0.11474334162012712], [0.0, 0.0, 0.0, 1.0]], 'reason': 'cartesian_ik_stalled', 'failed_waypoint': 4, 'failed_iteration': 1, 'position_error_m': 0.0004116419427597767, 'rotation_error_rad': 0.00515951749329231, 'wall_s': 0.06911922991275787}",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_90_STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_under_the_cabinet_shelf/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "506bd1565c34c01729d05e16d4e3f4da4e7ebb6928b2b598a33d8c282cef56a0",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_goal_open_the_middle_drawer_of_the_cabinet",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 40,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "contact_approach_exhausted",
+      "phase": "approach",
+      "message": "No executable approach/engagement in shared skill candidates",
+      "details": {
+        "native_status": "failed",
+        "original_failure": {
+          "code": "contact_approach_exhausted",
+          "category": "planning",
+          "phase": "approach",
+          "details": {}
+        }
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_goal_open_the_middle_drawer_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "28c5fd25fc083eaa06e1a98501952a6a2f89ee6cff15a14a19f96582af6a99d1",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_goal_open_the_top_drawer_and_put_the_bowl_inside",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 536,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "No executable path found in checked candidates; grasp not executed",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_goal_open_the_top_drawer_and_put_the_bowl_inside/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "674d47740ace5c59003bb0f085486aca7bda38c3cbdf90b68e7d21ebb1dd4bb7",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_goal_push_the_plate_to_the_front_of_the_stove",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 391,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "contact_approach_exhausted",
+      "phase": "approach",
+      "message": "No executable approach/engagement in shared skill candidates",
+      "details": {
+        "native_status": "failed",
+        "original_failure": {
+          "code": "contact_approach_exhausted",
+          "category": "planning",
+          "phase": "approach",
+          "details": {}
+        }
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_goal_push_the_plate_to_the_front_of_the_stove/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "d570c4c62e933afadada207c65875b605c20e94f127a4144ad9fd67579556cf2",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_goal_put_the_bowl_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 556,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_goal_put_the_bowl_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "646c0304bfbfdf2f54be935726e2266edfe8b332a94d6afdd67fba8d0941c1f1",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_goal_put_the_bowl_on_the_stove",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 575,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_goal_put_the_bowl_on_the_stove/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "349e2c17394d30bc15fccae56d4429f383d2ba172e39d21231dd8dce935c42cd",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_goal_put_the_bowl_on_top_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 625,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_goal_put_the_bowl_on_top_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "88e72d8d9bdab7a049bb541ab618ce23087394a7e12a7b07e3153d1768a4e420",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_goal_put_the_cream_cheese_in_the_bowl",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 20,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "No executable path found in checked candidates; grasp not executed",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_goal_put_the_cream_cheese_in_the_bowl/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "4d9325bdd79bce347bba7c2ee8da8859e3999c22b50d29457d142abe4c07ff35",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_goal_put_the_wine_bottle_on_the_rack",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 536,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "LIBERO official task predicate was false after release and settling",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_goal_put_the_wine_bottle_on_the_rack/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "ec88edeb63e67fb293604c0663c701cc17edd81baafadf3780e10b6d75dbddd6",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_goal_put_the_wine_bottle_on_top_of_the_cabinet",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 608,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_goal_put_the_wine_bottle_on_top_of_the_cabinet/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "cd38f8e6fff7ed9962e4528b8f33644f1034476b44ad75ad2f7e16e43517f220",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_goal_turn_on_the_stove",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 556,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_goal_turn_on_the_stove/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "678020f3d285b81ffb8009e289ab7a26caaed3828dcd3b6fe04d9c625efa1a2d",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_object_pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 759,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_object_pick_up_the_alphabet_soup_and_place_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "d025ed191c4f2d316c98e80ed766ed76b288c885645363a9e33e29ac71799ea1",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_object_pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 579,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_object_pick_up_the_bbq_sauce_and_place_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "b4b910b2de4cea14088829c0df17e94cf08034b027db326d64080af03063e55d",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_object_pick_up_the_butter_and_place_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 903,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_object_pick_up_the_butter_and_place_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "1bf60c38d82210c84f4d3e2f6f597a97696645ba2b687cf9ae58304b2ae9f9a2",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_object_pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 874,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_object_pick_up_the_chocolate_pudding_and_place_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "662df4e0ddf28b22c018271bde0f71dffc6c49efcd3fac7bf8ecaf5fc130e897",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_object_pick_up_the_cream_cheese_and_place_it_in_the_basket",
+    "pipeline_complete": false,
+    "native_success": true,
+    "steps_executed": 611,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "MuJoCo path preflight rejected reverse_place: [{'path_index': 0, 'geom1': 'basket_1_g2', 'geom2': 'gripper0_finger2_collision', 'distance_m': -0.0020572907663887023}]",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_object_pick_up_the_cream_cheese_and_place_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "8bca7caa978207a3894c592c17201d30c38ba0b83ea370cd014ee39fb7b9d343",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_object_pick_up_the_ketchup_and_place_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 649,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_object_pick_up_the_ketchup_and_place_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "fbcb9e76971bbc088b2a734cd080cfa5506e9086093024c55e8856447a31a878",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_object_pick_up_the_milk_and_place_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 615,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_object_pick_up_the_milk_and_place_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "6e7b1805957380350365c3ec499c9c8b13e4b6f8dfdd07413fc32e0a305a6023",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_object_pick_up_the_orange_juice_and_place_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 580,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_object_pick_up_the_orange_juice_and_place_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "ed841d37d4e53f50aeea7e94b2864aa0658abed2923a8efe6a00306a41d95dfd",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_object_pick_up_the_salad_dressing_and_place_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 551,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_object_pick_up_the_salad_dressing_and_place_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "3a007f155fd91d9d8eb9c33b5f7f52de4b8012ed88436390a69c45f6e2373321",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_object_pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 625,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_object_pick_up_the_tomato_sauce_and_place_it_in_the_basket/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "eed7ccefa5ed0a2753215bfb9faab7c564c6df4fe46ade25bdb69a5fb44c0504",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_spatial_pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 514,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_spatial_pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "99228ff3eb91690ba1f4b73569c1f0268cb1940cd58ce0bb5cefd418fba94882",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_spatial_pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 558,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_spatial_pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "77d39d030cd1c34e60627b7828167528a0d9d7828e974941746b5de98d712d2b",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_spatial_pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+    "pipeline_complete": false,
+    "native_success": false,
+    "steps_executed": 20,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "No executable path found in checked candidates; grasp not executed",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_spatial_pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "deded972ea117a5581577cc453c99de720c8da276a702ec40cfc320f3fd5f0eb",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_spatial_pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 563,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_spatial_pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "f7f7515ee424ca338e4d970eebf3d3586c5ac4b38a9e089c8cc8d4839dd3ec28",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_spatial_pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 538,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_spatial_pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "6e55a3d009ce24ed14699aa015bd84c0ba86820dcae0d0c6d431d71b88ef3870",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_spatial_pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 646,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_spatial_pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "b054bd6ff71153b63c45db419132afd42fdb0a62537fc3a47e16ad9dee70e12b",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_spatial_pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 504,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_spatial_pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "b5479651a4a52082dea8901467c5c9450222257485cfcdf42e90ca42f19a6ccc",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_spatial_pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+    "pipeline_complete": false,
+    "native_success": true,
+    "steps_executed": 459,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": {
+      "domain": "unknown",
+      "code": "stage_failed",
+      "phase": null,
+      "message": "Forbidden contact: [{'geom1': 'akita_black_bowl_2_g29', 'geom2': 'gripper0_finger1_collision', 'distance_m': -0.001589238562273095}]",
+      "details": {
+        "native_status": "stage_failed",
+        "original_failure": {}
+      }
+    },
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_spatial_pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "37b121b5fdc06245fee6e882facdd269699c3aa8283d2452962b08b16bbd73c7",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_spatial_pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 629,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_spatial_pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "09c4fe80022658f239c6d3dca99741db935bef6a6da2bd0e84acbe6240bf618f",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "payload_type": "TaskOutcome",
+    "episode_id": "libero_spatial_pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+    "pipeline_complete": true,
+    "native_success": true,
+    "steps_executed": 636,
+    "instruction_order": "not_checked",
+    "trajectory_quality": "not_checked",
+    "observation_records_complete": false,
+    "failure": null,
+    "source_record": {
+      "uri": "/Users/agiuser/Documents/ChatGPT/grasp code/outputs/libero-final130-four4090-20261111/delivery/cases/libero_spatial_pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate/RESULT.json",
+      "media_type": "application/json",
+      "sha256": "d3eee9f3b803abcb2513dd61c238b80834a33db40cf00270a26c2c4d12281e02",
+      "availability": "local",
+      "description": "Original final v10 result; unchanged"
+    }
+  }
+]

@@ -1,0 +1,121 @@
+{
+  "recorded_runtime_not_a_fresh_install_lockfile": true,
+  "roles": {
+    "simulation": {
+      "python_version": "3.11.10 (main, Oct 16 2024, 04:38:48) [Clang 18.1.8 ]",
+      "executable": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/bin/python",
+      "modules": {
+        "numpy": {
+          "version": "1.26.4",
+          "path": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/lib/python3.11/site-packages/numpy/__init__.py",
+          "sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e"
+        },
+        "scipy": {
+          "version": "1.16.2",
+          "path": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/lib/python3.11/site-packages/scipy/__init__.py",
+          "sha256": "a72412a5c62442876e073a01da1910c84b7214d1382380b71a873b470420dd68"
+        },
+        "torch": {
+          "version": "2.6.0+cu124",
+          "path": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/lib/python3.11/site-packages/torch/__init__.py",
+          "sha256": "5a190666c3853aa236c4d48ed64e2d4bbcd23bd32c21e64c0867646a6852e43f"
+        },
+        "mujoco": {
+          "version": "3.3.7",
+          "path": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/lib/python3.11/site-packages/mujoco/__init__.py",
+          "sha256": "60b57c3380bf9bcf1ba73cef01ab02c36fbd3ddceef4de15eb8f16c49676629e"
+        },
+        "robosuite": {
+          "version": "1.4.1",
+          "path": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/lib/python3.11/site-packages/robosuite/__init__.py",
+          "sha256": "2284b710dbfa04b1e0087d8e5f590277ba4300962df5b9c011161567b02cd981"
+        },
+        "cv2": {
+          "version": "4.11.0",
+          "path": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/lib/python3.11/site-packages/cv2/__init__.py",
+          "sha256": "936bd94c5a5debf0212fc751af79d3a163652f3e850259df2159db6aa3ed8ad8"
+        },
+        "PIL": {
+          "version": "12.0.0",
+          "path": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/lib/python3.11/site-packages/PIL/__init__.py",
+          "sha256": "43828e12947b4bf5ec8f7d1fbceb2f47de311295f8294b15794c1a54fd5f53cd"
+        },
+        "imageio_ffmpeg": {
+          "version": "0.6.0",
+          "path": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/lib/python3.11/site-packages/imageio_ffmpeg/__init__.py",
+          "sha256": "41afc231dfeca422c692f9a219b51778b7560c5c4dffa097bf92f80872d1fd8a"
+        }
+      }
+    },
+    "graspgen": {
+      "python_version": "3.11.10 (main, Oct 16 2024, 04:38:48) [Clang 18.1.8 ]",
+      "executable": "/mnt/public/changwei/Graspgen/setup/grasp-model/bin/python",
+      "modules": {
+        "numpy": {
+          "version": "1.26.4",
+          "path": "/opt/venv/openpi/lib/python3.11/site-packages/numpy/__init__.py",
+          "sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e"
+        },
+        "scipy": {
+          "version": "1.16.2",
+          "path": "/opt/venv/openpi/lib/python3.11/site-packages/scipy/__init__.py",
+          "sha256": "a72412a5c62442876e073a01da1910c84b7214d1382380b71a873b470420dd68"
+        },
+        "torch": {
+          "version": "2.6.0+cu124",
+          "path": "/opt/venv/openpi/lib/python3.11/site-packages/torch/__init__.py",
+          "sha256": "5a190666c3853aa236c4d48ed64e2d4bbcd23bd32c21e64c0867646a6852e43f"
+        },
+        "omegaconf": {
+          "version": "2.3.1",
+          "path": "/mnt/public/changwei/Graspgen/setup/grasp-model/lib/python3.11/site-packages/omegaconf/__init__.py",
+          "sha256": "9729f08831c414120732aac13771d18742897afcc86a9e8cc942c53643269417"
+        }
+      }
+    },
+    "curobo": {
+      "python_version": "3.11.10 (main, Oct 16 2024, 04:38:48) [Clang 18.1.8 ]",
+      "executable": "/mnt/public/changwei/Graspgen/setup/planner/bin/python",
+      "modules": {
+        "numpy": {
+          "version": "1.26.4",
+          "path": "/mnt/public/changwei/Graspgen/setup/planner/lib/python3.11/site-packages/numpy/__init__.py",
+          "sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e"
+        },
+        "scipy": {
+          "version": "1.17.1",
+          "path": "/mnt/public/changwei/Graspgen/setup/planner/lib/python3.11/site-packages/scipy/__init__.py",
+          "sha256": "335bc6e0a9909dc7534f9569a3685a92dc8001cb8c63a6da4c239849ff02d4d0"
+        },
+        "torch": {
+          "version": "2.6.0+cu124",
+          "path": "/opt/venv/openpi/lib/python3.11/site-packages/torch/__init__.py",
+          "sha256": "5a190666c3853aa236c4d48ed64e2d4bbcd23bd32c21e64c0867646a6852e43f"
+        },
+        "curobo": {
+          "version": "0.7.8",
+          "path": "/mnt/public/changwei/Graspgen/setup/deps/curobo/src/curobo/__init__.py",
+          "sha256": "184595d417850c97d870de7bb5d780470ddf7fe17c774fbc9fb4d4c78b3e0ba4"
+        }
+      }
+    }
+  },
+  "external_path_settings": {
+    "libero_repo": "/mnt/public/changwei/Graspgen/LIBERO",
+    "grasp_repo": "/mnt/public/changwei/Graspgen/graspgen-curobo-collect",
+    "graspgen_python": "/mnt/public/changwei/Graspgen/setup/grasp-model/bin/python",
+    "graspgen_config": "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/models/checkpoints/graspgen_franka_panda.yml",
+    "planner_python": "/mnt/public/changwei/Graspgen/setup/planner-python-wrapper"
+  },
+  "external_source_and_weight_fingerprints": {
+    "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/third_party/GraspGen/grasp_gen/grasp_server.py": "c9d8679891f7ed16f6fed49d20148fc924fe7054688a00660dcbe82aae0bbac9",
+    "/mnt/public/changwei/Graspgen/setup/deps/curobo/src/curobo/__init__.py": "184595d417850c97d870de7bb5d780470ddf7fe17c774fbc9fb4d4c78b3e0ba4",
+    "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/models/checkpoints/graspgen_franka_panda.yml": "3b666d28ffb91001ddb6ba24a2e0c11458478a986b808b493cf6fa9a987c2abd",
+    "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/models/checkpoints/graspgen_franka_panda_dis.pth": "e47d703c63b54c2d11fbc1effd43898f251b4147250888541e3b16e9c0d19e1c",
+    "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/models/checkpoints/graspgen_franka_panda_gen.pth": "0597583b89b322d42ceb4e596967d6ed68d1b56cba4039895909ccd5bdc66eff"
+  },
+  "full_external_manifest": "outputs/libero-final130-four4090-20261111/delivery/EXTERNAL_SOURCE_BEFORE.json",
+  "external_sources_unchanged_during_final130": true,
+  "pyproject_does_not_install_runtime_dependencies": true,
+  "external_files_and_weights_not_bundled_in_snapshot": true
+}

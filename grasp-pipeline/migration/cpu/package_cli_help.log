@@ -1,0 +1,14 @@
+usage: __main__.py [-h] {list,config,run,legacy} ...
+
+Organized GraspGen/cuRobo LIBERO pipeline, frozen v10 policy
+
+positional arguments:
+  {list,config,run,legacy}
+    list                List the frozen 130 task keys
+    config              Print the effective launch config; no model or
+                        environment
+    run                 Run a task using the configured simulation interpreter
+    legacy              Original explicit single-task doctor/run interface
+
+options:
+  -h, --help            show this help message and exit

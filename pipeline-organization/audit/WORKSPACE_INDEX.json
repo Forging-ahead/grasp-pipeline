@@ -1,0 +1,47 @@
+{
+  "work_entries": [
+    "ACTIVE_FINAL130_EVALUATION.json",
+    "libero-30",
+    "libero-counterfactual-20261109",
+    "libero-final130-20261111",
+    "libero-final130-four4090-20261111",
+    "libero-fix-20261109",
+    "libero-placement-fix-20261109",
+    "libero-policy-broad-20261111",
+    "libero-policy-generalize-20261111",
+    "libero-single-gpu-20261109",
+    "libero-sixfix-20261109",
+    "libero-task-classification-20261111",
+    "libero130-summary-20261109",
+    "libero26-audit",
+    "libero26-final-20261109",
+    "libero26-fixed-20261109",
+    "libero34-followup-20261109",
+    "libero96-parallel-20261109"
+  ],
+  "output_entries": [
+    ".DS_Store",
+    "libero-26",
+    "libero-26-final",
+    "libero-26-fixed",
+    "libero-counterfactual-20261109",
+    "libero-final130-20261111",
+    "libero-final130-four4090-20261111",
+    "libero-fix-20261109",
+    "libero-placement-fix-20261109",
+    "libero-policy-broad-20261111",
+    "libero-policy-generalize-20261111",
+    "libero-preview",
+    "libero-sixfix-20261109",
+    "libero-task-classification-20261111",
+    "libero130-summary-20261109"
+  ],
+  "classification": {
+    "canonical_policy": "pipeline-organization/baseline/v10",
+    "verified_development_python": "work/libero-policy-broad-20261111",
+    "canonical_evaluation": "outputs/libero-final130-four4090-20261111/delivery",
+    "evaluation_helper_worktree": "work/libero-final130-four4090-20261111",
+    "separate_upstream_project_not_this_pipeline": "RPent",
+    "other_work_and_outputs": "historical/debug/scheduling/analysis; not combined with final130 baseline"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "checked_at_utc": "2026-11-11T13:01:35.495558+00:00",
+  "passed": true,
+  "delivery_files_verified": 3270,
+  "frozen_python_verified": 39,
+  "byte_identical_local_renames": {
+    "LIBERO130任务最终v10复测报告_含全部视频.html": "LIBERO130 v10复测报告_含全部视频.html"
+  },
+  "snapshot_files_verified": 50,
+  "development_python_match": true,
+  "tasks_verified": 130,
+  "categories_verified": 16,
+  "full_success_recomputed": 86,
+  "final_results_archive_sha256_match": true,
+  "research_source_zip_crc": true,
+  "policy_or_config_changed": false,
+  "gpu_or_network_used": false,
+  "validation_scope": "Local source/config/artifact identity and static inventory, not fresh trajectory reproduction",
+  "failures": []
+}

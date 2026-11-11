@@ -1,0 +1,15 @@
+{
+  "local_document_links_checked": 97,
+  "phase3_source_and_contract_files_unchanged": 85,
+  "source_change_anchors_checked": 21,
+  "proposed_path_patterns_marked_unimplemented": 5,
+  "rpent_reference_files_checked": 5,
+  "configuration_examples_checked": 4,
+  "lightweight_cli_commands_checked": 4,
+  "schema_examples_checked": false,
+  "passed": true,
+  "checked_at_utc": "2026-11-11T17:03:01.494144+00:00",
+  "benchmark_adapters_implemented": false,
+  "gpu_rollouts_started": 0,
+  "scope": "Integration documentation/examples and unchanged existing code; no new benchmark or task validation"
+}

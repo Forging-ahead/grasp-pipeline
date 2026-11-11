@@ -1,0 +1,49 @@
+{
+  "checked_client_date": "2026-11-12",
+  "rpent_reference": {
+    "root": "RPent",
+    "head": "f11eee5910b74d132363a526ad385fa828ad4a26",
+    "worktree_clean": true,
+    "files": {
+      "robots/robotwin/env_client.py": "83c8dfa596391f4f20d61461b536c959ae393aeeb06b615d11d8cb36b6fa7fa8",
+      "robots/robotwin/primitives.py": "113b5ef3eb0a04e562ea41545c711e40f0b3a5c232185129840825859fa9c10e",
+      "robots/robocasa/env_client.py": "d9b14e88ac5c800cad114543920a01d4204adb2b3d51485d098c68ae901a4394",
+      "robots/robocasa/env_server.py": "aabdb6d902de971e2afe6960b6a4097a8ad708b664bb3e138b77f8deb460f9d4",
+      "robots/robocasa/primitives.py": "9aa9f9d95078b32a6e265d155ff567f1e80da85c1f9c134141b48c106a3ec029"
+    },
+    "public_commit_url": "https://github.com/zhexuanxu/RPent/tree/f11eee5910b74d132363a526ad385fa828ad4a26"
+  },
+  "official_sources": [
+    {
+      "url": "https://robotwin-platform.github.io/doc/usage/configurations.html",
+      "scope": "embodiments and observation configuration",
+      "pinning": "Website or main-branch reference, not an installed benchmark version"
+    },
+    {
+      "url": "https://robotwin-platform.github.io/doc/usage/control-robot.html",
+      "scope": "qpos/ee control and current evaluation entry reference",
+      "pinning": "Website or main-branch reference, not an installed benchmark version"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/RoboTwin-Platform/RoboTwin/main/envs/_base_task.py",
+      "scope": "SAPIEN environment source",
+      "pinning": "Website or main-branch reference, not an installed benchmark version"
+    },
+    {
+      "url": "https://robocasa.ai/docs/build/html/introduction/overview.html",
+      "scope": "current RoboCasa365 overview",
+      "pinning": "Website or main-branch reference, not an installed benchmark version"
+    },
+    {
+      "url": "https://robocasa.ai/docs/build/html/introduction/basic_usage.html",
+      "scope": "Gym creation, split and seed",
+      "pinning": "Website or main-branch reference, not an installed benchmark version"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/robocasa/robocasa/main/README.md",
+      "scope": "robosuite dependency and version context",
+      "pinning": "Website or main-branch reference, not an installed benchmark version"
+    }
+  ],
+  "benchmark_runs_performed": false
+}

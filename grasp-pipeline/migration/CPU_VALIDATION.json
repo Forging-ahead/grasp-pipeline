@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-11-11T13:23:00.324929+00:00",
+  "python": "3.11.10 (main, Oct 16 2024, 04:38:48) [Clang 18.1.8 ]",
+  "executable": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/bin/python",
+  "remote_root": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z",
+  "gpu_visible": "",
+  "full_task_rollouts_started": 0,
+  "original_tests": 86,
+  "organized_tests": 90,
+  "original_statuses": {
+    "passed": 86
+  },
+  "organized_statuses": {
+    "passed": 90
+  },
+  "baseline_case_differences": {},
+  "commands": [
+    {
+      "label": "baseline",
+      "command": [
+        "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/baseline.xml"
+      ],
+      "cwd": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/original-v10/bridge",
+      "log": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/baseline.log",
+      "returncode": 0
+    },
+    {
+      "label": "organized",
+      "command": [
+        "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests",
+        "-p",
+        "no:cacheprovider",
+        "--junitxml=/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/organized.xml"
+      ],
+      "cwd": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/organized",
+      "log": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/organized.log",
+      "returncode": 0
+    },
+    {
+      "label": "preservation",
+      "command": [
+        "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/bin/python",
+        "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/organized/tools/verify_preservation.py",
+        "--baseline",
+        "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/original-v10",
+        "--report",
+        "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/preservation.json"
+      ],
+      "cwd": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/organized",
+      "log": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/preservation.log",
+      "returncode": 0
+    },
+    {
+      "label": "model_worker_help",
+      "command": [
+        "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/bin/python",
+        "-m",
+        "graspgen_libero_bridge.models.graspgen_worker",
+        "--help"
+      ],
+      "cwd": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/organized",
+      "log": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/model_worker_help.log",
+      "returncode": 0
+    },
+    {
+      "label": "planner_worker_help",
+      "command": [
+        "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/bin/python",
+        "-m",
+        "graspgen_libero_bridge.planning.planner_worker",
+        "--help"
+      ],
+      "cwd": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/organized",
+      "log": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/planner_worker_help.log",
+      "returncode": 0
+    },
+    {
+      "label": "package_cli_help",
+      "command": [
+        "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/bin/python",
+        "-m",
+        "graspgen_libero_bridge",
+        "--help"
+      ],
+      "cwd": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/organized",
+      "log": "/mnt/public/changwei/Graspgen/grasp-pipeline-layout-phase2-20261111T132219Z/package_cli_help.log",
+      "returncode": 0
+    }
+  ],
+  "scope": "Original CPU tests, organized CPU tests, source/config preservation and worker help entry points; no GPU inference or rollout"
+}

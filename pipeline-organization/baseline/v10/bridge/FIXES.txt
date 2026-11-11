@@ -1,0 +1,1 @@
+Bounded place-only near-goal progress extension; unchanged precision and safety checks. Native bilateral contact preview before executing selected grasp; no dynamics changes. Rack, deep-grasp and slow-gripper experiments NOT deployed.

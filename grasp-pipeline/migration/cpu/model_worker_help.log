@@ -1,0 +1,15 @@
+usage: graspgen_worker.py [-h] --config CONFIG --grasp-repo GRASP_REPO
+                          [--serve] [--ready READY] [--request REQUEST]
+
+GraspGen worker, isolated from LIBERO's MuJoCo / robosuite environment. All
+point clouds and returned poses use the *same world coordinate frame* and
+meters. The worker subtracts and restores the observed point-cloud mean
+exactly once. It does not require an object pose or a bundled object manifest.
+
+options:
+  -h, --help            show this help message and exit
+  --config CONFIG
+  --grasp-repo GRASP_REPO
+  --serve
+  --ready READY
+  --request REQUEST     Single-request JSON file for diagnostics

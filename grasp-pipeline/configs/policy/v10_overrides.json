@@ -1,0 +1,17 @@
+{
+  "unsupported_skill": false,
+  "max_steps": 5000,
+  "composite_subgoal_execution": true,
+  "geometric_placement_search": true,
+  "surface_release_search": true,
+  "open_container_release_search": true,
+  "container_xy_search": true,
+  "static_container_candidate_search": true,
+  "minimum_downward_approach": 0.0,
+  "selection_rounds": 6,
+  "max_candidates_per_round": 30,
+  "native_candidates_per_round": 12,
+  "selection_timeout_s": 180,
+  "place_tracking_extra_steps": 240,
+  "place_tracking_extension_radius_m": 0.015
+}

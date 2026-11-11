@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "tested_source_config_reference_files": 92,
+  "all_current_files_match_tested_candidate": true,
+  "phase3_files_unchanged": 85,
+  "source_manifest": "remote/TESTED_SOURCE_SHA256.json"
+}

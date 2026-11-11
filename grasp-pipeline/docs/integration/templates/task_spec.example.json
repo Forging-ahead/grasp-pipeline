@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "payload_type": "TaskSpec",
+  "benchmark": "external_benchmark_example",
+  "task_id": "example_mug_to_bin",
+  "language": "Place the mug in the bin.",
+  "definition_ref": {"uri": "example://replace-with-native-task-definition", "media_type": "application/json", "sha256": null, "availability": "external", "description": "Illustrative definition reference; no real task or asset is provided"},
+  "entity_ids": ["mug_1", "bin_1"],
+  "region_ids": ["bin_1_contain_region"],
+  "goal_logic": "all",
+  "goals": [{"goal_id": "goal_0", "predicate": "in", "arguments": ["mug_1", "bin_1_contain_region"], "source": {"types": ["task_definition"], "evidence": ["example://replace-with-native-goal"], "description": "Illustrative normalized goal; integrator must bind the real native evaluator"}}],
+  "required_order": [],
+  "instruction_constraints_complete": false
+}

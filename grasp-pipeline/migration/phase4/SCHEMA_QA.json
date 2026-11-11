@@ -1,0 +1,18 @@
+{
+  "public_examples_validated": [
+    "task_spec.example.json",
+    "capabilities.example.json"
+  ],
+  "jsonschema_version": "4.25.1",
+  "example_sha256": {
+    "task_spec.example.json": "c3b32335796a908132f0769aee4733a0fb019e9ff86a3797a356f7c2a0880dfd",
+    "capabilities.example.json": "926d7e1707bb5c9bb2693ab034b32de51debf6cb00246b064199fca91e517c74"
+  },
+  "schema_sha256": "17a4f31fbefe6b67fb9fd482127533ccb6d96674344193eccbcff8d5ae376cb4",
+  "schema_examples_checked": true,
+  "passed": true,
+  "checked_at_utc": "2026-11-11T16:59:00.528013+00:00",
+  "benchmark_adapters_implemented": false,
+  "gpu_rollouts_started": 0,
+  "scope": "Integration documentation/examples and unchanged existing code; no new benchmark or task validation"
+}

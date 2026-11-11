@@ -1,0 +1,8 @@
+{
+  "libero_repo": "/opt/projects/LIBERO",
+  "grasp_repo": "/opt/projects/graspgen-curobo-collect",
+  "graspgen_python": "/opt/envs/graspgen/bin/python",
+  "graspgen_config": "/opt/models/graspgen_franka_panda.yml",
+  "planner_python": "/opt/envs/curobo/bin/python",
+  "simulation_python": "/opt/envs/libero/bin/python"
+}

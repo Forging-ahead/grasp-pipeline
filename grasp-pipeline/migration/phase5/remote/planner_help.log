@@ -1,0 +1,27 @@
+usage: planner_worker.py [-h] [--serve] [--ready READY]
+                         [--grasp-repo GRASP_REPO]
+                         [--robosuite-assets ROBOSUITE_ASSETS]
+                         [--request REQUEST] [--response RESPONSE]
+
+Persistent cuRobo worker for the independent LIBERO bridge. No GPU is
+initialized until a configure request is received. Commands: configure:
+{scene, calibration_samples, output_dir} plan_pose: {scene, goal_pose,
+out_dir, timeout_s?, allow_target_contact?, ignore_obstacles?:
+[exact_geom_name]} select: {scene, candidates:[{world_T_eef,score,...}],
+out_dir, max_candidates?, approach_distance_m?, allow_target_contact?} attach:
+{scene}; detach: {}; status: {} Each plan returns path_file; NPZ has
+q_arm[N,7], world_T_eef[N,4,4]. select also returns approach_path_file /
+descend_path_file. Coordinates are meters and world-frame control-site
+transforms. No Isaac modules are used.
+
+options:
+  -h, --help            show this help message and exit
+  --serve
+  --ready READY
+  --grasp-repo GRASP_REPO
+                        Accepted for bridge launcher compatibility; no Isaac
+                        code is imported
+  --robosuite-assets ROBOSUITE_ASSETS
+  --request REQUEST     Run one JSON request (use --serve for a persistent
+                        planner)
+  --response RESPONSE

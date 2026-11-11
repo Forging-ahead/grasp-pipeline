@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-11-11T15:05:56.071248+00:00",
+  "mapped_original_python_files": 39,
+  "all_mechanical_edits_replay_exactly": true,
+  "internal_import_paths_resolved": 99,
+  "task_catalog_bytes_unchanged": true,
+  "single_task_example_bytes_unchanged": true,
+  "literal_driver_overrides_unchanged": 15,
+  "task_count": 130,
+  "gpu_values": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "init_values_for_config_binding_check": [
+    0,
+    1
+  ],
+  "effective_config_comparisons": 1040,
+  "effective_config_differences": [],
+  "scope": "Static/mechanical preservation plus exact effective-configuration comparison; not a fresh GPU trajectory equivalence test"
+}

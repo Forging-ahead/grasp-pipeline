@@ -1,0 +1,280 @@
+{
+  "policy_version": "v10",
+  "source_archive": "outputs/libero-final130-four4090-20261111/delivery/research-source.zip",
+  "source_archive_sha256": "17567c081f0cf62f8536f2d5231d489a9e8aa03e1a28226cb0c2d192607a5977",
+  "snapshot": "pipeline-organization/baseline/v10",
+  "snapshot_files": {
+    "ALL_TASKS.json": {
+      "sha256": "c313169626a5b681cffde7e5e011454ba46ea46c7aa5fdd47a3431e45fcf39cd",
+      "bytes": 307552
+    },
+    "FROZEN_SOURCE.json": {
+      "sha256": "e6150837ddffcd763026015c5882b696d3cb2d57d0e8a063f383d85956e8b585",
+      "bytes": 4381
+    },
+    "bridge/.gitignore": {
+      "sha256": "6cb89e54868dfd7173c5f7eace933abe7c7b549576c8450c7ec1a616f3976fff",
+      "bytes": 37
+    },
+    "bridge/FIXES.txt": {
+      "sha256": "ab5eda44996072e789eecd756dd28aa8506a9bedf07c272665cb523663b3b8b7",
+      "bytes": 235
+    },
+    "bridge/FIX_RELEASE.json": {
+      "sha256": "d12e05420197fc8741abb27fb235643d7bcf0ebae8872a22105cad7004e863c9",
+      "bytes": 179
+    },
+    "bridge/README.md": {
+      "sha256": "cc56f1e2891b82a5ed5df95f851e85ad4acddbb919497f45ed4130f73c7da294",
+      "bytes": 17499
+    },
+    "bridge/SOURCE_SHA256.json": {
+      "sha256": "5d8cd6865c9544bc01b3f1f01ab8b961b3e7ecbb79e34ceed2fa2a2c3cd53385",
+      "bytes": 2846
+    },
+    "bridge/VALIDATION_CHECKS.json": {
+      "sha256": "d927c3716cb0e01c8b6e399f90a310f094d87fc15a5a45dce704554040209793",
+      "bytes": 986
+    },
+    "bridge/configs/server.json": {
+      "sha256": "901bb8dc7c1b415525564ea669454f942e30dd750b0120987ef229399372e4cb",
+      "bytes": 1326
+    },
+    "bridge/graspgen_libero_bridge/__init__.py": {
+      "sha256": "c2d74ad97ccc1ffc23da105b1c352e6fde7bde2e758020850a8141f3d1e1f220",
+      "bytes": 96
+    },
+    "bridge/graspgen_libero_bridge/__main__.py": {
+      "sha256": "114ca4c8343083885fb319639e02ac524c60a27524c09ee4feacaa26175c0a69",
+      "bytes": 1876
+    },
+    "bridge/graspgen_libero_bridge/articulation.py": {
+      "sha256": "dafb8d551016ac4a178ca3cef891648ea1c56438de7c19db31ecf2b305683220",
+      "bytes": 10158
+    },
+    "bridge/graspgen_libero_bridge/cartesian.py": {
+      "sha256": "43e0a38c4069ad77f81571219392a44d4cda545641fc245a814b6c55331cfb3c",
+      "bytes": 18355
+    },
+    "bridge/graspgen_libero_bridge/controller.py": {
+      "sha256": "3130c0bc9bd86f406d4dd76ffa22dd2d28de90426d17c5e6d87270184ecadf36",
+      "bytes": 21054
+    },
+    "bridge/graspgen_libero_bridge/env_adapter.py": {
+      "sha256": "29cee838ccf2606e607f9a6c75413fc343dc24bcba488585733b19e3c9567001",
+      "bytes": 17659
+    },
+    "bridge/graspgen_libero_bridge/errors.py": {
+      "sha256": "eff22b8a124c160a591217b523ec9da4fefce0b49f3ac2355d48a36d7b6c901f",
+      "bytes": 539
+    },
+    "bridge/graspgen_libero_bridge/evaluate.py": {
+      "sha256": "96b99c7004adf74013db9038491c3df15c62ed38e92a8f6f6e2034b2db178475",
+      "bytes": 53454
+    },
+    "bridge/graspgen_libero_bridge/frames.py": {
+      "sha256": "5ee78ed9827d3a165c1fb72908c7a691df496da1ced97ec9855e33eb057924f2",
+      "bytes": 1179
+    },
+    "bridge/graspgen_libero_bridge/grasp_candidate.py": {
+      "sha256": "6ee95e0d4f200dc739543911cd1da9f00cf1d4affe61179ff8009a96897051b9",
+      "bytes": 795
+    },
+    "bridge/graspgen_libero_bridge/grasp_contact.py": {
+      "sha256": "241653cc5e5dc9d4fd03430138f422a2f8f79a717a87dcfa25e78aca94bd14aa",
+      "bytes": 2059
+    },
+    "bridge/graspgen_libero_bridge/graspgen_worker.py": {
+      "sha256": "650fc6f96e2d1e50383a977b20c0964e645f5134cd71782f23e157ed59f2eca1",
+      "bytes": 8109
+    },
+    "bridge/graspgen_libero_bridge/placement.py": {
+      "sha256": "1eca29bc31f739007189bf4c79659401ee19d9915d46f2aea4b59cfaf366a57b",
+      "bytes": 2936
+    },
+    "bridge/graspgen_libero_bridge/placement_geometry.py": {
+      "sha256": "a81e027485a4f1b7643d22d46aa4341fdbd6d4ac15dc4291dbcce974135a261a",
+      "bytes": 5915
+    },
+    "bridge/graspgen_libero_bridge/planner_worker.py": {
+      "sha256": "963534e5b35d051154ed3275c070899f05f7f6a64fa3f28b70057d17baf8696a",
+      "bytes": 34750
+    },
+    "bridge/graspgen_libero_bridge/planning_geometry.py": {
+      "sha256": "3cc90c5876063bc1f9688e2ac49bb248dca2de4cbc0ac1c2338cd47e797d12fb",
+      "bytes": 22951
+    },
+    "bridge/graspgen_libero_bridge/pointcloud.py": {
+      "sha256": "9d728deffbe2423878e14905dfbb127c0b19f934739fa6d144771c911c46b24e",
+      "bytes": 11645
+    },
+    "bridge/graspgen_libero_bridge/regions.py": {
+      "sha256": "78bebbff0b588a964eef68e3c00a4d71e61afe31969238c887b1bf9cc8e17d0b",
+      "bytes": 1796
+    },
+    "bridge/graspgen_libero_bridge/rpc.py": {
+      "sha256": "682e3ebf3e78ab1955b55b12376c133ccff63d8e8650295ce176e7ee4da703a6",
+      "bytes": 4672
+    },
+    "bridge/graspgen_libero_bridge/scene.py": {
+      "sha256": "e07403740010825254ae4bfeb7b08b934367f29f244a20a15cfb6f8a6342a9db",
+      "bytes": 9743
+    },
+    "bridge/graspgen_libero_bridge/skills.py": {
+      "sha256": "9e3aaaaf3bce8c7c4447f2680373a905bf358871daedb126352c9aeac967f3e6",
+      "bytes": 21661
+    },
+    "bridge/graspgen_libero_bridge/surface_packing.py": {
+      "sha256": "640564b0dc02a0a7bdb82adebfb0a8efaccaf97e03c76476083c931d02c2a667",
+      "bytes": 4367
+    },
+    "bridge/graspgen_libero_bridge/task_policy.py": {
+      "sha256": "31b6f508283ed3a9cb5f32575a51a005f5b030f272819dacf3b4dac14fa59f4c",
+      "bytes": 2404
+    },
+    "bridge/graspgen_libero_bridge/transfer.py": {
+      "sha256": "502140e33418f268a3a799ac57736668f13b2a8d2fe181780aec1513b89e6853",
+      "bytes": 1698
+    },
+    "bridge/pyproject.toml": {
+      "sha256": "c286ebbefc1ff295baa49d717b1be16f9ab51bc0a5d9c80005c1deb58afba2d1",
+      "bytes": 324
+    },
+    "bridge/run.sh": {
+      "sha256": "4626c8d5fe7a8470b089be8e3f7d39c31d80e5a76847293b7a7ca3b47a9419c1",
+      "bytes": 266
+    },
+    "bridge/tests/test_cartesian.py": {
+      "sha256": "21ef947651b03f2a6c959214b9450d8d72fbed4399405fcaa8d2baadd5a7910c",
+      "bytes": 13291
+    },
+    "bridge/tests/test_control_regressions.py": {
+      "sha256": "c6a4320e6335c0bc2eb01a87d68830c0f70d7844bdc88d88fbc71c0b025e2895",
+      "bytes": 7521
+    },
+    "bridge/tests/test_finger_handoff.py": {
+      "sha256": "92391a6bba0a58dc5cb0bd7b29491eceb15deda45a4ac27d128351ba606326d0",
+      "bytes": 776
+    },
+    "bridge/tests/test_frames.py": {
+      "sha256": "048e4447c74e20e8fb379647864b0aa817254174606793023862f7c0411f1ef5",
+      "bytes": 1144
+    },
+    "bridge/tests/test_generalize.py": {
+      "sha256": "0f503ec25d62bd0ed250935a827a5ac168f7cb66a03d1f9363537a6d54956ada",
+      "bytes": 4173
+    },
+    "bridge/tests/test_grasp_candidate.py": {
+      "sha256": "5b6fe3291a797890637641255e1076e7f6b72c142f99a22909651d33ce7ebb80",
+      "bytes": 637
+    },
+    "bridge/tests/test_placement.py": {
+      "sha256": "4fd252eadd39ae45565d173e71f1376e03b64fe4f5fb290e410501044cfdea20",
+      "bytes": 2586
+    },
+    "bridge/tests/test_planning_geometry.py": {
+      "sha256": "2f76558142920d1d418c90cfbccedc34c09657f097dc03142c2fa8e4d9795855",
+      "bytes": 4912
+    },
+    "bridge/tests/test_pointcloud.py": {
+      "sha256": "ac97c8b595d14cd15ebdc315a1139a56e38295af7c3089d518e41766d1ab4f90",
+      "bytes": 5981
+    },
+    "bridge/tests/test_rpc.py": {
+      "sha256": "6a80871300adfc31579914ef4df333fdba23a56f239512ca4c5cfefc91ab129d",
+      "bytes": 3845
+    },
+    "bridge/tests/test_sixfix.py": {
+      "sha256": "3f18b612659c068ecc969b08bc84d8c1d1f2100fa0c888ffae9723cadd323dda",
+      "bytes": 4424
+    },
+    "bridge/tests/test_surface_packing.py": {
+      "sha256": "2456343f5759a041ff15b27280391427030a8a3a141063f797496a86273dd471",
+      "bytes": 1005
+    },
+    "bridge/tests/test_task_policy.py": {
+      "sha256": "1a14b9abcf3ebce43393aeed3986d1d0c5d47758a65c27f976135e71b0bab789",
+      "bytes": 4704
+    },
+    "bridge/tests/test_transfer.py": {
+      "sha256": "854a3306e7d216853290d984dbeee0fd679760c2d69fc3861cb29e6846251ac8",
+      "bytes": 4715
+    },
+    "run_task.py": {
+      "sha256": "04c2db93611eefa47e4cbf48b80c996242b7fad86e291d069da90c097eb29e22",
+      "bytes": 10810
+    }
+  },
+  "frozen_python_files": 39,
+  "development_root": "work/libero-policy-broad-20261111",
+  "development_differences_from_full_snapshot": [
+    {
+      "path": "ALL_TASKS.json",
+      "status": "different"
+    },
+    {
+      "path": "FROZEN_SOURCE.json",
+      "status": "missing"
+    }
+  ],
+  "driver_sha256": "04c2db93611eefa47e4cbf48b80c996242b7fad86e291d069da90c097eb29e22",
+  "source_basis": "delivered final130 research-source.zip, versions/v10 only",
+  "old_bridge_README_is_historical": true,
+  "protocol": {
+    "evaluation_id": "libero-final130-four4090-20261111",
+    "created_utc": "2026-11-11T05:39:47.818015+00:00",
+    "source_version": "v10",
+    "source_original": "/mnt/public/changwei/Graspgen/libero-policy-broad-20261111/versions/v10",
+    "source_snapshot": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/versions/v10",
+    "source_manifest_sha256": "e6150837ddffcd763026015c5882b696d3cb2d57d0e8a063f383d85956e8b585",
+    "driver_sha256": "04c2db93611eefa47e4cbf48b80c996242b7fad86e291d069da90c097eb29e22",
+    "frozen_python_files": 39,
+    "catalog_sha256": "c313169626a5b681cffde7e5e011454ba46ea46c7aa5fdd47a3431e45fcf39cd",
+    "taxonomy_sha256": "dafd8792ae62589302e23528e9586bd409d893aa5bc3b79908846bf89ed3d39d",
+    "trials": 130,
+    "trials_per_task": 1,
+    "init_state_id": 0,
+    "seed": 0,
+    "task_order_index": 0,
+    "max_control_steps": 5000,
+    "control_hz": 20,
+    "wall_budget_counts": {
+      "1200": 96,
+      "1800": 34
+    },
+    "wall_budget_rule": "Same previous per-task assignment: 96 original single tasks 1200s; 34 additional/composite/other tasks 1800s. Includes model loading, planning, rendering and control.",
+    "watchdog_grace_s": 60,
+    "concurrency": "Started at two workers per GPU for runtime qualification; increased on user request, up to four per GPU. See SCHEDULING_HISTORY.json.",
+    "driver_overrides": "Unmodified v10 run_task.py, explicit --init 0; all source/config hashes recorded.",
+    "success_definition": "pipeline_success AND official_goal_at_end AND steps > 0; full original BDDL goals unchanged; no historical outcomes imported.",
+    "language_order_review": "The two stack_transport tasks require separate order/whole-stack-carry review; final predicate alone does not certify that sequence.",
+    "video": "One uninterrupted simulator rollout per task, including failures. 20fps and two camera views; H264 report copy adds 2s final-frame hold. Planning wait is not simulated video time.",
+    "external_fingerprints": 695,
+    "gpu_inventory": "0, NVIDIA GeForce RTX 4090, 1 MiB, 24564 MiB, 0 %\n1, NVIDIA GeForce RTX 4090, 1 MiB, 24564 MiB, 0 %\n2, NVIDIA GeForce RTX 4090, 1 MiB, 24564 MiB, 0 %\n3, NVIDIA GeForce RTX 4090, 1 MiB, 24564 MiB, 0 %\n",
+    "server_ssh_port": 40596,
+    "server_hostname": "is-dcrlvh5nc3lb7h37-devmachine-0",
+    "runtime": "Exact Python3.11.10 environment copied from the original server into this evaluation runtime; original /opt/venv/openpi Python3.10 remains untouched.",
+    "original_server_partial_trials_excluded": true,
+    "settle_steps": 10,
+    "input_mode": "rgbd",
+    "gpu_worker_slots": {
+      "0": 4,
+      "1": 4,
+      "2": 4,
+      "3": 4
+    },
+    "runtime_tmp_directory": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime_tmp",
+    "runtime_versions_match_reference": true,
+    "harness_sha256": {
+      "package.py": "90f0a3c0cb8b4e6ff4e37bea62c2f7e358a785eefd63dafeeb29c376f522b32b",
+      "validate_delivery.py": "6c1b159be5d09b398d3ab7d91dbe83e35f637aa22e1bac4188b75a191642084f",
+      "launch.py": "e5deefd90ff5a960097049f272cdf2f75b1458814a07ceb259d6bbc45b723eb1",
+      "extract_runtime.py": "ebc685a0d83db8f6d84b43b8b6d268afae807f7dd84839307ef917404f40f41d",
+      "setup_remote.py": "005d57e577d109817ddac447bcf75bd1cbf6d0359dc04b88931d203c1f92cc3e",
+      "run_queue.py": "4c6c8b850c70a7c06cb881193e5547dcca29289906730e9f0d0d9655ce2b3017",
+      "probe_runtime.py": "f4a3d7f1beba3b00a56fb7899bcc2ef137e138a459db73a297be578d04be8a0f",
+      "activate_runtime.py": "442a1db279f10040d12bee8a92edd60ecf571560866f358bb104ceeba13756db",
+      "render_report.py": "445cc76967fed025b6703ea31751d5008c8cf932356773b469cfe189b30123b6"
+    }
+  }
+}

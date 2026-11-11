@@ -1,0 +1,119 @@
+{
+  "contract_version": "1.0",
+  "binding_status": "reference_mapping_only",
+  "ports": [
+    {
+      "port": "EnvironmentPort",
+      "methods": "reset/observe/step/close",
+      "source": "src/graspgen_libero_bridge/adapters/libero/env_adapter.py",
+      "symbol": "EnvAdapter.step",
+      "line": 328,
+      "sha256": "486172f2eb32236a24ea9e58c396440d564b7a74057af50ac0bfc121713335e0",
+      "remaining_work": "Existing step returns a fused 4-tuple done; v1 requires separate native terminated/truncated and stable episode/state IDs"
+    },
+    {
+      "port": "TaskPort",
+      "methods": "describe_task/check_native_success/check_subgoal",
+      "source": "apps/libero/run_task.py",
+      "symbol": "switch_target",
+      "line": 48,
+      "sha256": "4afd5f26fa3484853fc13d0aa72ad1165a8231ddc4b37bf5a4545e82740a8324",
+      "remaining_work": "Original goals and private predicate calls must be wrapped; full language order is not inferred by the current scheduler"
+    },
+    {
+      "port": "TaskPort",
+      "methods": "goal scheduling reference",
+      "source": "src/graspgen_libero_bridge/policy/task_policy.py",
+      "symbol": "schedule",
+      "line": 24,
+      "sha256": "31b6f508283ed3a9cb5f32575a51a005f5b030f272819dacf3b4dac14fa59f4c",
+      "remaining_work": "BDDL predicates are current input; other benchmarks can supply normalized goals, preserving native evaluation"
+    },
+    {
+      "port": "RobotPort",
+      "methods": "describe_robot/robot_state",
+      "source": "src/graspgen_libero_bridge/adapters/libero/env_adapter.py",
+      "symbol": "EnvAdapter.state",
+      "line": 244,
+      "sha256": "486172f2eb32236a24ea9e58c396440d564b7a74057af50ac0bfc121713335e0",
+      "remaining_work": "Name-ordered state exists; separate privileged object_poses from proprioception and publish robot/TCP model explicitly"
+    },
+    {
+      "port": "ScenePort",
+      "methods": "scene_snapshot",
+      "source": "src/graspgen_libero_bridge/adapters/libero/scene.py",
+      "symbol": "export_scene",
+      "line": 141,
+      "sha256": "a92fd3d4c1c5b046b1c5c001da921d805beb91004cead12c576cc98aa9b28c92",
+      "remaining_work": "Currently uses MuJoCo truth; add scene revision, asset resolution and explicit region/attachment records"
+    },
+    {
+      "port": "PlanningPort",
+      "methods": "plan",
+      "source": "src/graspgen_libero_bridge/planning/planner_worker.py",
+      "symbol": "BridgePlanner.plan_pose",
+      "line": 301,
+      "sha256": "749ae95dc2bccb1e1762caf37100d8b2daea974f9875c91b2a6b6b99bb77e8a4",
+      "remaining_work": "Bind request/scene/state IDs and normalize backend result; cuRobo does not choose goals or skills"
+    },
+    {
+      "port": "PreviewPort",
+      "methods": "validate_and_restore",
+      "source": "src/graspgen_libero_bridge/control/controller.py",
+      "symbol": "ContactMonitor.validate_path",
+      "line": 69,
+      "sha256": "9f37df05c00e2366863b83b394e7674f7e57140c6cfd1558099887ba8e3beae0",
+      "remaining_work": "Native state snapshot/contact checking is engine-specific; preserve no-step and full restoration guarantees"
+    },
+    {
+      "port": "PreviewPort",
+      "methods": "local IK backend",
+      "source": "src/graspgen_libero_bridge/planning/cartesian.py",
+      "symbol": "plan_cartesian",
+      "line": 111,
+      "sha256": "43e0a38c4069ad77f81571219392a44d4cda545641fc245a814b6c55331cfb3c",
+      "remaining_work": "Jacobian and saved-state access remain MuJoCo-specific; new engines need an equivalent backend"
+    },
+    {
+      "port": "ExecutionPort",
+      "methods": "execute",
+      "source": "src/graspgen_libero_bridge/control/controller.py",
+      "symbol": "Controller.follow_path",
+      "line": 340,
+      "sha256": "9f37df05c00e2366863b83b394e7674f7e57140c6cfd1558099887ba8e3beae0",
+      "remaining_work": "Resolve actual action encoding, monitor feedback, gripper state and episode end; reached pose is not grasp success"
+    },
+    {
+      "port": "RecordingPort",
+      "methods": "record_step/finalize",
+      "source": "src/graspgen_libero_bridge/control/controller.py",
+      "symbol": "Recorder.capture",
+      "line": 127,
+      "sha256": "9f37df05c00e2366863b83b394e7674f7e57140c6cfd1558099887ba8e3beae0",
+      "remaining_work": "Current state/action/video recorder does not save complete per-step raw RGB-D or VLM decisions"
+    },
+    {
+      "port": "CapabilityPort",
+      "methods": "capabilities/check_requirements reference",
+      "source": "src/graspgen_libero_bridge/contracts/validation.py",
+      "symbol": "readiness",
+      "line": 175,
+      "sha256": "2b3797f85cf7d3f81d94c15431ee1a6e2e9ce55430d2f78fb20b11df60972add",
+      "remaining_work": "Offline declared-data checker only; no registered live adapter or runtime gate yet"
+    }
+  ],
+  "not_implemented": [
+    "A live universal adapter/facade",
+    "Rewiring v10 runtime through ports",
+    "RoboTwin/RoboCasa adapters",
+    "Generic robot/gripper replacement"
+  ],
+  "remaining_engine_coupling": [
+    "planning/cartesian.py",
+    "planning/grasp_contact.py",
+    "control/controller.py",
+    "policy/evaluate.py",
+    "policy/skills.py",
+    "adapters/libero/"
+  ]
+}

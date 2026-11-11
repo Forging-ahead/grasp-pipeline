@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-11-11T17:22:37.247789+00:00",
+  "python": "3.11.10 (main, Oct 16 2024, 04:38:48) [Clang 18.1.8 ]",
+  "archive_sha256": "f935949f754534742ea38f5a115a4d3c1f6606705f6ff76609469c105cbbdff8",
+  "independent_extraction_root": "/mnt/public/changwei/Graspgen/grasp-pipeline-handoff-phase5-20261112/package-cpu/grasp-pipeline-v10-handoff-candidate-20261112",
+  "commands": [
+    {
+      "label": "manifest_before",
+      "returncode": 0
+    },
+    {
+      "label": "preservation",
+      "returncode": 0
+    },
+    {
+      "label": "contracts",
+      "returncode": 0
+    },
+    {
+      "label": "integration_docs",
+      "returncode": 0
+    },
+    {
+      "label": "tests",
+      "returncode": 0
+    },
+    {
+      "label": "simulation_help",
+      "returncode": 0
+    },
+    {
+      "label": "model_help",
+      "returncode": 0
+    },
+    {
+      "label": "planner_help",
+      "returncode": 0
+    },
+    {
+      "label": "manifest_after",
+      "returncode": 0
+    }
+  ],
+  "tests": {
+    "passed": 121,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0
+  },
+  "tested_source_config_reference_files": 92,
+  "gpu_visible": "",
+  "full_task_rollouts_started": 0,
+  "model_inference_started": false,
+  "scope": "New extracted source package with existing server CPU dependencies; not a fresh-install or GPU/trajectory validation"
+}

@@ -1,0 +1,8 @@
+{
+  "libero_repo": "/mnt/public/changwei/Graspgen/LIBERO",
+  "grasp_repo": "/mnt/public/changwei/Graspgen/graspgen-curobo-collect",
+  "graspgen_python": "/mnt/public/changwei/Graspgen/setup/grasp-model/bin/python",
+  "graspgen_config": "/mnt/public/changwei/Graspgen/graspgen-curobo-collect/models/checkpoints/graspgen_franka_panda.yml",
+  "planner_python": "/mnt/public/changwei/Graspgen/setup/planner-python-wrapper",
+  "simulation_python": "/mnt/public/changwei/Graspgen/libero-final130-four4090-20261111/runtime/openpi/bin/python"
+}

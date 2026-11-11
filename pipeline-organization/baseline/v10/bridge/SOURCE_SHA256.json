@@ -1,0 +1,31 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "graspgen_libero_bridge/errors.py": "eff22b8a124c160a591217b523ec9da4fefce0b49f3ac2355d48a36d7b6c901f",
+    "graspgen_libero_bridge/evaluate.py": "4c0959299efd1ad2aef5785c3f0d27f105eb233ffee60eebf9e3b591e0b9e64d",
+    "graspgen_libero_bridge/scene.py": "e07403740010825254ae4bfeb7b08b934367f29f244a20a15cfb6f8a6342a9db",
+    "graspgen_libero_bridge/grasp_candidate.py": "6ee95e0d4f200dc739543911cd1da9f00cf1d4affe61179ff8009a96897051b9",
+    "graspgen_libero_bridge/__main__.py": "114ca4c8343083885fb319639e02ac524c60a27524c09ee4feacaa26175c0a69",
+    "graspgen_libero_bridge/frames.py": "5ee78ed9827d3a165c1fb72908c7a691df496da1ced97ec9855e33eb057924f2",
+    "graspgen_libero_bridge/placement.py": "1eca29bc31f739007189bf4c79659401ee19d9915d46f2aea4b59cfaf366a57b",
+    "graspgen_libero_bridge/graspgen_worker.py": "650fc6f96e2d1e50383a977b20c0964e645f5134cd71782f23e157ed59f2eca1",
+    "graspgen_libero_bridge/planning_geometry.py": "3cc90c5876063bc1f9688e2ac49bb248dca2de4cbc0ac1c2338cd47e797d12fb",
+    "graspgen_libero_bridge/pointcloud.py": "9d728deffbe2423878e14905dfbb127c0b19f934739fa6d144771c911c46b24e",
+    "graspgen_libero_bridge/controller.py": "2c6a922567652eeacfe01381fe39da0516743ac199ca891391b3f92d7f8275e8",
+    "graspgen_libero_bridge/planner_worker.py": "e43ecbeeaf4bce9f1d3b66b98e4fc684481efa78b67de482eb4cc77a95ed2dc5",
+    "graspgen_libero_bridge/__init__.py": "c2d74ad97ccc1ffc23da105b1c352e6fde7bde2e758020850a8141f3d1e1f220",
+    "graspgen_libero_bridge/cartesian.py": "4caadd28e735750e1d490e330a8a5ae95c698401673c6e6015dfabc1365ceb3d",
+    "graspgen_libero_bridge/rpc.py": "682e3ebf3e78ab1955b55b12376c133ccff63d8e8650295ce176e7ee4da703a6",
+    "graspgen_libero_bridge/env_adapter.py": "a74b034ff0bb03c38064da4d81642ff0755f92f6d701b50e9405bb7fadb94c4c",
+    "graspgen_libero_bridge/transfer.py": "502140e33418f268a3a799ac57736668f13b2a8d2fe181780aec1513b89e6853",
+    "tests/test_control_regressions.py": "c6a4320e6335c0bc2eb01a87d68830c0f70d7844bdc88d88fbc71c0b025e2895",
+    "tests/test_placement.py": "4fd252eadd39ae45565d173e71f1376e03b64fe4f5fb290e410501044cfdea20",
+    "tests/test_cartesian.py": "b7dff69f14e276d0d42adef530471a3515448bef8b80cb57182ef7bd73d3bb84",
+    "tests/test_transfer.py": "854a3306e7d216853290d984dbeee0fd679760c2d69fc3861cb29e6846251ac8",
+    "tests/test_planning_geometry.py": "2f76558142920d1d418c90cfbccedc34c09657f097dc03142c2fa8e4d9795855",
+    "tests/test_frames.py": "048e4447c74e20e8fb379647864b0aa817254174606793023862f7c0411f1ef5",
+    "tests/test_grasp_candidate.py": "5b6fe3291a797890637641255e1076e7f6b72c142f99a22909651d33ce7ebb80",
+    "tests/test_rpc.py": "6a80871300adfc31579914ef4df333fdba23a56f239512ca4c5cfefc91ab129d",
+    "tests/test_pointcloud.py": "ac97c8b595d14cd15ebdc315a1139a56e38295af7c3089d518e41766d1ab4f90"
+  }
+}

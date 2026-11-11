@@ -1,0 +1,263 @@
+{
+  "delivery": "outputs/libero-final130-four4090-20261111/delivery",
+  "manifest": "outputs/libero-final130-four4090-20261111/delivery/DELIVERY_MANIFEST.json",
+  "byte_identical_local_renames": {
+    "LIBERO130任务最终v10复测报告_含全部视频.html": "LIBERO130 v10复测报告_含全部视频.html"
+  },
+  "result_archive": "outputs/libero-final130-four4090-20261111/libero-final130-v10-results.zip",
+  "result_archive_sha256": "28aeb7efc75805390e54cbfc109276676994141254bdbfed361e32622387e6c8",
+  "summary": {
+    "tasks": 130,
+    "trials": 130,
+    "source_version": "v10",
+    "init_state_id": 0,
+    "seed": 0,
+    "full_success": 86,
+    "official_goal_at_end": 88,
+    "success_with_order_issue": 1,
+    "failed": 44,
+    "videos": 130,
+    "failure_only_preflight": 17,
+    "failure_after_physical_attempt": 27,
+    "wall_elapsed_seconds": 4342.697738170624,
+    "sum_task_wall_seconds": 54700.58222198486,
+    "wall_task_min_seconds": 73.80675268173218,
+    "wall_task_max_seconds": 1207.9884722232819,
+    "no_historical_outcomes": true,
+    "one_frozen_source": true,
+    "success_rate": 0.6615384615384615,
+    "success_excluding_known_order_violations": 85
+  },
+  "files": {
+    "ALL_TASKS.json": {
+      "bytes": 307552,
+      "sha256": "c313169626a5b681cffde7e5e011454ba46ea46c7aa5fdd47a3431e45fcf39cd"
+    },
+    "CATEGORY_SUMMARY.json": {
+      "bytes": 9252,
+      "sha256": "ae51138cf32b3003829ce73114ffcba0505385b440f9561d84bb490e44e89ff8"
+    },
+    "CONCURRENCY12_RESOURCE_SAMPLE.json": {
+      "bytes": 408,
+      "sha256": "960e7d8035845b7b48c0d426f0f85fb95bbbba574f6f3cad2ae78e0c51782227"
+    },
+    "EXTERNAL_SOURCE_BEFORE.json": {
+      "bytes": 130957,
+      "sha256": "d68116af76ecfeda7f7a08f3d6d06dec0d3dae05dbd83b513d0953c63ac0f2b5"
+    },
+    "FAILURE_SUMMARY.json": {
+      "bytes": 480,
+      "sha256": "2387f32640f942dab41f484096f2f70458523dda2cb99ea71e8cbaa2b82c5609"
+    },
+    "FIRST_BATCH_AUDIT.json": {
+      "bytes": 691,
+      "sha256": "320f655d6de657f310ccff0a5e9e8c8ec4002bdeae3fab630aad2272544b53ba"
+    },
+    "GPU_SLOTS.json": {
+      "bytes": 42,
+      "sha256": "84e81022ac51a2764a885bf7990c64fa38a2fd8e013c40a50b99952e52135372"
+    },
+    "LAUNCH.json": {
+      "bytes": 327,
+      "sha256": "44d60412c195af2644055c665222708e0f2022c331a4b550152520160f6e3e67"
+    },
+    "LAUNCH_RESUMED12.json": {
+      "bytes": 82,
+      "sha256": "75192bbf09c5d25208f858fe43011dcb1dfc4be9f4c8abd5c39c34403e643334"
+    },
+    "LIBERO130任务最终v10复测报告_含全部视频.html": {
+      "bytes": 127107204,
+      "sha256": "a487ff8e3ce0b8587d7296f63a579cffebf8060b88899797e8956d56e32f60ff"
+    },
+    "LOCAL_QA.json": {
+      "bytes": 307,
+      "sha256": "01a989ba80eb2202021982636e1d2e0a9bbdb80c5f5796db6dd03df41905212a"
+    },
+    "PACKAGE_QA.json": {
+      "bytes": 1076,
+      "sha256": "554e821c7788333b361017f45fab1643196a19564996ea4fc9e619a84f59687d"
+    },
+    "PROGRESS.json": {
+      "bytes": 174165,
+      "sha256": "4c62fd4222de51d5715684e116063acbd4849c8cf1f4a639112a974ce0dfc353"
+    },
+    "PROTOCOL.json": {
+      "bytes": 3603,
+      "sha256": "8ade6929d61a252e259e87be5eb0ac1247b82ce3b350a5817abeab96f9409613"
+    },
+    "README.txt": {
+      "bytes": 1576,
+      "sha256": "d898110fed8fbe595e74f3e7f3a06ddf3dca83f55988dc686dbba37c112b5ede"
+    },
+    "RESULTS.json": {
+      "bytes": 1263912,
+      "sha256": "c0b1fa7e08d8572f631abd34d5cafa08caa0cb4aada1bde7b3446cfa41bf6b27"
+    },
+    "RUNTIME_ALIASES.json": {
+      "bytes": 308,
+      "sha256": "a46684d8537db0a92c4f17eab483055664a05793c746814520b99d904446a926"
+    },
+    "RUNTIME_EXTRACTION.json": {
+      "bytes": 104,
+      "sha256": "61542c83a01ac06cc2915f513c2d12ffb73f973f949533184c61bf39e0bb1d04"
+    },
+    "RUNTIME_VERSIONS.json": {
+      "bytes": 9596,
+      "sha256": "24ba8677dfbc9ae8157d5dc56288bb0ed5e063e20ca1bab1f5319e5a330ff34d"
+    },
+    "SCHEDULING_HISTORY.json": {
+      "bytes": 816,
+      "sha256": "ce459c4a6fb41414bcc75c26f391d26e6f2a3a8af4545060dd18e7793d6c172d"
+    },
+    "SOURCE_AUDIT.json": {
+      "bytes": 335,
+      "sha256": "88e77377bc1f47b479f96b8ca7b82f8a3e6e4da3eca8f0200636f99864e854aa"
+    },
+    "SUMMARY.json": {
+      "bytes": 623,
+      "sha256": "4644046375a215f242cf1864a8830d27147a4f82e120fdb351f0faf62c3f6c62"
+    },
+    "TASK_TAXONOMY.json": {
+      "bytes": 202127,
+      "sha256": "dafd8792ae62589302e23528e9586bd409d893aa5bc3b79908846bf89ed3d39d"
+    },
+    "research-source.zip": {
+      "bytes": 192411,
+      "sha256": "17567c081f0cf62f8536f2d5231d489a9e8aa03e1a28226cb0c2d192607a5977"
+    }
+  },
+  "per_task_results": "outputs/libero-final130-four4090-20261111/delivery/RESULTS.json",
+  "video_files": [
+    "cases/libero_10_KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it/video.mp4",
+    "cases/libero_10_KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it/video.mp4",
+    "cases/libero_10_KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it/video.mp4",
+    "cases/libero_10_KITCHEN_SCENE8_put_both_moka_pots_on_the_stove/video.mp4",
+    "cases/libero_10_LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket/video.mp4",
+    "cases/libero_10_LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket/video.mp4",
+    "cases/libero_10_LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket/video.mp4",
+    "cases/libero_10_LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate/video.mp4",
+    "cases/libero_10_LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate/video.mp4",
+    "cases/libero_10_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet_and_put_the_black_bowl_on_top_of_it/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE10_put_the_black_bowl_in_the_top_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE10_put_the_butter_at_the_back_in_the_top_drawer_of_the_cabinet_and_close_it/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE10_put_the_butter_at_the_front_in_the_top_drawer_of_the_cabinet_and_close_it/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE10_put_the_chocolate_pudding_in_the_top_drawer_of_the_cabinet_and_close_it/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE1_open_the_bottom_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet_and_put_the_bowl_in_it/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE1_put_the_black_bowl_on_the_plate/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE1_put_the_black_bowl_on_top_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE2_open_the_top_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE2_put_the_black_bowl_at_the_back_on_the_plate/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE2_put_the_black_bowl_at_the_front_on_the_plate/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE2_put_the_middle_black_bowl_on_the_plate/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE2_put_the_middle_black_bowl_on_top_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE2_stack_the_black_bowl_at_the_front_on_the_black_bowl_in_the_middle/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE2_stack_the_middle_black_bowl_on_the_back_black_bowl/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE3_put_the_frying_pan_on_the_stove/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE3_put_the_moka_pot_on_the_stove/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE3_turn_on_the_stove/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE3_turn_on_the_stove_and_put_the_frying_pan_on_it/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet_and_open_the_top_drawer/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE4_put_the_black_bowl_on_top_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE4_put_the_wine_bottle_in_the_bottom_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE4_put_the_wine_bottle_on_the_wine_rack/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE5_close_the_top_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE5_put_the_black_bowl_in_the_top_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE5_put_the_black_bowl_on_the_plate/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE5_put_the_black_bowl_on_top_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE5_put_the_ketchup_in_the_top_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE6_close_the_microwave/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE6_put_the_yellow_and_white_mug_to_the_front_of_the_white_mug/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE7_open_the_microwave/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE7_put_the_white_bowl_on_the_plate/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE7_put_the_white_bowl_to_the_right_of_the_plate/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE8_put_the_right_moka_pot_on_the_stove/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE8_turn_off_the_stove/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE9_put_the_frying_pan_on_the_cabinet_shelf/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE9_put_the_frying_pan_on_top_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE9_put_the_frying_pan_under_the_cabinet_shelf/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE9_put_the_white_bowl_on_top_of_the_cabinet/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE9_turn_on_the_stove/video.mp4",
+    "cases/libero_90_KITCHEN_SCENE9_turn_on_the_stove_and_put_the_frying_pan_on_it/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE1_pick_up_the_alphabet_soup_and_put_it_in_the_basket/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE1_pick_up_the_cream_cheese_box_and_put_it_in_the_basket/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE1_pick_up_the_ketchup_and_put_it_in_the_basket/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE1_pick_up_the_tomato_sauce_and_put_it_in_the_basket/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE2_pick_up_the_alphabet_soup_and_put_it_in_the_basket/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE2_pick_up_the_butter_and_put_it_in_the_basket/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE2_pick_up_the_milk_and_put_it_in_the_basket/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE2_pick_up_the_orange_juice_and_put_it_in_the_basket/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE2_pick_up_the_tomato_sauce_and_put_it_in_the_basket/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE3_pick_up_the_alphabet_soup_and_put_it_in_the_tray/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE3_pick_up_the_butter_and_put_it_in_the_tray/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE3_pick_up_the_cream_cheese_and_put_it_in_the_tray/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE3_pick_up_the_ketchup_and_put_it_in_the_tray/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE3_pick_up_the_tomato_sauce_and_put_it_in_the_tray/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE4_pick_up_the_black_bowl_on_the_left_and_put_it_in_the_tray/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE4_pick_up_the_chocolate_pudding_and_put_it_in_the_tray/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE4_pick_up_the_salad_dressing_and_put_it_in_the_tray/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE4_stack_the_left_bowl_on_the_right_bowl_and_place_them_in_the_tray/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE4_stack_the_right_bowl_on_the_left_bowl_and_place_them_in_the_tray/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE5_put_the_red_mug_on_the_left_plate/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE5_put_the_red_mug_on_the_right_plate/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE5_put_the_yellow_and_white_mug_on_the_right_plate/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE6_put_the_chocolate_pudding_to_the_left_of_the_plate/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE6_put_the_chocolate_pudding_to_the_right_of_the_plate/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE6_put_the_red_mug_on_the_plate/video.mp4",
+    "cases/libero_90_LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate/video.mp4",
+    "cases/libero_90_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE1_pick_up_the_yellow_and_white_mug_and_place_it_to_the_right_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE2_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_front_compartment_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_left_compartment_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE3_pick_up_the_book_and_place_it_in_the_right_compartment_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE3_pick_up_the_red_mug_and_place_it_to_the_right_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE3_pick_up_the_white_mug_and_place_it_to_the_right_of_the_caddy/video.mp4",
+    "cases/libero_90_STUDY_SCENE4_pick_up_the_book_in_the_middle_and_place_it_on_the_cabinet_shelf/video.mp4",
+    "cases/libero_90_STUDY_SCENE4_pick_up_the_book_on_the_left_and_place_it_on_top_of_the_shelf/video.mp4",
+    "cases/libero_90_STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_on_the_cabinet_shelf/video.mp4",
+    "cases/libero_90_STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_under_the_cabinet_shelf/video.mp4",
+    "cases/libero_goal_open_the_middle_drawer_of_the_cabinet/video.mp4",
+    "cases/libero_goal_open_the_top_drawer_and_put_the_bowl_inside/video.mp4",
+    "cases/libero_goal_push_the_plate_to_the_front_of_the_stove/video.mp4",
+    "cases/libero_goal_put_the_bowl_on_the_plate/video.mp4",
+    "cases/libero_goal_put_the_bowl_on_the_stove/video.mp4",
+    "cases/libero_goal_put_the_bowl_on_top_of_the_cabinet/video.mp4",
+    "cases/libero_goal_put_the_cream_cheese_in_the_bowl/video.mp4",
+    "cases/libero_goal_put_the_wine_bottle_on_the_rack/video.mp4",
+    "cases/libero_goal_put_the_wine_bottle_on_top_of_the_cabinet/video.mp4",
+    "cases/libero_goal_turn_on_the_stove/video.mp4",
+    "cases/libero_object_pick_up_the_alphabet_soup_and_place_it_in_the_basket/video.mp4",
+    "cases/libero_object_pick_up_the_bbq_sauce_and_place_it_in_the_basket/video.mp4",
+    "cases/libero_object_pick_up_the_butter_and_place_it_in_the_basket/video.mp4",
+    "cases/libero_object_pick_up_the_chocolate_pudding_and_place_it_in_the_basket/video.mp4",
+    "cases/libero_object_pick_up_the_cream_cheese_and_place_it_in_the_basket/video.mp4",
+    "cases/libero_object_pick_up_the_ketchup_and_place_it_in_the_basket/video.mp4",
+    "cases/libero_object_pick_up_the_milk_and_place_it_in_the_basket/video.mp4",
+    "cases/libero_object_pick_up_the_orange_juice_and_place_it_in_the_basket/video.mp4",
+    "cases/libero_object_pick_up_the_salad_dressing_and_place_it_in_the_basket/video.mp4",
+    "cases/libero_object_pick_up_the_tomato_sauce_and_place_it_in_the_basket/video.mp4",
+    "cases/libero_spatial_pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate/video.mp4",
+    "cases/libero_spatial_pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate/video.mp4",
+    "cases/libero_spatial_pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate/video.mp4",
+    "cases/libero_spatial_pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate/video.mp4",
+    "cases/libero_spatial_pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate/video.mp4",
+    "cases/libero_spatial_pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate/video.mp4",
+    "cases/libero_spatial_pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate/video.mp4",
+    "cases/libero_spatial_pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate/video.mp4",
+    "cases/libero_spatial_pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate/video.mp4",
+    "cases/libero_spatial_pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate/video.mp4"
+  ],
+  "sequence_caveat": "One final-predicate-successful stack_transport task violates instruction order; exclude it from candidate successful trajectories."
+}

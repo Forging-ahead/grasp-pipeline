@@ -1,0 +1,39 @@
+{
+  "deployed_source_manifest_matches": true,
+  "mismatches": [],
+  "tests": {
+    "full_suite": {
+      "passed": 22,
+      "skipped": 0,
+      "seconds": 2.689
+    },
+    "cartesian_after_stronger_exception_check": {
+      "passed": 4,
+      "skipped": 0,
+      "seconds": 0.379
+    }
+  },
+  "geometry": {
+    "final_doctor": "doctor_passed",
+    "model_input_identical_to_successful_run": true,
+    "global_geometry_truth": true,
+    "grasp_input_uses_full_object_geometry": true
+  },
+  "rgbd": {
+    "final_doctor": "doctor_passed",
+    "model_input_identical_to_successful_run": true,
+    "global_geometry_truth": true,
+    "grasp_input_uses_full_object_geometry": false
+  },
+  "original_repositories": {
+    "graspgen-curobo-collect": {
+      "head": "b69b3133badefd80e7c13c57119a487c97fec614",
+      "status_porcelain": ""
+    },
+    "LIBERO": {
+      "head": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+      "status_porcelain": ""
+    }
+  },
+  "remaining_bridge_workers": []
+}

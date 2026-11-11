@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graspgen-libero-bridge"
+version = "0.1.0"
+description = "Independent GraspGen and cuRobo integration for official LIBERO"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+include = ["graspgen_libero_bridge*"]

@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "payload_type": "Capabilities",
+  "benchmark": "external_benchmark_example",
+  "binding_status": "reference_mapping_only",
+  "features": {"target_cloud": false, "robot_state": false, "robot_model": false, "joint_limits": false, "object_pose": false, "collision_geometry": false, "goal_region": false, "local_ik": false, "contacts": false, "preview_restore": false, "tcp_tracking": false, "gripper_control": false, "native_success": false, "articulation_state": false},
+  "available_skills": [],
+  "description": "Unimplemented illustrative provider. Change each capability only after implementing and verifying it; this is not adapter registration."
+}

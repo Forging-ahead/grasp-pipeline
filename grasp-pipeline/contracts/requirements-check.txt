@@ -1,0 +1,3 @@
+# Optional offline contract checker only; not installed in actor environments.
+# Version already available in the original server CPU validation environment.
+jsonschema==4.25.1

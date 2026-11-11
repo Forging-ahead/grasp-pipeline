@@ -1,0 +1,338 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-11-11T13:22:07.292762+00:00",
+  "mapped_original_python_files": 39,
+  "all_mechanical_edits_replay_exactly": true,
+  "internal_import_paths_resolved": 96,
+  "task_catalog_bytes_unchanged": true,
+  "single_task_example_bytes_unchanged": true,
+  "literal_driver_overrides_unchanged": 15,
+  "task_count": 130,
+  "gpu_values": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "init_values_for_config_binding_check": [
+    0,
+    1
+  ],
+  "effective_config_comparisons": 1040,
+  "effective_config_differences": [],
+  "source_files": [
+    {
+      "original": "bridge/graspgen_libero_bridge/evaluate.py",
+      "target": "src/graspgen_libero_bridge/policy/evaluate.py",
+      "edits": 18,
+      "original_sha256": "96b99c7004adf74013db9038491c3df15c62ed38e92a8f6f6e2034b2db178475",
+      "organized_sha256": "58e28af1de5d88be672272494e87c07b2e53d517015ac74e311d441c65eeef91",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/task_policy.py",
+      "target": "src/graspgen_libero_bridge/policy/task_policy.py",
+      "edits": 0,
+      "original_sha256": "31b6f508283ed3a9cb5f32575a51a005f5b030f272819dacf3b4dac14fa59f4c",
+      "organized_sha256": "31b6f508283ed3a9cb5f32575a51a005f5b030f272819dacf3b4dac14fa59f4c",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/skills.py",
+      "target": "src/graspgen_libero_bridge/policy/skills.py",
+      "edits": 10,
+      "original_sha256": "9e3aaaaf3bce8c7c4447f2680373a905bf358871daedb126352c9aeac967f3e6",
+      "organized_sha256": "59cdf370bd587d97e0063b6ac5a486a93083ab2ac4b0302277d0c435586e2f9b",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/placement.py",
+      "target": "src/graspgen_libero_bridge/policy/placement.py",
+      "edits": 0,
+      "original_sha256": "1eca29bc31f739007189bf4c79659401ee19d9915d46f2aea4b59cfaf366a57b",
+      "organized_sha256": "1eca29bc31f739007189bf4c79659401ee19d9915d46f2aea4b59cfaf366a57b",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/transfer.py",
+      "target": "src/graspgen_libero_bridge/policy/transfer.py",
+      "edits": 0,
+      "original_sha256": "502140e33418f268a3a799ac57736668f13b2a8d2fe181780aec1513b89e6853",
+      "organized_sha256": "502140e33418f268a3a799ac57736668f13b2a8d2fe181780aec1513b89e6853",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/surface_packing.py",
+      "target": "src/graspgen_libero_bridge/policy/surface_packing.py",
+      "edits": 2,
+      "original_sha256": "640564b0dc02a0a7bdb82adebfb0a8efaccaf97e03c76476083c931d02c2a667",
+      "organized_sha256": "4ba8c43d8e427667a304f9c57f77be0e182f66d8d74823c0ca30a22fc0562f92",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/graspgen_worker.py",
+      "target": "src/graspgen_libero_bridge/models/graspgen_worker.py",
+      "edits": 2,
+      "original_sha256": "650fc6f96e2d1e50383a977b20c0964e645f5134cd71782f23e157ed59f2eca1",
+      "organized_sha256": "fc7d3ca7d39d672df67271b3b24e447d8ce9515953c8fb6e0a30250305382d95",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/planner_worker.py",
+      "target": "src/graspgen_libero_bridge/planning/planner_worker.py",
+      "edits": 2,
+      "original_sha256": "963534e5b35d051154ed3275c070899f05f7f6a64fa3f28b70057d17baf8696a",
+      "organized_sha256": "749ae95dc2bccb1e1762caf37100d8b2daea974f9875c91b2a6b6b99bb77e8a4",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/planning_geometry.py",
+      "target": "src/graspgen_libero_bridge/planning/planning_geometry.py",
+      "edits": 0,
+      "original_sha256": "3cc90c5876063bc1f9688e2ac49bb248dca2de4cbc0ac1c2338cd47e797d12fb",
+      "organized_sha256": "3cc90c5876063bc1f9688e2ac49bb248dca2de4cbc0ac1c2338cd47e797d12fb",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/cartesian.py",
+      "target": "src/graspgen_libero_bridge/planning/cartesian.py",
+      "edits": 0,
+      "original_sha256": "43e0a38c4069ad77f81571219392a44d4cda545641fc245a814b6c55331cfb3c",
+      "organized_sha256": "43e0a38c4069ad77f81571219392a44d4cda545641fc245a814b6c55331cfb3c",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/grasp_candidate.py",
+      "target": "src/graspgen_libero_bridge/planning/grasp_candidate.py",
+      "edits": 0,
+      "original_sha256": "6ee95e0d4f200dc739543911cd1da9f00cf1d4affe61179ff8009a96897051b9",
+      "organized_sha256": "6ee95e0d4f200dc739543911cd1da9f00cf1d4affe61179ff8009a96897051b9",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/grasp_contact.py",
+      "target": "src/graspgen_libero_bridge/planning/grasp_contact.py",
+      "edits": 2,
+      "original_sha256": "241653cc5e5dc9d4fd03430138f422a2f8f79a717a87dcfa25e78aca94bd14aa",
+      "organized_sha256": "a306e7299c8b21912115e03bd25e1e3949929655457fc4a7a070acd631659de1",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/pointcloud.py",
+      "target": "src/graspgen_libero_bridge/perception/pointcloud.py",
+      "edits": 0,
+      "original_sha256": "9d728deffbe2423878e14905dfbb127c0b19f934739fa6d144771c911c46b24e",
+      "organized_sha256": "9d728deffbe2423878e14905dfbb127c0b19f934739fa6d144771c911c46b24e",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/env_adapter.py",
+      "target": "src/graspgen_libero_bridge/adapters/libero/env_adapter.py",
+      "edits": 1,
+      "original_sha256": "29cee838ccf2606e607f9a6c75413fc343dc24bcba488585733b19e3c9567001",
+      "organized_sha256": "486172f2eb32236a24ea9e58c396440d564b7a74057af50ac0bfc121713335e0",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/scene.py",
+      "target": "src/graspgen_libero_bridge/adapters/libero/scene.py",
+      "edits": 1,
+      "original_sha256": "e07403740010825254ae4bfeb7b08b934367f29f244a20a15cfb6f8a6342a9db",
+      "organized_sha256": "a92fd3d4c1c5b046b1c5c001da921d805beb91004cead12c576cc98aa9b28c92",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/regions.py",
+      "target": "src/graspgen_libero_bridge/adapters/libero/regions.py",
+      "edits": 1,
+      "original_sha256": "78bebbff0b588a964eef68e3c00a4d71e61afe31969238c887b1bf9cc8e17d0b",
+      "organized_sha256": "f8afc48c0c066dee29f35fc2ea742fb0ac496d9c22701dcf165e78d282183f4d",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/placement_geometry.py",
+      "target": "src/graspgen_libero_bridge/adapters/libero/placement_geometry.py",
+      "edits": 1,
+      "original_sha256": "a81e027485a4f1b7643d22d46aa4341fdbd6d4ac15dc4291dbcce974135a261a",
+      "organized_sha256": "97449fdd58aa7c5e36aca51010e7e1ff7684f14c8bb4d073733f1070b84fbbee",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/articulation.py",
+      "target": "src/graspgen_libero_bridge/adapters/libero/articulation.py",
+      "edits": 3,
+      "original_sha256": "dafb8d551016ac4a178ca3cef891648ea1c56438de7c19db31ecf2b305683220",
+      "organized_sha256": "71ea35dbec0bf8c3ec4be78b645461f04b3f8c327d2700bcb45c1861fdbe19b2",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/controller.py",
+      "target": "src/graspgen_libero_bridge/control/controller.py",
+      "edits": 3,
+      "original_sha256": "3130c0bc9bd86f406d4dd76ffa22dd2d28de90426d17c5e6d87270184ecadf36",
+      "organized_sha256": "9f37df05c00e2366863b83b394e7674f7e57140c6cfd1558099887ba8e3beae0",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/frames.py",
+      "target": "src/graspgen_libero_bridge/common/frames.py",
+      "edits": 0,
+      "original_sha256": "5ee78ed9827d3a165c1fb72908c7a691df496da1ced97ec9855e33eb057924f2",
+      "organized_sha256": "5ee78ed9827d3a165c1fb72908c7a691df496da1ced97ec9855e33eb057924f2",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/rpc.py",
+      "target": "src/graspgen_libero_bridge/common/rpc.py",
+      "edits": 0,
+      "original_sha256": "682e3ebf3e78ab1955b55b12376c133ccff63d8e8650295ce176e7ee4da703a6",
+      "organized_sha256": "682e3ebf3e78ab1955b55b12376c133ccff63d8e8650295ce176e7ee4da703a6",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/errors.py",
+      "target": "src/graspgen_libero_bridge/common/errors.py",
+      "edits": 0,
+      "original_sha256": "eff22b8a124c160a591217b523ec9da4fefce0b49f3ac2355d48a36d7b6c901f",
+      "organized_sha256": "eff22b8a124c160a591217b523ec9da4fefce0b49f3ac2355d48a36d7b6c901f",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/__init__.py",
+      "target": "src/graspgen_libero_bridge/__init__.py",
+      "edits": 0,
+      "original_sha256": "c2d74ad97ccc1ffc23da105b1c352e6fde7bde2e758020850a8141f3d1e1f220",
+      "organized_sha256": "c2d74ad97ccc1ffc23da105b1c352e6fde7bde2e758020850a8141f3d1e1f220",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/graspgen_libero_bridge/__main__.py",
+      "target": "src/graspgen_libero_bridge/runtime/legacy_cli.py",
+      "edits": 5,
+      "original_sha256": "114ca4c8343083885fb319639e02ac524c60a27524c09ee4feacaa26175c0a69",
+      "organized_sha256": "cb5c44b6d863d310e0c90b4baeb6e2e55578327f770c4f60a6e9cc19c4fbad3b",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_cartesian.py",
+      "target": "tests/v10/test_cartesian.py",
+      "edits": 2,
+      "original_sha256": "21ef947651b03f2a6c959214b9450d8d72fbed4399405fcaa8d2baadd5a7910c",
+      "organized_sha256": "8c47ca0fe111ad3855dfa60d07a5bae9289d5e9fa5bde9af15f6212a01a46b23",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_control_regressions.py",
+      "target": "tests/v10/test_control_regressions.py",
+      "edits": 2,
+      "original_sha256": "c6a4320e6335c0bc2eb01a87d68830c0f70d7844bdc88d88fbc71c0b025e2895",
+      "organized_sha256": "9da17532ab546d3cecc54b21b57c72e994eef11c4a4d59c23c9456842103f6ef",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_finger_handoff.py",
+      "target": "tests/v10/test_finger_handoff.py",
+      "edits": 1,
+      "original_sha256": "92391a6bba0a58dc5cb0bd7b29491eceb15deda45a4ac27d128351ba606326d0",
+      "organized_sha256": "42a3ca0538394e23b6f6a7ea31789f2c959c9e233a21a6e4962a3513690766e1",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_frames.py",
+      "target": "tests/v10/test_frames.py",
+      "edits": 1,
+      "original_sha256": "048e4447c74e20e8fb379647864b0aa817254174606793023862f7c0411f1ef5",
+      "organized_sha256": "b999daba2309e6f70273cde0f53b5a6bd4d77869689fa3be19b570f2d33e746c",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_generalize.py",
+      "target": "tests/v10/test_generalize.py",
+      "edits": 4,
+      "original_sha256": "0f503ec25d62bd0ed250935a827a5ac168f7cb66a03d1f9363537a6d54956ada",
+      "organized_sha256": "caf7214a72b777e5d570d34cb9d1fce3de84dc02cc63704fb549b7aed4c73909",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_grasp_candidate.py",
+      "target": "tests/v10/test_grasp_candidate.py",
+      "edits": 1,
+      "original_sha256": "5b6fe3291a797890637641255e1076e7f6b72c142f99a22909651d33ce7ebb80",
+      "organized_sha256": "1cf71a3cdf9eb1662611cf2ef1f8026bfbd0a72b83a05e8b6b6e69dbb02e7ec9",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_placement.py",
+      "target": "tests/v10/test_placement.py",
+      "edits": 1,
+      "original_sha256": "4fd252eadd39ae45565d173e71f1376e03b64fe4f5fb290e410501044cfdea20",
+      "organized_sha256": "c6fb6ee3b05a4a3ac9a9ae266d60c3530c23944acfb230abeb02a4b14f6cef19",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_planning_geometry.py",
+      "target": "tests/v10/test_planning_geometry.py",
+      "edits": 2,
+      "original_sha256": "2f76558142920d1d418c90cfbccedc34c09657f097dc03142c2fa8e4d9795855",
+      "organized_sha256": "0663f9178e6f242393d4f1a7c47beb50aeea3ec430cb4b43ed5fedec3628f284",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_pointcloud.py",
+      "target": "tests/v10/test_pointcloud.py",
+      "edits": 1,
+      "original_sha256": "ac97c8b595d14cd15ebdc315a1139a56e38295af7c3089d518e41766d1ab4f90",
+      "organized_sha256": "366d0a3f7cd83fd7be94660e390ee3f900558c58e2029165b6c0712b0f4a049b",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_rpc.py",
+      "target": "tests/v10/test_rpc.py",
+      "edits": 3,
+      "original_sha256": "6a80871300adfc31579914ef4df333fdba23a56f239512ca4c5cfefc91ab129d",
+      "organized_sha256": "33284cd2fe6f733c60102e15757a985c4bfce888df0e3109bce47beb00365785",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_sixfix.py",
+      "target": "tests/v10/test_sixfix.py",
+      "edits": 2,
+      "original_sha256": "3f18b612659c068ecc969b08bc84d8c1d1f2100fa0c888ffae9723cadd323dda",
+      "organized_sha256": "cf426a5dbe9499d70e14ee67eb7308023828a5c147087841ab23ef6be1d14c03",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_surface_packing.py",
+      "target": "tests/v10/test_surface_packing.py",
+      "edits": 1,
+      "original_sha256": "2456343f5759a041ff15b27280391427030a8a3a141063f797496a86273dd471",
+      "organized_sha256": "1ec990c0a9e2299ec0c80ca9d989b0bcf42375ef90da752819062fbf339b9b33",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_task_policy.py",
+      "target": "tests/v10/test_task_policy.py",
+      "edits": 2,
+      "original_sha256": "1a14b9abcf3ebce43393aeed3986d1d0c5d47758a65c27f976135e71b0bab789",
+      "organized_sha256": "bdeaca76b928156bfcd2d9953ee2ac11bea0cebeb5d3b6b877c2a98843b761c6",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "bridge/tests/test_transfer.py",
+      "target": "tests/v10/test_transfer.py",
+      "edits": 3,
+      "original_sha256": "854a3306e7d216853290d984dbeee0fd679760c2d69fc3861cb29e6846251ac8",
+      "organized_sha256": "ca31fcf7f21fd416c93d81383f00dd43bd2c44d037ee82b972a77f36148d586f",
+      "mechanical_replay_match": true
+    },
+    {
+      "original": "run_task.py",
+      "target": "apps/libero/run_task.py",
+      "edits": 12,
+      "original_sha256": "04c2db93611eefa47e4cbf48b80c996242b7fad86e291d069da90c097eb29e22",
+      "organized_sha256": "4afd5f26fa3484853fc13d0aa72ad1165a8231ddc4b37bf5a4545e82740a8324",
+      "mechanical_replay_match": true
+    }
+  ],
+  "scope": "Static/mechanical preservation plus exact effective-configuration comparison; not a fresh GPU trajectory equivalence test"
+}

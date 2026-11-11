@@ -1,0 +1,46 @@
+{
+  "phase": 4,
+  "status": "complete",
+  "checked_at_utc": "2026-11-11T17:05:32.639227+00:00",
+  "passed": true,
+  "scope": "External integration documentation and examples; existing runtime unchanged. No new benchmark implementation or task rollout.",
+  "guide_documents": 7,
+  "local_document_links_checked": 97,
+  "phase3_source_and_contract_files_unchanged": 85,
+  "source_change_anchors_checked": 21,
+  "proposed_path_patterns_marked_unimplemented": 5,
+  "configuration_examples_checked": 4,
+  "public_examples_schema_validated": 2,
+  "schema_example_hashes_match_current_files": true,
+  "lightweight_cli_commands_checked": 4,
+  "standalone_package_check": {
+    "passed": true,
+    "local_links_checked": 73,
+    "rpent_checkout_required": false,
+    "scope": "Documentation, preserved source hashes, examples and lightweight CLI only; not a complete environment deployment."
+  },
+  "source_references": {
+    "official_material_as_of": "2026-11-12",
+    "local_rpent_files_checked": 5,
+    "rpent_commit": "f11eee5910b74d132363a526ad385fa828ad4a26",
+    "rpent_modified": false
+  },
+  "reports": {
+    "DOCUMENTATION_QA": "DOCUMENTATION_QA.json",
+    "STANDALONE_QA": "STANDALONE_QA.json",
+    "SCHEMA_QA": "SCHEMA_QA.json"
+  },
+  "schema_validation": {
+    "environment": "Existing server Python with jsonschema 4.25.1, CPU only",
+    "report": "SCHEMA_QA.json"
+  },
+  "policy_algorithms_changed": false,
+  "policy_parameters_changed": false,
+  "runtime_driver_rewired": false,
+  "benchmark_adapters_implemented": false,
+  "gpu_rollouts_started": 0,
+  "success_rates_recomputed": false,
+  "prior_cpu_test_count": 113,
+  "prior_cpu_tests_rerun_in_phase4": false,
+  "phase5_started": false
+}

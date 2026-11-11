@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "missing_runtime_exit_code": 1,
+  "policy_in_paths_exit_code": 1,
+  "environment_created": false,
+  "model_inference_started": false,
+  "scope": "Negative CLI checks on intentionally nonexistent paths and invalid deployment config"
+}

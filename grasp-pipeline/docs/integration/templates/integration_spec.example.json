@@ -1,0 +1,15 @@
+{
+  "document_type": "integration_design_sheet",
+  "template_only": true,
+  "consumed_by_current_cli": false,
+  "benchmark": {"name": null, "repository": null, "commit": null, "wrapper_commit": null, "assets_revision": null},
+  "initial_scope": {"task_ids": [], "seed_and_initial_states": [], "native_task_definition_source": null, "instruction_order_source": null},
+  "observation": {"mode": null, "target_identity_provider": null, "target_mask_provider": null, "metric_cloud_provider": null, "camera_calibration": null, "capture_revision_policy": null},
+  "robot": {"model": null, "gripper_model": null, "active_arms": [], "joint_order": [], "base_and_tcp_frames": null, "grasp_to_tcp_calibration": null, "action_encoding_and_bounds": null, "control_hz": null},
+  "scene": {"collision_geometry_provider": null, "asset_resolver": null, "unknown_space_policy": null, "goal_region_provider": null, "articulation_provider": null},
+  "execution": {"global_planner": null, "local_ik_backend": null, "preview_and_restore_backend": null, "controller": null, "gripper_mapping": null, "native_termination_mapping": null},
+  "evaluation": {"native_success_provider": null, "step_and_wall_budgets": null, "actual_backend_labels": [], "recording_and_failure_retention": null},
+  "wiring": {"environment_entrypoint_to_implement": null, "provider_modules_to_implement": [], "current_libero_couplings_to_replace": [], "capability_check_to_implement": null},
+  "owners": {"environment_and_data": null, "robot_and_planning": null, "control_and_success": null, "validation_and_delivery": null},
+  "note": "Design decisions only. Null means unresolved. This file is neither a runtime config nor an adapter registration."
+}

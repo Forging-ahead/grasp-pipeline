@@ -1,0 +1,43 @@
+# Only the maintained source and its reference material belong in this repository.
+/RPent/
+/outputs/
+/work/
+/tmp/
+/deliverables/
+
+# Python/build/runtime artifacts.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+runs/
+checks/
+.DS_Store
+
+# Machine-specific configuration and credentials.
+.env
+.env.*
+!.env.example
+*.local.json
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# Large external assets and experiment media are distributed separately.
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.mp4
+*.mov
+*.avi
+*.webm
+*.zip
+*.tar
+*.tar.gz

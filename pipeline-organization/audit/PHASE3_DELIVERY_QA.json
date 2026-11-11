@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "document_links_checked": 72,
+  "broken_links": [],
+  "code_config_and_contract_files_match_tested_source": 85,
+  "source_differences": [],
+  "python_syntax": "passed",
+  "phase2_original_files_unchanged": 71
+}

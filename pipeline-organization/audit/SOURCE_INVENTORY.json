@@ -1,0 +1,3834 @@
+{
+  "description": "Static AST inventory and coupling search evidence; comments may match. Not a portable interface implementation.",
+  "groups": {
+    "entry": 3,
+    "policy": 7,
+    "planning_execution": 4,
+    "environment_geometry": 4,
+    "shared_utilities": 3,
+    "perception_model": 4,
+    "tests": 14
+  },
+  "files": [
+    {
+      "path": "bridge/graspgen_libero_bridge/__init__.py",
+      "sha256": "c2d74ad97ccc1ffc23da105b1c352e6fde7bde2e758020850a8141f3d1e1f220",
+      "bytes": 96,
+      "lines": 3,
+      "group": "entry",
+      "imports": [],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/__main__.py",
+      "sha256": "114ca4c8343083885fb319639e02ac524c60a27524c09ee4feacaa26175c0a69",
+      "bytes": 1876,
+      "lines": 41,
+      "group": "entry",
+      "imports": [
+        {
+          "module": "argparse",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "datetime",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "json",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "os",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 5,
+          "relative": false
+        },
+        {
+          "module": "sys",
+          "line": 6,
+          "relative": false
+        },
+        {
+          "module": "uuid",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "evaluate",
+          "line": 34,
+          "relative": true
+        }
+      ],
+      "config_reads": [
+        {
+          "key": "simulation_gpu",
+          "line": 26,
+          "default": {
+            "literal": 6
+          }
+        },
+        {
+          "key": "cpu_threads",
+          "line": 32,
+          "default": {
+            "literal": 4
+          }
+        }
+      ],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/articulation.py",
+      "sha256": "dafb8d551016ac4a178ca3cef891648ea1c56438de7c19db31ecf2b305683220",
+      "bytes": 10158,
+      "lines": 195,
+      "group": "policy",
+      "imports": [
+        {
+          "module": "pathlib",
+          "line": 6,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 8,
+          "relative": false
+        },
+        {
+          "module": "env_adapter",
+          "line": 9,
+          "relative": true
+        },
+        {
+          "module": "scene",
+          "line": 10,
+          "relative": true
+        },
+        {
+          "module": "controller",
+          "line": 11,
+          "relative": true
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 34,
+            "text": "model, data = adapter.env.sim.model, adapter.env.sim.data"
+          },
+          {
+            "line": 166,
+            "text": "delta = float(np.dot(np.asarray(sim.data.site_xpos[site])-self.reference[:3, 3], axis))"
+          },
+          {
+            "line": 168,
+            "text": "rotation = np.asarray(sim.data.site_xmat[site]).reshape(3, 3) @ self.reference[:3, :3].T"
+          },
+          {
+            "line": 173,
+            "text": "sim.data.qpos[self.info['q_address']] = q"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 35,
+            "text": "if region in adapter.task_env.obj_body_id:"
+          },
+          {
+            "line": 36,
+            "text": "eligible = body_subtree_ids(model, adapter.task_env.obj_body_id[region])"
+          }
+        ],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/cartesian.py",
+      "sha256": "43e0a38c4069ad77f81571219392a44d4cda545641fc245a814b6c55331cfb3c",
+      "bytes": 18355,
+      "lines": 354,
+      "group": "planning_execution",
+      "imports": [
+        {
+          "module": "__future__",
+          "line": 9,
+          "relative": false
+        },
+        {
+          "module": "copy",
+          "line": 11,
+          "relative": false
+        },
+        {
+          "module": "json",
+          "line": 12,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 13,
+          "relative": false
+        },
+        {
+          "module": "time",
+          "line": 14,
+          "relative": false
+        },
+        {
+          "module": "traceback",
+          "line": 15,
+          "relative": false
+        },
+        {
+          "module": "contextlib",
+          "line": 16,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 18,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 73,
+          "relative": false
+        },
+        {
+          "module": "mujoco",
+          "line": 132,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 133,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 36,
+            "text": "data = getattr(sim.data, \"_data\", sim.data)"
+          },
+          {
+            "line": 49,
+            "text": "data = getattr(sim.data, \"_data\", sim.data)"
+          },
+          {
+            "line": 75,
+            "text": "model, data = sim.model, sim.data"
+          },
+          {
+            "line": 132,
+            "text": "import mujoco"
+          },
+          {
+            "line": 147,
+            "text": "model, data = sim.model, sim.data"
+          },
+          {
+            "line": 252,
+            "text": "mujoco.mj_jacSite(native_model, native_data, jac_p, jac_r, site)"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 86,
+            "text": "body = int(adapter.task_env.obj_body_id[monitor.target])"
+          },
+          {
+            "line": 182,
+            "text": "body = int(adapter.task_env.obj_body_id[target_name])"
+          }
+        ],
+        "robot_assumption": [
+          {
+            "line": 77,
+            "text": "indexes = np.asarray(robot._ref_joint_pos_indexes, dtype=int)"
+          },
+          {
+            "line": 150,
+            "text": "q_indexes = np.asarray(robot._ref_joint_pos_indexes, dtype=int)"
+          },
+          {
+            "line": 151,
+            "text": "dof_indexes = np.asarray(robot._ref_joint_vel_indexes, dtype=int)"
+          },
+          {
+            "line": 153,
+            "text": "raise ValueError(\"Cartesian contact planner requires one seven-joint Panda\")"
+          },
+          {
+            "line": 159,
+            "text": "raise ValueError(\"Missing Panda joint limits\")"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/controller.py",
+      "sha256": "3130c0bc9bd86f406d4dd76ffa22dd2d28de90426d17c5e6d87270184ecadf36",
+      "bytes": 21054,
+      "lines": 368,
+      "group": "planning_execution",
+      "imports": [
+        {
+          "module": "pathlib",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "json",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "frames",
+          "line": 5,
+          "relative": true
+        },
+        {
+          "module": "errors",
+          "line": 6,
+          "relative": true
+        },
+        {
+          "module": "cartesian",
+          "line": 7,
+          "relative": true
+        },
+        {
+          "module": "robosuite.macros",
+          "line": 122,
+          "relative": false
+        },
+        {
+          "module": "cv2",
+          "line": 135,
+          "relative": false
+        },
+        {
+          "module": "PIL",
+          "line": 159,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 84,
+          "relative": false
+        }
+      ],
+      "config_reads": [
+        {
+          "key": "joint_reference_margin_rad",
+          "line": 185,
+          "default": {
+            "literal": 0.02
+          }
+        },
+        {
+          "key": "planning_joint_margin_rad",
+          "line": 206,
+          "default": {
+            "literal": 0.0001
+          }
+        },
+        {
+          "key": "joint_recovery_reference_margin_rad",
+          "line": 213,
+          "default": {
+            "literal": 0.2
+          }
+        },
+        {
+          "key": "max_steps",
+          "line": 277,
+          "default": {
+            "literal": 1000
+          }
+        },
+        {
+          "key": "position_integral_gain",
+          "line": 290,
+          "default": {
+            "literal": 0.8
+          }
+        },
+        {
+          "key": "position_integral_bound_m",
+          "line": 291,
+          "default": {
+            "literal": 0.008
+          }
+        },
+        {
+          "key": "joint_recovery_steps",
+          "line": 226,
+          "default": {
+            "literal": 100
+          }
+        },
+        {
+          "key": "control_freq",
+          "line": 289,
+          "default": {
+            "literal": 20
+          }
+        },
+        {
+          "key": "place_tracking_extra_steps",
+          "line": 292,
+          "default": {
+            "literal": 120
+          }
+        },
+        {
+          "key": "place_tracking_extension_radius_m",
+          "line": 293,
+          "default": {
+            "literal": 0.005
+          }
+        },
+        {
+          "key": "waypoint_max_steps",
+          "line": 360,
+          "default": {
+            "literal": 120
+          }
+        }
+      ],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 25,
+            "text": "model = adapter.env.sim.model"
+          },
+          {
+            "line": 38,
+            "text": "model, data = sim.model, sim.data"
+          },
+          {
+            "line": 76,
+            "text": "joint_id = int(sim.model.body_jntadr[target_body])"
+          },
+          {
+            "line": 77,
+            "text": "target_address = int(sim.model.jnt_qposadr[joint_id]) if joint_id >= 0 else None"
+          },
+          {
+            "line": 81,
+            "text": "sim.data.qpos[robot._ref_joint_pos_indexes] = path[i]"
+          },
+          {
+            "line": 83,
+            "text": "if self.held and target_address is not None and int(sim.model.jnt_type[joint_id]) == 0:"
+          },
+          {
+            "line": 87,
+            "text": "eef[:3, :3] = np.asarray(sim.data.site_xmat[site]).reshape(3, 3)"
+          },
+          {
+            "line": 88,
+            "text": "eef[:3, 3] = sim.data.site_xpos[site]"
+          },
+          {
+            "line": 91,
+            "text": "sim.data.qpos[target_address:target_address+7] = np.r_[obj[:3, 3], quat]"
+          },
+          {
+            "line": 122,
+            "text": "import robosuite.macros as macros"
+          },
+          {
+            "line": 182,
+            "text": "model = adapter.env.sim.model"
+          },
+          {
+            "line": 253,
+            "text": "sim.data.qpos[robot._ref_joint_pos_indexes] = target"
+          },
+          {
+            "line": 256,
+            "text": "goal[:3, :3] = np.asarray(sim.data.site_xmat[robot.eef_site_id]).reshape(3, 3)"
+          },
+          {
+            "line": 257,
+            "text": "goal[:3, 3] = np.asarray(sim.data.site_xpos[robot.eef_site_id])"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 27,
+            "text": "self.target_bodies = descendants(model, adapter.task_env.obj_body_id[target])"
+          },
+          {
+            "line": 75,
+            "text": "target_body = self.adapter.task_env.obj_body_id[self.target]"
+          }
+        ],
+        "robot_assumption": [
+          {
+            "line": 26,
+            "text": "self.robot_bodies = descendants(model, model.body_name2id(\"robot0_base\"))"
+          },
+          {
+            "line": 62,
+            "text": "if body_name in (\"robot0_base\", \"robot0_link0\"):"
+          },
+          {
+            "line": 81,
+            "text": "sim.data.qpos[robot._ref_joint_pos_indexes] = path[i]"
+          },
+          {
+            "line": 118,
+            "text": "keys = [f\"{name}_image\" for name in [\"agentview\", \"robot0_eye_in_hand\"]]"
+          },
+          {
+            "line": 253,
+            "text": "sim.data.qpos[robot._ref_joint_pos_indexes] = target"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/env_adapter.py",
+      "sha256": "29cee838ccf2606e607f9a6c75413fc343dc24bcba488585733b19e3c9567001",
+      "bytes": 17659,
+      "lines": 355,
+      "group": "environment_geometry",
+      "imports": [
+        {
+          "module": "__future__",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "copy",
+          "line": 9,
+          "relative": false
+        },
+        {
+          "module": "inspect",
+          "line": 10,
+          "relative": false
+        },
+        {
+          "module": "json",
+          "line": 11,
+          "relative": false
+        },
+        {
+          "module": "os",
+          "line": 12,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 13,
+          "relative": false
+        },
+        {
+          "module": "sys",
+          "line": 14,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 16,
+          "relative": false
+        },
+        {
+          "module": "errors",
+          "line": 17,
+          "relative": true
+        },
+        {
+          "module": "libero.libero",
+          "line": 107,
+          "relative": false
+        },
+        {
+          "module": "libero.libero",
+          "line": 108,
+          "relative": false
+        },
+        {
+          "module": "libero.libero.envs.env_wrapper",
+          "line": 109,
+          "relative": false
+        },
+        {
+          "module": "libero.libero.envs.env_wrapper",
+          "line": 110,
+          "relative": false
+        },
+        {
+          "module": "mujoco",
+          "line": 111,
+          "relative": false
+        },
+        {
+          "module": "robosuite",
+          "line": 112,
+          "relative": false
+        },
+        {
+          "module": "torch",
+          "line": 182,
+          "relative": false
+        },
+        {
+          "module": "libero.libero",
+          "line": 183,
+          "relative": false
+        }
+      ],
+      "config_reads": [
+        {
+          "key": "target_object",
+          "line": 56,
+          "default": {
+            "literal": "akita_black_bowl_1"
+          }
+        },
+        {
+          "key": "destination",
+          "line": 57,
+          "default": {
+            "literal": "plate_1"
+          }
+        },
+        {
+          "key": "task_name",
+          "line": 123,
+          "default": {
+            "expression": "DEFAULT_TASK"
+          }
+        },
+        {
+          "key": "camera_size",
+          "line": 134,
+          "default": {
+            "literal": 256
+          }
+        },
+        {
+          "key": "goal_destination",
+          "line": 228,
+          "default": {
+            "literal": null
+          }
+        },
+        {
+          "key": "max_steps",
+          "line": 68,
+          "default": {
+            "literal": 1500
+          }
+        },
+        {
+          "key": "camera_names",
+          "line": 138,
+          "default": {
+            "literal": [
+              "agentview",
+              "robot0_eye_in_hand"
+            ]
+          }
+        },
+        {
+          "key": "init_state_id",
+          "line": 190,
+          "default": {
+            "literal": 0
+          }
+        },
+        {
+          "key": "settle_steps",
+          "line": 194,
+          "default": {
+            "literal": 5
+          }
+        },
+        {
+          "key": "mujoco_gl",
+          "line": 91,
+          "default": {
+            "literal": "egl"
+          }
+        },
+        {
+          "key": "seed",
+          "line": 157,
+          "default": {
+            "literal": 0
+          }
+        },
+        {
+          "key": "seed",
+          "line": 175,
+          "default": {
+            "literal": 0
+          }
+        },
+        {
+          "key": "calibration_sample_count",
+          "line": 294,
+          "default": {
+            "literal": 7
+          }
+        },
+        {
+          "key": "task_suite",
+          "line": 118,
+          "default": {
+            "literal": "libero_spatial"
+          }
+        },
+        {
+          "key": "task_order_index",
+          "line": 122,
+          "default": {
+            "literal": 0
+          }
+        },
+        {
+          "key": "control_freq",
+          "line": 146,
+          "default": {
+            "literal": 20
+          }
+        },
+        {
+          "key": "render_gpu_device_id",
+          "line": 148,
+          "default": {
+            "literal": -1
+          }
+        },
+        {
+          "key": "settle_steps",
+          "line": 147,
+          "default": {
+            "literal": 5
+          }
+        }
+      ],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 3,
+            "text": "Importing this module does not import LIBERO, robosuite, MuJoCo, or PyTorch."
+          },
+          {
+            "line": 5,
+            "text": "Control poses always refer to robosuite's actual grip site, not its wrist body."
+          },
+          {
+            "line": 111,
+            "text": "import mujoco"
+          },
+          {
+            "line": 112,
+            "text": "import robosuite"
+          },
+          {
+            "line": 162,
+            "text": "robosuite_version=str(robosuite.__version__), mujoco_version=str(mujoco.__version__),"
+          },
+          {
+            "line": 230,
+            "text": "model = self.env.sim.model"
+          },
+          {
+            "line": 241,
+            "text": "data = self.env.sim.data"
+          },
+          {
+            "line": 249,
+            "text": "model, data = sim.model, sim.data"
+          },
+          {
+            "line": 282,
+            "text": "data = getattr(sim.data, \"_data\", sim.data)"
+          },
+          {
+            "line": 291,
+            "text": "initial = np.array(sim.data.qpos[arm_indices], copy=True)"
+          },
+          {
+            "line": 292,
+            "text": "limits = np.asarray([sim.model.jnt_range[sim.model.joint_name2id(name)]"
+          },
+          {
+            "line": 306,
+            "text": "sim.data.qpos[arm_indices] = q"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 76,
+            "text": "core_path = self.repo / \"libero/libero/__init__.py\""
+          },
+          {
+            "line": 82,
+            "text": "base = self.repo / \"libero/libero\""
+          },
+          {
+            "line": 93,
+            "text": "if name == \"libero.libero\" or name.startswith(\"libero.libero.\"):"
+          },
+          {
+            "line": 107,
+            "text": "from libero.libero import benchmark"
+          },
+          {
+            "line": 108,
+            "text": "import libero.libero as core"
+          },
+          {
+            "line": 109,
+            "text": "from libero.libero.envs.env_wrapper import SegmentationRenderEnv"
+          },
+          {
+            "line": 110,
+            "text": "import libero.libero.envs.env_wrapper as wrapper_module"
+          },
+          {
+            "line": 114,
+            "text": "if Path(core.__file__).resolve() != (self.repo / \"libero/libero/__init__.py\").resolve():"
+          },
+          {
+            "line": 183,
+            "text": "from libero.libero import get_libero_path"
+          },
+          {
+            "line": 226,
+            "text": "if name in self.task_env.obj_body_id:"
+          },
+          {
+            "line": 227,
+            "text": "return int(self.task_env.obj_body_id[name])"
+          },
+          {
+            "line": 229,
+            "text": "if name == self.destination and region in self.task_env.object_sites_dict:"
+          },
+          {
+            "line": 233,
+            "text": "definition = self.task_env.parsed_problem.get(\"regions\", {}).get(region, {})"
+          },
+          {
+            "line": 256,
+            "text": "objects = {name: self.target_pose(name).tolist() for name in self.task_env.obj_body_id}"
+          }
+        ],
+        "robot_assumption": [
+          {
+            "line": 138,
+            "text": "cameras = list(self.config.get(\"camera_names\", [\"agentview\", \"robot0_eye_in_hand\"]))"
+          },
+          {
+            "line": 142,
+            "text": "bddl_file_name=str(bddl_path), robots=[\"Panda\"], controller=\"OSC_POSE\","
+          },
+          {
+            "line": 155,
+            "text": "raise ValueError(\"This bridge currently supports one Panda robot\")"
+          },
+          {
+            "line": 165,
+            "text": "controller=\"OSC_POSE\", control_freq=int(self.task_env.control_freq),"
+          },
+          {
+            "line": 252,
+            "text": "q_arm = np.asarray(data.qpos[robot._ref_joint_pos_indexes], dtype=np.float64)"
+          },
+          {
+            "line": 255,
+            "text": "raise ValueError(\"Expected seven arm joints and two Panda finger joints\")"
+          },
+          {
+            "line": 260,
+            "text": "qvel_arm=np.asarray(data.qvel[robot._ref_joint_vel_indexes]).tolist(),"
+          },
+          {
+            "line": 267,
+            "text": "arm_actuator_force=np.asarray(native_data.qfrc_actuator[robot._ref_joint_vel_indexes]).tolist(),"
+          },
+          {
+            "line": 290,
+            "text": "arm_indices = robot._ref_joint_pos_indexes"
+          },
+          {
+            "line": 321,
+            "text": "raise RuntimeError(\"Could not generate five distinct Panda FK samples\")"
+          },
+          {
+            "line": 332,
+            "text": "raise ValueError(\"Default LIBERO OSC_POSE requires seven finite action values\")"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/errors.py",
+      "sha256": "eff22b8a124c160a591217b523ec9da4fefce0b49f3ac2355d48a36d7b6c901f",
+      "bytes": 539,
+      "lines": 13,
+      "group": "shared_utilities",
+      "imports": [],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/evaluate.py",
+      "sha256": "96b99c7004adf74013db9038491c3df15c62ed38e92a8f6f6e2034b2db178475",
+      "bytes": 53454,
+      "lines": 800,
+      "group": "policy",
+      "imports": [
+        {
+          "module": "__future__",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "json",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "hashlib",
+          "line": 5,
+          "relative": false
+        },
+        {
+          "module": "os",
+          "line": 6,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "subprocess",
+          "line": 8,
+          "relative": false
+        },
+        {
+          "module": "time",
+          "line": 9,
+          "relative": false
+        },
+        {
+          "module": "traceback",
+          "line": 10,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 12,
+          "relative": false
+        },
+        {
+          "module": "controller",
+          "line": 14,
+          "relative": true
+        },
+        {
+          "module": "env_adapter",
+          "line": 15,
+          "relative": true
+        },
+        {
+          "module": "frames",
+          "line": 16,
+          "relative": true
+        },
+        {
+          "module": "pointcloud",
+          "line": 17,
+          "relative": true
+        },
+        {
+          "module": "rpc",
+          "line": 18,
+          "relative": true
+        },
+        {
+          "module": "scene",
+          "line": 19,
+          "relative": true
+        },
+        {
+          "module": "cartesian",
+          "line": 20,
+          "relative": true
+        },
+        {
+          "module": "placement",
+          "line": 21,
+          "relative": true
+        },
+        {
+          "module": "transfer",
+          "line": 22,
+          "relative": true
+        },
+        {
+          "module": "grasp_candidate",
+          "line": 23,
+          "relative": true
+        },
+        {
+          "module": "grasp_contact",
+          "line": 24,
+          "relative": true
+        },
+        {
+          "module": "regions",
+          "line": 53,
+          "relative": true
+        },
+        {
+          "module": "shutil",
+          "line": 593,
+          "relative": false
+        },
+        {
+          "module": "placement_geometry",
+          "line": 535,
+          "relative": true
+        },
+        {
+          "module": "placement_geometry",
+          "line": 541,
+          "relative": true
+        },
+        {
+          "module": "placement_geometry",
+          "line": 300,
+          "relative": true
+        },
+        {
+          "module": "placement_geometry",
+          "line": 459,
+          "relative": true
+        },
+        {
+          "module": "shutil",
+          "line": 572,
+          "relative": false
+        },
+        {
+          "module": "shutil",
+          "line": 667,
+          "relative": false
+        },
+        {
+          "module": "regions",
+          "line": 294,
+          "relative": true
+        },
+        {
+          "module": "shutil",
+          "line": 475,
+          "relative": false
+        }
+      ],
+      "config_reads": [
+        {
+          "key": "input_mode",
+          "line": 409,
+          "default": {
+            "literal": "geometry"
+          }
+        },
+        {
+          "key": "geometric_placement_search",
+          "line": 534,
+          "default": {
+            "literal": false
+          }
+        },
+        {
+          "key": "container_release_offsets_m",
+          "line": 538,
+          "default": {
+            "literal": [
+              0.0,
+              0.02,
+              0.04,
+              0.06,
+              0.08,
+              0.1,
+              0.12
+            ]
+          }
+        },
+        {
+          "key": "container_xy_search",
+          "line": 540,
+          "default": {
+            "literal": false
+          }
+        },
+        {
+          "key": "static_container_candidate_search",
+          "line": 555,
+          "default": {
+            "literal": false
+          }
+        },
+        {
+          "key": "input_mode",
+          "line": 72,
+          "default": {
+            "literal": "geometry"
+          }
+        },
+        {
+          "key": "plan_timeout_s",
+          "line": 115,
+          "default": {
+            "literal": 20
+          }
+        },
+        {
+          "key": "unsupported_skill",
+          "line": 162,
+          "default": {
+            "literal": null
+          }
+        },
+        {
+          "key": "prepare_open_gripper",
+          "line": 234,
+          "default": {
+            "literal": true
+          }
+        },
+        {
+          "key": "goal_destination",
+          "line": 278,
+          "default": {
+            "expression": "self.adapter.destination"
+          }
+        },
+        {
+          "key": "container_xy_search",
+          "line": 560,
+          "default": {
+            "literal": false
+          }
+        },
+        {
+          "key": "approach_distances_m",
+          "line": 735,
+          "default": {
+            "literal": [
+              0.1,
+              0.05
+            ]
+          }
+        },
+        {
+          "key": "init_state_id",
+          "line": 73,
+          "default": {
+            "literal": 0
+          }
+        },
+        {
+          "key": "input_mode",
+          "line": 75,
+          "default": {
+            "literal": "geometry"
+          }
+        },
+        {
+          "key": "input_mode",
+          "line": 77,
+          "default": {
+            "literal": "geometry"
+          }
+        },
+        {
+          "key": "input_mode",
+          "line": 78,
+          "default": {
+            "literal": "geometry"
+          }
+        },
+        {
+          "key": "goal_relation",
+          "line": 192,
+          "default": {
+            "literal": "on"
+          }
+        },
+        {
+          "key": "goal_destination",
+          "line": 192,
+          "default": {
+            "expression": "self.adapter.destination"
+          }
+        },
+        {
+          "key": "grasp_control_target_margin_m",
+          "line": 215,
+          "default": {
+            "literal": 0.01
+          }
+        },
+        {
+          "key": "lift_height_m",
+          "line": 257,
+          "default": {
+            "literal": 0.15
+          }
+        },
+        {
+          "key": "geometric_placement_search",
+          "line": 299,
+          "default": {
+            "literal": false
+          }
+        },
+        {
+          "key": "input_camera",
+          "line": 413,
+          "default": {
+            "literal": "agentview"
+          }
+        },
+        {
+          "key": "bilateral_grasp_screen",
+          "line": 721,
+          "default": {
+            "literal": true
+          }
+        },
+        {
+          "key": "selection_rounds",
+          "line": 741,
+          "default": {
+            "literal": 3
+          }
+        },
+        {
+          "key": "native_descent_fallback",
+          "line": 756,
+          "default": {
+            "literal": true
+          }
+        },
+        {
+          "key": "bilateral_grasp_screen",
+          "line": 775,
+          "default": {
+            "literal": true
+          }
+        },
+        {
+          "key": "composite_subgoal_execution",
+          "line": 194,
+          "default": {
+            "literal": false
+          }
+        },
+        {
+          "key": "max_robot_spheres",
+          "line": 202,
+          "default": {
+            "literal": 300
+          }
+        },
+        {
+          "key": "attachment_slots",
+          "line": 203,
+          "default": {
+            "literal": 128
+          }
+        },
+        {
+          "key": "seed",
+          "line": 207,
+          "default": {
+            "literal": 0
+          }
+        },
+        {
+          "key": "num_grasps",
+          "line": 208,
+          "default": {
+            "literal": 200
+          }
+        },
+        {
+          "key": "grasp_control_offset_m",
+          "line": 222,
+          "default": {
+            "literal": 0.097
+          }
+        },
+        {
+          "key": "goal_relation",
+          "line": 287,
+          "default": {
+            "literal": null
+          }
+        },
+        {
+          "key": "goal_relation",
+          "line": 304,
+          "default": {
+            "literal": null
+          }
+        },
+        {
+          "key": "goal_relation",
+          "line": 327,
+          "default": {
+            "literal": null
+          }
+        },
+        {
+          "key": "open_container_release_search",
+          "line": 328,
+          "default": {
+            "expression": "self.adapter.destination.startswith('basket_')"
+          }
+        },
+        {
+          "key": "surface_release_search",
+          "line": 334,
+          "default": {
+            "literal": false
+          }
+        },
+        {
+          "key": "seed",
+          "line": 408,
+          "default": {
+            "literal": 0
+          }
+        },
+        {
+          "key": "native_candidates_per_round",
+          "line": 679,
+          "default": {
+            "literal": 8
+          }
+        },
+        {
+          "key": "max_candidates_per_round",
+          "line": 747,
+          "default": {
+            "literal": 20
+          }
+        },
+        {
+          "key": "model_gpu",
+          "line": 100,
+          "default": {
+            "literal": 6
+          }
+        },
+        {
+          "key": "planner_gpu",
+          "line": 105,
+          "default": {
+            "literal": 7
+          }
+        },
+        {
+          "key": "candidate_offset",
+          "line": 232,
+          "default": {
+            "literal": 0
+          }
+        },
+        {
+          "key": "transfer_heights_m",
+          "line": 455,
+          "default": {
+            "literal": [
+              0.12,
+              0.08,
+              0.04,
+              0.16,
+              0.2
+            ]
+          }
+        },
+        {
+          "key": "transfer_yaw_degrees",
+          "line": 456,
+          "default": {
+            "literal": [
+              0,
+              45,
+              -45,
+              90,
+              -90,
+              180
+            ]
+          }
+        },
+        {
+          "key": "selection_timeout_s",
+          "line": 751,
+          "default": {
+            "literal": 360
+          }
+        },
+        {
+          "key": "plan_timeout_s",
+          "line": 752,
+          "default": {
+            "literal": 12
+          }
+        },
+        {
+          "key": "minimum_downward_approach",
+          "line": 220,
+          "default": {
+            "literal": 0.25
+          }
+        },
+        {
+          "key": "placement_orientation_trials",
+          "line": 317,
+          "default": {
+            "literal": 4
+          }
+        }
+      ],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 37,
+            "text": "bodies = descendants(sim.model, adapter.task_env.obj_body_id[name])"
+          },
+          {
+            "line": 39,
+            "text": "for i in range(sim.data.ncon):"
+          },
+          {
+            "line": 40,
+            "text": "c = sim.data.contact[i]"
+          },
+          {
+            "line": 42,
+            "text": "b1, b2 = int(sim.model.geom_bodyid[g1]), int(sim.model.geom_bodyid[g2])"
+          },
+          {
+            "line": 45,
+            "text": "if not (sim.model.geom_id2name(g) or \"\").startswith((\"robot\", \"gripper\")):"
+          },
+          {
+            "line": 46,
+            "text": "names.add(sim.model.geom_id2name(g) or f\"geom_{g}\")"
+          },
+          {
+            "line": 51,
+            "text": "model = adapter.env.sim.model"
+          },
+          {
+            "line": 102,
+            "text": "assets = str(Path(__import__(\"robosuite\").__file__).parent / \"models/assets\")"
+          },
+          {
+            "line": 104,
+            "text": "arguments=[\"--robosuite-assets\", assets],"
+          },
+          {
+            "line": 284,
+            "text": "site_id = sim.model.site_name2id(goal_destination)"
+          },
+          {
+            "line": 285,
+            "text": "site_pos = np.asarray(sim.data.site_xpos[site_id])"
+          },
+          {
+            "line": 289,
+            "text": "extent = np.abs(np.asarray(sim.data.site_xmat[site_id]).reshape(3,3)) @ np.asarray(self.adapter.task_env.object_sites_dict[goal_destination].size)"
+          },
+          {
+            "line": 306,
+            "text": "region[:3, :3] = np.asarray(sim.data.site_xmat[site_id]).reshape(3, 3)"
+          },
+          {
+            "line": 494,
+            "text": "site = int(sim.model.site_name2id(name))"
+          },
+          {
+            "line": 495,
+            "text": "rotation = np.asarray(sim.data.site_xmat[site]).reshape(3, 3)"
+          },
+          {
+            "line": 529,
+            "text": "site = sim.model.site_name2id(region_name)"
+          },
+          {
+            "line": 531,
+            "text": "region[:3, :3] = np.asarray(sim.data.site_xmat[site]).reshape(3, 3)"
+          },
+          {
+            "line": 532,
+            "text": "region[:3, 3] = np.asarray(sim.data.site_xpos[site])"
+          },
+          {
+            "line": 703,
+            "text": "sim.data.qpos[self.adapter.robot._ref_joint_pos_indexes] = q_last"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 37,
+            "text": "bodies = descendants(sim.model, adapter.task_env.obj_body_id[name])"
+          },
+          {
+            "line": 52,
+            "text": "if name not in adapter.task_env.obj_body_id:"
+          },
+          {
+            "line": 190,
+            "text": "goals = self.adapter.task_env.parsed_problem[\"goal_state\"]"
+          },
+          {
+            "line": 289,
+            "text": "extent = np.abs(np.asarray(sim.data.site_xmat[site_id]).reshape(3,3)) @ np.asarray(self.adapter.task_env.object_sites_dict[goal_destination].size)"
+          },
+          {
+            "line": 293,
+            "text": "if self.adapter.destination not in self.adapter.task_env.obj_body_id:"
+          },
+          {
+            "line": 308,
+            "text": "frame, size = gravity_frame(region, self.adapter.task_env.object_sites_dict[goal_destination].size)"
+          },
+          {
+            "line": 331,
+            "text": "elif self.adapter.destination not in self.adapter.task_env.obj_body_id:"
+          },
+          {
+            "line": 496,
+            "text": "size = np.asarray(self.adapter.task_env.object_sites_dict[name].size)"
+          },
+          {
+            "line": 533,
+            "text": "region_size = self.adapter.task_env.object_sites_dict[region_name].size"
+          }
+        ],
+        "robot_assumption": [
+          {
+            "line": 88,
+            "text": "\"contact_phases\": \"MuJoCo Jacobian IK with actual-geometry contact validation\", \"execution\": \"default OSC_POSE\"}"
+          },
+          {
+            "line": 703,
+            "text": "sim.data.qpos[self.adapter.robot._ref_joint_pos_indexes] = q_last"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/frames.py",
+      "sha256": "5ee78ed9827d3a165c1fb72908c7a691df496da1ced97ec9855e33eb057924f2",
+      "bytes": 1179,
+      "lines": 30,
+      "group": "shared_utilities",
+      "imports": [
+        {
+          "module": "numpy",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 3,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": [
+          {
+            "line": 7,
+            "text": "\"\"\"Native Panda: approach +z, closing +/-x. Robosuite grip site shares axes.\"\"\""
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/grasp_candidate.py",
+      "sha256": "6ee95e0d4f200dc739543911cd1da9f00cf1d4affe61179ff8009a96897051b9",
+      "bytes": 795,
+      "lines": 13,
+      "group": "perception_model",
+      "imports": [
+        {
+          "module": "numpy",
+          "line": 7,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": [
+          {
+            "line": 4,
+            "text": "Panda grip centre; reject proposals whose centre misses even the target's"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/grasp_contact.py",
+      "sha256": "241653cc5e5dc9d4fd03430138f422a2f8f79a717a87dcfa25e78aca94bd14aa",
+      "bytes": 2059,
+      "lines": 36,
+      "group": "perception_model",
+      "imports": [
+        {
+          "module": "numpy",
+          "line": 6,
+          "relative": false
+        },
+        {
+          "module": "cartesian",
+          "line": 7,
+          "relative": true
+        },
+        {
+          "module": "env_adapter",
+          "line": 8,
+          "relative": true
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 11,
+            "text": "sim=adapter.env.sim;model,data=sim.model,sim.data;robot=adapter.task_env.robots[0]"
+          }
+        ],
+        "libero_task_api": [],
+        "robot_assumption": [
+          {
+            "line": 14,
+            "text": "data.qpos[robot._ref_joint_pos_indexes]=np.asarray(q_arm,dtype=float)"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/graspgen_worker.py",
+      "sha256": "650fc6f96e2d1e50383a977b20c0964e645f5134cd71782f23e157ed59f2eca1",
+      "bytes": 8109,
+      "lines": 180,
+      "group": "perception_model",
+      "imports": [
+        {
+          "module": "__future__",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "argparse",
+          "line": 9,
+          "relative": false
+        },
+        {
+          "module": "hashlib",
+          "line": 10,
+          "relative": false
+        },
+        {
+          "module": "json",
+          "line": 11,
+          "relative": false
+        },
+        {
+          "module": "os",
+          "line": 12,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 13,
+          "relative": false
+        },
+        {
+          "module": "random",
+          "line": 14,
+          "relative": false
+        },
+        {
+          "module": "sys",
+          "line": 15,
+          "relative": false
+        },
+        {
+          "module": "time",
+          "line": 16,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 18,
+          "relative": false
+        },
+        {
+          "module": "pointcloud",
+          "line": 20,
+          "relative": true
+        },
+        {
+          "module": "torch",
+          "line": 43,
+          "relative": false
+        },
+        {
+          "module": "grasp_gen.grasp_server",
+          "line": 44,
+          "relative": false
+        },
+        {
+          "module": "torch",
+          "line": 76,
+          "relative": false
+        },
+        {
+          "module": "grasp_gen.dataset.dataset",
+          "line": 77,
+          "relative": false
+        },
+        {
+          "module": "rpc",
+          "line": 171,
+          "relative": true
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 1,
+            "text": "\"\"\"GraspGen worker, isolated from LIBERO's MuJoCo / robosuite environment."
+          }
+        ],
+        "libero_task_api": [],
+        "robot_assumption": [
+          {
+            "line": 52,
+            "text": "if cfg.data.gripper_name != \"franka_panda\":"
+          },
+          {
+            "line": 53,
+            "text": "raise ValueError(\"The bridge currently supports the official Franka Panda model\")"
+          },
+          {
+            "line": 55,
+            "text": "raise ValueError(\"Expected the official 2048-point Panda checkpoint\")"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/placement.py",
+      "sha256": "1eca29bc31f739007189bf4c79659401ee19d9915d46f2aea4b59cfaf366a57b",
+      "bytes": 2936,
+      "lines": 54,
+      "group": "policy",
+      "imports": [
+        {
+          "module": "numpy",
+          "line": 2,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/placement_geometry.py",
+      "sha256": "a81e027485a4f1b7643d22d46aa4341fdbd6d4ac15dc4291dbcce974135a261a",
+      "bytes": 5915,
+      "lines": 124,
+      "group": "environment_geometry",
+      "imports": [
+        {
+          "module": "itertools",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "env_adapter",
+          "line": 107,
+          "relative": true
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 102,
+            "text": "m, d = adapter.env.sim.model, adapter.env.sim.data"
+          }
+        ],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/planner_worker.py",
+      "sha256": "963534e5b35d051154ed3275c070899f05f7f6a64fa3f28b70057d17baf8696a",
+      "bytes": 34750,
+      "lines": 610,
+      "group": "planning_execution",
+      "imports": [
+        {
+          "module": "__future__",
+          "line": 16,
+          "relative": false
+        },
+        {
+          "module": "argparse",
+          "line": 18,
+          "relative": false
+        },
+        {
+          "module": "copy",
+          "line": 19,
+          "relative": false
+        },
+        {
+          "module": "json",
+          "line": 20,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 21,
+          "relative": false
+        },
+        {
+          "module": "time",
+          "line": 22,
+          "relative": false
+        },
+        {
+          "module": "traceback",
+          "line": 23,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 25,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 26,
+          "relative": false
+        },
+        {
+          "module": "planning_geometry",
+          "line": 28,
+          "relative": true
+        },
+        {
+          "module": "torch",
+          "line": 83,
+          "relative": false
+        },
+        {
+          "module": "curobo.geom.sdf.world",
+          "line": 84,
+          "relative": false
+        },
+        {
+          "module": "curobo.geom.types",
+          "line": 85,
+          "relative": false
+        },
+        {
+          "module": "curobo.types.base",
+          "line": 86,
+          "relative": false
+        },
+        {
+          "module": "curobo.wrap.reacher.motion_gen",
+          "line": 87,
+          "relative": false
+        },
+        {
+          "module": "curobo.types.math",
+          "line": 302,
+          "relative": false
+        },
+        {
+          "module": "curobo.types.robot",
+          "line": 303,
+          "relative": false
+        },
+        {
+          "module": "curobo.wrap.reacher.motion_gen",
+          "line": 304,
+          "relative": false
+        },
+        {
+          "module": "curobo.types.math",
+          "line": 394,
+          "relative": false
+        },
+        {
+          "module": "rpc",
+          "line": 594,
+          "relative": true
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 149,
+            "text": "model=\"generated from installed robosuite Panda/PandaGripper MJCF\")"
+          },
+          {
+            "line": 586,
+            "text": "parser.add_argument(\"--robosuite-assets\", type=Path)"
+          }
+        ],
+        "libero_task_api": [],
+        "robot_assumption": [
+          {
+            "line": 28,
+            "text": "from .planning_geometry import (ARM_NAMES, FINGER_NAMES, PandaMJCF, pose_list,"
+          },
+          {
+            "line": 57,
+            "text": "raise ValueError('Panda q_fingers must contain two finite measured joint positions')"
+          },
+          {
+            "line": 65,
+            "text": "raise ValueError('Panda passive finger state outside bounded soft-limit band: '"
+          },
+          {
+            "line": 97,
+            "text": "self.robot = PandaMJCF(self.output_dir / \"robot_model\", assets_dir=assets_dir,"
+          },
+          {
+            "line": 120,
+            "text": "if list(self.motion_gen.kinematics.joint_names) != ARM_NAMES:"
+          },
+          {
+            "line": 149,
+            "text": "model=\"generated from installed robosuite Panda/PandaGripper MJCF\")"
+          },
+          {
+            "line": 240,
+            "text": "self.motion_gen.update_locked_joints(dict(zip(FINGER_NAMES, map(float, fingers))), copy.deepcopy(self.config))"
+          },
+          {
+            "line": 312,
+            "text": "joint_state = JointState.from_position(self.torch.as_tensor(start[None], device=\"cuda\", dtype=self.torch.float32), joint_names=ARM_NAMES)"
+          },
+          {
+            "line": 381,
+            "text": "reply.update(path_file=str(path), waypoints=len(q), joint_names=ARM_NAMES,"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/planning_geometry.py",
+      "sha256": "3cc90c5876063bc1f9688e2ac49bb248dca2de4cbc0ac1c2338cd47e797d12fb",
+      "bytes": 22951,
+      "lines": 420,
+      "group": "planning_execution",
+      "imports": [
+        {
+          "module": "__future__",
+          "line": 8,
+          "relative": false
+        },
+        {
+          "module": "hashlib",
+          "line": 10,
+          "relative": false
+        },
+        {
+          "module": "importlib.util",
+          "line": 11,
+          "relative": false
+        },
+        {
+          "module": "json",
+          "line": 12,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 13,
+          "relative": false
+        },
+        {
+          "module": "xml.etree.ElementTree",
+          "line": 14,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 16,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 17,
+          "relative": false
+        },
+        {
+          "module": "trimesh",
+          "line": 82,
+          "relative": false
+        },
+        {
+          "module": "trimesh",
+          "line": 128,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial",
+          "line": 129,
+          "relative": false
+        },
+        {
+          "module": "trimesh",
+          "line": 190,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 3,
+            "text": "The generated URDF is derived from the installed robosuite MJCF, including its"
+          },
+          {
+            "line": 194,
+            "text": "spec = importlib.util.find_spec(\"robosuite\")"
+          },
+          {
+            "line": 196,
+            "text": "raise RuntimeError(\"robosuite is required to locate the exact MJCF model\")"
+          },
+          {
+            "line": 260,
+            "text": "# robosuite marks collision geometry group=0; visual geoms group=1."
+          }
+        ],
+        "libero_task_api": [],
+        "robot_assumption": [
+          {
+            "line": 20,
+            "text": "ARM_NAMES = [f\"panda_joint{i}\" for i in range(1, 8)]"
+          },
+          {
+            "line": 21,
+            "text": "FINGER_NAMES = [\"panda_finger_joint1\", \"panda_finger_joint2\"]"
+          },
+          {
+            "line": 186,
+            "text": "class PandaMJCF:"
+          },
+          {
+            "line": 187,
+            "text": "\"\"\"Translate the installed Panda arm and PandaGripper into a planning model.\"\"\""
+          },
+          {
+            "line": 233,
+            "text": "raise ValueError(\"Only one MJCF joint per Panda body is supported\")"
+          },
+          {
+            "line": 256,
+            "text": "if jname in ARM_NAMES:"
+          },
+          {
+            "line": 279,
+            "text": "raise ValueError(f\"Unsupported Panda collision geometry: {geom_type}\")"
+          },
+          {
+            "line": 288,
+            "text": "raise ValueError(\"Unexpected Panda MJCF root hierarchy\")"
+          },
+          {
+            "line": 294,
+            "text": "raise ValueError(\"PandaGripper has no grip_site\")"
+          },
+          {
+            "line": 367,
+            "text": "values = dict(zip(ARM_NAMES + FINGER_NAMES, [*q_arm, *q_fingers]))"
+          },
+          {
+            "line": 385,
+            "text": "raise ValueError(\"Disconnected generated Panda URDF\")"
+          },
+          {
+            "line": 414,
+            "text": "lock_joints=dict(zip(FINGER_NAMES, map(float, fingers))),"
+          },
+          {
+            "line": 417,
+            "text": "cspace=dict(joint_names=ARM_NAMES + FINGER_NAMES,"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/pointcloud.py",
+      "sha256": "9d728deffbe2423878e14905dfbb127c0b19f934739fa6d144771c911c46b24e",
+      "bytes": 11645,
+      "lines": 235,
+      "group": "perception_model",
+      "imports": [
+        {
+          "module": "__future__",
+          "line": 8,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 10,
+          "relative": false
+        },
+        {
+          "module": "robosuite.utils.camera_utils",
+          "line": 74,
+          "relative": false
+        },
+        {
+          "module": "robosuite.macros",
+          "line": 77,
+          "relative": false
+        },
+        {
+          "module": "trimesh",
+          "line": 178,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 6,
+            "text": "This module imports NumPy only until a robosuite environment is actually used."
+          },
+          {
+            "line": 35,
+            "text": "robosuite's ``get_camera_extrinsic_matrix`` without another axis flip."
+          },
+          {
+            "line": 74,
+            "text": "from robosuite.utils.camera_utils import ("
+          },
+          {
+            "line": 77,
+            "text": "import robosuite.macros as macros"
+          },
+          {
+            "line": 97,
+            "text": "# robosuite returns raw OpenGL rows for 'opengl' and flips those rows"
+          },
+          {
+            "line": 101,
+            "text": "raise ValueError(\"Unknown robosuite IMAGE_CONVENTION: \" + convention)"
+          },
+          {
+            "line": 126,
+            "text": "``visual`` uses all group-1 visual geoms in robosuite, preserving mixed"
+          },
+          {
+            "line": 131,
+            "text": "model = base.sim.model"
+          },
+          {
+            "line": 212,
+            "text": "_triangles_from_geom(base.sim.model, base.sim.data, i) for i in ids"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 118,
+            "text": "while not hasattr(base, \"obj_body_id\") and hasattr(base, \"env\"):"
+          },
+          {
+            "line": 132,
+            "text": "if target_name not in base.obj_body_id:"
+          },
+          {
+            "line": 134,
+            "text": "root = int(base.obj_body_id[target_name])"
+          }
+        ],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/regions.py",
+      "sha256": "78bebbff0b588a964eef68e3c00a4d71e61afe31969238c887b1bf9cc8e17d0b",
+      "bytes": 1796,
+      "lines": 31,
+      "group": "environment_geometry",
+      "imports": [
+        {
+          "module": "numpy",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "env_adapter",
+          "line": 3,
+          "relative": true
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 7,
+            "text": "model,data=adapter.env.sim.model,adapter.env.sim.data"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 10,
+            "text": "for body in adapter.task_env.obj_body_id.values():excluded.update(body_subtree_ids(model,body))"
+          }
+        ],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/rpc.py",
+      "sha256": "682e3ebf3e78ab1955b55b12376c133ccff63d8e8650295ce176e7ee4da703a6",
+      "bytes": 4672,
+      "lines": 107,
+      "group": "shared_utilities",
+      "imports": [
+        {
+          "module": "__future__",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "json",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "os",
+          "line": 5,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 6,
+          "relative": false
+        },
+        {
+          "module": "secrets",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "socket",
+          "line": 8,
+          "relative": false
+        },
+        {
+          "module": "socketserver",
+          "line": 9,
+          "relative": false
+        },
+        {
+          "module": "subprocess",
+          "line": 10,
+          "relative": false
+        },
+        {
+          "module": "time",
+          "line": 11,
+          "relative": false
+        },
+        {
+          "module": "traceback",
+          "line": 12,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/scene.py",
+      "sha256": "e07403740010825254ae4bfeb7b08b934367f29f244a20a15cfb6f8a6342a9db",
+      "bytes": 9743,
+      "lines": 198,
+      "group": "environment_geometry",
+      "imports": [
+        {
+          "module": "__future__",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "hashlib",
+          "line": 9,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 10,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 12,
+          "relative": false
+        },
+        {
+          "module": "env_adapter",
+          "line": 14,
+          "relative": true
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 25,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial",
+          "line": 38,
+          "relative": false
+        }
+      ],
+      "config_reads": [
+        {
+          "key": "target_object",
+          "line": 150,
+          "default": {
+            "expression": "adapter.target_object"
+          }
+        },
+        {
+          "key": "planning_plane_extent_m",
+          "line": 167,
+          "default": {
+            "literal": 20.0
+          }
+        }
+      ],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 144,
+            "text": "model, data = adapter.env.sim.model, adapter.env.sim.data"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 151,
+            "text": "if target_name not in adapter.task_env.obj_body_id:"
+          },
+          {
+            "line": 153,
+            "text": "target_root = int(adapter.task_env.obj_body_id[target_name])"
+          }
+        ],
+        "robot_assumption": [
+          {
+            "line": 114,
+            "text": "# proxy covers a region far larger than the Panda's entire workspace."
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/skills.py",
+      "sha256": "9e3aaaaf3bce8c7c4447f2680373a905bf358871daedb126352c9aeac967f3e6",
+      "bytes": 21661,
+      "lines": 375,
+      "group": "policy",
+      "imports": [
+        {
+          "module": "pathlib",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "articulation",
+          "line": 6,
+          "relative": true
+        },
+        {
+          "module": "cartesian",
+          "line": 7,
+          "relative": true
+        },
+        {
+          "module": "controller",
+          "line": 8,
+          "relative": true
+        },
+        {
+          "module": "errors",
+          "line": 9,
+          "relative": true
+        },
+        {
+          "module": "evaluate",
+          "line": 10,
+          "relative": true
+        },
+        {
+          "module": "rpc",
+          "line": 11,
+          "relative": true
+        },
+        {
+          "module": "scene",
+          "line": 12,
+          "relative": true
+        },
+        {
+          "module": "mujoco",
+          "line": 49,
+          "relative": false
+        },
+        {
+          "module": "pointcloud",
+          "line": 304,
+          "relative": true
+        },
+        {
+          "module": "robosuite",
+          "line": 80,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 46,
+            "text": "return float(self.a.env.sim.data.qpos[self.info['q_address']])"
+          },
+          {
+            "line": 49,
+            "text": "import mujoco"
+          },
+          {
+            "line": 50,
+            "text": "m, d = self.a.env.sim.model, self.a.env.sim.data"
+          },
+          {
+            "line": 58,
+            "text": "mujoco.mj_contactForce(getattr(m, '_model', m), getattr(d, '_data', d), i, force)"
+          },
+          {
+            "line": 80,
+            "text": "import robosuite"
+          },
+          {
+            "line": 83,
+            "text": "self.out/'planner_worker', arguments=['--robosuite-assets',str(Path(robosuite.__file__).parent/'models/assets')],"
+          },
+          {
+            "line": 113,
+            "text": "self.a.env.sim.data.qpos[self.a.robot._ref_joint_pos_indexes] = path['q_arm'][-1]"
+          },
+          {
+            "line": 144,
+            "text": "a.env.sim.data.qpos[a.robot._ref_joint_pos_indexes]=path['q_arm'][-1]"
+          },
+          {
+            "line": 159,
+            "text": "a.env.sim.data.qpos[a.robot._ref_joint_pos_indexes]=path['q_arm'][-1]"
+          },
+          {
+            "line": 160,
+            "text": "a.env.sim.data.qpos[info['q_address']]=q"
+          },
+          {
+            "line": 178,
+            "text": "a.env.sim.data.qpos[a.robot._ref_joint_pos_indexes]=path['q_arm'][-1]"
+          },
+          {
+            "line": 230,
+            "text": "m = a.env.sim.model"
+          },
+          {
+            "line": 301,
+            "text": "m,d = a.env.sim.model,a.env.sim.data"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 195,
+            "text": "obj = a.task_env.fixtures_dict.get(target) or a.task_env.objects_dict.get(target)"
+          },
+          {
+            "line": 256,
+            "text": "if a.task_env._eval_predicate(stage['predicate']):"
+          },
+          {
+            "line": 264,
+            "text": "if a.task_env._eval_predicate(stage['predicate']):break"
+          },
+          {
+            "line": 280,
+            "text": "if not a.task_env._eval_predicate(stage['predicate']):"
+          },
+          {
+            "line": 297,
+            "text": "official_subgoal=bool(a.task_env._eval_predicate(stage['predicate'])),sustained_force_samples=sustained)"
+          },
+          {
+            "line": 310,
+            "text": "if a.task_env._eval_predicate(stage['predicate']):break"
+          },
+          {
+            "line": 359,
+            "text": "if a.task_env._eval_predicate(stage['predicate']):break"
+          },
+          {
+            "line": 368,
+            "text": "return dict(official_subgoal=bool(a.task_env._eval_predicate(stage['predicate'])),segments=segments,"
+          }
+        ],
+        "robot_assumption": [
+          {
+            "line": 113,
+            "text": "self.a.env.sim.data.qpos[self.a.robot._ref_joint_pos_indexes] = path['q_arm'][-1]"
+          },
+          {
+            "line": 144,
+            "text": "a.env.sim.data.qpos[a.robot._ref_joint_pos_indexes]=path['q_arm'][-1]"
+          },
+          {
+            "line": 159,
+            "text": "a.env.sim.data.qpos[a.robot._ref_joint_pos_indexes]=path['q_arm'][-1]"
+          },
+          {
+            "line": 178,
+            "text": "a.env.sim.data.qpos[a.robot._ref_joint_pos_indexes]=path['q_arm'][-1]"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/surface_packing.py",
+      "sha256": "640564b0dc02a0a7bdb82adebfb0a8efaccaf97e03c76476083c931d02c2a667",
+      "bytes": 4367,
+      "lines": 77,
+      "group": "policy",
+      "imports": [
+        {
+          "module": "numpy",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 35,
+          "relative": false
+        },
+        {
+          "module": "env_adapter",
+          "line": 36,
+          "relative": true
+        },
+        {
+          "module": "scene",
+          "line": 37,
+          "relative": true
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 39,
+            "text": "m,d=adapter.env.sim.model,adapter.env.sim.data"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 45,
+            "text": "if len(items)<2 or region not in adapter.task_env.object_sites_dict:continue"
+          },
+          {
+            "line": 47,
+            "text": "if owner not in adapter.task_env.obj_body_id:continue"
+          },
+          {
+            "line": 50,
+            "text": "bodies=body_subtree_ids(m,adapter.task_env.obj_body_id[owner]);surfaces=[]"
+          },
+          {
+            "line": 61,
+            "text": "target=stage['target'];bodies=body_subtree_ids(m,adapter.task_env.obj_body_id[target]);points=[]"
+          },
+          {
+            "line": 67,
+            "text": "size=np.asarray(adapter.task_env.object_sites_dict[region].size)"
+          }
+        ],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/task_policy.py",
+      "sha256": "31b6f508283ed3a9cb5f32575a51a005f5b030f272819dacf3b4dac14fa59f4c",
+      "bytes": 2404,
+      "lines": 53,
+      "group": "policy",
+      "imports": [
+        {
+          "module": "__future__",
+          "line": 6,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/graspgen_libero_bridge/transfer.py",
+      "sha256": "502140e33418f268a3a799ac57736668f13b2a8d2fe181780aec1513b89e6853",
+      "bytes": 1698,
+      "lines": 30,
+      "group": "policy",
+      "imports": [
+        {
+          "module": "numpy",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 8,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/tests/test_cartesian.py",
+      "sha256": "21ef947651b03f2a6c959214b9450d8d72fbed4399405fcaa8d2baadd5a7910c",
+      "bytes": 13291,
+      "lines": 290,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "importlib.util",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 8,
+          "relative": false
+        },
+        {
+          "module": "tempfile",
+          "line": 9,
+          "relative": false
+        },
+        {
+          "module": "types",
+          "line": 10,
+          "relative": false
+        },
+        {
+          "module": "unittest",
+          "line": 11,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 13,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.cartesian",
+          "line": 15,
+          "relative": false
+        },
+        {
+          "module": "mujoco",
+          "line": 57,
+          "relative": false
+        },
+        {
+          "module": "mujoco",
+          "line": 86,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 139,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.articulation",
+          "line": 244,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.cartesian",
+          "line": 245,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.articulation",
+          "line": 268,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.cartesian",
+          "line": 269,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 18,
+            "text": "AVAILABLE = (importlib.util.find_spec(\"mujoco\") is not None and"
+          },
+          {
+            "line": 57,
+            "text": "import mujoco"
+          },
+          {
+            "line": 58,
+            "text": "mujoco.mj_forward(self.model._model, self.data._data)"
+          },
+          {
+            "line": 75,
+            "text": "for index in range(self.sim.data.ncon):"
+          },
+          {
+            "line": 76,
+            "text": "contact = self.sim.data.contact[index]"
+          },
+          {
+            "line": 86,
+            "text": "import mujoco"
+          },
+          {
+            "line": 90,
+            "text": "xml = ['<mujoco><compiler angle=\"radian\"/><option gravity=\"0 0 0\"/><worldbody>']"
+          },
+          {
+            "line": 101,
+            "text": "xml.append('</worldbody></mujoco>')"
+          },
+          {
+            "line": 102,
+            "text": "model = mujoco.MjModel.from_xml_string(\"\".join(xml))"
+          },
+          {
+            "line": 103,
+            "text": "data = mujoco.MjData(model)"
+          },
+          {
+            "line": 128,
+            "text": "data = sim.data._data"
+          },
+          {
+            "line": 134,
+            "text": "np.testing.assert_array_equal(getattr(sim.data._data, name), value, err_msg=name)"
+          },
+          {
+            "line": 135,
+            "text": "self.assertEqual(sim.data.time, 1.25)"
+          },
+          {
+            "line": 226,
+            "text": "self.assertAlmostEqual(sim.data.qpos[2], .02, delta=.0004)"
+          },
+          {
+            "line": 248,
+            "text": "joint = sim.model.joint_name2id('fixture_slide')"
+          },
+          {
+            "line": 249,
+            "text": "address = int(sim.model.jnt_qposadr[joint])"
+          },
+          {
+            "line": 254,
+            "text": "sim.data.qpos[address] = -.02"
+          },
+          {
+            "line": 272,
+            "text": "address = int(sim.model.jnt_qposadr[sim.model.joint_name2id('fixture_slide')])"
+          },
+          {
+            "line": 278,
+            "text": "sim.data.qpos[5] = .03"
+          },
+          {
+            "line": 281,
+            "text": "self.assertAlmostEqual(sim.data.qpos[address], -.02)"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 123,
+            "text": "task_env=SimpleNamespace(robots=[robot], obj_body_id={\"target\": target}),"
+          }
+        ],
+        "robot_assumption": [
+          {
+            "line": 112,
+            "text": "robot = SimpleNamespace(_ref_joint_pos_indexes=np.arange(7),"
+          },
+          {
+            "line": 113,
+            "text": "_ref_joint_vel_indexes=np.arange(7), eef_site_id=site,"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/tests/test_control_regressions.py",
+      "sha256": "c6a4320e6335c0bc2eb01a87d68830c0f70d7844bdc88d88fbc71c0b025e2895",
+      "bytes": 7521,
+      "lines": 156,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "unittest",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "types",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.controller",
+          "line": 5,
+          "relative": false
+        },
+        {
+          "module": "test_cartesian",
+          "line": 6,
+          "relative": false
+        },
+        {
+          "module": "tempfile",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 8,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.evaluate",
+          "line": 9,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/tests/test_finger_handoff.py",
+      "sha256": "92391a6bba0a58dc5cb0bd7b29491eceb15deda45a4ac27d128351ba606326d0",
+      "bytes": 776,
+      "lines": 17,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "unittest",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.planner_worker",
+          "line": 3,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/tests/test_frames.py",
+      "sha256": "048e4447c74e20e8fb379647864b0aa817254174606793023862f7c0411f1ef5",
+      "bytes": 1144,
+      "lines": 31,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "unittest",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.frames",
+          "line": 4,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/tests/test_generalize.py",
+      "sha256": "0f503ec25d62bd0ed250935a827a5ac168f7cb66a03d1f9363537a6d54956ada",
+      "bytes": 4173,
+      "lines": 81,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "types",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "pytest",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 5,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.env_adapter",
+          "line": 6,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.articulation",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.regions",
+          "line": 59,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.controller",
+          "line": 74,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [
+          {
+            "line": 13,
+            "text": "a.task_env=SimpleNamespace(obj_body_id={'cup':7},object_sites_dict={'arena_goal':object()},parsed_problem={'regions':{'arena_goal':{'target':'arena'}}})"
+          },
+          {
+            "line": 54,
+            "text": "a=adapter();a.task_env.parsed_problem['regions']['arena_goal']['target']='another_support'"
+          },
+          {
+            "line": 65,
+            "text": "a=SimpleNamespace(config={'goal_destination':'area'},env=SimpleNamespace(sim=SimpleNamespace(model=m,data=d)),task_env=SimpleNamespace(obj_body_id={'plate':2}),robot=SimpleNamespace(robot_model=SimpleNamespace(root_body='robot')))"
+          }
+        ],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/tests/test_grasp_candidate.py",
+      "sha256": "5b6fe3291a797890637641255e1076e7f6b72c142f99a22909651d33ce7ebb80",
+      "bytes": 637,
+      "lines": 15,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "numpy",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "pytest",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.grasp_candidate",
+          "line": 3,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/tests/test_placement.py",
+      "sha256": "4fd252eadd39ae45565d173e71f1376e03b64fe4f5fb290e410501044cfdea20",
+      "bytes": 2586,
+      "lines": 43,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "unittest",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.placement",
+          "line": 3,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/tests/test_planning_geometry.py",
+      "sha256": "2f76558142920d1d418c90cfbccedc34c09657f097dc03142c2fa8e4d9795855",
+      "bytes": 4912,
+      "lines": 93,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "copy",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "importlib.util",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "os",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 5,
+          "relative": false
+        },
+        {
+          "module": "tempfile",
+          "line": 6,
+          "relative": false
+        },
+        {
+          "module": "unittest",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "xml.etree.ElementTree",
+          "line": 8,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 10,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 11,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.planning_geometry",
+          "line": 13,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.planner_worker",
+          "line": 15,
+          "relative": false
+        },
+        {
+          "module": "mujoco",
+          "line": 45,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 45,
+            "text": "import mujoco"
+          },
+          {
+            "line": 47,
+            "text": "spec = importlib.util.find_spec(\"robosuite\") if override is None else None"
+          },
+          {
+            "line": 49,
+            "text": "self.fail(\"Set ROBOSUITE_ASSETS to the sim environment's robosuite/models/assets directory\")"
+          },
+          {
+            "line": 53,
+            "text": "compiled = ET.Element(\"mujoco\", model=\"panda_fk_reference\")"
+          },
+          {
+            "line": 69,
+            "text": "mj_model = mujoco.MjModel.from_xml_string(ET.tostring(compiled, encoding=\"unicode\"))"
+          },
+          {
+            "line": 70,
+            "text": "data = mujoco.MjData(mj_model)"
+          },
+          {
+            "line": 71,
+            "text": "site_id = mujoco.mj_name2id(mj_model, mujoco.mjtObj.mjOBJ_SITE, \"grip_site\")"
+          },
+          {
+            "line": 84,
+            "text": "joint_id = mujoco.mj_name2id(mj_model, mujoco.mjtObj.mjOBJ_JOINT, name)"
+          },
+          {
+            "line": 86,
+            "text": "mujoco.mj_forward(mj_model, data)"
+          }
+        ],
+        "libero_task_api": [],
+        "robot_assumption": [
+          {
+            "line": 13,
+            "text": "from graspgen_libero_bridge.planning_geometry import (PandaMJCF, box_spheres, pose_list, transform,"
+          },
+          {
+            "line": 75,
+            "text": "robot = PandaMJCF(tmp, assets_dir=assets)"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/tests/test_pointcloud.py",
+      "sha256": "ac97c8b595d14cd15ebdc315a1139a56e38295af7c3089d518e41766d1ab4f90",
+      "bytes": 5981,
+      "lines": 121,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "unittest",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "types",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 5,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.pointcloud",
+          "line": 7,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 91,
+            "text": "model, data = env.sim.model, env.sim.data"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 65,
+            "text": "obj_body_id={\"target\": 1})"
+          }
+        ],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/tests/test_rpc.py",
+      "sha256": "6a80871300adfc31579914ef4df333fdba23a56f239512ca4c5cfefc91ab129d",
+      "bytes": 3845,
+      "lines": 93,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "json",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "os",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "socket",
+          "line": 5,
+          "relative": false
+        },
+        {
+          "module": "stat",
+          "line": 6,
+          "relative": false
+        },
+        {
+          "module": "sys",
+          "line": 7,
+          "relative": false
+        },
+        {
+          "module": "tempfile",
+          "line": 8,
+          "relative": false
+        },
+        {
+          "module": "textwrap",
+          "line": 9,
+          "relative": false
+        },
+        {
+          "module": "unittest",
+          "line": 10,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.rpc",
+          "line": 12,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/tests/test_sixfix.py",
+      "sha256": "3f18b612659c068ecc969b08bc84d8c1d1f2100fa0c888ffae9723cadd323dda",
+      "bytes": 4424,
+      "lines": 73,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "types",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "pytest",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.controller",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.grasp_contact",
+          "line": 5,
+          "relative": false
+        },
+        {
+          "module": "test_cartesian",
+          "line": 6,
+          "relative": false
+        },
+        {
+          "module": "mujoco",
+          "line": 61,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 61,
+            "text": "import mujoco"
+          },
+          {
+            "line": 62,
+            "text": "xml=f'''<mujoco><worldbody>"
+          },
+          {
+            "line": 66,
+            "text": "<body name=\"target\"><geom type=\"box\" size=\".02 .01 .01\"/></body></worldbody></mujoco>'''"
+          },
+          {
+            "line": 67,
+            "text": "m=mujoco.MjModel.from_xml_string(xml);d=mujoco.MjData(m);sim=fixtures._Sim(m,d);sim.model.body_id2name=lambda i:m.body(i).name"
+          }
+        ],
+        "libero_task_api": [],
+        "robot_assumption": [
+          {
+            "line": 70,
+            "text": "robot=SimpleNamespace(_ref_joint_pos_indexes=[0],_ref_gripper_joint_pos_indexes=[1,2]);adapter=SimpleNamespace(env=SimpleNamespace(sim=sim),task_env=SimpleNamespace(robots=[robot]));monitor=SimpleNamespace(target_bodies={m.body('target').id"
+          }
+        ]
+      }
+    },
+    {
+      "path": "bridge/tests/test_surface_packing.py",
+      "sha256": "2456343f5759a041ff15b27280391427030a8a3a141063f797496a86273dd471",
+      "bytes": 1005,
+      "lines": 19,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "unittest",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.surface_packing",
+          "line": 3,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/tests/test_task_policy.py",
+      "sha256": "1a14b9abcf3ebce43393aeed3986d1d0c5d47758a65c27f976135e71b0bab789",
+      "bytes": 4704,
+      "lines": 86,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "unittest",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "copy",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "scipy.spatial.transform",
+          "line": 4,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.task_policy",
+          "line": 5,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.placement_geometry",
+          "line": 6,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "bridge/tests/test_transfer.py",
+      "sha256": "854a3306e7d216853290d984dbeee0fd679760c2d69fc3861cb29e6846251ac8",
+      "bytes": 4715,
+      "lines": 80,
+      "group": "tests",
+      "imports": [
+        {
+          "module": "numpy",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "pytest",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.transfer",
+          "line": 3,
+          "relative": false
+        },
+        {
+          "module": "types",
+          "line": 18,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.evaluate",
+          "line": 19,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.errors",
+          "line": 20,
+          "relative": false
+        },
+        {
+          "module": "types",
+          "line": 31,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.evaluate",
+          "line": 32,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.errors",
+          "line": 33,
+          "relative": false
+        },
+        {
+          "module": "types",
+          "line": 44,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.evaluate",
+          "line": 45,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.errors",
+          "line": 46,
+          "relative": false
+        },
+        {
+          "module": "types",
+          "line": 56,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.evaluate",
+          "line": 57,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.errors",
+          "line": 58,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.evaluate",
+          "line": 59,
+          "relative": false
+        },
+        {
+          "module": "types",
+          "line": 74,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.evaluate",
+          "line": 75,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.errors",
+          "line": 76,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [],
+        "libero_task_api": [],
+        "robot_assumption": []
+      }
+    },
+    {
+      "path": "run_task.py",
+      "sha256": "04c2db93611eefa47e4cbf48b80c996242b7fad86e291d069da90c097eb29e22",
+      "bytes": 10810,
+      "lines": 174,
+      "group": "entry",
+      "imports": [
+        {
+          "module": "argparse",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "os",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "sys",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "json",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "time",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "traceback",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "hashlib",
+          "line": 1,
+          "relative": false
+        },
+        {
+          "module": "pathlib",
+          "line": 2,
+          "relative": false
+        },
+        {
+          "module": "numpy",
+          "line": 12,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge",
+          "line": 13,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.evaluate",
+          "line": 14,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.controller",
+          "line": 15,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.task_policy",
+          "line": 16,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.skills",
+          "line": 17,
+          "relative": false
+        },
+        {
+          "module": "graspgen_libero_bridge.surface_packing",
+          "line": 83,
+          "relative": false
+        }
+      ],
+      "config_reads": [],
+      "coupling_evidence": {
+        "simulator_api": [
+          {
+            "line": 93,
+            "text": "m,d=shared.env.sim.model,shared.env.sim.data"
+          },
+          {
+            "line": 125,
+            "text": "m=shared.env.sim.model"
+          },
+          {
+            "line": 168,
+            "text": "np.savez_compressed(out/'FINAL_PHYSICS_STATE.npz',qpos=np.asarray(sim.data.qpos),qvel=np.asarray(sim.data.qvel),"
+          },
+          {
+            "line": 169,
+            "text": "act=np.asarray(sim.data.act),time=float(sim.data.time),ctrl=np.asarray(sim.data.ctrl))"
+          }
+        ],
+        "libero_task_api": [
+          {
+            "line": 77,
+            "text": "original_goals=json.loads(json.dumps(shared.task_env.parsed_problem['goal_state']))"
+          },
+          {
+            "line": 78,
+            "text": "names=set(shared.task_env.obj_body_id)|set(shared.task_env.parsed_problem.get('fixtures',{}))"
+          },
+          {
+            "line": 79,
+            "text": "names.update(shared.task_env.parsed_problem.get('regions',{}).get(k,{}).get('target')"
+          },
+          {
+            "line": 80,
+            "text": "for k in shared.task_env.parsed_problem.get('regions',{}))"
+          },
+          {
+            "line": 82,
+            "text": "plan=schedule(original_goals,names,shared.task_env.parsed_problem.get('regions',{}),shared.provenance['language'])"
+          },
+          {
+            "line": 94,
+            "text": "info=dict(goals=original_goals,plan=plan,state=shared.state(),objects=shared.task_env.obj_body_id,"
+          },
+          {
+            "line": 95,
+            "text": "parsed_problem=shared.task_env.parsed_problem,joints=[],sites=[],geoms=[])"
+          },
+          {
+            "line": 114,
+            "text": "if shared.task_env._eval_predicate(stage['predicate']):"
+          },
+          {
+            "line": 122,
+            "text": "obj=shared.task_env.fixtures_dict.get(target)"
+          },
+          {
+            "line": 129,
+            "text": "if not shared.task_env._eval_predicate(predicate):"
+          },
+          {
+            "line": 140,
+            "text": "met=bool(shared.task_env._eval_predicate(stage['predicate']))"
+          },
+          {
+            "line": 155,
+            "text": "assert shared.task_env.parsed_problem['goal_state']==original_goals"
+          },
+          {
+            "line": 166,
+            "text": "result['original_goals_unchanged']=original_goals is not None and shared.task_env.parsed_problem['goal_state']==original_goals"
+          }
+        ],
+        "robot_assumption": []
+      }
+    }
+  ],
+  "evaluation_helpers_in_source_archive": {
+    "run_queue.py": {
+      "sha256": "9b6b36d9d004bae3dd97c604721fd1a6201a9171eec70ff737023ff640e8fc56",
+      "bytes": 7281
+    },
+    "setup_remote.py": {
+      "sha256": "005d57e577d109817ddac447bcf75bd1cbf6d0359dc04b88931d203c1f92cc3e",
+      "bytes": 4999
+    },
+    "activate_runtime.py": {
+      "sha256": "442a1db279f10040d12bee8a92edd60ecf571560866f358bb104ceeba13756db",
+      "bytes": 925
+    },
+    "extract_runtime.py": {
+      "sha256": "ebc685a0d83db8f6d84b43b8b6d268afae807f7dd84839307ef917404f40f41d",
+      "bytes": 2022
+    },
+    "probe_runtime.py": {
+      "sha256": "f4a3d7f1beba3b00a56fb7899bcc2ef137e138a459db73a297be578d04be8a0f",
+      "bytes": 2060
+    },
+    "launch.py": {
+      "sha256": "e5deefd90ff5a960097049f272cdf2f75b1458814a07ceb259d6bbc45b723eb1",
+      "bytes": 1700
+    },
+    "status.py": {
+      "sha256": "9ff724672284bf7d6f2333c495bf7fe7125b6a1ee63bbd99b618deca4e717cdb",
+      "bytes": 2343
+    },
+    "finalize.py": {
+      "sha256": "a7e15a40b5c0b210ec397efa94078895db124882c4f3c247441a7f566d207b49",
+      "bytes": 2195
+    },
+    "package.py": {
+      "sha256": "c25b2be1dfef5e7a0922106d57958556b8019803da706e63f14d19576517ce71",
+      "bytes": 16525
+    },
+    "render_report.py": {
+      "sha256": "3e7b268bae2ea82965db82c03c134a3384f258e408cdc5beb95765956cfa5a06",
+      "bytes": 17437
+    },
+    "validate_delivery.py": {
+      "sha256": "6c1b159be5d09b398d3ab7d91dbe83e35f637aa22e1bac4188b75a191642084f",
+      "bytes": 5177
+    }
+  }
+}

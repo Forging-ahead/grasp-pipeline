@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graspgen-libero-bridge"
+version = "0.1.0"
+description = "Organized GraspGen/cuRobo LIBERO code policy, preserving frozen v10 behavior"
+requires-python = ">=3.10"
+
+[project.scripts]
+grasp-pipeline = "graspgen_libero_bridge.runtime.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["graspgen_libero_bridge*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
