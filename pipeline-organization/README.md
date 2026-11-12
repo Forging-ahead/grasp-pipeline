@@ -10,7 +10,7 @@
 | 整理后的代码、入口与实际改动 | [代码入口](../grasp-pipeline/README.md) · [第二阶段改动说明](../grasp-pipeline/docs/CHANGES_PHASE2.md) |
 | 接入字段、方法、能力要求与参考 | [第一版接口](../grasp-pipeline/docs/interfaces/README.md) · [第三阶段交付](../grasp-pipeline/docs/CHANGES_PHASE3.md) |
 | 接入方需要提供、修改和验证什么 | [外部实施指南](../grasp-pipeline/docs/integration/README.md) · [第四阶段交付](../grasp-pipeline/docs/CHANGES_PHASE4.md) |
-| 如何部署、检查与转交代码 | [部署说明](../grasp-pipeline/deploy/README.md) · [第五阶段交付](../grasp-pipeline/docs/CHANGES_PHASE5.md) · [源码 ZIP](../deliverables/grasp-pipeline-v10-handoff-20261112.zip) |
+| 如何部署、检查与转交代码 | [部署说明](../grasp-pipeline/deploy/README.md) · [第五阶段交付](../grasp-pipeline/docs/CHANGES_PHASE5.md)；历史源码 ZIP 单独提供，不在 Git 中 |
 | 当前哪份代码有效、实验结果对应哪一版 | [基线与实验产物](docs/BASELINE.md) |
 | 各组件做什么、调用顺序是什么 | [代码和数据流程](docs/CODE_MAP.md) |
 | 配置在哪里、哪些值实际生效、需要哪些环境 | [配置与依赖](docs/CONFIG_AND_RUNTIME.md) |
@@ -39,6 +39,6 @@ pipeline-organization/
 
 第四阶段已给出输入与责任清单、21 个现有源码定位点、四个配置/接口样例、G0–G8 验收和结果交付说明，核对了 RoboTwin/RoboCasa 官方资料与固定 RPent 参考。文档、示例、轻量 CLI 和独立代码目录检查通过，原 85 个已验收文件未变。
 
-第五阶段补齐三环境部署与只读启动前检查，独立解压候选包的 121 项 CPU 测试与三个组件帮助入口通过。最终 ZIP 的 224 个内容文件、50 个冻结参考、文档链接和实测源码一致性核验通过，见[归档验收](../deliverables/grasp-pipeline-v10-handoff-20261112.validation.json)。
+第五阶段补齐三环境部署与只读启动前检查，独立解压候选包的 121 项 CPU 测试与三个组件帮助入口通过。最终 ZIP 的 224 个内容文件、50 个冻结参考、文档链接和实测源码一致性核验通过；历史交付包及其 `.validation.json` 单独提供，不包含在 Git checkout 中。仓库内的版本与核验说明见[交付版本与验证范围](../grasp-pipeline/docs/RELEASE_VALIDATION.md)。
 
 目前尚未新增通用环境适配器，旧驱动没有切换到新接口，也未在新环境上运行轨迹。CUDA/EGL、模型推理和完整任务仍需在实际部署机器另行验收；文档完成不表示换一个环境名就能运行。

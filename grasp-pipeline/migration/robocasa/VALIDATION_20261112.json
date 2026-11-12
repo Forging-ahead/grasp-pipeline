@@ -1,0 +1,223 @@
+{
+  "schema_version": "robocasa-development-validation-1",
+  "date": "2026-11-12",
+  "branch": "RoboCasa",
+  "base_commit": "298ce25d9e0e2a606e63f39bedc58eadcea5fab3",
+  "actor_source_digest": "e968707c69473f8bd1a321faaf5334dc47d07df43d0f41695a2c4198d917abad",
+  "policy_digest": "f50ffeeace3f572222c24dd198f0af3f27b3b6ab48c896d67781c5fac85c192f",
+  "teacher_mode": "rgbd_partial_cloud_privileged_teacher",
+  "upstream": {
+    "robocasa_commit": "3443cdf3dd20f9ae8ed41adba442059b506891d0",
+    "robosuite_commit": "5ce6643f3092639d08f7b0f90ed1c6a84f50552c",
+    "python": "3.11.10",
+    "mujoco": "3.3.1",
+    "numpy": "2.2.5"
+  },
+  "assets": {
+    "verified_archives": 90,
+    "completed": true,
+    "source": "official Hugging Face datasets at pinned revisions, mirrored downloads checked against published SHA256",
+    "revisions": {
+      "robocasa/robocasa-assets": "1b92c3d02ca4354984fec961357db0bff7b32166",
+      "nvidia/PhysicalAI-Robotics-Manipulation-Objects-Kitchen-MJCF": "420a04af939c34873e6839a586b70844baf28aab"
+    }
+  },
+  "tests": {
+    "robocasa": {
+      "tests": "64",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "5.025"
+    },
+    "unchanged_libero": {
+      "tests": "121",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "42.935"
+    }
+  },
+  "native_control": {
+    "mode": "validate",
+    "executed": true,
+    "source_unchanged": true,
+    "targets": 12,
+    "physical_steps": 143
+  },
+  "extra_development_pilot": {
+    "task_id": "PickPlaceCounterToStove",
+    "seed": 1,
+    "split": "pretrain",
+    "pipeline_success": true,
+    "native_success_at_end": true,
+    "physical_steps": 547,
+    "wall_s": 241.93185524642467
+  },
+  "extra_pilot_scope": "Additional development diagnostic; excluded from frozen ten-episode matrix and its denominator.",
+  "teacher_keypoints": {
+    "count": 4,
+    "observation_indices": [
+      0,
+      188,
+      229,
+      417
+    ],
+    "label_source": "code_policy_teacher",
+    "vlm_decisions": false,
+    "ready_for_sft": false,
+    "student_fields": [
+      "q_arm",
+      "qvel_arm",
+      "q_fingers",
+      "joint_names",
+      "finger_joint_names",
+      "world_T_eef",
+      "sim_time"
+    ],
+    "student_rgb_cameras": 3,
+    "student_observability_audit": "pending"
+  },
+  "frozen_matrix": {
+    "experiment": "E1_pick_place_development",
+    "split": "pretrain",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "planned_episodes": 10,
+    "completed": true,
+    "pipeline_successes": 0,
+    "native_final_successes": 0,
+    "tasks_with_success": 0,
+    "planned_tasks": 2,
+    "videos": 10,
+    "decoded_videos": 10,
+    "failures": {
+      "SEARCH_BUDGET_EXHAUSTED": 6,
+      "curobo_plan_failed": 1,
+      "invalid_start_state": 2,
+      "COLLISION_REJECTED": 1
+    },
+    "rows": [
+      {
+        "task_id": "PickPlaceCounterToStove",
+        "seed": 0,
+        "pipeline_success": false,
+        "native_success": false,
+        "physical_steps": 0,
+        "failure": "SEARCH_BUDGET_EXHAUSTED",
+        "failure_explanation": "抓取前未找到可执行路径，尚未闭合夹爪"
+      },
+      {
+        "task_id": "PickPlaceCounterToStove",
+        "seed": 1,
+        "pipeline_success": false,
+        "native_success": false,
+        "physical_steps": 434,
+        "failure": "curobo_plan_failed",
+        "failure_explanation": "放下后的撤离路径规划失败"
+      },
+      {
+        "task_id": "PickPlaceCounterToStove",
+        "seed": 2,
+        "pipeline_success": false,
+        "native_success": false,
+        "physical_steps": 147,
+        "failure": "invalid_start_state",
+        "failure_explanation": "规划器认为当前机器人姿态与障碍物冲突，拒绝继续；需核对球模型与真实接触"
+      },
+      {
+        "task_id": "PickPlaceCounterToStove",
+        "seed": 3,
+        "pipeline_success": false,
+        "native_success": false,
+        "physical_steps": 0,
+        "failure": "SEARCH_BUDGET_EXHAUSTED",
+        "failure_explanation": "抓取前未找到可执行路径，尚未闭合夹爪"
+      },
+      {
+        "task_id": "PickPlaceCounterToStove",
+        "seed": 4,
+        "pipeline_success": false,
+        "native_success": false,
+        "physical_steps": 149,
+        "failure": "invalid_start_state",
+        "failure_explanation": "规划器认为当前机器人姿态与障碍物冲突，拒绝继续；需核对球模型与真实接触"
+      },
+      {
+        "task_id": "PickPlaceSinkToCounter",
+        "seed": 0,
+        "pipeline_success": false,
+        "native_success": false,
+        "physical_steps": 0,
+        "failure": "SEARCH_BUDGET_EXHAUSTED",
+        "failure_explanation": "抓取前未找到可执行路径，尚未闭合夹爪"
+      },
+      {
+        "task_id": "PickPlaceSinkToCounter",
+        "seed": 1,
+        "pipeline_success": false,
+        "native_success": false,
+        "physical_steps": 0,
+        "failure": "SEARCH_BUDGET_EXHAUSTED",
+        "failure_explanation": "抓取前未找到可执行路径，尚未闭合夹爪"
+      },
+      {
+        "task_id": "PickPlaceSinkToCounter",
+        "seed": 2,
+        "pipeline_success": false,
+        "native_success": false,
+        "physical_steps": 179,
+        "failure": "COLLISION_REJECTED",
+        "failure_explanation": "到达接近点后，最后靠近物体的路径未通过真实几何检查"
+      },
+      {
+        "task_id": "PickPlaceSinkToCounter",
+        "seed": 3,
+        "pipeline_success": false,
+        "native_success": false,
+        "physical_steps": 0,
+        "failure": "SEARCH_BUDGET_EXHAUSTED",
+        "failure_explanation": "抓取前未找到可执行路径，尚未闭合夹爪"
+      },
+      {
+        "task_id": "PickPlaceSinkToCounter",
+        "seed": 4,
+        "pipeline_success": false,
+        "native_success": false,
+        "physical_steps": 0,
+        "failure": "SEARCH_BUDGET_EXHAUSTED",
+        "failure_explanation": "抓取前未找到可执行路径，尚未闭合夹爪"
+      }
+    ]
+  },
+  "artifact_checks": {
+    "report_embedded_videos": 10,
+    "report_sha256": "2818186aa0b728472e75b7a0ebfdfdf5f8cfc2c029c7c17d0f3a0b72d0f78603",
+    "all_videos_decoded": true
+  },
+  "libero_preservation": {
+    "mapped_original_python_files": 39,
+    "effective_config_comparisons": 1040,
+    "differences": 0,
+    "fresh_libero_gpu_rollouts": false
+  },
+  "main_experiment": {
+    "executed": false,
+    "readiness_passed": false,
+    "planned_episodes": 240
+  },
+  "unfinished": [
+    "native physical acceptance of articulation/navigation/composite skills",
+    "automatic base/torso positioning for pick-place",
+    "public nine-Protocol and versioned Schema binding",
+    "paired candidate replay and component ablations",
+    "student observability and keypoint audit",
+    "full timing accounting on every failure exit"
+  ],
+  "scope": "Initial native integration and failed stability validation; not a completed M0-M5 port or evidence of unseen-task generalization."
+}

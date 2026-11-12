@@ -1,0 +1,409 @@
+{
+  "document_type": "robocasa_experiment_design",
+  "schema_version": "plan-1.0",
+  "status": "implementation_in_progress_main_not_executed",
+  "adapter_implemented": true,
+  "consumed_by_current_runtime": true,
+  "updated_at": "2026-11-12",
+  "branch": "RoboCasa",
+  "pipeline_base_commit": "298ce25d9e0e2a606e63f39bedc58eadcea5fab3",
+  "version_policy": {
+    "freeze_before_main_evaluation": true,
+    "changes_require_new_run_version": true,
+    "merge_historical_best_results": false,
+    "task_specific_world_coordinates_allowed": false,
+    "task_semantic_bindings_allowed": true
+  },
+  "environment": {
+    "benchmark": "RoboCasa365",
+    "repository": "https://github.com/robocasa/robocasa",
+    "candidate_commit": "3443cdf3dd20f9ae8ed41adba442059b506891d0",
+    "candidate_installed_or_runtime_verified": true,
+    "robot": "PandaOmron",
+    "robosuite_tested_commit": "5ce6643f3092639d08f7b0f90ed1c6a84f50552c",
+    "assets_revision": {
+      "robocasa/robocasa-assets": "1b92c3d02ca4354984fec961357db0bff7b32166",
+      "nvidia/PhysicalAI-Robotics-Manipulation-Objects-Kitchen-MJCF": "420a04af939c34873e6839a586b70844baf28aab"
+    },
+    "use_rpent_rldx_policy": false,
+    "main_requires_full_mobile_task_handling": true,
+    "initial_local_stage_base_and_torso_held": true,
+    "horizon_source": "fixed-version native dataset registry; verify each task at startup; reference values are not a replacement for runtime validation",
+    "native_kitchen_runtime_verified": true
+  },
+  "input_mode": {
+    "name": "rgbd_partial_cloud_privileged_teacher",
+    "grasp_cloud": "visible target surfaces from synchronized RGB-D and simulator instance mask",
+    "grasp_cloud_points": 2048,
+    "grasp_input_uses_complete_object_geometry": false,
+    "uses_ground_truth_target_identity": true,
+    "uses_ground_truth_segmentation": true,
+    "uses_ground_truth_object_pose_for_execution": true,
+    "uses_ground_truth_collision_geometry": true,
+    "uses_native_task_and_region_semantics": true,
+    "rgb_features_consumed_by_graspgen": false,
+    "teacher_decision_source": "code_policy_teacher"
+  },
+  "tasks": [
+    {
+      "task_id": "PickPlaceCounterToStove",
+      "gym_id": "robocasa/PickPlaceCounterToStove",
+      "category": "open_area_pick_place",
+      "role": "development",
+      "reference_horizon_steps": 600,
+      "reference_registry_splits": [
+        "pretrain",
+        "target"
+      ]
+    },
+    {
+      "task_id": "PickPlaceSinkToCounter",
+      "gym_id": "robocasa/PickPlaceSinkToCounter",
+      "category": "open_area_pick_place",
+      "role": "development",
+      "reference_horizon_steps": 900,
+      "reference_registry_splits": [
+        "pretrain",
+        "target"
+      ]
+    },
+    {
+      "task_id": "PickPlaceCounterToCabinet",
+      "gym_id": "robocasa/PickPlaceCounterToCabinet",
+      "category": "compartment_pick_place",
+      "role": "not_used_for_tuning",
+      "reference_horizon_steps": 750,
+      "reference_registry_splits": [
+        "pretrain",
+        "target"
+      ]
+    },
+    {
+      "task_id": "PickPlaceDrawerToCounter",
+      "gym_id": "robocasa/PickPlaceDrawerToCounter",
+      "category": "compartment_pick_place",
+      "role": "not_used_for_tuning",
+      "reference_horizon_steps": 750,
+      "reference_registry_splits": [
+        "pretrain",
+        "target"
+      ]
+    },
+    {
+      "task_id": "OpenDrawer",
+      "gym_id": "robocasa/OpenDrawer",
+      "category": "drawer_and_cabinet",
+      "role": "development",
+      "reference_horizon_steps": 750,
+      "reference_registry_splits": [
+        "pretrain",
+        "target"
+      ]
+    },
+    {
+      "task_id": "OpenCabinet",
+      "gym_id": "robocasa/OpenCabinet",
+      "category": "drawer_and_cabinet",
+      "role": "development",
+      "reference_horizon_steps": 1050,
+      "reference_registry_splits": [
+        "pretrain",
+        "target"
+      ]
+    },
+    {
+      "task_id": "TurnOnSinkFaucet",
+      "gym_id": "robocasa/TurnOnSinkFaucet",
+      "category": "knob_operation",
+      "role": "development",
+      "reference_horizon_steps": 600,
+      "reference_registry_splits": [
+        "pretrain",
+        "target"
+      ]
+    },
+    {
+      "task_id": "TurnOffStove",
+      "gym_id": "robocasa/TurnOffStove",
+      "category": "knob_operation",
+      "role": "not_used_for_tuning",
+      "reference_horizon_steps": 750,
+      "reference_registry_splits": [
+        "pretrain",
+        "target"
+      ]
+    },
+    {
+      "task_id": "NavigateKitchen",
+      "gym_id": "robocasa/NavigateKitchen",
+      "category": "navigation",
+      "role": "development",
+      "reference_horizon_steps": 450,
+      "reference_registry_splits": [
+        "pretrain",
+        "target"
+      ]
+    },
+    {
+      "task_id": "StackBowlsCabinet",
+      "gym_id": "robocasa/StackBowlsCabinet",
+      "category": "composite",
+      "role": "development",
+      "reference_horizon_steps": 2100,
+      "reference_registry_splits": [
+        "pretrain",
+        "target"
+      ]
+    },
+    {
+      "task_id": "SetUpCuttingStation",
+      "gym_id": "robocasa/SetUpCuttingStation",
+      "category": "composite",
+      "role": "not_used_for_tuning",
+      "reference_horizon_steps": 2400,
+      "reference_registry_splits": [
+        "pretrain",
+        "target"
+      ]
+    },
+    {
+      "task_id": "ArrangeBreadBasket",
+      "gym_id": "robocasa/ArrangeBreadBasket",
+      "category": "composite",
+      "role": "not_used_for_tuning",
+      "reference_horizon_steps": 4350,
+      "reference_registry_splits": [
+        "target"
+      ]
+    }
+  ],
+  "experiments": {
+    "E1_minimal_pick_place_port": {
+      "split": "pretrain",
+      "tasks": [
+        "PickPlaceCounterToStove",
+        "PickPlaceSinkToCounter"
+      ],
+      "seed_start_inclusive": 0,
+      "seed_stop_exclusive": 5,
+      "planned_episodes_per_version": 10,
+      "purpose": "Record environment-only migration before policy extensions",
+      "execution_available": false,
+      "actual_status": "Unchanged-policy environment-only baseline was not collected before compatibility/policy debugging; do not relabel later runs as this baseline."
+    },
+    "E1_development_snapshot": {
+      "split": "pretrain",
+      "task_selector": "role == development",
+      "seed_start_inclusive": 0,
+      "seed_stop_exclusive": 5,
+      "planned_episodes_per_snapshot": 35,
+      "all_development_attempts_retained": true,
+      "tentative_pick_place_gate": "At least 3/5 complete successes in each of the two development pick-place tasks; other required skills need physical execution evidence"
+    },
+    "E2_main": {
+      "split": "target",
+      "task_selector": "all 12 tasks",
+      "seed_start_inclusive": 100,
+      "seed_stop_exclusive": 120,
+      "planned_episodes": 240,
+      "formal_external_attempts_per_cell": 1,
+      "tentative_trajectory_coverage_target": {
+        "minimum_tasks": 8,
+        "minimum_distinct_initial_states_per_task": 2
+      },
+      "report_development_and_not_used_for_tuning_separately": true,
+      "unsupported_and_infrastructure_errors_remain_in_coverage_denominator": true,
+      "select_only_reachable_initial_states": false,
+      "use_same_source_and_config_for_entire_matrix": true
+    },
+    "E3_component_comparisons": {
+      "run_after_E2": true,
+      "tasks": [
+        "PickPlaceCounterToStove",
+        "PickPlaceSinkToCounter",
+        "PickPlaceCounterToCabinet"
+      ],
+      "split": "target",
+      "seed_start_inclusive": 100,
+      "seed_stop_exclusive": 110,
+      "episodes_per_variant": 30,
+      "reuse_full_pipeline_A_from_E2": true,
+      "additional_episodes": 90,
+      "variants": {
+        "A": "Full pipeline, reusing 30 E2 cases",
+        "B": "Same raw GraspGen candidates; fixed seeded random order instead of discriminator ranking",
+        "C": "Deterministic geometric/PCA proposals from the same partial cloud; identical downstream planner and controller",
+        "D": "Replace global cuRobo planning with Cartesian interpolation and local IK; retain collision validation"
+      },
+      "pairing": [
+        "same canonical initial scene and physics state",
+        "same synchronized initial observation",
+        "same candidate evaluation cap and physical retry budget",
+        "same native horizon and total wall budget"
+      ],
+      "do_not_disable_collisions": true,
+      "scoring_comparison_only_identical_until_first_branch_divergence": true,
+      "interpretation": "Implementation-specific paired evidence; not reproduction of every claim in the GraspGen paper"
+    },
+    "E4_cloud_diagnostic": {
+      "optional": true,
+      "tasks": [
+        "PickPlaceCounterToStove",
+        "PickPlaceSinkToCounter"
+      ],
+      "split": "pretrain",
+      "seed_start_inclusive": 200,
+      "seed_stop_exclusive": 210,
+      "variants": [
+        "single_view_partial",
+        "multi_view_visible_fusion",
+        "complete_geometry_oracle"
+      ],
+      "episodes_per_variant": 20,
+      "mix_oracle_into_main_results": false
+    },
+    "E5_expansion": {
+      "status": "after_representative_task_validation",
+      "task_list_source": "fixed-version native environment and task registry",
+      "predeclare_full_matrix": true,
+      "supported_and_unsupported_inventory_required": true
+    },
+    "E1_pick_place_development": {
+      "split": "pretrain",
+      "tasks": [
+        "PickPlaceCounterToStove",
+        "PickPlaceSinkToCounter"
+      ],
+      "seed_start_inclusive": 0,
+      "seed_stop_exclusive": 5,
+      "planned_episodes": 10,
+      "purpose": "Frozen current-code development validation after porting and debugging; not the unchanged-policy minimal baseline.",
+      "all_success_and_failure_cases_retained": true,
+      "main_or_unseen_evaluation": false
+    }
+  },
+  "budgets": {
+    "status": "proposed_calibrate_on_development_then_freeze",
+    "native_step_limit": "read and validate native task horizon; no extra multiplier",
+    "atomic_episode_wall_seconds": 900,
+    "composite_episode_wall_seconds": 1800,
+    "episode_wall_includes": [
+      "assigned initialization",
+      "model loading if performed for this episode",
+      "perception",
+      "planning and retries",
+      "execution",
+      "recording"
+    ],
+    "queue_wait_reported_separately": true,
+    "phase_budget_must_fit_total_budget": true,
+    "internal_retries": "finite shared skill configuration frozen before E2; every action counts",
+    "external_valid_failure_retries_allowed": false,
+    "infrastructure_retry_policy": "keep original error and separately identify any diagnostic retry; do not replace formal cell with best retry"
+  },
+  "engineering_gates": {
+    "status": "native_environment_and_12_target_unloaded_control_verified_full_pipeline_and_public_ports_pending",
+    "fk_valid_joint_configurations_min": 20,
+    "fk_position_error_max_m": 0.002,
+    "fk_rotation_error_max_deg": 1.0,
+    "unloaded_execution_targets_min": 10,
+    "tracking_position_error_max_m": 0.01,
+    "tracking_rotation_error_max_deg": 5.0,
+    "preview_continuous_state_restore_max_error": 1e-09,
+    "preview_discrete_state_restore_exact": true
+  },
+  "outcomes": {
+    "native_success_at_end": "native evaluator on last physical state",
+    "native_success_at_reset": "explicitly query native evaluator; do not rely on wrapper reset info",
+    "pipeline_success": "task actions executed, required stages completed, native final success, valid instruction order, and no already-complete-at-reset episode",
+    "training_candidate": "pipeline success plus stability, contact, temporal alignment, and student observation sufficiency audits",
+    "confidence_intervals": "per-task 95% Wilson with successes and denominator",
+    "official_leaderboard_equivalent": false
+  },
+  "required_artifacts": [
+    "environment/version lock",
+    "effective configuration and code fingerprint",
+    "original task metadata and success binding",
+    "compiled scene XML and asset fingerprints",
+    "layout/style/object identifiers",
+    "initial and final state, task/controller/RNG state or verified replay",
+    "all real actions and synchronized observations",
+    "stage goals and actual planner backend",
+    "candidate scores, rejection reasons and contact evidence",
+    "native success and termination signals",
+    "end-to-end and component timing",
+    "success and failure videos where environment initialization permits",
+    "keypoints and teacher provenance",
+    "complete matrix with explicit missing-artifact reasons"
+  ],
+  "sources": {
+    "checked_at": "2026-11-12",
+    "official_commit": "3443cdf3dd20f9ae8ed41adba442059b506891d0",
+    "official_commit_date": "2026-10-30T18:14:17Z",
+    "files": [
+      {
+        "path": "robocasa/utils/dataset_registry.py",
+        "sha256": "23e8e31bb56bae80de86c34eafadfe32dd1e1eba6608376152ba9fdda5532a4b",
+        "url": "https://github.com/robocasa/robocasa/blob/3443cdf3dd20f9ae8ed41adba442059b506891d0/robocasa/utils/dataset_registry.py"
+      },
+      {
+        "path": "robocasa/utils/env_utils.py",
+        "sha256": "2543d593897008b104c0fa7bb83c987675b4e583ae519b324de98f99c71a5fcd",
+        "url": "https://github.com/robocasa/robocasa/blob/3443cdf3dd20f9ae8ed41adba442059b506891d0/robocasa/utils/env_utils.py"
+      },
+      {
+        "path": "robocasa/__init__.py",
+        "sha256": "5be2bcb2be1639d30747ff6382e23611e6e3038721bca7d20ea97fa69d4e36f8",
+        "url": "https://github.com/robocasa/robocasa/blob/3443cdf3dd20f9ae8ed41adba442059b506891d0/robocasa/__init__.py"
+      }
+    ]
+  },
+  "next_step": "Validate complete native pick-place trajectories and remaining interfaces/skills; main evaluation remains gated",
+  "actual_exposure": {
+    "native_source_and_binding_inspection": "All 12 declared tasks",
+    "motion_policy_and_parameter_debugging_tasks": [
+      "PickPlaceCounterToStove",
+      "PickPlaceSinkToCounter"
+    ],
+    "binding_fix_observation": {
+      "ArrangeBreadBasket": "Native CABINET can be an already-open shelf without door joints; native is_open semantics used for a no-op stage."
+    },
+    "not_used_for_tuning_role_interpretation": "Not used for motion-parameter tuning; these tasks have had source/environment/binding inspection and are not completely unseen."
+  },
+  "last_completed_development_validation": {
+    "record": "../../migration/robocasa/VALIDATION_20261112.json",
+    "experiment": "E1_pick_place_development",
+    "source_digest": "e968707c69473f8bd1a321faaf5334dc47d07df43d0f41695a2c4198d917abad",
+    "policy_digest": "f50ffeeace3f572222c24dd198f0af3f27b3b6ab48c896d67781c5fac85c192f",
+    "planned_episodes": 10,
+    "pipeline_successes": 0,
+    "native_final_successes": 0,
+    "videos": 10,
+    "extra_success_pilot_excluded_from_matrix": true,
+    "main_executed": false,
+    "M2_stability_accepted": false
+  },
+  "last_completed_v10_migration_validation": {
+    "version": "robocasa-port-r10-v10",
+    "record": "../../migration/robocasa/VALIDATION_V10_MIGRATION_20261112.json",
+    "source_digest": "387084f9bee3cb24489e3cfa7c33815aab7a37dfb6408af09002bde3c0687a67",
+    "native_budget_selected_failure_regression": {
+      "planned": 3,
+      "pipeline_successes": 0
+    },
+    "teacher_budget_paired_diagnostic": {
+      "planned": 1,
+      "pipeline_successes": 1,
+      "physical_steps": 730
+    },
+    "teacher_budget_fresh_extra_demo": {
+      "pipeline_success": true,
+      "physical_steps": 710
+    },
+    "teacher_step_limit": 5000,
+    "native_horizon_of_demonstrated_task": 600,
+    "combined_success_rate_reported": false,
+    "full_current_version_ten_episode_matrix_executed": false,
+    "main_executed": false
+  }
+}

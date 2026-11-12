@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-12",
+  "purpose": "Organize and publish existing RoboCasa r10 source without changing measured actor behavior",
+  "source_digest": "387084f9bee3cb24489e3cfa7c33815aab7a37dfb6408af09002bde3c0687a67",
+  "actor_files_checked": 79,
+  "actor_files_changed": 0,
+  "existing_libero_files_checked": 39,
+  "effective_libero_config_comparisons": 1040,
+  "effective_libero_config_differences": 0,
+  "regression": {
+    "passed": 206,
+    "failed": 0,
+    "robocasa_cases": 85,
+    "original_libero_cases": 121,
+    "environment": "isolated Linux simulation interpreter with separate optional contract-check dependencies and data-disk temporary directory",
+    "junit_sha256": "9bc8f02236a93db49c58616a48b4d747d9a64117881b1f9f8ba408eb1e5a0c0c",
+    "junit_file": "outputs/robocasa-atomic65-r10/publish-regression-final-20261112.xml"
+  },
+  "documentation_checks": {
+    "RoboCasa": true,
+    "libero": true,
+    "note": "Checks cover baseline documentation, links and CLI; they do not evaluate new benchmark tasks"
+  },
+  "robocasa_cli": {
+    "help_passed": true,
+    "builtin_catalog_count": 12,
+    "dry_run_started_simulation": false
+  },
+  "scope": "Source organization and documentation publication only; no new GPU rollouts and no claim of new supported skills"
+}

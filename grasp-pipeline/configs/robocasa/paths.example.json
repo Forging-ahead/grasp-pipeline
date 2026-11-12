@@ -1,0 +1,9 @@
+{
+  "simulation_python": "/absolute/robocasa-simulation/bin/python",
+  "robocasa_repo": "/absolute/robocasa",
+  "grasp_repo": "/absolute/graspgen-curobo-collect",
+  "graspgen_python": "/absolute/graspgen/bin/python",
+  "graspgen_config": "/absolute/checkpoints/graspgen_franka_panda.yml",
+  "planner_python": "/absolute/planner-python-wrapper",
+  "robosuite_assets": "/absolute/robosuite/robosuite/models/assets"
+}

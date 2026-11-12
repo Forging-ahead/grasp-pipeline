@@ -1,0 +1,247 @@
+{
+  "schema_version": "robocasa-tasks-1",
+  "native_source_commit": "3443cdf3dd20f9ae8ed41adba442059b506891d0",
+  "task_binding_source": "native task class metadata and episode language; semantic binding only; no fixed world goals",
+  "tasks": [
+    {
+      "task_id": "PickPlaceCounterToStove",
+      "category": "open_area_pick_place",
+      "role": "development",
+      "available_splits": [
+        "pretrain",
+        "target"
+      ],
+      "reference_horizon_steps": 600,
+      "stages": [
+        {
+          "skill": "pick_place",
+          "target": "obj",
+          "destination": "container",
+          "destination_kind": "object"
+        }
+      ]
+    },
+    {
+      "task_id": "PickPlaceSinkToCounter",
+      "category": "open_area_pick_place",
+      "role": "development",
+      "available_splits": [
+        "pretrain",
+        "target"
+      ],
+      "reference_horizon_steps": 900,
+      "stages": [
+        {
+          "skill": "pick_place",
+          "target": "obj",
+          "destination": "counter",
+          "destination_kind": "fixture"
+        }
+      ]
+    },
+    {
+      "task_id": "PickPlaceCounterToCabinet",
+      "category": "compartment_pick_place",
+      "role": "not_used_for_tuning",
+      "available_splits": [
+        "pretrain",
+        "target"
+      ],
+      "reference_horizon_steps": 750,
+      "stages": [
+        {
+          "skill": "pick_place",
+          "target": "obj",
+          "destination": "cab",
+          "destination_kind": "fixture"
+        }
+      ]
+    },
+    {
+      "task_id": "PickPlaceDrawerToCounter",
+      "category": "compartment_pick_place",
+      "role": "not_used_for_tuning",
+      "available_splits": [
+        "pretrain",
+        "target"
+      ],
+      "reference_horizon_steps": 750,
+      "stages": [
+        {
+          "skill": "pick_place",
+          "target": "obj",
+          "destination": "counter",
+          "destination_kind": "fixture"
+        }
+      ]
+    },
+    {
+      "task_id": "OpenDrawer",
+      "category": "drawer_and_cabinet",
+      "role": "development",
+      "available_splits": [
+        "pretrain",
+        "target"
+      ],
+      "reference_horizon_steps": 750,
+      "stages": [
+        {
+          "skill": "articulation",
+          "fixture": "drawer",
+          "goal": "open"
+        }
+      ]
+    },
+    {
+      "task_id": "OpenCabinet",
+      "category": "drawer_and_cabinet",
+      "role": "development",
+      "available_splits": [
+        "pretrain",
+        "target"
+      ],
+      "reference_horizon_steps": 1050,
+      "stages": [
+        {
+          "skill": "articulation",
+          "fixture": "fxtr",
+          "goal": "open"
+        }
+      ]
+    },
+    {
+      "task_id": "TurnOnSinkFaucet",
+      "category": "knob_operation",
+      "role": "development",
+      "available_splits": [
+        "pretrain",
+        "target"
+      ],
+      "reference_horizon_steps": 600,
+      "stages": [
+        {
+          "skill": "articulation",
+          "fixture": "sink",
+          "goal": "turn_on"
+        }
+      ]
+    },
+    {
+      "task_id": "TurnOffStove",
+      "category": "knob_operation",
+      "role": "not_used_for_tuning",
+      "available_splits": [
+        "pretrain",
+        "target"
+      ],
+      "reference_horizon_steps": 750,
+      "stages": [
+        {
+          "skill": "articulation",
+          "fixture": "stove",
+          "goal": "turn_off"
+        }
+      ]
+    },
+    {
+      "task_id": "NavigateKitchen",
+      "category": "navigation",
+      "role": "development",
+      "available_splits": [
+        "pretrain",
+        "target"
+      ],
+      "reference_horizon_steps": 450,
+      "stages": [
+        {
+          "skill": "navigate",
+          "native_target": "target_pos",
+          "native_orientation": "target_ori"
+        }
+      ]
+    },
+    {
+      "task_id": "StackBowlsCabinet",
+      "category": "composite",
+      "role": "development",
+      "available_splits": [
+        "pretrain",
+        "target"
+      ],
+      "reference_horizon_steps": 2100,
+      "stages": [
+        {
+          "skill": "pick_place",
+          "target": "bowl2",
+          "destination": "cabinet",
+          "destination_kind": "fixture"
+        },
+        {
+          "skill": "pick_place",
+          "target": "bowl1",
+          "destination": "bowl2",
+          "destination_kind": "object",
+          "requires_previous": true
+        }
+      ]
+    },
+    {
+      "task_id": "SetUpCuttingStation",
+      "category": "composite",
+      "role": "not_used_for_tuning",
+      "available_splits": [
+        "pretrain",
+        "target"
+      ],
+      "reference_horizon_steps": 2400,
+      "stages": [
+        {
+          "skill": "pick_place",
+          "target": "knife",
+          "destination": "receptacle",
+          "destination_kind": "object"
+        },
+        {
+          "skill": "pick_place",
+          "target": "meat",
+          "destination": "receptacle",
+          "destination_kind": "object",
+          "requires_previous": true
+        }
+      ]
+    },
+    {
+      "task_id": "ArrangeBreadBasket",
+      "category": "composite",
+      "role": "not_used_for_tuning",
+      "available_splits": [
+        "target"
+      ],
+      "reference_horizon_steps": 4350,
+      "stages": [
+        {
+          "skill": "articulation",
+          "fixture": "cab",
+          "goal": "open"
+        },
+        {
+          "skill": "pick_place",
+          "target": "bread",
+          "destination": "basket",
+          "destination_kind": "object",
+          "requires_previous": true
+        },
+        {
+          "skill": "pick_place",
+          "target": "basket",
+          "destination": "dining_table",
+          "destination_kind": "fixture",
+          "carried_contents": [
+            "bread"
+          ],
+          "requires_previous": true
+        }
+      ]
+    }
+  ]
+}

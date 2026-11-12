@@ -2,14 +2,18 @@
 
 这是从最终 v10 整理出的独立工作目录。它保留原有 code policy、GraspGen、cuRobo、MuJoCo 局部 IK 和 OSC 执行逻辑，将源码、配置、入口、测试与历史测评工具分开。
 
-目前实际环境仍是 LIBERO、单 Panda 和原有夹爪。接入约定见 [第一版接口](docs/interfaces/README.md)；现有驱动尚未改为通过这些接口调用，本轮没有实现 RoboTwin 或 RoboCasa 适配。
+`RoboCasa` 分支保留原 LIBERO 入口，增加独立的 RoboCasa/PandaOmron 接入，复用成熟 v10 的抓放、规划与控制规则。RoboCasa 的部署、组件和命令见[分支入口](docs/robocasa/README.md)，结果及未支持技能见[65 项覆盖记录](docs/robocasa/ATOMIC65_RUN.md)。当前实现尚未完成通用 Protocol 接线，也未实现 RoboTwin 适配。
+
+接入新的 benchmark 应从 `libero` 分支继承已有实现，遵循[基线继承要求](docs/integration/BASELINE_FIRST.md)，不要根据流程图重新写简化策略。
 
 ## 目录
 
 ```text
 grasp-pipeline/
   run.py                         统一启动入口
+  robocasa.py                    RoboCasa 独立入口（不改变 run.py）
   apps/libero/run_task.py         连续任务驱动
+  apps/robocasa/run_task.py       RoboCasa 连续回合驱动
   src/graspgen_libero_bridge/
     policy/                      技能编排、抓放、搬运和放置策略
     models/                      GraspGen 工作进程
@@ -17,6 +21,7 @@ grasp-pipeline/
     control/                     OSC 跟踪、监测和记录
     perception/                  点云处理
     adapters/libero/              LIBERO 状态、场景、区域和关节几何
+    adapters/robocasa/            RoboCasa 环境、任务、观测、场景与机器人绑定
     common/                      坐标、RPC、错误和路径工具
     runtime/                     配置加载和命令行
   configs/                       任务、原策略覆盖、部署路径与旧单任务示例
@@ -56,6 +61,7 @@ python3 run.py legacy doctor --config configs/examples/single_task.v10.json
 ## 阅读与验证
 
 - [部署依赖、路径与启动检查](deploy/README.md)
+- [RoboCasa 组件、运行与验证入口](docs/robocasa/README.md)
 - [交付版本与验证范围](docs/RELEASE_VALIDATION.md)
 - [组件结构与原文件映射](docs/LAYOUT.md)
 - [配置来源与优先级](configs/README.md)

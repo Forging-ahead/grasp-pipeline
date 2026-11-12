@@ -1,0 +1,302 @@
+{
+  "schema_version": "robocasa-v10-migration-validation-1",
+  "date": "2026-11-12",
+  "branch": "RoboCasa",
+  "version": "robocasa-port-r10-v10",
+  "source_digest": "387084f9bee3cb24489e3cfa7c33815aab7a37dfb6408af09002bde3c0687a67",
+  "purpose": "Restore mature LIBERO v10 rules through native RoboCasa bindings; initial data-collection validation, not full benchmark evaluation.",
+  "tests": {
+    "robocasa": {
+      "tests": "80",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "5.545"
+    },
+    "unchanged_libero": {
+      "tests": "121",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "38.443"
+    }
+  },
+  "libero_preservation": {
+    "original_python_files": 39,
+    "effective_config_comparisons": 1040,
+    "differences": 0
+  },
+  "shared_rules": {
+    "approach_distances_m": [
+      0.1,
+      0.05
+    ],
+    "transfer_heights_m": [
+      0.12,
+      0.08,
+      0.04,
+      0.16,
+      0.2
+    ],
+    "transfer_yaw_degrees": [
+      0,
+      45,
+      -45,
+      90,
+      -90,
+      180
+    ],
+    "plan_timeout_s": 12,
+    "native_descent_fallback": true,
+    "grasp_control_target_margin_m": 0.01,
+    "planning_joint_margin_rad": 0.0001,
+    "joint_reference_margin_rad": 0.02,
+    "joint_recovery_reference_margin_rad": 0.2,
+    "joint_recovery_steps": 100,
+    "position_integral_gain": 0.8,
+    "position_integral_bound_m": 0.008,
+    "waypoint_max_steps": 120,
+    "selection_rounds": 6,
+    "max_candidates_per_round": 30,
+    "native_candidates_per_round": 12,
+    "selection_timeout_s": 180,
+    "minimum_downward_approach": 0.0,
+    "geometric_placement_search": true,
+    "surface_release_search": true,
+    "open_container_release_search": true,
+    "container_xy_search": true,
+    "static_container_candidate_search": true,
+    "place_tracking_extra_steps": 240,
+    "place_tracking_extension_radius_m": 0.015
+  },
+  "directly_reused_implementations": [
+    "PickPlace.select_candidate",
+    "PickPlace.recover_native_descent",
+    "PickPlace.transfer_with_alternatives",
+    "PickPlace.place_in_container_static",
+    "plan_cartesian",
+    "preview_grasp_contacts",
+    "container_release_candidates",
+    "transfer_candidates",
+    "Controller.move_to",
+    "orientation_candidates",
+    "opening_offsets",
+    "can_retrace_after_ik_failure"
+  ],
+  "native_budget_regression": {
+    "selected_known_failure_cases": 3,
+    "complete": true,
+    "pipeline_successes": 0,
+    "native_final_successes": 0,
+    "policy_digest": "caa0a820d5911803a9bb3bfa80e1e5358f33dd319ce973668f4749f66cca041a",
+    "cases": [
+      {
+        "task_id": "PickPlaceCounterToStove",
+        "seed": 2,
+        "split": "pretrain",
+        "status": "failed",
+        "pipeline_success": false,
+        "native_success_at_end": false,
+        "native_budget_success": false,
+        "physical_steps": 600,
+        "native_horizon": 600,
+        "runner_step_limit": 600,
+        "budget_profile": "native",
+        "candidate_source": "recorded_identical_pool",
+        "paired_diagnostic": true,
+        "wall_s": 174.8864455372095,
+        "failure_code": "EPISODE_STOPPED",
+        "failure_stage": "retreat/waypoint_6",
+        "source_unchanged_during_run": true
+      },
+      {
+        "task_id": "PickPlaceCounterToStove",
+        "seed": 4,
+        "split": "pretrain",
+        "status": "failed",
+        "pipeline_success": false,
+        "native_success_at_end": false,
+        "native_budget_success": false,
+        "physical_steps": 473,
+        "native_horizon": 600,
+        "runner_step_limit": 600,
+        "budget_profile": "native",
+        "candidate_source": "recorded_identical_pool",
+        "paired_diagnostic": true,
+        "wall_s": 275.7552904933691,
+        "failure_code": "COLLISION_REJECTED",
+        "failure_stage": "transfer/waypoint_16",
+        "source_unchanged_during_run": true
+      },
+      {
+        "task_id": "PickPlaceCounterToStove",
+        "seed": 1,
+        "split": "pretrain",
+        "status": "failed",
+        "pipeline_success": false,
+        "native_success_at_end": false,
+        "native_budget_success": false,
+        "physical_steps": 481,
+        "native_horizon": 600,
+        "runner_step_limit": 600,
+        "budget_profile": "native",
+        "candidate_source": "recorded_identical_pool",
+        "paired_diagnostic": true,
+        "wall_s": 322.70122089236975,
+        "failure_code": "cartesian_ik_collision_blocked",
+        "failure_stage": "retry_release",
+        "source_unchanged_during_run": true
+      }
+    ]
+  },
+  "teacher_paired_diagnostic": {
+    "episodes": 1,
+    "pipeline_successes": 1,
+    "policy_digest": "ed4802ebe73aa031323603ac8369ccb513e97b46a503d32024f31f1e90041851",
+    "cases": [
+      {
+        "task_id": "PickPlaceCounterToStove",
+        "seed": 2,
+        "split": "pretrain",
+        "status": "success",
+        "pipeline_success": true,
+        "native_success_at_end": true,
+        "native_budget_success": false,
+        "physical_steps": 730,
+        "native_horizon": 600,
+        "runner_step_limit": 5000,
+        "budget_profile": "libero-v10-teacher",
+        "candidate_source": "recorded_identical_pool",
+        "paired_diagnostic": true,
+        "wall_s": 178.59678073972464,
+        "failure_code": null,
+        "failure_stage": null,
+        "source_unchanged_during_run": true
+      }
+    ]
+  },
+  "extra_fresh_teacher": {
+    "task_id": "PickPlaceCounterToStove",
+    "seed": 2,
+    "split": "pretrain",
+    "status": "success",
+    "pipeline_success": true,
+    "native_success_at_end": true,
+    "native_budget_success": false,
+    "physical_steps": 710,
+    "native_horizon": 600,
+    "runner_step_limit": 5000,
+    "budget_profile": "libero-v10-teacher",
+    "candidate_source": "fresh_graspgen_inference",
+    "paired_diagnostic": false,
+    "wall_s": 229.38133066147566,
+    "failure_code": null,
+    "failure_stage": null,
+    "source_unchanged_during_run": true
+  },
+  "teacher_budget": "Explicitly selected LIBERO v10 5000-step collection profile; native 600-step results kept separately; no combined success rate.",
+  "remaining_failure_evidence": {
+    "seed1": "Real lift-and-hold check failed: no bilateral grasp, object lift about 0.000063 m; failed-grasp retreat also rejected.",
+    "seed2": "Released the object, then reached 600 actions during retreat; the paired 5000-step collection diagnostic completed at 730.",
+    "seed4": "Physical carried-object/counter contact about 0.005 m; relative object/TCP pose changed near contact. This is not proof that static planning alone caused the failure."
+  },
+  "artifact_audit": {
+    "source_digest": "387084f9bee3cb24489e3cfa7c33815aab7a37dfb6408af09002bde3c0687a67",
+    "embedded_videos": 5,
+    "all_videos_decoded": true,
+    "report_sha256": "242d33168b8fb54a7a00d8609d8a09cbfefda608b3e74057e6957790a644febc",
+    "videos": [
+      {
+        "case": "v10-native-pairs-r10/cases/PickPlaceCounterToStove__seed000001",
+        "video_sha256": "cae8ff5e089c3806bd624cd7911f7627cf9d04e9c4268e6f10fe200c6f510e6a",
+        "decoded": true,
+        "physical_steps": 481,
+        "observation_frames": 482,
+        "budget_profile": "native",
+        "pipeline_success": false,
+        "native_budget_success": false
+      },
+      {
+        "case": "v10-native-pairs-r10/cases/PickPlaceCounterToStove__seed000002",
+        "video_sha256": "e415ba7e07ee5e62c872c5afd224363172270c1b3221e0e17ffa20c3a6e88132",
+        "decoded": true,
+        "physical_steps": 600,
+        "observation_frames": 601,
+        "budget_profile": "native",
+        "pipeline_success": false,
+        "native_budget_success": false
+      },
+      {
+        "case": "v10-native-pairs-r10/cases/PickPlaceCounterToStove__seed000004",
+        "video_sha256": "7c0c91d7df91db7789d8ffd4870860bd844c2100459384f123c518d957f09d69",
+        "decoded": true,
+        "physical_steps": 473,
+        "observation_frames": 474,
+        "budget_profile": "native",
+        "pipeline_success": false,
+        "native_budget_success": false
+      },
+      {
+        "case": "v10-teacher-pair-r10/cases/PickPlaceCounterToStove__seed000002",
+        "video_sha256": "dbf524a6192c2baddd4281f81bd05f008718748a16d1da2f278349b27b8e21e4",
+        "decoded": true,
+        "physical_steps": 730,
+        "observation_frames": 731,
+        "budget_profile": "libero-v10-teacher",
+        "pipeline_success": true,
+        "native_budget_success": false
+      },
+      {
+        "case": "v10-fresh-teacher-r10-001",
+        "video_sha256": "49fbd5aa07ca6df7263a30c5dfe41d0a8513a2fb7cb8ca907990fbca141ba0e0",
+        "decoded": true,
+        "physical_steps": 710,
+        "observation_frames": 711,
+        "budget_profile": "libero-v10-teacher",
+        "pipeline_success": true,
+        "native_budget_success": false
+      }
+    ],
+    "held_trace_first_change_over_2cm": {
+      "step": 471,
+      "held_relation_translation_change_m": 0.05034086046684756
+    },
+    "report_builder_sha256": "054c6c2955069780071f3e3c054e25e138be76e1b0a7576f0947ec9601f30cee"
+  },
+  "training": {
+    "exported_fresh_keypoints": 4,
+    "label_source": "code_policy_teacher",
+    "ready_for_sft": false
+  },
+  "full_ten_episode_current_version_matrix_executed": false,
+  "target_main_executed": false,
+  "unvalidated": [
+    "open drawers/cabinets and knob operations",
+    "mobile base/torso repositioning",
+    "composite task execution",
+    "public nine-Protocol/Schema binding",
+    "student observability audit",
+    "paired component ablation"
+  ],
+  "scope": "Three curated pretrain regressions and two extra same-seed collection diagnostics on one pick-place task; cannot infer unseen-task coverage or overall RoboCasa success rate.",
+  "delivery_tool_updates": {
+    "actor_unchanged": true,
+    "teacher_exports_include_budget_and_candidate_source": true,
+    "paired_or_extended_budget_evidence_excluded_from_main_readiness": true,
+    "export_schema": "robocasa-teacher-keypoint-2; additive teacher_execution audit metadata",
+    "tool_sha256": {
+      "build_report.py": "cc9ca548d92860db063f0c3628a69a7a1f5ea001693600560368a1e28eb5439c",
+      "build_readiness.py": "55ba35cfe9d1847865f1cc79e11e266a8ca2754f5a1c397b418387bb80f61bfa",
+      "export_keypoints.py": "233afa84c4fc91b6301beb20436e0847e4d4a9528a5d80dbef81c2b533a7af11"
+    }
+  },
+  "native_control_delivery": {
+    "status": "validation_passed",
+    "mode": "validate",
+    "validation_executed": true,
+    "physical_steps": 172,
+    "wall_s": 33.69549335539341,
+    "source_digest": "387084f9bee3cb24489e3cfa7c33815aab7a37dfb6408af09002bde3c0687a67",
+    "source_unchanged_during_run": true
+  }
+}
