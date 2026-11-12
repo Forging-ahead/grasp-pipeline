@@ -2,7 +2,7 @@
 
 这是从最终 v10 整理出的独立工作目录。它保留原有 code policy、GraspGen、cuRobo、MuJoCo 局部 IK 和 OSC 执行逻辑，将源码、配置、入口、测试与历史测评工具分开。
 
-`RoboCasa` 分支保留原 LIBERO 入口，增加独立的 RoboCasa/PandaOmron 接入，复用成熟 v10 的抓放、规划与控制规则。RoboCasa 的部署、组件和命令见[分支入口](docs/robocasa/README.md)，结果及未支持技能见[65 项覆盖记录](docs/robocasa/ATOMIC65_RUN.md)。当前实现尚未完成通用 Protocol 接线，也未实现 RoboTwin 适配。
+`RoboCasa` 分支保留原 LIBERO 入口，增加独立的 RoboCasa/PandaOmron 接入，复用成熟 v10 的抓放、规划与控制规则。RoboCasa 的部署、组件和命令见[分支入口](docs/robocasa/README.md)，最新修复复跑见 [r13 记录](docs/robocasa/R13_RETEST.md)，历史结果及未支持技能见[65 项覆盖记录](docs/robocasa/ATOMIC65_RUN.md)。当前实现尚未完成通用 Protocol 接线，也未实现 RoboTwin 适配。
 
 接入新的 benchmark 应从 `libero` 分支继承已有实现，遵循[基线继承要求](docs/integration/BASELINE_FIRST.md)，不要根据流程图重新写简化策略。
 

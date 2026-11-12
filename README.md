@@ -2,7 +2,7 @@
 
 基于 GraspGen、cuRobo 和 MuJoCo 的机器人操作管线：code policy 计算各阶段目标位姿，GraspGen 生成并评分抓取位姿，规划与控制模块负责路径、执行和结果记录。LIBERO 保留冻结 v10 行为；`RoboCasa` 分支新增独立的 PandaOmron 接入与验证代码。
 
-当前进度：LIBERO v10 的五个整理阶段均已完成。RoboCasa r10 复用成熟 v10 的原函数与共享规则，现已完成 **65 个基础任务的固定初态覆盖检查**：22 项实际执行共享抓放策略，4 项完整成功、14 项策略失败、4 项超时退出；其余 43 项尚未支持，只检查原生场景。成功为 4/22（全 65 项占比 4/65），其中 2 项在原生步数预算内完成，另 2 项只在显式 5000 步采集预算下成功。65 段视频全部保留并核验，尚未通过整体稳定性验收。详见[65 项覆盖结果](grasp-pipeline/docs/robocasa/ATOMIC65_RUN.md)、[v10 迁移记录](grasp-pipeline/docs/robocasa/V10_MIGRATION.md)及[接入状态](grasp-pipeline/docs/robocasa/IMPLEMENTATION_STATUS.md)。
+当前进度：LIBERO v10 整理完成。RoboCasa r13 修正迁移衔接后，已完整复跑同初态 22 项：**4/22 完整成功（18.2%），与 r10 持平；原生步数内成功由 2 项降至 1 项。** 尚未证明整体改善或稳定泛化。全部新旧视频保留并核验，225 项检查通过。详见 [r13 修复复跑](grasp-pipeline/docs/robocasa/R13_RETEST.md) 与 [接入状态](grasp-pipeline/docs/robocasa/IMPLEMENTATION_STATUS.md)。原 r10 的 [65 项覆盖记录](grasp-pipeline/docs/robocasa/ATOMIC65_RUN.md) 独立保留；其中另外 43 项尚未支持，本轮未开启或重测。
 
 - [整理入口与第一阶段交付](pipeline-organization/README.md)
 - [整理后的自有代码与运行入口](grasp-pipeline/README.md)
