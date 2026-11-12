@@ -10,6 +10,7 @@ assert len(rows)==len(catalog)==len(taxonomy)==130
 assert len({x['key'] for x in rows})==130
 assert {x['key'] for x in rows}=={x['key'] for x in catalog}=={x['key'] for x in taxonomy}
 tax={x['key']:x for x in taxonomy}
+frozen=json.loads((r/'FROZEN_CONFIGS.json').read_text())
 good=lambda x:bool(x['result'].get('pipeline_success') and x['result'].get('official_goal_at_end') and x['result'].get('steps',0)>0 and not x['queue_record']['watchdog_reached'] and x['queue_record']['result_identity_valid'])
 assert s['full_success']==sum(good(x) for x in rows)
 assert s['failed']==130-s['full_success']
@@ -33,6 +34,7 @@ videos=collections.Counter()
 with zipfile.ZipFile(r/'research-source.zip') as source:
     identity=json.loads(source.read('SOURCE_IDENTITY.json'));manifest=identity['files']
     assert identity['source_digest']==protocol['source_digest']
+    assert hashlib.sha256(source.read('harness/run_all.py')).hexdigest()==protocol['runner_sha256']
     assert hashlib.sha256(json.dumps(manifest,sort_keys=True,separators=(',',':')).encode()).hexdigest()==identity['source_digest']
     for n,h in manifest.items():assert hashlib.sha256(source.read('source/grasp-pipeline/'+n)).hexdigest()==h,n
     assert json.loads(source.read('ALL_TASKS.json'))==catalog
@@ -42,6 +44,9 @@ with zipfile.ZipFile(r/'research-source.zip') as source:
         assert row['full_success']==good(row)
         assert row['source_verified'] and row['initial_state_id']==d['initial_state_id']==q['initial_state_id']==0
         assert q['seed']==0 and q['evaluation_id']==protocol['evaluation_id']
+        actual=json.loads((case/'environment/config.json').read_text());expected=dict(frozen[row['key']])
+        for name in ['simulation_gpu','model_gpu','planner_gpu']:expected[name]=q['gpu']
+        assert all(actual.get(name)==value for name,value in expected.items()),row['key']
         assert q['source_commit']==protocol['source_commit'] and q['source_digest']==protocol['source_digest'] and q['source_verified_before'] and q['source_verified_after']
         assert d['driver_sha256']==manifest['apps/libero/run_task.py']
         assert d['source_sha256']=={n:h for n,h in manifest.items() if n.startswith('src/graspgen_libero_bridge/') and n.endswith('.py')}

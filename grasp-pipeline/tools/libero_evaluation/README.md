@@ -16,7 +16,7 @@ python tools/libero_evaluation/watch.py /data/libero130/evaluation --watch
 
 `GPU_SLOTS.json` 允许仅调整空闲卡的并发，每卡最多 4 项、总计最多 16 项；变动写入 `SCHEDULING_HISTORY.json`。每项启动和结束均核对 actor 指纹；结果必须完整匹配运行模块、驱动、任务和初态。错版本、缺结果、超时、零动作以及部分子目标满足不会被计为完整成功。没有外层策略结果重试，失败保留分母。
 
-模型权重和上游源文件的 `EXTERNAL_SOURCE_BEFORE.json`、部署检查及回归记录放在实验根目录（evaluation 的上一层）。只在全部 130 项结束后执行：
+模型权重和上游源文件的 `EXTERNAL_SOURCE_BEFORE.json`（路径到 SHA256 的映射）、部署检查及回归记录放在实验根目录（evaluation 的上一层）。同处还需保留原始 Git 归档 `libero-6d8cd7d-20261113.tar.gz`，供交付时恢复准确源码树；本轮服务器已准备这些前置记录。只在全部 130 项结束后执行：
 
 ```bash
 python tools/libero_evaluation/package_results.py /data/libero130/evaluation

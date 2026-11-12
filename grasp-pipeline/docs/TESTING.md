@@ -45,7 +45,7 @@ PYTHONPATH=src python3 -m unittest discover -s tests -p test_runtime_config.py -
 
 本地 71 个代码与配置文件和通过测试的服务器副本哈希一致。完整记录见 [CPU_VALIDATION.json](../migration/CPU_VALIDATION.json)，原日志和 JUnit 位于 [migration/cpu](../migration/cpu/)，源码指纹见 [TESTED_SOURCE_SHA256.json](../migration/TESTED_SOURCE_SHA256.json)。
 
-当前没有重新执行 130 任务，不能把 CPU 回归通过视为已测得整理版新成功率。
+上述整理验收阶段没有重新执行 130 任务，CPU 回归本身不代表实际成功率。2026-11-13 后续完成的全量实测见 [新复跑记录](LIBERO130_20261113.md)。
 
 ## 第三阶段与交付验证
 

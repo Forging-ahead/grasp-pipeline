@@ -4,7 +4,7 @@
 
 基于 GraspGen、cuRobo 和 LIBERO / MuJoCo 的机器人操作管线：code policy 计算各阶段目标位姿，GraspGen 生成并评分抓取位姿，规划与控制模块负责路径、执行和结果记录。目前运行链支持 LIBERO、单 Panda；其他 benchmark 的适配接口和实施指南已经整理，运行适配器尚未实现。
 
-当前进度：五个整理阶段均已完成，包括基线盘点、代码整理、接口定义、外部接入指南和验证交付。性能迭代保持停止；本轮没有实现 RoboTwin、RoboCasa 适配或重跑任务轨迹。
+当前进度：五个整理阶段已完成。2026-11-13 用本 `libero` 分支的冻结 v10 策略完整重跑 130 项：86 项流程与官方终态通过（66.2%），剔除 1 项已知指令顺序问题后为 85 条候选轨迹。130 段成功与失败视频均已保存并通过完整性校验，策略与参数保持不变。详见 [全量复跑记录](grasp-pipeline/docs/LIBERO130_20261113.md) 与 [机读结果](grasp-pipeline/migration/LIBERO130_20261113.json)。
 
 - [整理入口与第一阶段交付](pipeline-organization/README.md)
 - [整理后的自有代码与运行入口](grasp-pipeline/README.md)

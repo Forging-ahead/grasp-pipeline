@@ -1,5 +1,7 @@
 # GraspGen 管线
 
+2026-11-13 已使用本 `libero` 分支的冻结 v10 策略完整复跑 130 项：86 项流程通过，剔除 1 项已知顺序问题后为 85 条候选轨迹。130 段成功与失败视频全部通过完整性校验，策略参数未改。详见 [本轮记录](docs/LIBERO130_20261113.md) 和 [复跑工具](tools/libero_evaluation/README.md)。
+
 这是从最终 v10 整理出的独立工作目录。它保留原有 code policy、GraspGen、cuRobo、MuJoCo 局部 IK 和 OSC 执行逻辑，将源码、配置、入口、测试与历史测评工具分开。
 
 接入新 benchmark 时，从 `libero` 分支创建自己的分支，优先直接调用或继承这些成熟实现，只适配环境差异；不要从零重写简化策略。开发起点、复用要求和差异记录见[基线继承说明](docs/integration/BASELINE_FIRST.md)。

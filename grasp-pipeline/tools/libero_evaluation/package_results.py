@@ -1,5 +1,5 @@
 """Build a portable report exclusively from this frozen 130-task evaluation."""
-import base64, collections, concurrent.futures, datetime, hashlib, html, json, shutil, subprocess, zipfile, sys
+import base64, collections, concurrent.futures, datetime, hashlib, html, json, shutil, subprocess, zipfile, sys, tarfile
 from pathlib import Path
 import numpy as np
 import imageio_ffmpeg
@@ -25,6 +25,7 @@ class_order=['single_surface','single_container','single_compartment','single_ca
     'multi_place','stack_transport','drawer','microwave','stove','drawer_place','microwave_place','stove_place','push']
 tax={x['key']:x for x in taxonomy}
 cat={x['key']:x for x in catalog}
+frozen_configs=json.loads((r/'FROZEN_CONFIGS.json').read_text())
 
 def dump(path,data):
     path.write_text(json.dumps(data,ensure_ascii=False,indent=2,allow_nan=False)+'\n')
@@ -77,6 +78,10 @@ def process(t):
     assert q['source_digest']==protocol['source_digest'],key
     assert d['original_goals_unchanged'] and d['original_goals']==t['goals'],key
     env=json.loads((src/'environment/ENVIRONMENT.json').read_text())
+    actual_config=json.loads((src/'environment/config.json').read_text())
+    expected_config=dict(frozen_configs[key])
+    for name in ['simulation_gpu','model_gpu','planner_gpu']:expected_config[name]=q['gpu']
+    assert all(actual_config.get(name)==value for name,value in expected_config.items()),key
     assert env['init_state_id']==0 and env['task_name']==t['task_name'] and env['task_suite']==t['suite']
     bddl=Path(env['bddl_file'])
     assert hashlib.sha256(bddl.read_bytes()).hexdigest()==t['bddl_sha256'],key
@@ -86,8 +91,8 @@ def process(t):
     for name in ['ENVIRONMENT.json','config.json','merged_model.xml']:
         if (src/'environment'/name).exists():shutil.copy2(src/'environment'/name,dst/'environment'/name)
     shutil.copy2(bddl,dst/'task.bddl')
-    shutil.copy2(r/'queue_logs'/(key+'.log'),dst/'driver.log')
-    shutil.copy2(r/'queue_logs'/(key+'.pid.json'),dst/'process.json')
+    shutil.copy2(r/'logs'/(key+'.log'),dst/'driver.log')
+    shutil.copy2(r/'logs'/(key+'.pid.json'),dst/'process.json')
     parts=[]
     for folder in sorted(src.glob('stage_*')):
         partfile=folder/'RESULT.json'
@@ -183,10 +188,10 @@ research-source.zip提供libero分支冻结源码与运行/统计工具供审计
 SCHEDULING_HISTORY.json记录本轮实际并发变化。
 并发影响墙钟耗时和预算内搜索深度，时间预算失败不直接证明模型能力不足。
 ''')
-for name in ['PROTOCOL.json','PROGRESS.json','ALL_TASKS.json','TASK_TAXONOMY.json','SOURCE_IDENTITY.json','FROZEN_CONFIGS.json','GPU_SLOTS.json','SCHEDULING_HISTORY.json','SWEEP_COMPLETE.json','FIRST_BATCH_AUDIT.json']:
+for name in ['PROTOCOL.json','PROGRESS.json','ALL_TASKS.json','TASK_TAXONOMY.json','SOURCE_IDENTITY.json','FROZEN_CONFIGS.json','GPU_SLOTS.json','SCHEDULING_HISTORY.json','SWEEP_COMPLETE.json','FIRST_BATCH_AUDIT.json','TIMEOUT_AUDIT.json']:
     if (r/name).exists():shutil.copy2(r/name,out/name)
 external=json.loads((r.parent/'EXTERNAL_SOURCE_BEFORE.json').read_text())
-for name in ['EXTERNAL_SOURCE_BEFORE.json','DEPLOYMENT.json','REGRESSION.xml','LAUNCH.json','PRELAUNCH_VALIDATION.json']:
+for name in ['EXTERNAL_SOURCE_BEFORE.json','DEPLOYMENT.json','REGRESSION.xml','HARNESS_TEST.xml','LAUNCH.json','PRELAUNCH_VALIDATION.json']:
     if (r.parent/name).exists():shutil.copy2(r.parent/name,out/name);external_changes=[]
 for name,sha in external.items():
     h=hashlib.sha256()
@@ -203,9 +208,13 @@ with zipfile.ZipFile(out/'research-source.zip','w',zipfile.ZIP_DEFLATED) as z:
         if p.is_file():z.write(p,'harness/'+name)
     for name in ['ALL_TASKS.json','TASK_TAXONOMY.json','PROTOCOL.json','SOURCE_IDENTITY.json','FROZEN_CONFIGS.json']:
         z.write(r/name,name)
-    for p in sorted(version.parent.rglob('*')):
-        if p.is_file() and not any(x in p.relative_to(version.parent).parts for x in ('runs','__pycache__','.pytest_cache')) and p.suffix!='.pyc':
-            z.write(p,'source/'+str(p.relative_to(version.parent)))
+    for p in sorted((r.parent/'harness-test').rglob('*.py')):
+        z.write(p,'harness-test/'+str(p.relative_to(r.parent/'harness-test')))
+    # Archive the original Git tree, excluding files created by CPU checks or imports.
+    archive=r.parent/'libero-6d8cd7d-20261113.tar.gz'
+    with tarfile.open(archive) as frozen:
+        for member in frozen.getmembers():
+            if member.isfile():z.writestr('source/'+member.name,frozen.extractfile(member).read())
 subprocess.run([sys.executable,str(Path(__file__).parent/'render_report.py'),str(r)],check=True)
 dump(out/'PACKAGE_QA.json',dict(passed=True,summary=summary,source_audit=json.loads((out/'SOURCE_AUDIT.json').read_text())))
 print(json.dumps(summary,ensure_ascii=False),flush=True)
