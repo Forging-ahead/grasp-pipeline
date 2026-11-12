@@ -280,7 +280,7 @@ class Controller:
         return obs, reward, done, info
 
     def move_to(self, desired, *, gripper=-1, phase="move", allow_finger_target=False,
-                position_tolerance=.003, rotation_tolerance=.04, max_steps=100):
+                position_tolerance=.003, rotation_tolerance=.04, max_steps=100,stop_when=None):
         self.recorder.phase = phase
         desired = np.asarray(desired)
         if int(max_steps) != max_steps or max_steps < 0:
@@ -303,6 +303,10 @@ class Controller:
             current = np.asarray(self.adapter.state()["world_T_eef"])
             p, r = pose_error(desired, current)
             errors.append(float(np.linalg.norm(p)))
+            if stop_when is not None and stop_when():
+                self.events.append(dict(phase=phase,event='observed_subgoal_reached',actions_used=i,
+                    position_error_m=errors[-1],rotation_error_rad=float(np.linalg.norm(r))))
+                return
             if np.linalg.norm(p) <= position_tolerance and np.linalg.norm(r) <= rotation_tolerance:
                 if extended:
                     self.events.append(dict(phase=phase,event="near_goal_tracking_extension_completed",

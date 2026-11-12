@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 from scipy.spatial.transform import Rotation
 
-from graspgen_libero_bridge.adapters.libero.articulation import discover, grip_candidates, handle_motion_pose, HandleMonitor, ArticulationPreviewMonitor
+from graspgen_libero_bridge.adapters.libero.articulation import discover, grip_candidates, handle_motion_pose, joint_goal, HandleMonitor, ArticulationPreviewMonitor
 from graspgen_libero_bridge.planning.cartesian import plan_cartesian, _snapshot, _restore
 from graspgen_libero_bridge.control.controller import Controller
 from graspgen_libero_bridge.common.errors import ExecutionError
@@ -11,6 +11,7 @@ from graspgen_libero_bridge.policy.evaluate import write_json, progress
 from graspgen_libero_bridge.common.rpc import WorkerClient
 from graspgen_libero_bridge.adapters.libero.scene import _geometry
 from graspgen_libero_bridge.planning.grasp_environment import screen_grasp_environment
+from graspgen_libero_bridge.planning.grasp_contact import preview_handle_contacts
 
 
 def serializable(value):
@@ -39,6 +40,7 @@ class ContactSkill:
             if self.info is not None:
                 state['joint_q'] = self.joint_q()
                 state['finger_forces'] = self.handle_forces()
+                state['nonfinger_mechanism_force_N'] = getattr(self,'nonfinger_mechanism_force',0.)
             self.states.append(state)
             return value
         self.c.step = step
@@ -50,6 +52,7 @@ class ContactSkill:
         import mujoco
         m, d = self.a.env.sim.model, self.a.env.sim.data
         forces = dict(left=0., right=0.)
+        nonfinger=0.
         for i in range(d.ncon):
             con = d.contact[i]
             names = [m.geom_id2name(int(g)) for g in (con.geom1, con.geom2)]
@@ -63,6 +66,9 @@ class ContactSkill:
                     forces['left'] += max(0., float(force[0]))
                 if 'rightfinger' in body or 'finger_joint2_tip' in body:
                     forces['right'] += max(0., float(force[0]))
+                if body.startswith('robot0_') or (body.startswith('gripper0_') and 'finger' not in body):
+                    nonfinger += max(0.,float(force[0]))
+        self.nonfinger_mechanism_force=nonfinger
         return forces
 
     def native_plan(self, pose, phase, contact=False, monitor=None, free_rotation_axis_world=None):
@@ -105,6 +111,9 @@ class ContactSkill:
                 self.free_handle_roll = (getattr(self, 'candidate_specs', [{}] * len(candidates))[index]
                                          .get('free_handle_roll', False))
                 app = self.global_plan(pre, 'global_approach') if global_fallback else self.native_plan(pre, 'approach')
+                if global_fallback and app.get('reason')=='invalid_start_state':
+                    raise ExecutionError('cuRobo rejected the current state before evaluating a target; see its proxy-collision diagnostics',
+                        code='contact_global_start_invalid',category='planning',phase='approach',details=app)
                 if not app['success']:
                     continue
                 snap = _snapshot(self.a.env.sim)
@@ -143,6 +152,14 @@ class ContactSkill:
             with np.load(engage['path_file']) as path:
                 a.env.sim.data.qpos[a.robot._ref_joint_pos_indexes]=path['q_arm'][-1]
             a.env.sim.forward()
+            if getattr(self,'contact_mode','pinch')=='pinch':
+                grip = preview_handle_contacts(a,self.c.monitor,
+                    np.asarray(a.env.sim.data.qpos[a.robot._ref_joint_pos_indexes]))
+                self.audit.append(dict(phase='handle_closure_preflight',reply=grip))
+                if not grip['passed']:
+                    return False
+                a.env.sim.data.qpos[a.robot._ref_gripper_joint_pos_indexes]=grip['q_fingers']
+                a.env.sim.forward()
             reference=np.asarray(a.state()['world_T_eef'])
             initial=self.joint_q()
             goal=self.sweep_goal
@@ -197,7 +214,46 @@ class ContactSkill:
             return None
         return axis
 
+    def joint_motion_plan(self,desired,phase,goal_q):
+        # The execution-side short preview must move the mechanism too, just
+        # like the initial sweep preview. Otherwise the robot is checked
+        # against a door frozen at its OLD angle and may be falsely rejected.
+        # This wrapper is preview-only; the live contact monitor is unchanged.
+        current=np.asarray(self.a.state()['world_T_eef'])
+        coupled=ArticulationPreviewMonitor(self.a,self.c.monitor,self.info,current,self.joint_q(),goal_q)
+        return self.native_plan(desired,phase,True,monitor=coupled,
+            free_rotation_axis_world=self.free_handle_axis())
+
     def articulate(self):
+        try:
+            return self._articulate_attempt()
+        except ExecutionError as error:
+            if (error.code not in ('contact_approach_exhausted','contact_global_start_invalid') or self.stage['relation']!='open'
+                    or self.info is None or self.info['joint_type']!=3 or self.info.get('rotary_knob')):
+                raise
+        # A door may be reachable in successive grasps even when no single
+        # wrist branch can cover its full opening arc. Each leg is independently
+        # previewed, physically driven, released and re-observed.
+        if self.planner is not None:
+            self.planner.close();self.planner=None
+        legs=[]
+        for index in range(4):
+            child=ContactSkill(self.job,self.c.recorder,self.stage,self.out/'regrasp'/str(index))
+            try:
+                result=child._articulate_attempt(max_joint_segment=.45)
+            finally:
+                child.close()
+            legs.append(result)
+            write_json(self.out/'REGRASP_LEGS.json',serializable(legs))
+            if self.a.task_env._eval_predicate(self.stage['predicate']):
+                return dict(contact_mode='segmented_handle_open',legs=legs,official_subgoal=True)
+            if abs(result['final_q']-result['initial_q'])<.025:
+                raise ExecutionError('Regrasp leg made insufficient mechanism progress',
+                    code='regrasp_no_progress',category='control',phase='articulate')
+        raise ExecutionError('Door did not reach the original predicate within four regrasp legs',
+            code='regrasp_budget_exhausted',category='control',phase='articulate')
+
+    def _articulate_attempt(self,max_joint_segment=None):
         stage, a, c = self.stage, self.a, self.c
         region, relation = stage['region'], stage['relation']
         self.info = info = discover(a, region, self.out)
@@ -205,18 +261,17 @@ class ContactSkill:
         target = stage['target']
         obj = a.task_env.fixtures_dict.get(target) or a.task_env.objects_dict.get(target)
         properties = obj.object_properties['articulation']
-        key = 'default_'+relation+'_ranges'
-        qgoal = float(np.mean(properties[key]))
-        # Reach just beyond a rotary switch's on threshold, reducing needless
-        # rotation. The threshold still comes from the unmodified object model.
-        if relation == 'turnon':
-            qgoal = min(properties[key]) + .15
-        elif relation == 'turnoff':
-            qgoal = min(properties[key]) + .0002
-        qgoal = float(np.clip(qgoal, *info['limits']))
         q0 = self.joint_q()
+        qgoal = joint_goal(info,properties,relation,q0,self.stage.get('requires_access',False))
+        full_goal=qgoal
+        if max_joint_segment is not None:
+            qgoal=q0+float(np.clip(qgoal-q0,-max_joint_segment,max_joint_segment))
+        def reached():
+            return bool(a.task_env._eval_predicate(stage['predicate']) or (
+                max_joint_segment is not None and (qgoal-self.joint_q())*np.sign(qgoal-q0)<=.01))
         self.sweep_goal=qgoal
-        write_json(self.out/'ARTICULATION.json',serializable(dict(info, initial_q=q0,target_q=qgoal)))
+        write_json(self.out/'ARTICULATION.json',serializable(dict(info, initial_q=q0,target_q=qgoal,
+            full_task_target_q=full_goal,max_joint_segment=max_joint_segment)))
         c.hold(20, -1, 'prepare_open', False)
         if info.get('rotary_knob'):
             candidates = []
@@ -275,7 +330,12 @@ class ContactSkill:
             write_json(self.out/'HANDLE_CANDIDATES.json',serializable([
                 dict(index=i,pre=pre,grip=grip,**spec)
                 for i,((pre,grip),spec) in enumerate(zip(candidates,self.candidate_specs))]))
-        selected = self.approach(candidates)
+        try:
+            selected = self.approach(candidates)
+        except ExecutionError as error:
+            if relation!='close' or error.code not in ('contact_approach_exhausted','contact_global_start_invalid'):
+                raise
+            return self.close_with_surface_push(qgoal,q0)
         c.hold(30, 1, 'close_on_handle', True)
         sustained = sum(min(s.get('finger_forces',{}).values(),default=0.) > .1 for s in self.states[-10:])
         if sustained < 3:
@@ -289,8 +349,7 @@ class ContactSkill:
             desired = handle_motion_pose(reference,info,q-reference_q,getattr(self,'free_handle_roll',False))
             # A cylindrical handle permits rotation about its axis. Keep the
             # jaw orientation for a knob (which must transmit rotation).
-            local = self.native_plan(desired, 'joint_motion', True,
-                free_rotation_axis_world=self.free_handle_axis())
+            local = self.joint_motion_plan(desired,'joint_motion',q)
             if not local['success']:
                 raise ExecutionError('Joint-constrained contact IK rejected',code='contact_ik_failed',
                     category='planning',phase='articulate',details=local)
@@ -300,7 +359,7 @@ class ContactSkill:
                     desired = path['world_T_eef'][-1].copy()
             c.move_to(desired,gripper=1,phase='articulate',allow_finger_target=True,
                 position_tolerance=.0025,rotation_tolerance=.04,max_steps=100)
-            if a.task_env._eval_predicate(stage['predicate']):
+            if reached():
                 break
         # A gripper reaching its pose is not a certificate that the mechanism
         # reached its joint target: compliance/slip can leave a rotary switch
@@ -308,12 +367,11 @@ class ContactSkill:
         stalled=0
         for correction_index in range(20):
             c.hold(10,1,'verify_held',True)
-            if a.task_env._eval_predicate(stage['predicate']):break
+            if reached():break
             before=self.joint_q()
             delta=float(np.clip(qgoal-before,-(.004 if info['joint_type']==2 else .05),(.004 if info['joint_type']==2 else .05)))
             desired=handle_motion_pose(np.asarray(a.state()['world_T_eef']),info,delta,getattr(self,'free_handle_roll',False))
-            local=self.native_plan(desired,'measured_joint_feedback',True,
-                free_rotation_axis_world=self.free_handle_axis())
+            local=self.joint_motion_plan(desired,'measured_joint_feedback',before+delta)
             if not local['success']:
                 raise ExecutionError('Mechanism feedback correction rejected',code='mechanism_feedback_ik_failed',
                     category='planning',phase='articulate_feedback',details=local)
@@ -328,7 +386,7 @@ class ContactSkill:
             stalled=stalled+1 if moved<.00005 else 0
             if stalled>=3:
                 raise ExecutionError('Mechanism stopped progressing under feedback',code='mechanism_stalled',category='control',phase='articulate_feedback')
-        if not a.task_env._eval_predicate(stage['predicate']):
+        if not reached():
             raise ExecutionError('Mechanism did not reach official predicate within feedback budget',
                 code='mechanism_goal_not_reached',category='control',phase='articulate_feedback')
         c.hold(20,1,'verify_held',True)
@@ -336,9 +394,32 @@ class ContactSkill:
         # Retrace outward relative to the current mechanism, not the original
         # pregrasp, to avoid pulling a just-closed drawer open again.
         retreat = np.asarray(a.state()['world_T_eef'])
-        direction = np.array([0.,0.,1.]) if info.get('rotary_knob') else -retreat[:3,2]
+        direction = np.array([0.,0.,1.])
+        if not info.get('rotary_knob'):
+            # A round bar can roll inside the jaws. The current wrist axis is
+            # therefore not a reliable record of the original approach side.
+            direction=candidates[selected][0][:3,3]-candidates[selected][1][:3,3]
+            direction=direction/np.linalg.norm(direction)
+            if info['joint_type']==3:
+                direction=Rotation.from_rotvec(np.asarray(info['axis'])*(self.joint_q()-q0)).apply(direction)
         retreat[:3,3] += direction*.07
         reply = self.native_plan(retreat, 'retreat', True)
+        if not reply['success']:
+            # Released jaws no longer require the wrist's original roll. Try
+            # bounded orientation/translation alternatives before reporting a
+            # failed retreat; every path and its contact-free endpoint is checked.
+            current=np.asarray(a.state()['world_T_eef'])
+            axis=np.asarray(info['axis']) if info['joint_type']==3 else current[:3,2]
+            up=np.array([0.,0.,1.]);blend=direction+up
+            blend=blend/np.linalg.norm(blend) if np.linalg.norm(blend)>1e-8 else up
+            for vector,length in ((direction,.07),(up,.07),(blend,.07),(direction,.03),(up,.03)):
+                candidate=current.copy();candidate[:3,3]+=vector*length
+                option=self.native_plan(candidate,'retreat_alternative',True,free_rotation_axis_world=axis)
+                if not option['success']:continue
+                with np.load(option['path_file']) as path:
+                    clear=c.monitor.validate_path(path['q_arm'][-1:],False)
+                if clear['passed']:
+                    reply=option;break
         if not reply['success']:
             raise ExecutionError('Post-release retreat rejected',code='contact_retreat_failed',
                 category='planning',phase='retreat',details=reply)
@@ -346,6 +427,82 @@ class ContactSkill:
         c.hold(30,-1,'settle',False)
         return dict(selected_candidate=selected,free_handle_roll=getattr(self,'free_handle_roll',False),initial_q=q0,final_q=self.joint_q(),
             official_subgoal=bool(a.task_env._eval_predicate(stage['predicate'])),sustained_force_samples=sustained)
+
+    def close_with_surface_push(self,qgoal,q0):
+        """A close-only fallback: push an exposed moving face under feedback.
+
+        Pinch candidates are exhausted first. No mechanism state is written
+        during execution; finger contact and measured joint progress move it.
+        """
+        from graspgen_libero_bridge.adapters.libero.surface_contact import closing_push_candidates
+        a,c,info=self.a,self.c,self.info
+        self.contact_mode='closing_surface';self.free_handle_roll=False
+        c.hold(25,1,'prepare_closed_mechanism_pusher',False)
+        raw,moving=closing_push_candidates(a,info,qgoal,self.out)
+        names=[a.env.sim.model.geom_id2name(g) for g in moving]
+        c.monitor=HandleMonitor(a,self.stage['target'],names)
+        self.info=dict(info,handle_geom_names=names)
+        endpoint=[dict(world_T_eef=grip.tolist(),score=float(-i),generation_index=i)
+                  for i,(_,grip,_) in enumerate(raw)]
+        kept,audit=screen_grasp_environment(a,endpoint,allowed_finger_target_geoms=moving)
+        chosen=[x['generation_index'] for x in kept[:32]]
+        self.candidate_specs=[raw[i][2] for i in chosen]
+        write_json(self.out/'CLOSING_SURFACE_SCREEN.json',audit)
+        write_json(self.out/'CLOSING_SURFACE_CANDIDATES.json',serializable([
+            dict(pre=pre,grip=grip,**spec) for pre,grip,spec in raw]))
+        selected=self.approach([(raw[i][0],raw[i][1]) for i in chosen],gripper=1)
+        spec=raw[chosen[selected]][2]
+        geom=int(a.env.sim.model.geom_name2id(spec['geom']))
+        relative=np.asarray(spec['geom_T_eef'])
+        stalled=0;progress_samples=[]
+        for iteration in range(180):
+            if a.task_env._eval_predicate(self.stage['predicate']):break
+            before=self.joint_q();current=np.asarray(a.state()['world_T_eef'])
+            # A pusher is not attached to the panel. Re-register its chosen
+            # contact against the CURRENT moving geometry instead of drifting
+            # the contact forward from the measured wrist at every iteration.
+            face=np.eye(4);face[:3,:3]=np.asarray(a.env.sim.data.geom_xmat[geom]).reshape(3,3)
+            face[:3,3]=a.env.sim.data.geom_xpos[geom]
+            contact=face@relative
+            radius=1. if info['joint_type']==2 else max(.04,float(np.linalg.norm(np.cross(info['axis'],contact[:3,3]-info['anchor']))))
+            maximum=.004/radius
+            delta=float(np.clip(qgoal-before,-maximum,maximum))
+            desired=handle_motion_pose(contact,info,delta)
+            local=self.joint_motion_plan(desired,'surface_joint_feedback',before+delta)
+            if not local['success']:
+                raise ExecutionError('Moving-surface push continuation rejected',code='surface_push_ik_failed',
+                    category='planning',phase='articulate_feedback',details=local)
+            with np.load(local['path_file']) as path:c.set_joint_reference(path['q_arm'][-1])
+            linear=float(np.linalg.norm(desired[:3,3]-current[:3,3]))
+            angular=float(Rotation.from_matrix(desired[:3,:3]@current[:3,:3].T).magnitude())
+            c.move_to(desired,gripper=1,phase='surface_joint_feedback',allow_finger_target=True,
+                position_tolerance=min(.0015,max(.0001,.2*linear)),
+                rotation_tolerance=min(.04,max(.0008,.2*angular)),max_steps=80,
+                stop_when=lambda:a.task_env._eval_predicate(self.stage['predicate']))
+            c.hold(4,1,'observe_surface_progress',True)
+            moved=(self.joint_q()-before)*np.sign(qgoal-before)
+            forces=self.handle_forces()
+            progress_samples.append(dict(before=before,after=self.joint_q(),directed_progress=moved,forces=forces))
+            write_json(self.out/'SURFACE_PUSH_PROGRESS.json',progress_samples)
+            stalled=stalled+1 if moved<.00005 else 0
+            if stalled>=5:
+                raise ExecutionError('Moving surface made no joint progress',code='surface_push_stalled',category='control',phase='articulate_feedback')
+        if not a.task_env._eval_predicate(self.stage['predicate']):
+            raise ExecutionError('Surface push exhausted its feedback budget',code='surface_push_goal_not_reached',category='control',phase='articulate_feedback')
+        # Keep fingers closed while disengaging, avoiding an opening wedge in a
+        # shut door. Retreat opposite the measured closing tangent.
+        current=np.asarray(a.state()['world_T_eef']);direction=np.asarray(info['axis'])*np.sign(qgoal-q0)
+        if info['joint_type']==3:direction=np.cross(info['axis'],current[:3,3]-info['anchor'])*np.sign(qgoal-q0)
+        direction/=np.linalg.norm(direction)
+        retreat=current.copy();retreat[:3,3]-=direction*.07
+        local=self.native_plan(retreat,'surface_retreat',True)
+        if not local['success']:
+            raise ExecutionError('Closed-pusher retreat rejected',code='contact_retreat_failed',category='planning',phase='retreat',details=local)
+        c.follow_path(local['path_file'],gripper=1,phase='surface_retreat',allow_finger_target=True)
+        c.hold(30,1,'settle',False)
+        return dict(contact_mode='closing_surface',selected_candidate=selected,initial_q=q0,final_q=self.joint_q(),
+            official_subgoal=bool(a.task_env._eval_predicate(self.stage['predicate'])),
+            measured_progress_samples=len(progress_samples),allowed_contact_geoms=names)
 
     def push(self):
         a,c,stage = self.a,self.c,self.stage
@@ -408,7 +565,11 @@ class ContactSkill:
                 c.move_to(desired,gripper=1,phase='push',allow_finger_target=True,position_tolerance=.0025,max_steps=60)
                 self.states[-1]['object_pose']=a.target_pose(stage['target']).tolist()
                 if a.task_env._eval_predicate(stage['predicate']):break
-            retreat=np.asarray(a.state()['world_T_eef']);retreat[2,3]+=.10
+            retreat=np.asarray(a.state()['world_T_eef'])
+            # Leave the fixture at the height that qualified on entry; the
+            # old fixed 10cm retreat could strand cuRobo's conservative hand
+            # spheres inside a cabinet even when MuJoCo contacts were clear.
+            retreat[2,3]=max(retreat[2,3]+.10,float(candidates[selected][0][2,3]))
             reply=self.native_plan(retreat,'retreat',True)
             if not reply['success']:raise RuntimeError('Push retreat rejected')
             c.follow_path(reply['path_file'],gripper=1,phase='retreat',allow_finger_target=True)

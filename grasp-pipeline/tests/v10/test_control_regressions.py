@@ -33,6 +33,25 @@ class ServoTests(unittest.TestCase):
         c.step = lambda *a: pose.__setitem__((0, 3), .01)
         c.move_to(desired, max_steps=1)
 
+    def test_measured_subgoal_can_stop_a_contact_servo_before_pose_arrival(self):
+        c,pose,_=self.fixture();observed=[]
+        desired=np.eye(4);desired[0,3]=.01
+        c.step=lambda *a:observed.append(1)
+        c.move_to(desired,max_steps=3,stop_when=lambda:len(observed)==3)
+        self.assertEqual(len(observed),3)
+        self.assertEqual(pose[0,3],0.)
+        self.assertEqual(c.events[-1]['event'],'observed_subgoal_reached')
+
+    def test_measured_subgoal_does_not_bypass_an_execution_collision(self):
+        c,_,_=self.fixture();observed=[]
+        def collision(*args):
+            observed.append(1)
+            raise ExecutionError('contact',code='forbidden_contact')
+        c.step=collision;desired=np.eye(4);desired[0,3]=.01
+        with self.assertRaises(ExecutionError) as error:
+            c.move_to(desired,max_steps=3,stop_when=lambda:bool(observed))
+        self.assertEqual(error.exception.code,'forbidden_contact')
+
     def test_bounded_integral_removes_constant_load_error_without_relaxing_tolerance(self):
         def run(gain):
             c, pose, _ = self.fixture({"position_integral_gain": gain})

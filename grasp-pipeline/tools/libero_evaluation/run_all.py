@@ -14,9 +14,9 @@ def identity(source):
     files.append(source/'run.py')
     hashes={str(p.relative_to(source)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     return dict(source_digest=digest(hashes),files=hashes)
-def valid_result(result,row,manifest):
+def valid_result(result,row,manifest,initial_state_id=0):
     expected={n:h for n,h in manifest['files'].items() if n.startswith('src/graspgen_libero_bridge/') and n.endswith('.py')}
-    return bool(result.get('key')==row['key'] and result.get('initial_state_id')==0
+    return bool(result.get('key')==row['key'] and result.get('initial_state_id')==initial_state_id
         and result.get('suite')==row['suite'] and result.get('task_name')==row['task_name']
         and result.get('driver_sha256')==manifest['files']['apps/libero/run_task.py']
         and result.get('source_sha256')==expected and result.get('original_goals_unchanged'))

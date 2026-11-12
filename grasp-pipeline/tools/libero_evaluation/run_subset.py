@@ -21,10 +21,11 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--keys', nargs='+', required=True)
     parser.add_argument('--revision', required=True)
+    parser.add_argument('--init', type=int, default=0)
     parser.add_argument('--gpu-slots', type=int, nargs='+', default=[0, 1, 2, 3])
     args = parser.parse_args()
     source, out = args.source.resolve(), args.output.resolve()
-    if out.exists() or len(set(args.keys)) != len(args.keys) or not 1 <= len(args.gpu_slots) <= 16:
+    if out.exists() or args.init < 0 or len(set(args.keys)) != len(args.keys) or not 1 <= len(args.gpu_slots) <= 16:
         parser.error('Use a new output, unique keys and at most 16 worker slots')
     sys.path.insert(0, str(source/'src'))
     from graspgen_libero_bridge.runtime.config import load_paths, load_task, task_catalog
@@ -32,8 +33,8 @@ def main():
     rows = [catalog[key] for key in args.keys]
     paths = load_paths(args.paths)
     manifest = identity(source)
-    configs = {row['key']: load_task(row['key'], gpu=0, init=0, paths_file=args.paths)[1] for row in rows}
-    assert all(cfg['init_state_id']==0 and cfg['seed']==0 and cfg['max_steps']==5000 for cfg in configs.values())
+    configs = {row['key']: load_task(row['key'], gpu=0, init=args.init, paths_file=args.paths)[1] for row in rows}
+    assert all(cfg['init_state_id']==args.init and cfg['seed']==0 and cfg['max_steps']==5000 for cfg in configs.values())
     out.mkdir(parents=True)
     for name in ['logs', 'runs', 'tmp', 'cache']:
         (out/name).mkdir()
@@ -42,7 +43,7 @@ def main():
     dump(out/'ALL_TASKS.json', rows)
     dump(out/'PROTOCOL.json', dict(revision=args.revision, source=str(source),
         source_digest=manifest['source_digest'], trials=len(rows), trials_per_task=1,
-        initial_state_id=0, seed=0, max_steps=5000, gpu_slots=args.gpu_slots,
+        initial_state_id=args.init, seed=0, max_steps=5000, gpu_slots=args.gpu_slots,
         created_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
         historical_outcomes_used=False, outer_retries=False, fresh_graspgen_inference=True,
         scope='Targeted iteration subset; not a new full-130 success rate'))
@@ -54,7 +55,7 @@ def main():
         verify()
         key = row['key']
         command = [paths['simulation_python'], str(source/'apps/libero/run_task.py'), key,
-            '--gpu', str(gpu), '--init', '0', '--tag', 'subset', '--paths', str(args.paths.resolve()),
+            '--gpu', str(gpu), '--init', str(args.init), '--tag', 'subset', '--paths', str(args.paths.resolve()),
             '--output-root', str(out/'runs')]
         environment = dict(os.environ, PYTHONPATH=str(source/'src'), PYTHONUNBUFFERED='1',
             OMP_NUM_THREADS='2', OPENBLAS_NUM_THREADS='2', MKL_NUM_THREADS='2',
@@ -89,9 +90,9 @@ def main():
         verify()
         case = out/'runs/subset'/key
         result = read(case/'RESULT.json') if (case/'RESULT.json').exists() else {}
-        valid = valid_result(result, row, manifest)
+        valid = valid_result(result, row, manifest,initial_state_id=args.init)
         record = dict(key=key, revision=args.revision, source_digest=manifest['source_digest'],
-            result_identity_valid=valid, source_unchanged=True, gpu=gpu, initial_state_id=0,
+            result_identity_valid=valid, source_unchanged=True, gpu=gpu, initial_state_id=args.init,
             returncode=process.returncode, watchdog_reached=timed_out, wall_seconds=time.time()-started,
             pipeline_success=bool(valid and not timed_out and result.get('pipeline_success') and
                 result.get('official_goal_at_end') and result.get('steps', 0)>0),

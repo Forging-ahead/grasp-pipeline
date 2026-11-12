@@ -206,8 +206,12 @@ class EnvAdapter:
                 missing.append(name)
         if missing:
             raise KeyError("Configured target/destination absent from task: " + ", ".join(missing))
+        from graspgen_libero_bridge.adapters.libero.model_snapshot import save_reset_model
+        save_reset_model(self.env.sim, self.run_dir)
         self.provenance.update(init_state_file=str(path), init_state_id=state_id,
-                               initial_states_count=len(states), settle_steps=self.settle_steps_performed)
+                               initial_states_count=len(states), settle_steps=self.settle_steps_performed,
+                               reset_model_binary=str(self.run_dir/'reset_model.mjb'),
+                               reset_model_manifest=str(self.run_dir/'MODEL_SNAPSHOT.json'))
         (self.run_dir / "ENVIRONMENT.json").write_text(json.dumps(self.provenance, indent=2) + "\n")
         return self.obs
 

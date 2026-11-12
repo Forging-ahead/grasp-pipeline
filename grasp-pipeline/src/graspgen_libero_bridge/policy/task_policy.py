@@ -42,6 +42,10 @@ def schedule(goals, object_names, regions, language=''):
         else:
             raise ValueError('No skill for official predicate: ' + repr(goal))
     # Place a supporting object first, then put the upper object onto it.
+    for stage in before:
+        if stage['relation']=='open' and any(
+                p['relation']=='in' and p['destination']==stage['target'] for p in places):
+            stage['requires_access']=True
     ordered = []
     while places:
         ready = [x for x in places if x['destination'] not in {y['target'] for y in places}]

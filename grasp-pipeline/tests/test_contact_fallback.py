@@ -3,7 +3,7 @@ from pathlib import Path
 from types import SimpleNamespace
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 import numpy as np
 
 from graspgen_libero_bridge.policy.skills import ContactSkill
@@ -62,6 +62,49 @@ class ContactFallbackTests(unittest.TestCase):
             calls,followed = self.exercise(directory,engagement=False)
         self.assertIn('global_approach',calls)
         self.assertFalse(followed)
+
+    def test_invalid_global_start_is_not_retried_as_a_different_target(self):
+        skill=object.__new__(ContactSkill)
+        skill.native_plan=Mock(return_value=dict(success=False))
+        skill.global_plan=Mock(return_value=dict(success=False,reason='invalid_start_state',status='WORLD_COLLISION'))
+        with self.assertRaises(ExecutionError) as error:
+            skill.approach([(np.eye(4),np.eye(4))]*2)
+        self.assertEqual(error.exception.code,'contact_global_start_invalid')
+        self.assertEqual(error.exception.details['status'],'WORLD_COLLISION')
+        self.assertEqual(skill.global_plan.call_count,1)
+
+    def regrasp(self,directory,success_after,initial_error='contact_approach_exhausted'):
+        skill=object.__new__(ContactSkill);skill.job=object();skill.out=Path(directory)
+        skill.stage=dict(relation='open',predicate=['open','door']);skill.info=dict(joint_type=3)
+        skill.planner=Mock();skill.c=SimpleNamespace(recorder=object())
+        progress=[]
+        skill.a=SimpleNamespace(task_env=SimpleNamespace(_eval_predicate=lambda goal:len(progress)>=success_after))
+        skill._articulate_attempt=Mock(side_effect=ExecutionError('blocked',code=initial_error))
+        def child(*args):
+            value=Mock()
+            def move(**kwargs):
+                self.assertEqual(kwargs,dict(max_joint_segment=.45))
+                index=len(progress);progress.append(index)
+                return dict(initial_q=-index*.4,final_q=-(index+1)*.4,official_subgoal=False)
+            value._articulate_attempt.side_effect=move
+            return value
+        with patch('graspgen_libero_bridge.policy.skills.ContactSkill',side_effect=child) as factory:
+            if success_after<=4:
+                result=skill.articulate();self.assertTrue(result['official_subgoal'])
+            else:
+                with self.assertRaises(ExecutionError) as error:skill.articulate()
+                self.assertEqual(error.exception.code,'regrasp_budget_exhausted')
+            self.assertEqual(factory.call_count,min(success_after,4))
+        self.assertEqual(skill.stage['predicate'],['open','door'])
+
+    def test_regrasp_partial_progress_never_counts_as_complete_success(self):
+        with tempfile.TemporaryDirectory() as directory:self.regrasp(directory,success_after=5)
+
+    def test_regrasp_stops_only_when_original_predicate_is_true(self):
+        with tempfile.TemporaryDirectory() as directory:self.regrasp(directory,success_after=2)
+
+    def test_proxy_blocked_global_start_can_still_try_local_segmented_contact(self):
+        with tempfile.TemporaryDirectory() as directory:self.regrasp(directory,success_after=2,initial_error='contact_global_start_invalid')
 
 
 if __name__=='__main__':unittest.main()

@@ -28,7 +28,7 @@ out.mkdir(parents=True,exist_ok=False)
 start=time.monotonic();mainrec=None;shared=None;close_env=None;original_goals=None
 result=dict(key=args.key,suite=row['suite'],task_name=row['task_name'],initial_state_id=args.init,
     status='running',pipeline_success=False,official_goal_at_end=False,stages=[],
-    release='20261113-envscreen-contact-'+args.tag,uses_simulator_truth=True,
+    release='20261113-contact-feedback-'+args.tag,uses_simulator_truth=True,
     stage_inputs='BDDL goals, object/region geometry, joint axes and measured contacts',
     source_sha256={str(f.relative_to(r)):hashlib.sha256(f.read_bytes()).hexdigest()
                    for f in sorted((r/'src/graspgen_libero_bridge').rglob('*.py'))},
@@ -124,7 +124,7 @@ try:
                     if int(m.body_jntnum[body])==0:opening=target
                     predicate=['open',opening]
                     if not shared.task_env._eval_predicate(predicate):
-                        prerequisite=dict(skill='articulate',target=target,region=opening,relation='open',predicate=predicate)
+                        prerequisite=dict(skill='articulate',target=target,region=opening,relation='open',predicate=predicate,requires_access=True)
                         data=contact(prerequisite,label+'_precondition_open')
                         result['stages'].append(dict(stage=prerequisite,precondition=True,**data))
                         if not data['official_subgoal']:raise RuntimeError('Opening precondition did not remain satisfied')
@@ -162,8 +162,11 @@ finally:
         result['official_goal_at_end']=bool(shared.check_success());result['steps']=shared.step_count
         result['original_goals_unchanged']=original_goals is not None and shared.task_env.parsed_problem['goal_state']==original_goals
         sim=shared.env.sim
-        np.savez_compressed(out/'FINAL_PHYSICS_STATE.npz',qpos=np.asarray(sim.data.qpos),qvel=np.asarray(sim.data.qvel),
-            act=np.asarray(sim.data.act),time=float(sim.data.time),ctrl=np.asarray(sim.data.ctrl))
+        native=getattr(sim.data,'_data',sim.data)
+        fields=('qpos','qvel','act','ctrl','qacc_warmstart','qfrc_applied','xfrc_applied',
+                'mocap_pos','mocap_quat','userdata','eq_active','plugin_state')
+        np.savez_compressed(out/'FINAL_PHYSICS_STATE.npz',time=float(native.time),
+            **{name:np.asarray(getattr(native,name)).copy() for name in fields if hasattr(native,name)})
     if mainrec is not None:mainrec.save()
     if close_env is not None:close_env()
     result['wall_seconds']=time.monotonic()-start

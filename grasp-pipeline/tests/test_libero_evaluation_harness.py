@@ -25,3 +25,9 @@ def test_wrong_episode_or_source_must_not_be_accepted(field):
 def test_a_partially_matching_source_list_is_rejected():
     row,manifest,result=data();result['source_sha256'].pop('src/graspgen_libero_bridge/b.py')
     assert not module.valid_result(result,row,manifest)
+
+def test_additional_initial_states_are_verified_against_the_requested_episode():
+    row,manifest,result=data();result['initial_state_id']=1
+    assert module.valid_result(result,row,manifest,initial_state_id=1)
+    assert not module.valid_result(result,row,manifest,initial_state_id=0)
+    assert not module.valid_result(result,row,manifest,initial_state_id=2)

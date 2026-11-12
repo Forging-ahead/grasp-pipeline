@@ -204,6 +204,20 @@ class CartesianPlannerTests(unittest.TestCase):
             self.assertNotEqual(reply['reason'],'cartesian_planner_error')
         self.assert_restored(sim,before)
 
+    def test_free_axis_uses_redundancy_to_leave_a_joint_stop(self):
+        adapter,sim=self.make_adapter()
+        sim.data.qpos[5]=.999
+        sim.forward();before=self.before(sim)
+        goal=np.eye(4);goal[:3,3]=[.01,0.,.012]
+        with tempfile.TemporaryDirectory() as directory:
+            reply=plan_cartesian(adapter,_Monitor(sim),goal,directory,free_rotation_axis_world=[0.,0.,1.])
+            self.assertTrue(reply['success'],reply)
+            with np.load(reply['path_file']) as path:
+                self.assertLess(path['q_arm'][-1,5],.98)
+                self.assertTrue((np.abs(path['q_arm'])<=1.000001).all())
+                np.testing.assert_allclose(path['world_T_eef'][-1,:3,2],[0.,0.,1.],atol=.003)
+        self.assert_restored(sim,before)
+
     def test_held_target_follows_only_in_preview(self):
         adapter, sim = self.make_adapter()
         values = self.before(sim)
@@ -296,6 +310,30 @@ class CartesianPlannerTests(unittest.TestCase):
             self.assertTrue(new['success'], new)
             self.assertTrue(new['state_restored'])
         self.assert_restored(sim, values)
+
+    def test_execution_side_joint_preview_does_not_freeze_the_moving_panel(self):
+        from graspgen_libero_bridge.policy.skills import ContactSkill
+        from graspgen_libero_bridge.planning.cartesian import _site_pose
+        adapter,sim=self.make_adapter(moving_wall=True);values=self.before(sim)
+        site=adapter.task_env.robots[0].eef_site_id
+        adapter.state=lambda:{'world_T_eef':_site_pose(sim.data,site)}
+        address=int(sim.model.jnt_qposadr[sim.model.joint_name2id('fixture_slide')])
+        monitor=_Monitor(sim);skill=object.__new__(ContactSkill)
+        skill.a=adapter;skill.info=dict(joint_type=2,axis=[0.,0.,1.],q_address=address)
+        skill.c=SimpleNamespace(monitor=monitor)
+        skill.joint_q=lambda:float(sim.data.qpos[address]);skill.free_handle_axis=lambda:None
+        goal=np.eye(4);goal[2,3]=.04
+        with tempfile.TemporaryDirectory() as directory:
+            old=plan_cartesian(adapter,monitor,goal,Path(directory)/'frozen')
+            self.assertFalse(old['success'])
+            def plan(pose,phase,contact,**kwargs):
+                return plan_cartesian(adapter,kwargs['monitor'],pose,Path(directory)/phase,
+                    allow_finger_target=contact,free_rotation_axis_world=kwargs['free_rotation_axis_world'])
+            skill.native_plan=plan
+            fixed=skill.joint_motion_plan(goal,'feedback',.04)
+            self.assertTrue(fixed['success'],fixed)
+            self.assertIs(skill.c.monitor,monitor)
+        self.assert_restored(sim,values)
 
     def test_coupled_hinge_follows_rotation_and_preserves_permissions(self):
         from graspgen_libero_bridge.adapters.libero.articulation import ArticulationPreviewMonitor

@@ -49,6 +49,28 @@ def handle_motion_pose(pose, info, delta, free_handle_roll=False):
     return out
 
 
+def joint_goal(info, properties, relation, measured_q, requires_access=False):
+    """Use an official target interval, without demanding an unnecessary turn.
+
+    Standalone hinge opening needs a stable interior point beyond its success
+    threshold. Opening for insertion retains the wider original aperture.
+    Existing drawer and rotary-switch target conventions are preserved.
+    """
+    values = np.asarray(properties['default_'+relation+'_ranges'], dtype=float)
+    if values.shape != (2,) or not np.isfinite(values).all():
+        raise ValueError('Expected a finite official joint target interval')
+    low, high = sorted(values)
+    target = float(np.mean(values))
+    if relation=='turnon':
+        target = low+.15
+    elif relation=='turnoff':
+        target = low+.0002
+    elif relation=='open' and info['joint_type']==3 and not requires_access:
+        margin = min(.05, (high-low)*.2)
+        target = float(np.clip(measured_q, low+margin, high-margin))
+    return float(np.clip(target, *info['limits']))
+
+
 def discover(adapter, region, output):
     """Find the goal joint and a marked mesh or elongated capsule handle."""
     model, data = adapter.env.sim.model, adapter.env.sim.data

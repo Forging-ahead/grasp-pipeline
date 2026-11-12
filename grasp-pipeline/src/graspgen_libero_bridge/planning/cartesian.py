@@ -273,6 +273,13 @@ def plan_cartesian(adapter, monitor, goal_pose, output_dir,
                     # waypoint; this does not substitute a different global plan.
                     nullspace = np.eye(7) - inverse @ weighted_j
                     dq += nullspace @ (.04 * (reference_q - q))
+                    if free_rotation_axis_world is not None:
+                        # Use the extra freedom of a circular handle to move
+                        # away from a joint stop before clipping stalls IK.
+                        margin = .18
+                        avoid = .25*(np.maximum(margin-(q-lower),0.)-
+                                     np.maximum(margin-(upper-q),0.))
+                        dq += nullspace @ avoid
                     largest = float(np.max(np.abs(dq)))
                     if largest > .035:
                         dq *= .035 / largest
