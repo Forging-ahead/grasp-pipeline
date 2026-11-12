@@ -13,6 +13,7 @@
 | 矩阵/迁移报告 | `build_report.py`、`build_v10_report.py` |
 | 65 项冻结覆盖 | `run_atomic65.py`、`atomic65.py`、`atomic65_case.py`、`atomic65_driver.py` |
 | 65 项统计、媒体/轨迹审核和进度 | `report_atomic65.py`、`audit_atomic65.py`、`watch_atomic65.py` |
+| r13 同初态 22 项修复复跑 | `run_pickplace22.py`、`pickplace22_records.py`、`report_pickplace22.py` |
 | 成功轨迹 teacher 关键点 | `export_keypoints.py` |
 
 ## 复现本次 65 项覆盖
@@ -32,6 +33,8 @@ python tools/robocasa/report_atomic65.py --root /data/atomic65-r10-run-001 --out
 报告内嵌可用视频，可以单文件转发；未支持任务只包含真实初态。规划等待不推进仿真，因此短视频不代表已经尝试闭合抓取。视频、HDF5、报告和输出目录均不进入源码 Git。
 
 ## 结果解释
+
+r13 使用独立的 22 项复跑入口，不能通过修改 r10 指纹继续称为 r10。它从原完整矩阵读取同一任务绑定，首次动作前验证全部初始物理数组；使用全新 GraspGen 候选，固定 5000 步采集预算与 1200 秒墙钟上限。`report_pickplace22.py --watch` 只读进度；完整结束后使用 `--audit` 与 `--output` 审核并生成含新旧 44 段视频的离线 HTML。条件、修复及开发批次排除记录见 [r13 复跑记录](../../docs/robocasa/R13_RETEST.md)。
 
 只读几何扫描不执行任务；配对候选池复测不重新推理 GraspGen。这些结果不能与新模型推理的完整连续回合混为一组。关键点来自 code-policy teacher，未经观测充分性审核的导出保持 `ready_for_sft=false`。
 
