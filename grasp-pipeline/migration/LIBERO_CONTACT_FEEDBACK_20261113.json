@@ -3455,5 +3455,31 @@
       "after_video_sha256": "f2ed68c9a40d08fdd75e189149f791f800b5e4bd4167b762274b315078fdc908",
       "requires_manual_contact_review": false
     }
-  ]
+  ],
+  "portable_full_archive": {
+    "filename": "LIBERO_contact_feedback_56_20261113.tar.zst",
+    "format": "tar.zst",
+    "bytes": 970195353,
+    "sha256": "aeea489f4107ec1128fb8ce1141bc8b1adfb72cfba8cbf617837d6ab7c1396d6",
+    "contains_all_audited_files": true,
+    "persistent_server_copy_verified": true,
+    "local_archive_sha256_verified": true,
+    "local_extracted_delivery_audit": {
+      "passed": true,
+      "episodes": 56,
+      "paired_init0": {
+        "tasks": 26,
+        "before_success": 12,
+        "after_success": 15,
+        "improved": 3,
+        "regressed": 0
+      },
+      "embedded_videos": 82,
+      "source_revision": "3e87a4a7fb212f996950408f6e244fce50a9822a",
+      "source_files_checked": 49,
+      "artifact_hashes_checked": 13075,
+      "same_frozen_source": true,
+      "continuous_trajectories": true
+    }
+  }
 }
