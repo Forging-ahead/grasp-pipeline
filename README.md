@@ -6,7 +6,7 @@
 
 当前进度：五个整理阶段已完成。2026-11-13 用本 `libero` 分支的冻结 v10 策略完整重跑 130 项：86 项流程与官方终态通过（66.2%），剔除 1 项已知指令顺序问题后为 85 条候选轨迹。130 段成功与失败视频均已保存并通过完整性校验，策略与参数保持不变。详见 [全量复跑记录](grasp-pipeline/docs/LIBERO130_20261113.md) 与 [机读结果](grasp-pipeline/migration/LIBERO130_20261113.json)。
 
-后续迭代新增了 [抓取端点环境筛选与机构位姿修复](grasp-pipeline/docs/GRASP_ENVIRONMENT_SCREEN.md)。上面的 130 项数字属于修改前的冻结基线，不能作为修改后代码的全量成绩；新版复验单独留档。
+后续迭代新增了 [抓取端点环境筛选与机构位姿修复](grasp-pipeline/docs/GRASP_ENVIRONMENT_SCREEN.md)。39 项同初态复验从 16 项通过增加到 21 项，原通过的 16 项全部保持通过，详见 [本轮结果](grasp-pipeline/docs/LIBERO_ENVSCREEN_20261113.md)。上面的 130 项数字属于修改前的冻结基线，不能作为新版全量成绩。
 
 - [整理入口与第一阶段交付](pipeline-organization/README.md)
 - [整理后的自有代码与运行入口](grasp-pipeline/README.md)

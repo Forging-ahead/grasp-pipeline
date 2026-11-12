@@ -40,3 +40,15 @@ python tools/libero_evaluation/run_subset.py \
 ```
 
 上面的 130 项打包器仍服务于冻结基线；新版部分复验另建报告，不能混用该基线的提交标签和成功总数。新策略修改说明见 [环境筛选与机构位姿迭代](../../docs/GRASP_ENVIRONMENT_SCREEN.md)。
+
+本轮部分复验的打包与独立审核方式：
+
+```bash
+python tools/libero_evaluation/package_subset.py /data/new-subset \
+  --baseline /data/libero130/evaluation/delivery --source-archive /data/libero-frozen.tar.gz
+python tools/libero_evaluation/validate_subset.py /data/new-subset/delivery
+```
+
+源码归档须由对应冻结提交的 `git archive` 生成，并保留提交标记。实验目录的上一层还需包含 `FROZEN_SOURCE.json`、`REGRESSION_FROZEN.xml`、`EXTERNAL_SOURCE_BEFORE.json`、`EXTERNAL_PRECHECK.json` 和 `FINAL_LAUNCH.json`。本轮工具校验146项回归记录，适用于本次修订；新修订应同步更新协议和验证要求。
+
+`finalize_subset.py` 可等待全部明确列出的任务结束，再调用上述打包与审核、生成ZIP和交付校验清单；它不会新增任务或重试失败。最终结果见 [39 项同版复验](../../docs/LIBERO_ENVSCREEN_20261113.md)。

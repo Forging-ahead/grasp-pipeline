@@ -42,3 +42,5 @@ GraspGen 仍只接收目标物体点云，预训练生成器、判别器及 200 
 针对性复验可用 `tools/libero_evaluation/run_subset.py`：显式传入任务键、源码目录、路径配置、修订编号和 GPU 槽位。每项初态 0、种子 0、最多 5000 步，外层一次，保留失败与超时；运行前后核对源码，最终结果必须匹配任务、驱动和模块来源。部分任务复验不能作为新版全 130 项成功率。
 
 有关距离查询及编译后凸碰撞几何的语义，参见 [MuJoCo 官方说明](https://mujoco.readthedocs.io/en/stable/computation/#geom-distance)。
+
+冻结版实际复验、尚未解决的失败与对照边界见 [39 项结果记录](LIBERO_ENVSCREEN_20261113.md)。

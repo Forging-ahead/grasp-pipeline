@@ -1,0 +1,1015 @@
+{
+  "summary": {
+    "tasks": 39,
+    "source_commit": "1610ac1712c9c53fd380696775773da9da8c9578",
+    "source_digest": "ebb68c33106778b8b24cf7aaf0b388856003aa8b8df5e03829ab911613f743dc",
+    "before_success": 16,
+    "after_success": 21,
+    "improved": 5,
+    "regressed": 0,
+    "retained": 16,
+    "failed": 18,
+    "failure_counts": {
+      "检查过的抓取候选均未通过规划或预检": 4,
+      "实际夹取后物体未通过抬升保持检查": 2,
+      "所有候选的夹爪终点被环境或目标掌部接触挡住": 2,
+      "把手或推移接触候选未通过预检": 7,
+      "实际执行中碰到不允许接触的部件": 1,
+      "阶段路径规划未通过": 1,
+      "控制跟踪未在预算内到达目标": 1
+    },
+    "trial_per_task": 1,
+    "init_state_id": 0,
+    "cpu_tests": 146,
+    "external_files_unchanged": 695,
+    "source_unchanged": true,
+    "development_runs_counted": false,
+    "scope": "Targeted subset only; not full-130 success rate"
+  },
+  "baseline_source_commit": "6d8cd7d7e6a34878bb71a0f5e61007e3f81ac405",
+  "source_commit": "1610ac1712c9c53fd380696775773da9da8c9578",
+  "source_digest": "ebb68c33106778b8b24cf7aaf0b388856003aa8b8df5e03829ab911613f743dc",
+  "local_independent_qa": {
+    "passed": true,
+    "tasks": 39,
+    "before_success": 16,
+    "after_success": 21,
+    "embedded_videos": 78,
+    "embedded_videos_match_files": true,
+    "source_commit": "1610ac1712c9c53fd380696775773da9da8c9578",
+    "same_frozen_source": true,
+    "recorded_initial_states_match": true,
+    "numeric_configs_match": true,
+    "original_goals_match": true,
+    "continuous_episodes": true,
+    "artifact_hashes_checked": 1045
+  },
+  "delivery_checksums": {
+    "delivery/LIBERO_环境筛选与机构修复_39项对照视频.html": {
+      "sha256": "3be70a0790039ede098d7d170f1688f5d6707e037e7d9d5d1a7712b1330e606a",
+      "bytes": 62848607
+    },
+    "LIBERO_envscreen_contact_39_20261113_results.zip": {
+      "sha256": "a5fb90896fbe15df764e54e20dfaff821b2b8a8105a8f17f8985ebb6e8e24461",
+      "bytes": 137946911
+    },
+    "delivery/SUMMARY.json": {
+      "sha256": "0f87cb7d55668b898adf13de68a75b32a6e9b848473a99661a0000fb1f3ccede",
+      "bytes": 929
+    },
+    "delivery/RESULTS.json": {
+      "sha256": "edd107d2fe63fd0c872b48c7e459dccf595ee6e7f371fd62adb42ba47992fc83",
+      "bytes": 2244143
+    },
+    "delivery/DELIVERY_QA.json": {
+      "sha256": "07bbdafe7d412a280df28944e59798a7d16569ce0efd0466a96d8f19f37cd17e",
+      "bytes": 412
+    },
+    "delivery/FILES_SHA256.json": {
+      "sha256": "699ef208956165ec2ec1a8f0581af6fcd33bcffbcd6466ac06c6fd12e8b1f532",
+      "bytes": 177763
+    }
+  },
+  "categories": [
+    {
+      "category": "single_surface",
+      "name": "单物体：开放支撑面放置",
+      "tasks": 6,
+      "before_success": 3,
+      "after_success": 6
+    },
+    {
+      "category": "single_container",
+      "name": "单物体：开放容器放入",
+      "tasks": 5,
+      "before_success": 3,
+      "after_success": 3
+    },
+    {
+      "category": "single_extract",
+      "name": "单物体：从抽屉内取出",
+      "tasks": 1,
+      "before_success": 0,
+      "after_success": 0
+    },
+    {
+      "category": "multi_place",
+      "name": "多物体独立抓放",
+      "tasks": 1,
+      "before_success": 0,
+      "after_success": 0
+    },
+    {
+      "category": "drawer",
+      "name": "抽屉开关",
+      "tasks": 8,
+      "before_success": 3,
+      "after_success": 5
+    },
+    {
+      "category": "microwave",
+      "name": "微波炉门开关",
+      "tasks": 2,
+      "before_success": 0,
+      "after_success": 0
+    },
+    {
+      "category": "stove",
+      "name": "炉子旋钮开关",
+      "tasks": 4,
+      "before_success": 4,
+      "after_success": 4
+    },
+    {
+      "category": "drawer_place",
+      "name": "抽屉开关＋抓放",
+      "tasks": 7,
+      "before_success": 0,
+      "after_success": 0
+    },
+    {
+      "category": "microwave_place",
+      "name": "微波炉门＋抓放",
+      "tasks": 1,
+      "before_success": 0,
+      "after_success": 0
+    },
+    {
+      "category": "stove_place",
+      "name": "炉子旋钮＋抓放",
+      "tasks": 3,
+      "before_success": 3,
+      "after_success": 3
+    },
+    {
+      "category": "push",
+      "name": "接触推移",
+      "tasks": 1,
+      "before_success": 0,
+      "after_success": 0
+    }
+  ],
+  "improved_tasks": [
+    "libero_90_KITCHEN_SCENE7_put_the_white_bowl_on_the_plate",
+    "libero_90_KITCHEN_SCENE7_put_the_white_bowl_to_the_right_of_the_plate",
+    "libero_90_KITCHEN_SCENE9_put_the_white_bowl_on_top_of_the_cabinet",
+    "libero_90_KITCHEN_SCENE5_close_the_top_drawer_of_the_cabinet",
+    "libero_goal_open_the_middle_drawer_of_the_cabinet"
+  ],
+  "model_pair_audit": [
+    {
+      "key": "libero_90_KITCHEN_SCENE7_put_the_white_bowl_on_the_plate",
+      "input_point_cloud_exactly_equal": true,
+      "model_poses_exactly_equal": false,
+      "model_scores_exactly_equal": false,
+      "max_score_difference": 0.4827710688114166,
+      "selected_generation_index": 27,
+      "selected_model_rank": 108,
+      "environment_input": 161,
+      "environment_rejected": 126,
+      "environment_wall_s": 0.052650898694992065,
+      "old_logged_planner_attempts": 166,
+      "old_selection_audit": {
+        "screened_candidates": 155,
+        "unchecked_candidates": 79,
+        "approach_distances_m": [
+          0.1,
+          0.05
+        ],
+        "rounds": 6,
+        "budget_exhausted": true
+      },
+      "model_sampled_points_exactly_equal": true,
+      "point_cloud_centers_exactly_equal": true,
+      "high_score_top30_clear": 0,
+      "high_score_top30_blocked": 30,
+      "max_pose_matrix_element_difference": 1.1265281438827515,
+      "interpretation": "Point cloud fixed but model proposals differ; before/after task outcomes are not a fixed-candidate component ablation."
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE7_put_the_white_bowl_to_the_right_of_the_plate",
+      "input_point_cloud_exactly_equal": true,
+      "model_poses_exactly_equal": false,
+      "model_scores_exactly_equal": false,
+      "max_score_difference": 0.33030959963798523,
+      "selected_generation_index": 166,
+      "selected_model_rank": 79,
+      "environment_input": 155,
+      "environment_rejected": 112,
+      "environment_wall_s": 0.051387473940849304,
+      "old_logged_planner_attempts": 107,
+      "old_selection_audit": null,
+      "model_sampled_points_exactly_equal": true,
+      "point_cloud_centers_exactly_equal": true,
+      "high_score_top30_clear": 0,
+      "high_score_top30_blocked": 30,
+      "max_pose_matrix_element_difference": 0.8254261016845703,
+      "interpretation": "Point cloud fixed but model proposals differ; before/after task outcomes are not a fixed-candidate component ablation."
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE9_put_the_white_bowl_on_top_of_the_cabinet",
+      "input_point_cloud_exactly_equal": true,
+      "model_poses_exactly_equal": false,
+      "model_scores_exactly_equal": false,
+      "max_score_difference": 0.29160672426223755,
+      "selected_generation_index": 84,
+      "selected_model_rank": 122,
+      "environment_input": 158,
+      "environment_rejected": 135,
+      "environment_wall_s": 0.044633544981479645,
+      "old_logged_planner_attempts": 171,
+      "old_selection_audit": {
+        "screened_candidates": 158,
+        "unchecked_candidates": 76,
+        "approach_distances_m": [
+          0.1,
+          0.05
+        ],
+        "rounds": 6,
+        "budget_exhausted": true
+      },
+      "model_sampled_points_exactly_equal": true,
+      "point_cloud_centers_exactly_equal": true,
+      "high_score_top30_clear": 0,
+      "high_score_top30_blocked": 30,
+      "max_pose_matrix_element_difference": 0.8927527666091919,
+      "interpretation": "Point cloud fixed but model proposals differ; before/after task outcomes are not a fixed-candidate component ablation."
+    }
+  ],
+  "methodology": {
+    "all_26_other_operations": true,
+    "original_failure_or_timeout_cases": true,
+    "successful_rigid_controls": 6,
+    "trials_per_task": 1,
+    "initial_state_id": 0,
+    "seed": 0,
+    "max_control_steps": 5000,
+    "control_hz": 20,
+    "graspgen_candidate_diversity_added": false,
+    "lift_lookahead_added": false,
+    "weights_changed": false,
+    "teacher_truth_retained": true,
+    "fixed_candidate_component_ablation": false,
+    "new_full130_evaluation": false,
+    "ready_for_sft": false
+  },
+  "tasks": [
+    {
+      "key": "libero_90_KITCHEN_SCENE7_put_the_white_bowl_on_the_plate",
+      "category": "single_surface",
+      "before_success": false,
+      "after_success": true,
+      "change": "improved",
+      "steps": 578,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 488.58270359039307
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE7_put_the_white_bowl_to_the_right_of_the_plate",
+      "category": "single_surface",
+      "before_success": false,
+      "after_success": true,
+      "change": "improved",
+      "steps": 593,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 490.0387363433838
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE9_put_the_white_bowl_on_top_of_the_cabinet",
+      "category": "single_surface",
+      "before_success": false,
+      "after_success": true,
+      "change": "improved",
+      "steps": 605,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 489.8520977497101
+    },
+    {
+      "key": "libero_goal_put_the_cream_cheese_in_the_bowl",
+      "category": "single_container",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 20,
+      "failure": {
+        "code": "checked_candidates_rejected",
+        "category": "planning",
+        "phase": "select_candidate",
+        "details": {
+          "screened_candidates": 3,
+          "unchecked_candidates": 0,
+          "approach_distances_m": [
+            0.1,
+            0.05
+          ],
+          "rounds": 2,
+          "budget_exhausted": false
+        },
+        "label": "检查过的抓取候选均未通过规划或预检",
+        "evidence": "No executable path found in checked candidates; grasp not executed"
+      },
+      "wall_seconds": 272.41577529907227
+    },
+    {
+      "key": "libero_object_pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "category": "single_container",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 308,
+      "failure": {
+        "code": "lift_verification_failed",
+        "category": "grasp_verification",
+        "phase": "verify_hold",
+        "details": {},
+        "label": "实际夹取后物体未通过抬升保持检查",
+        "evidence": "Object was not lifted: 0.0000 m"
+      },
+      "wall_seconds": 285.6555185317993
+    },
+    {
+      "key": "libero_spatial_pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "category": "single_extract",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 20,
+      "failure": {
+        "code": "grasp_environment_collision",
+        "category": "planning",
+        "phase": "select_candidate",
+        "details": {
+          "input_candidates": 158,
+          "passed": 0,
+          "rejected": 158,
+          "wall_s": 0.07063726335763931
+        },
+        "label": "所有候选的夹爪终点被环境或目标掌部接触挡住",
+        "evidence": "Every screened grasp endpoint collides with the scene or target palm"
+      },
+      "wall_seconds": 211.78374862670898
+    },
+    {
+      "key": "libero_10_LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "category": "multi_place",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 20,
+      "failure": {
+        "code": "checked_candidates_rejected",
+        "category": "planning",
+        "phase": "select_candidate",
+        "details": {
+          "screened_candidates": 4,
+          "unchecked_candidates": 0,
+          "approach_distances_m": [
+            0.1,
+            0.05
+          ],
+          "rounds": 2,
+          "budget_exhausted": false
+        },
+        "label": "检查过的抓取候选均未通过规划或预检",
+        "evidence": "No executable path found in checked candidates; grasp not executed"
+      },
+      "wall_seconds": 249.3215675354004
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet",
+      "category": "drawer",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 503,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 134.7636649608612
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE1_open_the_bottom_drawer_of_the_cabinet",
+      "category": "drawer",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 40,
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "wall_seconds": 152.7461235523224
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet",
+      "category": "drawer",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 509,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 140.29014086723328
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE2_open_the_top_drawer_of_the_cabinet",
+      "category": "drawer",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 513,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 135.71725368499756
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet",
+      "category": "drawer",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 40,
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "wall_seconds": 163.07386445999146
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet_and_open_the_top_drawer",
+      "category": "drawer",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 40,
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "wall_seconds": 80.83104991912842
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE5_close_the_top_drawer_of_the_cabinet",
+      "category": "drawer",
+      "before_success": false,
+      "after_success": true,
+      "change": "improved",
+      "steps": 490,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 100.88752222061157
+    },
+    {
+      "key": "libero_goal_open_the_middle_drawer_of_the_cabinet",
+      "category": "drawer",
+      "before_success": false,
+      "after_success": true,
+      "change": "improved",
+      "steps": 525,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 120.53615236282349
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE6_close_the_microwave",
+      "category": "microwave",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 40,
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "wall_seconds": 299.8489758968353
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE7_open_the_microwave",
+      "category": "microwave",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 40,
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "wall_seconds": 615.5733742713928
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE3_turn_on_the_stove",
+      "category": "stove",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 369,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 71.4078688621521
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE8_turn_off_the_stove",
+      "category": "stove",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 446,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 85.55891132354736
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE9_turn_on_the_stove",
+      "category": "stove",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 401,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 82.01281809806824
+    },
+    {
+      "key": "libero_goal_turn_on_the_stove",
+      "category": "stove",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 556,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 118.71956777572632
+    },
+    {
+      "key": "libero_10_KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "category": "drawer_place",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 475,
+      "failure": {
+        "code": "forbidden_contact",
+        "category": "collision",
+        "phase": "stage_00/place",
+        "details": {
+          "contacts": [
+            {
+              "geom1": "akita_black_bowl_1_g18",
+              "geom2": "gripper0_hand_collision",
+              "distance_m": -0.0010353740007213415
+            }
+          ]
+        },
+        "label": "实际执行中碰到不允许接触的部件",
+        "evidence": "Forbidden contact: [{'geom1': 'akita_black_bowl_1_g18', 'geom2': 'gripper0_hand_collision', 'distance_m': -0.0010353740007213415}]"
+      },
+      "wall_seconds": 280.1403155326843
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet_and_put_the_black_bowl_on_top_of_it",
+      "category": "drawer_place",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 1195,
+      "failure": {
+        "code": "lift_verification_failed",
+        "category": "grasp_verification",
+        "phase": "verify_hold",
+        "details": {},
+        "label": "实际夹取后物体未通过抬升保持检查",
+        "evidence": "Object was not lifted: 0.0000 m"
+      },
+      "wall_seconds": 357.45051741600037
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_put_the_butter_at_the_back_in_the_top_drawer_of_the_cabinet_and_close_it",
+      "category": "drawer_place",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 20,
+      "failure": {
+        "code": "checked_candidates_rejected",
+        "category": "planning",
+        "phase": "select_candidate",
+        "details": {
+          "screened_candidates": 2,
+          "unchecked_candidates": 0,
+          "approach_distances_m": [
+            0.1,
+            0.05
+          ],
+          "rounds": 2,
+          "budget_exhausted": false
+        },
+        "label": "检查过的抓取候选均未通过规划或预检",
+        "evidence": "No executable path found in checked candidates; grasp not executed"
+      },
+      "wall_seconds": 156.3530170917511
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_put_the_butter_at_the_front_in_the_top_drawer_of_the_cabinet_and_close_it",
+      "category": "drawer_place",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 686,
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "wall_seconds": 508.14257979393005
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_put_the_chocolate_pudding_in_the_top_drawer_of_the_cabinet_and_close_it",
+      "category": "drawer_place",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 20,
+      "failure": {
+        "code": "checked_candidates_rejected",
+        "category": "planning",
+        "phase": "select_candidate",
+        "details": {
+          "screened_candidates": 2,
+          "unchecked_candidates": 0,
+          "approach_distances_m": [
+            0.1,
+            0.05
+          ],
+          "rounds": 2,
+          "budget_exhausted": false
+        },
+        "label": "检查过的抓取候选均未通过规划或预检",
+        "evidence": "No executable path found in checked candidates; grasp not executed"
+      },
+      "wall_seconds": 125.60542893409729
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet_and_put_the_bowl_in_it",
+      "category": "drawer_place",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 757,
+      "failure": {
+        "code": "motion_plan_failed",
+        "category": "planning",
+        "phase": "lift",
+        "details": {
+          "success": false,
+          "status": "MotionGenStatus.IK_FAIL",
+          "wall_s": 8.425115212798119,
+          "contact_policy": {
+            "obstacle_names": [
+              "floor",
+              "plate_1_g1",
+              "plate_1_g10",
+              "plate_1_g2",
+              "plate_1_g3",
+              "plate_1_g4",
+              "plate_1_g5",
+              "plate_1_g6",
+              "plate_1_g7",
+              "plate_1_g8",
+              "plate_1_g9",
+              "wooden_cabinet_1_g1",
+              "wooden_cabinet_1_g11",
+              "wooden_cabinet_1_g12",
+              "wooden_cabinet_1_g13",
+              "wooden_cabinet_1_g14",
+              "wooden_cabinet_1_g15",
+              "wooden_cabinet_1_g16",
+              "wooden_cabinet_1_g18",
+              "wooden_cabinet_1_g19",
+              "wooden_cabinet_1_g2",
+              "wooden_cabinet_1_g20",
+              "wooden_cabinet_1_g22",
+              "wooden_cabinet_1_g23",
+              "wooden_cabinet_1_g24",
+              "wooden_cabinet_1_g25",
+              "wooden_cabinet_1_g26",
+              "wooden_cabinet_1_g27",
+              "wooden_cabinet_1_g29",
+              "wooden_cabinet_1_g3",
+              "wooden_cabinet_1_g30",
+              "wooden_cabinet_1_g31",
+              "wooden_cabinet_1_g33",
+              "wooden_cabinet_1_g34",
+              "wooden_cabinet_1_g35",
+              "wooden_cabinet_1_g36",
+              "wooden_cabinet_1_g37",
+              "wooden_cabinet_1_g38",
+              "wooden_cabinet_1_g4",
+              "wooden_cabinet_1_g40",
+              "wooden_cabinet_1_g41",
+              "wooden_cabinet_1_g42",
+              "wooden_cabinet_1_g5",
+              "wooden_cabinet_1_g6",
+              "wooden_cabinet_1_g7",
+              "wooden_cabinet_1_g8",
+              "wooden_cabinet_1_g9"
+            ],
+            "target_in_world": false,
+            "target_attached": true,
+            "ignored_obstacles": [
+              "table_collision"
+            ],
+            "allow_target_contact": true,
+            "approximations": [],
+            "target_contact_limitation": null,
+            "robot_collision_model": "conservative per-geom AABB sphere cover; fixed base omitted",
+            "path_validation": "sampled cuRobo sphere-world/self constraints, not a continuous exact-mesh certificate"
+          },
+          "reason": "curobo_plan_failed"
+        },
+        "label": "阶段路径规划未通过",
+        "evidence": "lift planning failed: {'success': False, 'status': 'MotionGenStatus.IK_FAIL', 'wall_s': 8.425115212798119, 'contact_policy': {'obstacle_names': ['floor', 'plate_1_g1', 'plate_1_g10', 'plate_1_g2', 'plate_1_g3', 'plate_1_g4', 'plate_1_g5', 'plate_1_g6', 'plate_1_g7', 'plate_1_g8', 'plate_1_g9', 'wooden_cabinet_1_g1', 'wooden_cabinet_1_g11', 'wooden_cabinet_1_g12', 'wooden_cabinet_1_g13', 'wooden_cabinet_1_g14', 'wooden_cabinet_1_g15', 'wooden_cabinet_1_g16', 'wooden_cabinet_1_g18', 'wooden_cabinet_1_g19', 'wooden_cabinet_1_g2', 'wooden_cabinet_1_g20', 'wooden_cabinet_1_g22', 'wooden_cabinet_1_g23', 'wooden_cabinet_1_g24', 'wooden_cabinet_1_g25', 'wooden_cabinet_1_g26', 'wooden_cabinet_1_g27', 'wooden_cabinet_1_g29', 'wooden_cabinet_1_g3', 'wooden_cabinet_1_g30', 'wooden_cabinet_1_g31', 'wooden_cabinet_1_g33', 'wooden_cabinet_1_g34', 'wooden_cabinet_1_g35', 'wooden_cabinet_1_g36', 'wooden_cabinet_1_g37', 'wooden_cabinet_1_g38', 'wooden_cabinet_1_g4', 'wooden_cabinet_1_g40', 'wooden_cabinet_1_g41', 'wooden_cabinet_1_g42', 'wooden_cabinet_1_g5', 'wooden_cabinet_1_g6', 'wooden_cabinet_1_g7', 'wooden_cabinet_1_g8', 'wooden_cabinet_1_g9'], 'target_in_world': False, 'target_attached': True, 'ignored_obstacles': ['table_collision'], 'allow_target_contact': True, 'approximations': [], 'target_contact_limitation': None, 'robot_collision_model': 'conservative per-geom AABB sphere cover; fixed base omitted', 'path_validation': 'sampled cuRobo sphere-world/self constraints, not a continuous exact-mesh certificate'}, 'reason': 'curobo_plan_failed'}"
+      },
+      "wall_seconds": 320.9843168258667
+    },
+    {
+      "key": "libero_goal_open_the_top_drawer_and_put_the_bowl_inside",
+      "category": "drawer_place",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 536,
+      "failure": {
+        "code": "grasp_environment_collision",
+        "category": "planning",
+        "phase": "select_candidate",
+        "details": {
+          "input_candidates": 14,
+          "passed": 0,
+          "rejected": 14,
+          "wall_s": 0.007413618266582489
+        },
+        "label": "所有候选的夹爪终点被环境或目标掌部接触挡住",
+        "evidence": "Every screened grasp endpoint collides with the scene or target palm"
+      },
+      "wall_seconds": 183.39263486862183
+    },
+    {
+      "key": "libero_10_KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "category": "microwave_place",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 1115,
+      "failure": {
+        "code": "waypoint_timeout",
+        "category": "control",
+        "phase": "place",
+        "details": {
+          "position_error_m": 0.009141296569580515,
+          "rotation_error_rad": 0.002493142466739262,
+          "max_steps": 120,
+          "extra_budget_used": true,
+          "recent_errors_m": [
+            0.009140290823470955,
+            0.009140249153284083,
+            0.009140035381341324,
+            0.009140209610433563,
+            0.009140272577069524,
+            0.0091404255805266,
+            0.009140473153443192,
+            0.009140329839986224,
+            0.009140408141846938,
+            0.00914041154520962,
+            0.009140678611194874,
+            0.009140737144895762,
+            0.009140727686068138,
+            0.009140909278051593,
+            0.00914116381685871,
+            0.009140839270438052,
+            0.009141265301915264,
+            0.009141152331015754,
+            0.00914135867357342,
+            0.009141142426074118,
+            0.00914104688644545,
+            0.009141306052808735,
+            0.009141131550204443,
+            0.009141204776771664,
+            0.009141356571816379,
+            0.009141225617981183,
+            0.00914111747990596,
+            0.009141633170365896,
+            0.009141263726317366,
+            0.009141296569580515
+          ]
+        },
+        "label": "控制跟踪未在预算内到达目标",
+        "evidence": "OSC target timeout in place: position=0.00914, rotation=0.0025"
+      },
+      "wall_seconds": 434.3593158721924
+    },
+    {
+      "key": "libero_10_KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "category": "stove_place",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 927,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 272.6532452106476
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE3_turn_on_the_stove_and_put_the_frying_pan_on_it",
+      "category": "stove_place",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 1102,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 386.82455921173096
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE9_turn_on_the_stove_and_put_the_frying_pan_on_it",
+      "category": "stove_place",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 968,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 369.00025606155396
+    },
+    {
+      "key": "libero_goal_push_the_plate_to_the_front_of_the_stove",
+      "category": "push",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "steps": 391,
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "wall_seconds": 129.78042340278625
+    },
+    {
+      "key": "libero_spatial_pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "category": "single_surface",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 511,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 218.05494618415833
+    },
+    {
+      "key": "libero_spatial_pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "category": "single_surface",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 557,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 248.37405848503113
+    },
+    {
+      "key": "libero_spatial_pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "category": "single_surface",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 553,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 333.21807861328125
+    },
+    {
+      "key": "libero_object_pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "category": "single_container",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 760,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 230.85979056358337
+    },
+    {
+      "key": "libero_object_pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "category": "single_container",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 576,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 208.10990357398987
+    },
+    {
+      "key": "libero_object_pick_up_the_butter_and_place_it_in_the_basket",
+      "category": "single_container",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "steps": 1088,
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "wall_seconds": 297.1293992996216
+    }
+  ]
+}
