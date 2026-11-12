@@ -1,6 +1,6 @@
 {
   "schema_version": "robocasa-policy-1",
-  "version": "robocasa-port-r11-v10",
+  "version": "robocasa-port-r12-v10",
   "rule_profile": "libero-v10",
   "robot": "PandaOmron",
   "camera_names": [
@@ -42,7 +42,7 @@
   "base_motion_enabled": false,
   "articulation_enabled": false,
   "composite_enabled": false,
-  "note": "LIBERO v10 rules with r11 handoff fixes: pre-lift attachment, bounded placement orientations, unchanged-start rejection reuse and 1200-second atomic wall cap. Native horizon and contact checks retained; unvalidated skills remain disabled.",
+  "note": "LIBERO v10 rules with r12 handoff fixes: pre-lift attachment and explicit detach/attach geometry refresh, bounded placement orientations, unchanged-start rejection reuse and 1200-second atomic wall cap. Native horizon and contact checks retained; unvalidated skills remain disabled.",
   "grasp_generator": "graspgen",
   "carried_contents_enabled": false,
   "base_max_speed_m_s": 0.25,

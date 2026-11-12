@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Frozen r11 rerun of the exact 22 r10 task identities and initial states."""
+"""Frozen r12 rerun of the exact 22 r10 task identities and initial states."""
 from __future__ import annotations
 
 import argparse
@@ -42,11 +42,11 @@ def main():
     if old.get("source_digest") != "387084f9bee3cb24489e3cfa7c33815aab7a37dfb6408af09002bde3c0687a67":
         parser.error("Expected the frozen r10 all-65 baseline")
     base = load_config("PickPlaceCounterToStove", paths_file=args.paths, budget_profile="libero-v10-teacher")
-    if base["policy"]["version"] != "robocasa-port-r11-v10":
-        parser.error("This rerun requires the r11 migration fix")
+    if base["policy"]["version"] != "robocasa-port-r12-v10":
+        parser.error("This rerun requires the final r12 migration fix")
     identity = source_identity()
     if identity["source_digest"] != args.expected_source_digest:
-        parser.error("Source does not match the explicitly frozen r11 actor")
+        parser.error("Source does not match the explicitly frozen r12 actor")
     cells, configs = [], {}
     for previous in old["cells"]:
         if previous["execution_mode"] != "run":
@@ -80,7 +80,7 @@ def main():
     tool_names = ("run_pickplace22.py", "atomic65_case.py", "atomic65_driver.py")
     hashes = {name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest() for name in tool_names}
     manifest = {"schema_version": "robocasa-pickplace22-rerun-1", "planned_episodes": 22,
-        "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(), "policy_version": base["policy"]["version"],
         "source_digest": identity["source_digest"], "policy_digest": digest_json(base["policy"]),
         "baseline_root": str(baseline_root), "baseline_source_digest": old["source_digest"],
         "cells": cells, "gpus": args.gpus, "sessions_per_gpu": args.sessions_per_gpu,

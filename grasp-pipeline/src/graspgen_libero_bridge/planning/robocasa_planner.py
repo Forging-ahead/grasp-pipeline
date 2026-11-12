@@ -258,6 +258,10 @@ class RoboCasaPlanner:
         self.local.attach([target, *contents])
         if self.environment.config["policy"]["global_planner"] == "curobo":
             self.ensure_configuration(target)
+            if self.attached_target is not None:
+                # A refresh updates planner geometry only: the physical gripper
+                # remains closed. Match v10's explicit detach/attach handshake.
+                self._request({"command": "detach"})
             self.carried_contents = list(contents)
             self.attached_target = target
             response = self._request({"command": "attach", "scene": self.scene(target)})

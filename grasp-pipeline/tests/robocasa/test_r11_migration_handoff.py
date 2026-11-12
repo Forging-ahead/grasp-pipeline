@@ -122,6 +122,29 @@ def test_goal_dependent_ik_failure_is_never_cached_as_a_start_failure(tmp_path):
     assert len(requests) == 2 and not planner.invalid_start_cache
 
 
+def test_post_lift_geometry_refresh_uses_the_real_worker_attachment_protocol(tmp_path):
+    env = NS(output=tmp_path, config={"policy": {"global_planner": "curobo"}})
+    planner = RoboCasaPlanner(env, NS(attach=lambda names: None))
+    planner.ensure_configuration = lambda target: None
+    planner.scene = lambda target: {"target": target}
+    attached = [False]
+    commands = []
+    def request(message):
+        command = message["command"]; commands.append(command)
+        if command == "attach":
+            if attached[0]:
+                raise RuntimeError("Already carrying a target; detach explicitly before attaching again")
+            attached[0] = True
+        elif command == "detach":
+            attached[0] = False
+        return {"success": True}
+    planner._request = request
+    planner.attach("obj")
+    planner.attach("obj")  # Re-measured relation after the physical lift.
+    assert commands == ["attach", "detach", "attach"]
+    assert attached[0] and planner.attached_target == "obj"
+
+
 @pytest.mark.parametrize("changed_field", [None, "ctrl", "qpos"])
 def test_exact_initial_state_check_rejects_a_different_rerun_before_execution(tmp_path, changed_field):
     old, new = tmp_path / "old", tmp_path / "new"
