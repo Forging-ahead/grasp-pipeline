@@ -17,6 +17,8 @@ from graspgen_libero_bridge.policy.evaluate import PickPlace, write_json, progre
 from graspgen_libero_bridge.control.controller import Recorder
 from graspgen_libero_bridge.policy.task_policy import schedule
 from graspgen_libero_bridge.policy.skills import ContactSkill, serializable
+from graspgen_libero_bridge.adapters.libero.articulation import stage_ready
+from graspgen_libero_bridge.common.errors import ExecutionError
 
 from graspgen_libero_bridge.runtime.config import load_task
 row,cfg=load_task(args.key,gpu=args.gpu,init=args.init,paths_file=args.paths)
@@ -28,7 +30,7 @@ out.mkdir(parents=True,exist_ok=False)
 start=time.monotonic();mainrec=None;shared=None;close_env=None;original_goals=None
 result=dict(key=args.key,suite=row['suite'],task_name=row['task_name'],initial_state_id=args.init,
     status='running',pipeline_success=False,official_goal_at_end=False,stages=[],
-    release='20261113-contact-feedback-'+args.tag,uses_simulator_truth=True,
+    release='20261113-contact-feedback-v2-'+args.tag,uses_simulator_truth=True,
     stage_inputs='BDDL goals, object/region geometry, joint axes and measured contacts',
     source_sha256={str(f.relative_to(r)):hashlib.sha256(f.read_bytes()).hexdigest()
                    for f in sorted((r/'src/graspgen_libero_bridge').rglob('*.py'))},
@@ -108,7 +110,7 @@ try:
     else:
         for i,stage in enumerate(plan):
             label='stage_%02d'%i
-            if shared.task_env._eval_predicate(stage['predicate']):
+            if stage_ready(shared,stage,out/(label+'_readiness')):
                 result['stages'].append(dict(stage=stage,status='already_satisfied',physical_execution=False))
                 continue
             # An In goal on a closed articulated region needs physical opening
@@ -123,11 +125,13 @@ try:
                     site=int(m.site_name2id(opening));body=int(m.site_bodyid[site])
                     if int(m.body_jntnum[body])==0:opening=target
                     predicate=['open',opening]
-                    if not shared.task_env._eval_predicate(predicate):
-                        prerequisite=dict(skill='articulate',target=target,region=opening,relation='open',predicate=predicate,requires_access=True)
+                    prerequisite=dict(skill='articulate',target=target,region=opening,relation='open',predicate=predicate,requires_access=True)
+                    if not stage_ready(shared,prerequisite,out/(label+'_access_readiness')):
                         data=contact(prerequisite,label+'_precondition_open')
                         result['stages'].append(dict(stage=prerequisite,precondition=True,**data))
-                        if not data['official_subgoal']:raise RuntimeError('Opening precondition did not remain satisfied')
+                        if not data['official_subgoal'] or not data.get('required_access_reached',False):
+                            raise ExecutionError('Opening precondition did not retain its required access aperture',
+                                code='access_aperture_not_retained',category='control',phase='open_precondition')
             before=shared.step_count
             if stage['skill']=='pick_place':
                 directory=out/label
@@ -146,8 +150,12 @@ try:
             else:
                 data=contact(stage,label)
                 result['stages'].append(dict(stage=stage,steps=shared.step_count-before,**data))
-                if not data['official_subgoal']:
-                    result.update(status='stage_failed',reason='Contact skill predicate false after release/settling')
+                if data['official_subgoal'] and not data.get('required_access_reached',True):
+                    raise ExecutionError('Required access aperture lost after release/settling',
+                        code='access_aperture_not_retained',category='control',phase='release_handle')
+                if not data['official_subgoal'] or not data.get('required_access_reached',True):
+                    result.update(status='stage_failed',reason=('Contact skill predicate false after release/settling'
+                        if not data['official_subgoal'] else 'Required access aperture lost after release/settling'))
                     break
             assert shared.task_env.parsed_problem['goal_state']==original_goals
             write_json(out/'PROGRESS.json',result)

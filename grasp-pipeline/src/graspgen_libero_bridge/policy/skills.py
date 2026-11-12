@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 from scipy.spatial.transform import Rotation
 
-from graspgen_libero_bridge.adapters.libero.articulation import discover, grip_candidates, handle_motion_pose, joint_goal, HandleMonitor, ArticulationPreviewMonitor
+from graspgen_libero_bridge.adapters.libero.articulation import discover, grip_candidates, handle_motion_pose, joint_goal, access_reached, HandleMonitor, ArticulationPreviewMonitor
 from graspgen_libero_bridge.planning.cartesian import plan_cartesian, _snapshot, _restore
 from graspgen_libero_bridge.control.controller import Controller
 from graspgen_libero_bridge.common.errors import ExecutionError
@@ -110,7 +110,9 @@ class ContactSkill:
             for index, (pre, grip) in enumerate(candidates):
                 self.free_handle_roll = (getattr(self, 'candidate_specs', [{}] * len(candidates))[index]
                                          .get('free_handle_roll', False))
-                app = self.global_plan(pre, 'global_approach') if global_fallback else self.native_plan(pre, 'approach')
+                axis=self.free_handle_axis()
+                freedom={} if axis is None else dict(free_rotation_axis_world=axis)
+                app = self.global_plan(pre, 'global_approach') if global_fallback else self.native_plan(pre, 'approach',**freedom)
                 if global_fallback and app.get('reason')=='invalid_start_state':
                     raise ExecutionError('cuRobo rejected the current state before evaluating a target; see its proxy-collision diagnostics',
                         code='contact_global_start_invalid',category='planning',phase='approach',details=app)
@@ -121,7 +123,7 @@ class ContactSkill:
                     with np.load(app['path_file']) as path:
                         self.a.env.sim.data.qpos[self.a.robot._ref_joint_pos_indexes] = path['q_arm'][-1]
                     self.a.env.sim.forward()
-                    engage = self.native_plan(grip, 'engage', True)
+                    engage = self.native_plan(grip, 'engage', True,**freedom)
                 finally:
                     _restore(self.a.env.sim, snap)
                     self.a.robot.controller.update(force=True)
@@ -245,12 +247,12 @@ class ContactSkill:
                 child.close()
             legs.append(result)
             write_json(self.out/'REGRASP_LEGS.json',serializable(legs))
-            if self.a.task_env._eval_predicate(self.stage['predicate']):
-                return dict(contact_mode='segmented_handle_open',legs=legs,official_subgoal=True)
+            if self.a.task_env._eval_predicate(self.stage['predicate']) and result.get('required_access_reached',True):
+                return dict(contact_mode='segmented_handle_open',legs=legs,official_subgoal=True,required_access_reached=True)
             if abs(result['final_q']-result['initial_q'])<.025:
                 raise ExecutionError('Regrasp leg made insufficient mechanism progress',
                     code='regrasp_no_progress',category='control',phase='articulate')
-        raise ExecutionError('Door did not reach the original predicate within four regrasp legs',
+        raise ExecutionError('Door did not satisfy opening and required access conditions within four regrasp legs',
             code='regrasp_budget_exhausted',category='control',phase='articulate')
 
     def _articulate_attempt(self,max_joint_segment=None):
@@ -267,8 +269,11 @@ class ContactSkill:
         if max_joint_segment is not None:
             qgoal=q0+float(np.clip(qgoal-q0,-max_joint_segment,max_joint_segment))
         def reached():
-            return bool(a.task_env._eval_predicate(stage['predicate']) or (
-                max_joint_segment is not None and (qgoal-self.joint_q())*np.sign(qgoal-q0)<=.01))
+            official=bool(a.task_env._eval_predicate(stage['predicate']))
+            leg=(qgoal-self.joint_q())*np.sign(qgoal-q0)<=(.002 if info['joint_type']==2 else .01)
+            if stage.get('requires_access'):
+                return leg if max_joint_segment is not None else official and access_reached(info,properties,self.joint_q())
+            return official or (max_joint_segment is not None and leg)
         self.sweep_goal=qgoal
         write_json(self.out/'ARTICULATION.json',serializable(dict(info, initial_q=q0,target_q=qgoal,
             full_task_target_q=full_goal,max_joint_segment=max_joint_segment)))
@@ -387,7 +392,7 @@ class ContactSkill:
             if stalled>=3:
                 raise ExecutionError('Mechanism stopped progressing under feedback',code='mechanism_stalled',category='control',phase='articulate_feedback')
         if not reached():
-            raise ExecutionError('Mechanism did not reach official predicate within feedback budget',
+            raise ExecutionError('Mechanism did not reach its required joint condition within feedback budget',
                 code='mechanism_goal_not_reached',category='control',phase='articulate_feedback')
         c.hold(20,1,'verify_held',True)
         c.hold(25,-1,'release_handle',True)
@@ -426,7 +431,8 @@ class ContactSkill:
         c.follow_path(reply['path_file'],gripper=-1,phase='retreat',allow_finger_target=True)
         c.hold(30,-1,'settle',False)
         return dict(selected_candidate=selected,free_handle_roll=getattr(self,'free_handle_roll',False),initial_q=q0,final_q=self.joint_q(),
-            official_subgoal=bool(a.task_env._eval_predicate(stage['predicate'])),sustained_force_samples=sustained)
+            official_subgoal=bool(a.task_env._eval_predicate(stage['predicate'])),sustained_force_samples=sustained,
+            required_access_reached=not stage.get('requires_access') or access_reached(info,properties,self.joint_q()))
 
     def close_with_surface_push(self,qgoal,q0):
         """A close-only fallback: push an exposed moving face under feedback.
@@ -434,7 +440,7 @@ class ContactSkill:
         Pinch candidates are exhausted first. No mechanism state is written
         during execution; finger contact and measured joint progress move it.
         """
-        from graspgen_libero_bridge.adapters.libero.surface_contact import closing_push_candidates
+        from graspgen_libero_bridge.adapters.libero.surface_contact import closing_push_candidates,feedback_tolerances
         a,c,info=self.a,self.c,self.info
         self.contact_mode='closing_surface';self.free_handle_roll=False
         c.hold(25,1,'prepare_closed_mechanism_pusher',False)
@@ -473,11 +479,8 @@ class ContactSkill:
                 raise ExecutionError('Moving-surface push continuation rejected',code='surface_push_ik_failed',
                     category='planning',phase='articulate_feedback',details=local)
             with np.load(local['path_file']) as path:c.set_joint_reference(path['q_arm'][-1])
-            linear=float(np.linalg.norm(desired[:3,3]-current[:3,3]))
-            angular=float(Rotation.from_matrix(desired[:3,:3]@current[:3,:3].T).magnitude())
             c.move_to(desired,gripper=1,phase='surface_joint_feedback',allow_finger_target=True,
-                position_tolerance=min(.0015,max(.0001,.2*linear)),
-                rotation_tolerance=min(.04,max(.0008,.2*angular)),max_steps=80,
+                **feedback_tolerances(info,current,desired),max_steps=80,
                 stop_when=lambda:a.task_env._eval_predicate(self.stage['predicate']))
             c.hold(4,1,'observe_surface_progress',True)
             moved=(self.joint_q()-before)*np.sign(qgoal-before)

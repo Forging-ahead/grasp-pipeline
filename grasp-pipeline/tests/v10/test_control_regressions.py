@@ -52,6 +52,20 @@ class ServoTests(unittest.TestCase):
             c.move_to(desired,max_steps=3,stop_when=lambda:bool(observed))
         self.assertEqual(error.exception.code,'forbidden_contact')
 
+    def test_slide_feedback_accepts_small_wrist_load_error_without_stopping_translation(self):
+        from scipy.spatial.transform import Rotation
+        from graspgen_libero_bridge.adapters.libero.surface_contact import feedback_tolerances
+        def run(old):
+            c,pose,_=self.fixture();pose[:3,:3]=Rotation.from_euler('z',.002).as_matrix()
+            desired=np.eye(4);desired[0,3]=.004
+            settings=feedback_tolerances(dict(joint_type=2),pose,desired)
+            if old:settings['rotation_tolerance']=.0008
+            def step(action,*args):pose[0,3]+=.5*action[0]*.05
+            c.step=step;c.move_to(desired,max_steps=20,**settings)
+            return abs(pose[0,3]-.004)
+        with self.assertRaises(ExecutionError):run(True)
+        self.assertLessEqual(run(False),.0008)
+
     def test_bounded_integral_removes_constant_load_error_without_relaxing_tolerance(self):
         def run(gain):
             c, pose, _ = self.fixture({"position_integral_gain": gain})

@@ -68,7 +68,32 @@ def joint_goal(info, properties, relation, measured_q, requires_access=False):
     elif relation=='open' and info['joint_type']==3 and not requires_access:
         margin = min(.05, (high-low)*.2)
         target = float(np.clip(measured_q, low+margin, high-margin))
+    elif relation=='open' and requires_access:
+        direction=np.sign(np.mean(values)-np.mean(properties['default_close_ranges']))
+        if direction*(measured_q-target)>0:
+            target=float(measured_q)
     return float(np.clip(target, *info['limits']))
+
+
+def access_reached(info,properties,measured_q):
+    """The Open predicate alone does not certify the intended access aperture."""
+    opening=float(np.mean(properties['default_open_ranges']))
+    closing=float(np.mean(properties['default_close_ranges']))
+    direction=float(np.sign(opening-closing))
+    if not direction:raise ValueError('Open and close ranges do not define an access direction')
+    target=float(np.clip(opening,*info['limits']))
+    tolerance=.002 if info['joint_type']==2 else .01
+    return bool((target-float(measured_q))*direction<=tolerance)
+
+
+def stage_ready(adapter,stage,output):
+    """Require enough aperture before skipping an access-opening stage."""
+    official=bool(adapter.task_env._eval_predicate(stage['predicate']))
+    if not official or stage.get('skill')!='articulate' or not stage.get('requires_access'):
+        return official
+    info=discover(adapter,stage['region'],output)
+    obj=adapter.task_env.fixtures_dict.get(stage['target']) or adapter.task_env.objects_dict.get(stage['target'])
+    return access_reached(info,obj.object_properties['articulation'],adapter.env.sim.data.qpos[info['q_address']])
 
 
 def discover(adapter, region, output):

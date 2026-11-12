@@ -5,6 +5,19 @@ from graspgen_libero_bridge.adapters.libero.env_adapter import body_subtree_ids
 from graspgen_libero_bridge.adapters.libero.scene import _geometry
 
 
+def feedback_tolerances(info,current,desired):
+    """Resolve the final hinge increment without overconstraining a slider.
+
+    A sliding drawer needs translational progress; demanding sub-milliradian
+    wrist alignment can time it out despite a valid, progressing push.
+    """
+    from scipy.spatial.transform import Rotation
+    linear=float(np.linalg.norm(desired[:3,3]-current[:3,3]))
+    angular=float(Rotation.from_matrix(desired[:3,:3]@current[:3,:3].T).magnitude())
+    return dict(position_tolerance=min(.0015,max(.0001,.2*linear)),
+        rotation_tolerance=.04 if info['joint_type']==2 else min(.04,max(.0008,.2*angular)))
+
+
 def closing_push_candidates(adapter, info, qgoal, output):
     """Choose exposed box faces facing the required joint motion.
 

@@ -25,6 +25,15 @@ def main():
         assert archive.pax_headers['comment']==summary['source_revision']
         for name,expected in manifest['files'].items():
             assert hashlib.sha256(archive.extractfile('grasp-pipeline/'+name).read()).hexdigest()==expected
+        if (r/'MATRIX_PROTOCOL.json').exists():
+            scheduling=read(r/'MATRIX_PROTOCOL.json');complete=read(r/'MATRIX_COMPLETE.json')
+            assert scheduling['revision']==complete['revision']==summary['source_revision']
+            assert scheduling['source_digest']==complete['source_digest']==manifest['source_digest']
+            assert complete['episodes']==len(rows) and complete['source_unchanged']
+            for name,key in [('run_matrix.py','runner_sha256'),('run_subset.py','single_episode_runner_sha256')]:
+                assert hashlib.sha256(archive.extractfile('grasp-pipeline/tools/libero_evaluation/'+name).read()).hexdigest()==scheduling[key]
+            cohorts=read(r/'COHORTS.json')
+            assert {(g['init_state_id'],key) for g in cohorts for key in g['keys']}=={(x['initial_state_id'],x['key']) for x in rows}
     suites=list(ET.parse(r/'REGRESSION.xml').getroot().iter('testsuite'))
     assert sum(int(x.get('tests',0)) for x in suites)==summary['cpu_tests']
     assert all(int(x.get(k,0))==0 for x in suites for k in ['failures','errors','skipped'])
@@ -38,6 +47,7 @@ def main():
         assert result['source_sha256']==actor and result['driver_sha256']==manifest['files']['apps/libero/run_task.py']
         assert queue['source_digest']==manifest['source_digest'] and queue['source_unchanged'] and queue['result_identity_valid']
         assert result['original_goals_unchanged']
+        assert result['original_goals']==old[key]['result']['original_goals']
         if init==0:
             assert result['original_goals']==old[key]['result']['original_goals']
             assert row['before_success']==old[key]['after_success']

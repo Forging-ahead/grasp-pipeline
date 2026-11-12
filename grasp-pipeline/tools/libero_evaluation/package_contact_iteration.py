@@ -20,7 +20,8 @@ from run_all import read, dump, identity, valid_result
 from package_subset import failure, sha, LABELS
 LABELS.update(surface_push_stalled='推动后机构不再进展',surface_push_ik_failed='推动机构的后续预检未通过',
     surface_push_goal_not_reached='推动机构未达到原始目标',regrasp_no_progress='重夹后关节进度不足',
-    regrasp_budget_exhausted='重夹预算内未完成原始目标',contact_global_start_invalid='cuRobo代理模型把当前起点判为不可规划')
+    regrasp_budget_exhausted='重夹预算内未完成开门/通行条件',contact_global_start_invalid='cuRobo代理模型把当前起点判为不可规划',
+    access_aperture_not_retained='松手后未保持取放所需通行开度')
 
 
 def render(rows, summary, out):
@@ -166,10 +167,15 @@ def main():
         failure_counts=dict(collections.Counter(x['failure']['code'] for x in rows if not x['after_success'])),
         historical_successes_substituted=False,development_runs_counted=False,scope='Targeted contact-policy iteration, not a full-130 score')
     for name,value in [('PROTOCOLS.json',protocols),('SOURCE_IDENTITY.json',manifests[0]),('BASELINE_RESULTS.json',[before[x['key']] for x in paired]),('SUMMARY.json',summary),('RESULTS.json',rows)]:dump(out/name,value)
+    parents={e.resolve().parent for e in args.evaluations}
+    if len(parents)==1 and (next(iter(parents))/'MATRIX_PROTOCOL.json').exists():
+        parent=next(iter(parents));matrix=read(parent/'MATRIX_COMPLETE.json')
+        assert matrix['episodes']==len(rows) and matrix['source_digest']==summary['source_digest'] and matrix['source_unchanged']
+        for name in ['MATRIX_PROTOCOL.json','MATRIX_COMPLETE.json','COHORTS.json']:shutil.copy2(parent/name,out/name)
     shutil.copy2(args.source_archive,out/'frozen-source.tar.gz');shutil.copy2(args.tests,out/'REGRESSION.xml')
     dump(out/'FROZEN_CONFIGS.json',{str(read(e/'PROTOCOL.json')['initial_state_id']):read(e/'FROZEN_CONFIGS.json') for e in args.evaluations})
     shutil.copy2(args.external_manifest,out/'EXTERNAL_SOURCE_BEFORE.json')
-    for name in ['package_contact_iteration.py','validate_contact_iteration.py','validate_subset.py','run_all.py','package_subset.py']:
+    for name in ['package_contact_iteration.py','validate_contact_iteration.py','validate_subset.py','run_all.py','package_subset.py','run_matrix.py','run_subset.py']:
         shutil.copy2(Path(__file__).parent/name,out/name)
     report=render(rows,summary,out)
     dump(out/'FILES_SHA256.json',{str(f.relative_to(out)):sha(f) for f in sorted(out.rglob('*')) if f.is_file()})

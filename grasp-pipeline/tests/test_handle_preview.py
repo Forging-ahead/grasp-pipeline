@@ -4,7 +4,8 @@ from types import SimpleNamespace
 import unittest
 import numpy as np
 from graspgen_libero_bridge.planning.grasp_contact import preview_handle_contacts
-from graspgen_libero_bridge.adapters.libero.articulation import HandleMonitor, joint_goal
+from graspgen_libero_bridge.adapters.libero.articulation import HandleMonitor, joint_goal, access_reached, stage_ready
+from unittest.mock import patch
 from graspgen_libero_bridge.policy.task_policy import schedule
 
 
@@ -85,9 +86,28 @@ class HandlePreviewTests(unittest.TestCase):
 class JointGoalTests(unittest.TestCase):
     def test_standalone_door_does_not_require_the_interval_midpoint(self):
         info=dict(joint_type=3,limits=[-2.094,0.])
-        props={'default_open_ranges':[-2.094,-1.3]}
+        props={'default_open_ranges':[-2.094,-1.3],'default_close_ranges':[-.005,0.]}
         self.assertAlmostEqual(joint_goal(info,props,'open',0.),-1.35)
         self.assertAlmostEqual(joint_goal(info,props,'open',0.,True),-1.697)
+
+    def test_access_opening_does_not_close_an_already_wider_door(self):
+        info=dict(joint_type=3,limits=[-2.094,0.])
+        props={'default_open_ranges':[-2.094,-1.3],'default_close_ranges':[-.005,0.]}
+        self.assertAlmostEqual(joint_goal(info,props,'open',-1.9,True),-1.9)
+        self.assertFalse(access_reached(info,props,-1.32))
+        self.assertTrue(access_reached(info,props,-1.9))
+
+    def test_official_open_predicate_cannot_skip_an_insufficient_access_aperture(self):
+        info=dict(joint_type=3,limits=[-2.094,0.],q_address=0)
+        props={'default_open_ranges':[-2.094,-1.3],'default_close_ranges':[-.005,0.]}
+        obj=SimpleNamespace(object_properties={'articulation':props})
+        adapter=SimpleNamespace(task_env=SimpleNamespace(_eval_predicate=lambda _:True,
+            fixtures_dict={'door':obj},objects_dict={}),env=SimpleNamespace(sim=SimpleNamespace(data=SimpleNamespace(qpos=np.array([-1.32])))))
+        stage=dict(skill='articulate',target='door',region='door',predicate=['open','door'],requires_access=True)
+        with patch('graspgen_libero_bridge.adapters.libero.articulation.discover',return_value=info):
+            self.assertFalse(stage_ready(adapter,stage,'/unused'))
+            adapter.env.sim.data.qpos[0]=-1.8
+            self.assertTrue(stage_ready(adapter,stage,'/unused'))
 
     def test_drawer_and_switch_targets_remain_unchanged(self):
         info=dict(joint_type=2,limits=[-.16,.01])
