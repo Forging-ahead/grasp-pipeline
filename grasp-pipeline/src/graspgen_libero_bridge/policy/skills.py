@@ -3,13 +3,14 @@ from pathlib import Path
 import numpy as np
 from scipy.spatial.transform import Rotation
 
-from graspgen_libero_bridge.adapters.libero.articulation import discover, grip_candidates, constrained_pose, HandleMonitor, ArticulationPreviewMonitor
+from graspgen_libero_bridge.adapters.libero.articulation import discover, grip_candidates, handle_motion_pose, HandleMonitor, ArticulationPreviewMonitor
 from graspgen_libero_bridge.planning.cartesian import plan_cartesian, _snapshot, _restore
 from graspgen_libero_bridge.control.controller import Controller
 from graspgen_libero_bridge.common.errors import ExecutionError
 from graspgen_libero_bridge.policy.evaluate import write_json, progress
 from graspgen_libero_bridge.common.rpc import WorkerClient
 from graspgen_libero_bridge.adapters.libero.scene import _geometry
+from graspgen_libero_bridge.planning.grasp_environment import screen_grasp_environment
 
 
 def serializable(value):
@@ -64,10 +65,11 @@ class ContactSkill:
                     forces['right'] += max(0., float(force[0]))
         return forces
 
-    def native_plan(self, pose, phase, contact=False, monitor=None):
+    def native_plan(self, pose, phase, contact=False, monitor=None, free_rotation_axis_world=None):
         out = self.out/'plans'/(str(len(self.audit))+'_'+phase)
         reply = plan_cartesian(self.a, self.c.monitor if monitor is None else monitor,
-                               pose, out, allow_finger_target=contact)
+                               pose, out, allow_finger_target=contact,
+                               free_rotation_axis_world=free_rotation_axis_world)
         if monitor is not None:reply['coupled_articulation_preview'] = True
         self.audit.append(dict(phase=phase, reply=reply))
         progress('contact_preview', phase=phase, success=reply['success'], reason=reply.get('reason'))
@@ -100,13 +102,11 @@ class ContactSkill:
         # Exhaust cheap native approaches before starting the global planner.
         for global_fallback in (False, True):
             for index, (pre, grip) in enumerate(candidates):
-                app = self.native_plan(pre, 'approach')
+                self.free_handle_roll = (getattr(self, 'candidate_specs', [{}] * len(candidates))[index]
+                                         .get('free_handle_roll', False))
+                app = self.global_plan(pre, 'global_approach') if global_fallback else self.native_plan(pre, 'approach')
                 if not app['success']:
-                    if not global_fallback:
-                        continue
-                    app = self.global_plan(pre, 'global_approach')
-                    if not app['success']:
-                        continue
+                    continue
                 snap = _snapshot(self.a.env.sim)
                 try:
                     with np.load(app['path_file']) as path:
@@ -151,9 +151,10 @@ class ContactSkill:
             for q in np.linspace(initial,goal,count)[1:]:
                 previous_q=self.joint_q()
                 previous_pose=np.asarray(a.state()['world_T_eef'])
-                desired=constrained_pose(reference,info['axis'],info['anchor'],q-initial,info['joint_type'])
+                desired=handle_motion_pose(reference,info,q-initial,getattr(self,'free_handle_roll',False))
                 coupled=ArticulationPreviewMonitor(a,self.c.monitor,info,previous_pose,previous_q,q)
-                reply=self.native_plan(desired,'full_sweep_preflight',True,monitor=coupled)
+                reply=self.native_plan(desired,'full_sweep_preflight',True,monitor=coupled,
+                    free_rotation_axis_world=self.free_handle_axis())
                 if not reply['success']:return False
                 with np.load(reply['path_file']) as path:
                     a.env.sim.data.qpos[a.robot._ref_joint_pos_indexes]=path['q_arm'][-1]
@@ -185,6 +186,16 @@ class ContactSkill:
             _restore(a.env.sim,snap)
             a.robot.controller.update(force=True);a.robot.controller.reset_goal()
             a.task_env._update_observables(force=True)
+
+    def free_handle_axis(self):
+        if not (getattr(self,'free_handle_roll',False) and self.info.get('cylindrical_handle')
+                and not self.info.get('rotary_knob') and self.info['joint_type']==3):
+            return None
+        bar = np.asarray(self.info['handle_axis'],dtype=float)
+        axis = np.asarray(self.info['axis'],dtype=float)
+        if abs(float(bar@axis)/(np.linalg.norm(bar)*np.linalg.norm(axis))) < .999:
+            return None
+        return axis
 
     def articulate(self):
         stage, a, c = self.stage, self.a, self.c
@@ -225,12 +236,45 @@ class ContactSkill:
             opening = float(np.mean(properties.get('default_open_ranges', [qgoal])))
             closing = float(np.mean(properties.get('default_close_ranges', [q0])))
             candidates = list(grip_candidates(info, opening, closing))
-            thickness = max(2*float(np.sum(np.abs(grip[:3,0]@info['handle_rotation'])*info['handle_half_sizes'])) for _,grip in candidates)
+            initial_candidates = list(candidates)
+            self.candidate_specs = [dict(group='original',free_handle_roll=False) for _ in candidates]
+            if info.get('cylindrical_handle') and info['joint_type'] == 3:
+                original = list(candidates)
+                candidates.extend(original)
+                self.candidate_specs.extend(dict(group='round_bar_roll',free_handle_roll=True) for _ in original)
+            extra = list(grip_candidates(info,opening,closing,tilts=(5.,15.,25.,45.,65.,75.),
+                axial_fractions=(0.,.5,-.5)))
+            extra += list(grip_candidates(info,opening,closing,axial_fractions=(.5,-.5)))
+            for roll in ((False,True) if info.get('cylindrical_handle') and info['joint_type']==3 else (False,)):
+                candidates.extend(extra)
+                self.candidate_specs.extend(dict(group='geometry_fallback',free_handle_roll=roll) for _ in extra)
+            write_json(self.out/'HANDLE_CANDIDATES_ALL.json',serializable([
+                dict(index=i,pre=pre,grip=grip,**spec)
+                for i,((pre,grip),spec) in enumerate(zip(candidates,self.candidate_specs))]))
+            thickness = max(2*float(np.sum(np.abs(grip[:3,0]@info['handle_rotation'])*info['handle_half_sizes'])) for _,grip in initial_candidates)
             gap = min(.075, thickness+.012)
         m = a.env.sim.model
         ranges = np.array([m.jnt_range[m.joint_name2id(n)] for n in a.robot.gripper.joints])
         a.robot.gripper.current_action = 2*(np.array([gap/2,-gap/2])-ranges[:,0])/(ranges[:,1]-ranges[:,0])-1
         c.hold(20, 0, 'prepare_width', False)
+        if hasattr(self,'candidate_specs'):
+            # Keep the original six approaches first for existing successes.
+            # Extra geometric samples must be clear at the actual open width
+            # before spending time on arm IK or full-motion previews.
+            extras = [dict(world_T_eef=grip.tolist(),score=float(len(candidates)-i),generation_index=i)
+                for i,((_,grip),spec) in enumerate(zip(candidates,self.candidate_specs))
+                if spec['group']!='original']
+            survivors, screen = screen_grasp_environment(a,extras,
+                allowed_finger_target_geoms=info['handle_geoms'])
+            screen['candidate_source']='Geometry search order; these scores are not GraspGen predictions'
+            write_json(self.out/'HANDLE_ENVIRONMENT_SCREEN.json',screen)
+            indexes={x['generation_index'] for x in survivors}
+            chosen=[i for i,spec in enumerate(self.candidate_specs) if spec['group']=='original' or i in indexes]
+            candidates=[candidates[i] for i in chosen]
+            self.candidate_specs=[dict(self.candidate_specs[i],original_index=i) for i in chosen]
+            write_json(self.out/'HANDLE_CANDIDATES.json',serializable([
+                dict(index=i,pre=pre,grip=grip,**spec)
+                for i,((pre,grip),spec) in enumerate(zip(candidates,self.candidate_specs))]))
         selected = self.approach(candidates)
         c.hold(30, 1, 'close_on_handle', True)
         sustained = sum(min(s.get('finger_forces',{}).values(),default=0.) > .1 for s in self.states[-10:])
@@ -242,15 +286,18 @@ class ContactSkill:
         radius = 1. if info['joint_type']==2 else max(.04,float(np.linalg.norm(np.cross(info['axis'],reference[:3,3]-info['anchor']))))
         count = max(2,int(np.ceil(abs(qgoal-reference_q)*radius/.004))+1)
         for q in np.linspace(reference_q,qgoal,count)[1:]:
-            desired = constrained_pose(reference,info['axis'],info['anchor'],q-reference_q,info['joint_type'])
+            desired = handle_motion_pose(reference,info,q-reference_q,getattr(self,'free_handle_roll',False))
             # A cylindrical handle permits rotation about its axis. Keep the
             # jaw orientation for a knob (which must transmit rotation).
-            local = self.native_plan(desired, 'joint_motion', True)
+            local = self.native_plan(desired, 'joint_motion', True,
+                free_rotation_axis_world=self.free_handle_axis())
             if not local['success']:
                 raise ExecutionError('Joint-constrained contact IK rejected',code='contact_ik_failed',
                     category='planning',phase='articulate',details=local)
             with np.load(local['path_file']) as path:
                 c.set_joint_reference(path['q_arm'][-1])
+                if self.free_handle_axis() is not None:
+                    desired = path['world_T_eef'][-1].copy()
             c.move_to(desired,gripper=1,phase='articulate',allow_finger_target=True,
                 position_tolerance=.0025,rotation_tolerance=.04,max_steps=100)
             if a.task_env._eval_predicate(stage['predicate']):
@@ -264,12 +311,16 @@ class ContactSkill:
             if a.task_env._eval_predicate(stage['predicate']):break
             before=self.joint_q()
             delta=float(np.clip(qgoal-before,-(.004 if info['joint_type']==2 else .05),(.004 if info['joint_type']==2 else .05)))
-            desired=constrained_pose(np.asarray(a.state()['world_T_eef']),info['axis'],info['anchor'],delta,info['joint_type'])
-            local=self.native_plan(desired,'measured_joint_feedback',True)
+            desired=handle_motion_pose(np.asarray(a.state()['world_T_eef']),info,delta,getattr(self,'free_handle_roll',False))
+            local=self.native_plan(desired,'measured_joint_feedback',True,
+                free_rotation_axis_world=self.free_handle_axis())
             if not local['success']:
                 raise ExecutionError('Mechanism feedback correction rejected',code='mechanism_feedback_ik_failed',
                     category='planning',phase='articulate_feedback',details=local)
-            with np.load(local['path_file']) as path:c.set_joint_reference(path['q_arm'][-1])
+            with np.load(local['path_file']) as path:
+                c.set_joint_reference(path['q_arm'][-1])
+                if self.free_handle_axis() is not None:
+                    desired=path['world_T_eef'][-1].copy()
             c.move_to(desired,gripper=1,phase='articulate_feedback',allow_finger_target=True,
                 position_tolerance=.0015,rotation_tolerance=.004,max_steps=100)
             c.hold(10,1,'mechanism_progress',True)
@@ -293,7 +344,7 @@ class ContactSkill:
                 category='planning',phase='retreat',details=reply)
         c.follow_path(reply['path_file'],gripper=-1,phase='retreat',allow_finger_target=True)
         c.hold(30,-1,'settle',False)
-        return dict(selected_candidate=selected,initial_q=q0,final_q=self.joint_q(),
+        return dict(selected_candidate=selected,free_handle_roll=getattr(self,'free_handle_roll',False),initial_q=q0,final_q=self.joint_q(),
             official_subgoal=bool(a.task_env._eval_predicate(stage['predicate'])),sustained_force_samples=sustained)
 
     def push(self):

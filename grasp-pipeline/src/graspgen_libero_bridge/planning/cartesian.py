@@ -109,7 +109,8 @@ def preview_path_endpoint(adapter, monitor, path_file):
 
 
 def plan_cartesian(adapter, monitor, goal_pose, output_dir,
-                   allow_finger_target=True, max_linear_step=.005):
+                   allow_finger_target=True, max_linear_step=.005,
+                   free_rotation_axis_world=None):
     """Plan a straight/SLERP site motion with actual-MuJoCo collision checks.
 
     Returns ``{success, path_file?, reason?, ...}``. On success, ``PATH.npz``
@@ -117,6 +118,8 @@ def plan_cartesian(adapter, monitor, goal_pose, output_dir,
     start. Every stored state and intermediate IK joint segment is checked by
     ``monitor.check``. This is sampled contact-aware validation, not a continuous
     collision certificate. No supplied monitor permission is broadened here.
+    A requested free world rotation axis removes only that angular constraint;
+    the returned path records the solved full pose for subsequent OSC control.
     """
     output_dir = Path(output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -142,6 +145,15 @@ def plan_cartesian(adapter, monitor, goal_pose, output_dir,
             raise ValueError("Invalid goal homogeneous row")
         if not np.allclose(goal[:3, :3].T @ goal[:3, :3], np.eye(3), atol=1e-5) or np.linalg.det(goal[:3, :3]) < .99999:
             raise ValueError("Invalid goal rotation")
+        angular_projection = np.eye(3)
+        if free_rotation_axis_world is not None:
+            free_axis = np.asarray(free_rotation_axis_world, dtype=float)
+            if free_axis.shape != (3,) or not np.isfinite(free_axis).all() or np.linalg.norm(free_axis) < 1e-8:
+                raise ValueError("Free rotation axis must be a finite nonzero world vector")
+            free_axis = free_axis / np.linalg.norm(free_axis)
+            angular_projection -= np.outer(free_axis, free_axis)
+            result['free_rotation_axis_world'] = free_axis.tolist()
+            result['rotation_scope'] = 'Axial rotation unconstrained; all joint limits and physical collisions retained'
         sim = adapter.env.sim
         robot = adapter.task_env.robots[0]
         model, data = sim.model, sim.data
@@ -214,7 +226,7 @@ def plan_cartesian(adapter, monitor, goal_pose, output_dir,
 
         def error(desired, actual):
             return np.r_[desired[:3, 3] - actual[:3, 3],
-                         Rotation.from_matrix(desired[:3, :3] @ actual[:3, :3].T).as_rotvec()]
+                         angular_projection @ Rotation.from_matrix(desired[:3, :3] @ actual[:3, :3].T).as_rotvec()]
 
         weights = np.array([1., 1., 1., .35, .35, .35])
         q = initial_q.copy()
@@ -250,7 +262,7 @@ def plan_cartesian(adapter, monitor, goal_pose, output_dir,
                     jac_p = np.zeros((3, int(native_model.nv)))
                     jac_r = np.zeros_like(jac_p)
                     mujoco.mj_jacSite(native_model, native_data, jac_p, jac_r, site)
-                    jacobian = np.concatenate((jac_p[:, dof_indexes], jac_r[:, dof_indexes]))
+                    jacobian = np.concatenate((jac_p[:, dof_indexes], angular_projection @ jac_r[:, dof_indexes]))
                     weighted_j = weights[:, None] * jacobian
                     weighted_error = weights * residual
                     damping = .006

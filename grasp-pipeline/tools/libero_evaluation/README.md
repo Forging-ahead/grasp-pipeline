@@ -26,3 +26,17 @@ python tools/libero_evaluation/validate_delivery.py /data/libero130/evaluation/d
 打包器逐项核对原始 BDDL、初态资产、连续状态和动作，转码并完整解码视频，按相同 16 类统计，生成内嵌全部视频的离线 HTML。源代码、运行协议和校验结果可追溯。大输出和模型不提交 Git。
 
 此版本的打包与展示以本轮提交和日期为边界，后续策略迭代应建立新的实验协议和报告版本。每任务一个初态是工程回归，不是官方多初态基准成绩。使用仿真真值的 teacher 条件不等价于仅 RGB 的学生策略；阶段关键点来自手写 code policy，不能直接视作 VLM 决策标签或已审核的 SFT 数据。两个堆叠后整体搬运任务另外记录语言顺序问题。
+
+## 新策略的针对性复验
+
+`run_subset.py` 接收明确的任务键列表，使用同样的驱动、初态和任务预算。输出逐项视频、原始结果、实际配置和源码来源。它不重试失败，也不将历史成功计入新版本。
+
+```bash
+python tools/libero_evaluation/run_subset.py \
+  --source /data/frozen-new/grasp-pipeline --paths /data/paths.local.json \
+  --output /data/new-subset --revision YOUR_FROZEN_COMMIT \
+  --gpu-slots 0 0 1 1 2 2 3 3 \
+  --keys libero_goal_open_the_middle_drawer_of_the_cabinet
+```
+
+上面的 130 项打包器仍服务于冻结基线；新版部分复验另建报告，不能混用该基线的提交标签和成功总数。新策略修改说明见 [环境筛选与机构位姿迭代](../../docs/GRASP_ENVIRONMENT_SCREEN.md)。

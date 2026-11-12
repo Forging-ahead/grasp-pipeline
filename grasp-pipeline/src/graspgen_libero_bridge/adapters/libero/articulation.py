@@ -29,6 +29,26 @@ def constrained_pose(pose, axis, anchor, delta, joint_type):
     return out
 
 
+def handle_motion_pose(pose, info, delta, free_handle_roll=False):
+    """Follow the mechanism, optionally using a round bar's axial symmetry.
+
+    Rotating a circular handle about its own axis does not require equal wrist
+    rotation. Knobs still require torque transmission and always remain rigid.
+    The handle centre follows exactly the same joint-constrained trajectory.
+    """
+    out = constrained_pose(pose, info['axis'], info['anchor'], delta, info['joint_type'])
+    if (free_handle_roll and info.get('cylindrical_handle') and
+            not info.get('rotary_knob') and info['joint_type'] == 3):
+        axis = np.asarray(info['axis'], dtype=float)
+        axis = axis / np.linalg.norm(axis)
+        along = np.asarray(info['handle_axis'], dtype=float)
+        along = along / np.linalg.norm(along)
+        turn = Rotation.from_rotvec(axis * float(delta)).as_matrix()
+        undo = Rotation.from_rotvec((turn @ along) * (-float(delta) * float(axis @ along))).as_matrix()
+        out[:3, :3] = undo @ out[:3, :3]
+    return out
+
+
 def discover(adapter, region, output):
     """Find the goal joint and a marked mesh or elongated capsule handle."""
     model, data = adapter.env.sim.model, adapter.env.sim.data
@@ -113,10 +133,12 @@ def discover(adapter, region, output):
                 limits=np.asarray(model.jnt_range[joint]).copy(),handle_center=np.asarray(data.geom_xpos[bar]).copy(),
                 handle_axis=long_axis,handle_half_sizes=half,handle_rotation=np.asarray(data.geom_xmat[bar]).reshape(3,3).copy(),
                 handle_geoms=collisions,handle_geom_names=[model.geom_id2name(g) for g in collisions],
+                cylindrical_handle=capsule is not None,
                 uses_ground_truth_articulation=True,uses_semantic_handle_mesh=bool(handles))
 
 
-def grip_candidates(info, desired_q, measured_q, distance=.07):
+def grip_candidates(info, desired_q, measured_q, distance=.07,
+                    tilts=(0., 35., 55.), axial_fractions=(0.,)):
     """Side approach to a handle, parameterized by the opening direction."""
     if info['joint_type'] == 2:
         outward = info['axis'] * np.sign(desired_q - measured_q)
@@ -126,21 +148,31 @@ def grip_candidates(info, desired_q, measured_q, distance=.07):
     else:raise ValueError('Unsupported joint type')
     # Shared side/oblique approaches keep the palm above nearby table objects.
     up = np.array([0., 0., 1.])
-    for tilt in (0., 35., 55.):
+    along = np.asarray(info['handle_axis'], dtype=float)
+    along = along / np.linalg.norm(along)
+    half_length = float(np.abs(np.asarray(info['handle_rotation']).T @ along) @ info['handle_half_sizes'])
+    for tilt in tilts:
         angle = np.deg2rad(tilt)
         approach = -outward*np.cos(angle)-up*np.sin(angle)
         approach /= np.linalg.norm(approach)
         closing = np.cross(info['handle_axis'], approach)
+        if np.linalg.norm(closing) < 1e-6:
+            continue
         closing /= np.linalg.norm(closing)
         for flip in (1., -1.):
             x = closing * flip
             rotation = np.column_stack((x, np.cross(approach, x), approach))
             grip = np.eye(4)
             grip[:3, :3] = rotation
-            grip[:3, 3] = info['handle_center']
-            pregrip = grip.copy()
-            pregrip[:3, 3] -= distance * approach
-            yield pregrip, grip
+            for fraction in axial_fractions:
+                # Stay in the middle half of the physical bar. This leaves
+                # room for both finger pads rather than choosing an end cap.
+                if not np.isfinite(fraction) or abs(fraction) > .5:
+                    raise ValueError('Handle axial fraction must be within [-.5,.5]')
+                grip[:3, 3] = info['handle_center'] + along * half_length * float(fraction)
+                pregrip = grip.copy()
+                pregrip[:3, 3] -= distance * approach
+                yield pregrip, grip.copy()
 
 
 class ArticulationPreviewMonitor:
@@ -165,8 +197,20 @@ class ArticulationPreviewMonitor:
         if self.info['joint_type'] == 2:
             delta = float(np.dot(np.asarray(sim.data.site_xpos[site])-self.reference[:3, 3], axis))
         elif self.info['joint_type'] == 3:
-            rotation = np.asarray(sim.data.site_xmat[site]).reshape(3, 3) @ self.reference[:3, :3].T
-            delta = float(np.dot(Rotation.from_matrix(rotation).as_rotvec(), axis))
+            first = current = np.zeros(3)
+            if 'anchor' in self.info:
+                anchor = np.asarray(self.info['anchor'], dtype=float)
+                first = self.reference[:3, 3] - anchor
+                current = np.asarray(sim.data.site_xpos[site]) - anchor
+                first -= axis * float(first @ axis)
+                current -= axis * float(current @ axis)
+            if not self.info.get('rotary_knob') and min(np.linalg.norm(first), np.linalg.norm(current)) > 1e-6:
+                # A round handle may turn within the jaws. Door angle follows
+                # its orbital position, not necessarily the wrist's rotation.
+                delta = float(np.arctan2(axis @ np.cross(first, current), first @ current))
+            else:
+                rotation = np.asarray(sim.data.site_xmat[site]).reshape(3, 3) @ self.reference[:3, :3].T
+                delta = float(np.dot(Rotation.from_matrix(rotation).as_rotvec(), axis))
         else:
             raise ValueError('Preview requires a slide or hinge')
         q = np.clip(self.initial_q+delta, min(self.initial_q,self.goal_q), max(self.initial_q,self.goal_q))

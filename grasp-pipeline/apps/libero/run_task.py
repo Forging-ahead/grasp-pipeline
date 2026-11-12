@@ -28,7 +28,7 @@ out.mkdir(parents=True,exist_ok=False)
 start=time.monotonic();mainrec=None;shared=None;close_env=None;original_goals=None
 result=dict(key=args.key,suite=row['suite'],task_name=row['task_name'],initial_state_id=args.init,
     status='running',pipeline_success=False,official_goal_at_end=False,stages=[],
-    release='20261111-broad-policy-'+args.tag,uses_simulator_truth=True,
+    release='20261113-envscreen-contact-'+args.tag,uses_simulator_truth=True,
     stage_inputs='BDDL goals, object/region geometry, joint axes and measured contacts',
     source_sha256={str(f.relative_to(r)):hashlib.sha256(f.read_bytes()).hexdigest()
                    for f in sorted((r/'src/graspgen_libero_bridge').rglob('*.py'))},

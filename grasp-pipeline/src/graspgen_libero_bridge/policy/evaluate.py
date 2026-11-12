@@ -23,6 +23,7 @@ from graspgen_libero_bridge.policy.placement import container_release_candidates
 from graspgen_libero_bridge.policy.transfer import transfer_candidates
 from graspgen_libero_bridge.planning.grasp_candidate import control_target_distance
 from graspgen_libero_bridge.planning.grasp_contact import preview_grasp_contacts
+from graspgen_libero_bridge.planning.grasp_environment import screen_grasp_environment
 
 
 def write_json(path, value):
@@ -241,6 +242,18 @@ class PickPlace:
                 if prepared["gripper_width"] < .07:
                     raise ExecutionError("Gripper did not reach the planned open aperture",
                         code="gripper_preparation_failed",category="control",phase="prepare_gripper")
+            if self.config.get("grasp_environment_screen", True) and candidates:
+                candidates, environment_check = screen_grasp_environment(self.adapter, candidates,
+                    self.config.get("grasp_environment_clearance_m", 0.))
+                self.result["grasp_environment_screen"] = environment_check
+                write_json(self.output / "GRASP_ENVIRONMENT_SCREEN.json", environment_check)
+                write_json(self.output / "environment_candidates.json", candidates)
+                progress("grasp_environment_screen", passed=len(candidates),
+                    rejected=environment_check["rejected"], wall_s=environment_check["wall_s"])
+                if not candidates:
+                    raise ExecutionError("Every screened grasp endpoint collides with the scene or target palm",
+                        code="grasp_environment_collision", category="planning", phase="select_candidate",
+                        details={k:environment_check[k] for k in ("input_candidates", "passed", "rejected", "wall_s")})
             selected = self.select_candidate(candidates)
             self.result["selected_grasp"] = selected["selected"]
             progress("executing_grasp", generation_index=selected["selected"]["generation_index"])

@@ -171,6 +171,39 @@ class CartesianPlannerTests(unittest.TestCase):
         self.assertTrue(reply["state_restored"])
         self.assert_restored(sim, values)
 
+    def test_free_axial_rotation_obeys_limits_and_keeps_the_bar_axis(self):
+        from scipy.spatial.transform import Rotation
+        adapter, sim = self.make_adapter()
+        for name in ('joint5','joint6'):
+            sim.model.jnt_range[sim.model.joint_name2id(name)] = [-.001,.001]
+        before = self.before(sim)
+        goal = np.eye(4)
+        goal[:3,3] = [.01,-.004,.01]
+        goal[:3,:3] = Rotation.from_euler('z',.4).as_matrix()
+        with tempfile.TemporaryDirectory() as directory:
+            rigid = plan_cartesian(adapter,_Monitor(sim),goal,Path(directory)/'rigid')
+            free = plan_cartesian(adapter,_Monitor(sim),goal,Path(directory)/'free',
+                free_rotation_axis_world=[0.,0.,1.])
+            self.assertFalse(rigid['success'],rigid)
+            self.assertTrue(free['success'],free)
+            with np.load(free['path_file']) as path:
+                self.assertLess(np.linalg.norm(path['world_T_eef'][-1,:3,3]-goal[:3,3]),.0004)
+                np.testing.assert_allclose(path['world_T_eef'][-1,:3,2],[0.,0.,1.],atol=.003)
+                self.assertTrue((np.abs(path['q_arm'][:,5:7])<=.001001).all())
+        self.assert_restored(sim,before)
+
+    def test_free_axial_rotation_does_not_remove_world_collision_checks(self):
+        adapter, sim = self.make_adapter(wall=True)
+        before = self.before(sim)
+        goal = np.eye(4)
+        goal[2,3] = .04
+        with tempfile.TemporaryDirectory() as directory:
+            reply = plan_cartesian(adapter,_Monitor(sim),goal,directory,
+                free_rotation_axis_world=[0.,0.,1.])
+            self.assertFalse(reply['success'],reply)
+            self.assertNotEqual(reply['reason'],'cartesian_planner_error')
+        self.assert_restored(sim,before)
+
     def test_held_target_follows_only_in_preview(self):
         adapter, sim = self.make_adapter()
         values = self.before(sim)
