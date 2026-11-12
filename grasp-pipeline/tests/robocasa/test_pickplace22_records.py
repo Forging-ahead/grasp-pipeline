@@ -61,3 +61,12 @@ def test_a_missing_case_is_not_silently_dropped_from_the_denominator(tmp_path):
     summary = summarize(root)
     assert not summary["complete"] and summary["planned"] == 22 and summary["completed"] == 21
     assert summary["success_rate"] is None
+
+
+def test_setup_recovery_must_finish_before_publishing_final_rate(tmp_path):
+    root = fixture(tmp_path)
+    path = root / "INITIALIZATION_RECOVERY.json"
+    path.write_text('{"complete":false,"no_policy_outcome_retry":true}')
+    assert not summarize(root)["complete"] and summarize(root)["success_rate"] is None
+    path.write_text('{"complete":true,"no_policy_outcome_retry":true,"rejections":[{"physical_steps":0}]}')
+    assert summarize(root)["complete"] and summarize(root)["planned"] == 22

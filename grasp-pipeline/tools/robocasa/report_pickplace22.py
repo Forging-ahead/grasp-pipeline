@@ -71,6 +71,21 @@ def audit_recordings(root, summary):
             "used_cached_candidates": cached, "fresh_inference_calls": sum(g.get("generation_calls", 0) for g in generators),
             "first_target_cloud_identical_to_baseline": input_match, "first_fresh_pool_identical_to_baseline": pool_match,
             "baseline_video_still_matches_original_decoding_audit": baseline_media_valid})
+    rejections = []
+    recovery = summary.get("initialization_recovery") or {}
+    for entry in recovery.get("rejections", []):
+        case = Path(entry["case"])
+        result = read(case / "RESULT.json") or {}
+        video = case / "VIDEO.mp4"
+        decoded = subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), "-v", "error", "-i", str(video), "-f", "null", "-"],
+                                 capture_output=True, timeout=120).returncode == 0
+        with h5py.File(case / "TRAJECTORY.h5", "r") as trajectory:
+            zero_actions = "actions" not in trajectory or len(trajectory["actions"]) == 0
+        valid = bool(result.get("failure_code") == "INITIAL_STATE_MISMATCH" and result.get("physical_steps") == 0
+            and zero_actions and result.get("source_digest") == summary["source_digest"]
+            and result.get("source_unchanged_during_run") and not list(case.glob("stages/*/grasp_*/GENERATOR.json")) and decoded)
+        rejections.append({"case": str(case), "valid_setup_only_rejection": valid,
+                           "video_sha256": hashlib.sha256(video.read_bytes()).hexdigest(), "decoded": decoded})
     return {"checked_cases": len(checks), "decoded_videos": sum(c["video"]["decoded"] for c in checks),
         "aligned_recordings": sum(c["alignment_valid"] for c in checks),
         "all_identities_valid": all(c["identity_valid"] for c in checks),
@@ -80,7 +95,9 @@ def audit_recordings(root, summary):
         "identical_first_clouds": sum(c["first_target_cloud_identical_to_baseline"] is True for c in checks),
         "different_first_clouds": sum(c["first_target_cloud_identical_to_baseline"] is False for c in checks),
         "identical_fresh_pools": sum(c["first_fresh_pool_identical_to_baseline"] is True for c in checks),
-        "baseline_videos_valid": sum(c["baseline_video_still_matches_original_decoding_audit"] for c in checks), "cases": checks}
+        "baseline_videos_valid": sum(c["baseline_video_still_matches_original_decoding_audit"] for c in checks),
+        "initialization_rejections_valid": all(r["valid_setup_only_rejection"] for r in rejections),
+        "initialization_rejections": rejections, "cases": checks}
 
 
 def make_html(root, summary):
@@ -95,6 +112,8 @@ def make_html(root, summary):
             return '<p>没有有效视频，保留原始技术错误记录。</p>'
         source = "data:video/mp4;base64," + base64.b64encode(path.read_bytes()).decode()
         return '<video controls preload="none"' + (' poster="' + poster + '"' if poster else '') + ' src="' + source + '"></video>'
+    recovery = summary.get("initialization_recovery") or {}
+    setup_note = ("<p>初始化补充记录：水槽到台面任务相同 seed 重置的区域与旧回合左右对调；严格初态检查拒绝了 " + str(len(recovery.get("rejections", []))) + " 次零动作初始化。全部保留在 initialization_rejections；只在旧初态核对通过后运行一次策略，没有按策略结果重试。原始 MATRIX.original.json 与恢复清单分别留档。</p>") if recovery else ""
     cards, table = [], []
     for row in summary["rows"]:
         old = row["baseline_result"]
@@ -121,10 +140,10 @@ def make_html(root, summary):
         '；旧版本完整成功 ' + str(summary["baseline_success"]) + '/22，原生步数内成功 ' + str(summary["baseline_native_budget_success"]) + '。</b></p>'
         '<p>完成 ' + str(summary["completed"]) + '/22；初态核对通过 ' + str(summary["initial_states_verified"]) + '/22；实际闭合 ' + str(summary["real_closures"]) +
         ' 项，至少一次通过抬升保持 ' + str(summary["passed_lift"]) + ' 项。中间阶段不计完整任务成功。</p>'
-        '<p>本轮只重跑上轮实际执行过的同一 22 个任务，pretrain、seed 0，各一次外层运行。运行前比较原生场景、成功函数、动作布局及所有保存的初始物理数组；不一致时不执行任务动作。全部候选重新调用 GraspGen，不用旧成功替换新失败。</p>'
+        '<p>本轮只重跑上轮实际执行过的同一 22 个任务，pretrain、seed 0，每任务仅统计一个初态核对通过后的策略回合。运行前比较原生场景、成功函数、动作布局及所有保存的初始物理数组；不一致时不执行任务动作。全部候选重新调用 GraspGen，不用旧成功替换新失败。</p>'
         '<p>开发阶段 r11 因持物刷新接口错误、r12 因失败结果中的矩阵无法保存而中止，两批已单独保留并排除；本报告的新结果全部来自最终冻结 r13 的完整 22 项。</p>'
         '<p>两版均使用 5000 步采集预算；r13 将总墙钟上限由 900 恢复到 1200 秒，1190 秒停止工作并预留 10 秒保存。原生 horizon 与成功判定不变，超出原生步数的成功单列。每任务一个固定初态，比例不是多初态 benchmark 平均成功率。</p>'
-        '<h2>本轮修正</h2><ol><li>抬升前向 cuRobo 登记持物附件，抬升保持后显式 detach/attach 刷新规划几何，物理夹爪持续闭合；恢复原版初始与当前支撑接触的交接，支撑许可只用于全局抬升回退，原生几何预检仍检查机器人碰撞。</li>'
+        + setup_note + '<h2>本轮修正</h2><ol><li>抬升前向 cuRobo 登记持物附件，抬升保持后显式 detach/attach 刷新规划几何，物理夹爪持续闭合；恢复原版初始与当前支撑接触的交接，支撑许可只用于全局抬升回退，原生几何预检仍检查机器人碰撞。</li>'
         '<li>恢复原版默认最多 4 个放置物体朝向，继续使用原搬运高度、偏航和放置搜索。</li><li>完全相同的场景、关节/手指状态、附件与接触配置下，只查询一次无效起点；每个目标仍执行原生局部回退，状态或场景改变后重新查询。</li>'
         '<li>恢复 1200 秒总预算，并在动作前核对完整初态，统一冻结源码运行全部 22 项。</li><li>失败结果复用原生矩阵/标量转换与原子 JSON 保存，保留真正的失败原因，避免结果记录错误被误计为策略结果。</li></ol>'
         '<p>这是组合修复的工程对照：GraspGen 候选仍有随机性，墙钟预算也发生变化，不能把每项改善归因于某一个改动。分割、位姿和规划几何仍来自仿真 teacher 信息；底盘及未验证技能没有开放。</p>'
@@ -161,7 +180,7 @@ def main():
             audit = audit_recordings(args.root, summary)
             args.audit.write_text(json.dumps(audit, ensure_ascii=False, indent=2) + "\n")
             valid = audit["checked_cases"] == audit["decoded_videos"] == audit["aligned_recordings"] == 22
-            if not valid or not audit["all_identities_valid"] or not audit["all_initial_states_verified"] or audit["used_cached_candidates"] or audit["baseline_videos_valid"] != 22:
+            if not valid or not audit["all_identities_valid"] or not audit["all_initial_states_verified"] or audit["used_cached_candidates"] or audit["baseline_videos_valid"] != 22 or not audit["initialization_rejections_valid"]:
                 raise RuntimeError("Final media/identity/initial-state audit did not pass")
         if args.output:
             if args.output.exists(): parser.error("Report already exists")

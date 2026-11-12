@@ -105,7 +105,9 @@ def summarize(root):
             baseline_success=baseline_ok, baseline_native_budget_success=bool(baseline_ok and native_budget_success(baseline)),
             result=result, baseline_result=baseline, supervisor=supervisor))
     counts = Counter(r["status"] for r in rows)
-    complete = all(r["completed"] for r in rows) and bool(read(root / "SWEEP_COMPLETE.json"))
+    recovery = read(root / "INITIALIZATION_RECOVERY.json")
+    complete = (all(r["completed"] for r in rows) and bool(read(root / "SWEEP_COMPLETE.json"))
+                and (recovery is None or bool(recovery.get("complete"))))
     return {"schema_version": "robocasa-pickplace22-summary-1", "complete": complete, "source_digest": matrix["source_digest"],
         "policy_digest": matrix["policy_digest"], "baseline_source_digest": matrix["baseline_source_digest"],
         "planned": 22, "completed": sum(r["completed"] for r in rows), "success": sum(r["success"] for r in rows),
@@ -117,4 +119,5 @@ def summarize(root):
         "real_closures": sum(r["real_closure_completed"] for r in rows), "passed_lift": sum(r["ever_passed_lift"] for r in rows),
         "newly_successful": [r["task_id"] for r in rows if r["success"] and not r["baseline_success"]],
         "regressed": [r["task_id"] for r in rows if r["completed"] and r["baseline_success"] and not r["success"]],
-        "reused_start_rejections": sum(r["reused_start_rejections"] for r in rows), "matrix": matrix, "rows": rows}
+        "reused_start_rejections": sum(r["reused_start_rejections"] for r in rows),
+        "initialization_recovery": recovery, "matrix": matrix, "rows": rows}
