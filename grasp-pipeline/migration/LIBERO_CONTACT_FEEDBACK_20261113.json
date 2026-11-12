@@ -1,0 +1,3459 @@
+{
+  "evaluation_date": "2026-11-13",
+  "branch": "libero",
+  "actor_revision": "3e87a4a7fb212f996950408f6e244fce50a9822a",
+  "actor_source_digest": "58924abb8b6b51b9df05714ab28b0e6f73994b9ec02b9dd92ae9c60b5c2832c7",
+  "baseline_actor_revision": "1610ac1712c9c53fd380696775773da9da8c9578",
+  "baseline_parent_commit": "3bec6b67ba0ab4f727d8fbfb365727104510fe79",
+  "scope": "26 mechanism and related composite tasks at init 0; 15 non-rigid-grasp mechanism/pushing tasks at each init 1 and 2; not a full-130 score",
+  "teacher_sources": [
+    "official BDDL goals",
+    "simulator articulation metadata",
+    "simulator masks, poses and collision geometry"
+  ],
+  "paired_init0": {
+    "tasks": 26,
+    "before_success": 12,
+    "after_success": 15,
+    "improved": 3,
+    "regressed": 0
+  },
+  "cohorts": [
+    {
+      "initial_state_id": 0,
+      "episodes": 26,
+      "complete_success": 15,
+      "failure_counts": {
+        "contact_global_start_invalid": 1,
+        "selection_budget_exhausted": 1,
+        "contact_approach_exhausted": 5,
+        "checked_candidates_rejected": 3,
+        "motion_plan_failed": 1
+      }
+    },
+    {
+      "initial_state_id": 1,
+      "episodes": 15,
+      "complete_success": 11,
+      "failure_counts": {
+        "contact_global_start_invalid": 1,
+        "contact_approach_exhausted": 2,
+        "contact_ik_failed": 1
+      }
+    },
+    {
+      "initial_state_id": 2,
+      "episodes": 15,
+      "complete_success": 10,
+      "failure_counts": {
+        "contact_global_start_invalid": 1,
+        "contact_approach_exhausted": 3,
+        "stage_failed": 1
+      }
+    }
+  ],
+  "categories": [
+    {
+      "initial_state_id": 0,
+      "name": "微波炉门开关",
+      "tasks": 2,
+      "before_success": 0,
+      "after_success": 1
+    },
+    {
+      "initial_state_id": 0,
+      "name": "微波炉门＋抓放",
+      "tasks": 1,
+      "before_success": 0,
+      "after_success": 0
+    },
+    {
+      "initial_state_id": 0,
+      "name": "抽屉开关",
+      "tasks": 8,
+      "before_success": 5,
+      "after_success": 5
+    },
+    {
+      "initial_state_id": 0,
+      "name": "抽屉开关＋抓放",
+      "tasks": 7,
+      "before_success": 0,
+      "after_success": 2
+    },
+    {
+      "initial_state_id": 0,
+      "name": "接触推移",
+      "tasks": 1,
+      "before_success": 0,
+      "after_success": 0
+    },
+    {
+      "initial_state_id": 0,
+      "name": "炉子旋钮开关",
+      "tasks": 4,
+      "before_success": 4,
+      "after_success": 4
+    },
+    {
+      "initial_state_id": 0,
+      "name": "炉子旋钮＋抓放",
+      "tasks": 3,
+      "before_success": 3,
+      "after_success": 3
+    },
+    {
+      "initial_state_id": 1,
+      "name": "微波炉门开关",
+      "tasks": 2,
+      "before_success": null,
+      "after_success": 1
+    },
+    {
+      "initial_state_id": 1,
+      "name": "抽屉开关",
+      "tasks": 8,
+      "before_success": null,
+      "after_success": 6
+    },
+    {
+      "initial_state_id": 1,
+      "name": "接触推移",
+      "tasks": 1,
+      "before_success": null,
+      "after_success": 0
+    },
+    {
+      "initial_state_id": 1,
+      "name": "炉子旋钮开关",
+      "tasks": 4,
+      "before_success": null,
+      "after_success": 4
+    },
+    {
+      "initial_state_id": 2,
+      "name": "微波炉门开关",
+      "tasks": 2,
+      "before_success": null,
+      "after_success": 1
+    },
+    {
+      "initial_state_id": 2,
+      "name": "抽屉开关",
+      "tasks": 8,
+      "before_success": null,
+      "after_success": 5
+    },
+    {
+      "initial_state_id": 2,
+      "name": "接触推移",
+      "tasks": 1,
+      "before_success": null,
+      "after_success": 0
+    },
+    {
+      "initial_state_id": 2,
+      "name": "炉子旋钮开关",
+      "tasks": 4,
+      "before_success": null,
+      "after_success": 4
+    }
+  ],
+  "episodes": 56,
+  "cpu_tests": {
+    "passed": 171,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "external_files_unchanged": 695,
+  "delivery_audit": {
+    "passed": true,
+    "episodes": 56,
+    "paired_init0": {
+      "tasks": 26,
+      "before_success": 12,
+      "after_success": 15,
+      "improved": 3,
+      "regressed": 0
+    },
+    "embedded_videos": 82,
+    "source_revision": "3e87a4a7fb212f996950408f6e244fce50a9822a",
+    "source_files_checked": 49,
+    "artifact_hashes_checked": 13075,
+    "same_frozen_source": true,
+    "continuous_trajectories": true
+  },
+  "model_replay": {
+    "passed": true,
+    "episodes": 56,
+    "mujoco_version": "3.3.7",
+    "limitation": "Binary model plus final integration inputs; Python controller internal state is not restored. Fresh FK can differ from last cached observation within an integration substep."
+  },
+  "contact_quality_review": {
+    "completed_episodes": 36,
+    "manual_review_episodes": 1,
+    "review_threshold_N": 0.1,
+    "quality_certified": false,
+    "scope": "Recorded robot non-finger normal forces against the target mechanism only; not a substep/all-scene contact or SFT-quality certificate",
+    "flagged_episodes": [
+      {
+        "key": "libero_90_KITCHEN_SCENE6_close_the_microwave",
+        "initial_state_id": 2,
+        "language": "close the microwave",
+        "task_completed": true,
+        "contact_trace_samples": 1037,
+        "observed_nonfinger_mechanism_force_peak_N": 7.949093591945628,
+        "samples_above_point1N": 9,
+        "requires_manual_contact_review": true,
+        "peak_step": 215,
+        "peak_phase": "stage_00/surface_joint_feedback",
+        "trace": "stage_00/CONTACT_STATES.json",
+        "quality_certified": false,
+        "frame": "quality_frames/init_2__libero_90_KITCHEN_SCENE6_close_the_microwave.png",
+        "frame_sha256": "47e45575e25025bfcafb70f8c8ae3fb6fb8eaf00988c34ad35ddf2630ea70196"
+      }
+    ]
+  },
+  "infrastructure_recovery": {
+    "reason": "Original scheduler and some episode writers aborted on shared-volume Errno 122 Disk quota exceeded",
+    "original_files_retained": true,
+    "retained": 19,
+    "infrastructure_reruns": 6,
+    "previously_unstarted": 31,
+    "no_policy_failure_retries": true,
+    "recovery_runner_sha256": "82e69ff59433aa9568690df775ec24ce8c73551a9ecef8a8ac7ab17bf6ef338e"
+  },
+  "historical_successes_substituted": false,
+  "development_runs_counted": false,
+  "init1_used_during_iteration": true,
+  "init2_used_during_iteration_before_freeze": false,
+  "report": {
+    "filename": "LIBERO_机构接触规则迭代_视频报告.html",
+    "bytes": 67200054,
+    "sha256": "b45cfecf05b668332c3382e0939ba6eef14476ae8dc67847a5610d6784171aa5",
+    "embedded_videos": 82,
+    "portable_single_file": true
+  },
+  "tasks": [
+    {
+      "key": "libero_90_KITCHEN_SCENE7_open_the_microwave",
+      "initial_state_id": 0,
+      "category": "microwave",
+      "category_name": "微波炉门开关",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "failure": {
+        "code": "contact_global_start_invalid",
+        "category": "planning",
+        "phase": "approach",
+        "details": {
+          "success": false,
+          "reason": "invalid_start_state",
+          "status": "MotionGenStatus.INVALID_START_STATE_WORLD_COLLISION",
+          "contact_policy": {
+            "obstacle_names": [
+              "floor",
+              "microwave_1_g14",
+              "microwave_1_g15",
+              "microwave_1_g16",
+              "microwave_1_g17",
+              "microwave_1_g3",
+              "microwave_1_g4",
+              "microwave_1_g5",
+              "microwave_1_g6",
+              "microwave_1_g7",
+              "microwave_1_g8",
+              "plate_1_g1",
+              "plate_1_g10",
+              "plate_1_g2",
+              "plate_1_g3",
+              "plate_1_g4",
+              "plate_1_g5",
+              "plate_1_g6",
+              "plate_1_g7",
+              "plate_1_g8",
+              "plate_1_g9",
+              "table_collision",
+              "white_bowl_1_g1",
+              "white_bowl_1_g10",
+              "white_bowl_1_g11",
+              "white_bowl_1_g12",
+              "white_bowl_1_g13",
+              "white_bowl_1_g14",
+              "white_bowl_1_g15",
+              "white_bowl_1_g16",
+              "white_bowl_1_g17",
+              "white_bowl_1_g18",
+              "white_bowl_1_g19",
+              "white_bowl_1_g2",
+              "white_bowl_1_g20",
+              "white_bowl_1_g21",
+              "white_bowl_1_g22",
+              "white_bowl_1_g23",
+              "white_bowl_1_g24",
+              "white_bowl_1_g25",
+              "white_bowl_1_g26",
+              "white_bowl_1_g27",
+              "white_bowl_1_g28",
+              "white_bowl_1_g29",
+              "white_bowl_1_g3",
+              "white_bowl_1_g30",
+              "white_bowl_1_g31",
+              "white_bowl_1_g32",
+              "white_bowl_1_g33",
+              "white_bowl_1_g34",
+              "white_bowl_1_g35",
+              "white_bowl_1_g36",
+              "white_bowl_1_g4",
+              "white_bowl_1_g5",
+              "white_bowl_1_g6",
+              "white_bowl_1_g7",
+              "white_bowl_1_g8",
+              "white_bowl_1_g9"
+            ],
+            "target_in_world": true,
+            "target_attached": false,
+            "ignored_obstacles": [],
+            "allow_target_contact": false,
+            "approximations": [],
+            "target_contact_limitation": null,
+            "robot_collision_model": "conservative per-geom AABB sphere cover; fixed base omitted",
+            "path_validation": "sampled cuRobo sphere-world/self constraints, not a continuous exact-mesh certificate"
+          },
+          "world_collision_diagnostics": {
+            "minimum_signed_clearance_m": -0.008513168001474896,
+            "blocking_pairs": [
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 4,
+                "signed_clearance_m": -0.008513168001474896,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7767376430850533,
+                  0.08404769590803865,
+                  0.09872481278286291
+                ],
+                "center_geometry": [
+                  0.011199497863735863,
+                  0.007115523581673111,
+                  -0.005275187217137073
+                ],
+                "point_signed_distance_m": 0.001199497863735863,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 13,
+                "signed_clearance_m": -0.005685161695997216,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7561387488074229,
+                  0.08606443956410531,
+                  0.09875079330270187
+                ],
+                "center_geometry": [
+                  0.12965886180767383,
+                  -0.016024369858635645,
+                  -0.005249206697298114
+                ],
+                "point_signed_distance_m": 0.004027504169213544,
+                "method": "exact_obb_sdf"
+              }
+            ],
+            "closest_pairs": [
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 4,
+                "signed_clearance_m": -0.008513168001474896,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7767376430850533,
+                  0.08404769590803865,
+                  0.09872481278286291
+                ],
+                "center_geometry": [
+                  0.011199497863735863,
+                  0.007115523581673111,
+                  -0.005275187217137073
+                ],
+                "point_signed_distance_m": 0.001199497863735863,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 13,
+                "signed_clearance_m": -0.005685161695997216,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7561387488074229,
+                  0.08606443956410531,
+                  0.09875079330270187
+                ],
+                "center_geometry": [
+                  0.12965886180767383,
+                  -0.016024369858635645,
+                  -0.005249206697298114
+                ],
+                "point_signed_distance_m": 0.004027504169213544,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.009034504704971968,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7016461003683361,
+                  0.1121679981604008,
+                  0.08822759508940115
+                ],
+                "center_geometry": [
+                  0.176187021985844,
+                  0.022523974019288406,
+                  -0.015772404910598822
+                ],
+                "point_signed_distance_m": 0.04785845851116955,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link5",
+                "obstacle": "table_collision",
+                "sphere_index": 23,
+                "signed_clearance_m": 0.014639294490620056,
+                "sphere_radius_m": 0.045600415314094665,
+                "center_base": [
+                  0.5997784282843753,
+                  0.2550900860136164,
+                  0.04823970980471469
+                ],
+                "center_geometry": [
+                  -0.0602215717156247,
+                  0.2550900860136164,
+                  0.08523970980471472
+                ],
+                "point_signed_distance_m": 0.06023970980471472,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "table_collision",
+                "sphere_index": 6,
+                "signed_clearance_m": 0.015428973662055187,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7656804378604745,
+                  0.22068824970540968,
+                  0.04472751717285536
+                ],
+                "center_geometry": [
+                  0.10568043786047443,
+                  0.22068824970540968,
+                  0.0817275171728554
+                ],
+                "point_signed_distance_m": 0.056727517172855395,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 19,
+                "signed_clearance_m": 0.019150282746677537,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8181221716030935,
+                  0.10394549220911525,
+                  0.09862849318581218
+                ],
+                "center_geometry": [
+                  0.011933370846820529,
+                  -0.03879812285099793,
+                  -0.005371506814187799
+                ],
+                "point_signed_distance_m": 0.028862948611888296,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 11,
+                "signed_clearance_m": 0.02022968430749396,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7477029349179913,
+                  0.1343122613804752,
+                  0.08813750174181259
+                ],
+                "center_geometry": [
+                  0.06900375745142798,
+                  0.012426681082445712,
+                  -0.015862498258187377
+                ],
+                "point_signed_distance_m": 0.05905363811369154,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 11,
+                "signed_clearance_m": 0.031978110620107324,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7477029349179913,
+                  0.1343122613804752,
+                  0.08813750174181259
+                ],
+                "center_geometry": [
+                  0.06900375745142809,
+                  0.04913424246921965,
+                  0.004112447131170094
+                ],
+                "point_signed_distance_m": 0.0708020644263049,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g15",
+                "sphere_index": 3,
+                "signed_clearance_m": 0.032050110297600985,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7477465410918422,
+                  0.13435023562251835,
+                  0.11976329900702108
+                ],
+                "center_geometry": [
+                  0.06901997509464186,
+                  -0.04923997327238136,
+                  0.0040896116262956195
+                ],
+                "point_signed_distance_m": 0.07087406410379857,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 4,
+                "signed_clearance_m": 0.040019122523804046,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7767376430850533,
+                  0.08404769590803865,
+                  0.09872481278286291
+                ],
+                "center_geometry": [
+                  0.011199497863735891,
+                  0.059717320736787906,
+                  0.009432033906520698
+                ],
+                "point_signed_distance_m": 0.049731788389014805,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g15",
+                "sphere_index": 29,
+                "signed_clearance_m": 0.04004614377122745,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.76080856645845,
+                  0.07639458836770989,
+                  0.10924311891588406
+                ],
+                "center_geometry": [
+                  0.010922145574978392,
+                  -0.05975026415983983,
+                  -0.008333098831441732
+                ],
+                "point_signed_distance_m": 0.04975880963643821,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link6",
+                "obstacle": "table_collision",
+                "sphere_index": 16,
+                "signed_clearance_m": 0.04621072667417837,
+                "sphere_radius_m": 0.04597422208530709,
+                "center_base": [
+                  0.6828167641573024,
+                  0.33500546600172953,
+                  0.08018494875948542
+                ],
+                "center_geometry": [
+                  0.022816764157302383,
+                  0.33500546600172953,
+                  0.11718494875948546
+                ],
+                "point_signed_distance_m": 0.09218494875948546,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g5",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.04804524841312668,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7016461003683361,
+                  0.1121679981604008,
+                  0.08822759508940115
+                ],
+                "center_geometry": [
+                  -0.06889311629797665,
+                  0.07509834579056393,
+                  0.0318366381283367
+                ],
+                "point_signed_distance_m": 0.08686920221932426,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 19,
+                "signed_clearance_m": 0.048452695658317266,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8181221716030935,
+                  0.10394549220911525,
+                  0.09862849318581218
+                ],
+                "center_geometry": [
+                  0.011933370846820612,
+                  0.05958443890723556,
+                  0.0553455890795681
+                ],
+                "point_signed_distance_m": 0.058165361523528025,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g15",
+                "sphere_index": 4,
+                "signed_clearance_m": 0.04870657259511424,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8181366314159453,
+                  0.103958084472656,
+                  0.1091156116224952
+                ],
+                "center_geometry": [
+                  0.011938748619394118,
+                  -0.05992841941845933,
+                  0.055268822415969976
+                ],
+                "point_signed_distance_m": 0.058419238460325,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g6",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.048861228668555044,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7016461003683361,
+                  0.1121679981604008,
+                  0.08822759508940115
+                ],
+                "center_geometry": [
+                  -0.07296135515758188,
+                  -0.06908654452276858,
+                  0.04380273104272164
+                ],
+                "point_signed_distance_m": 0.08768518247475263,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 18,
+                "signed_clearance_m": 0.057923961986313874,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8134668137649183,
+                  0.11362793566905144,
+                  0.098623286009313
+                ],
+                "center_geometry": [
+                  0.13067546485208956,
+                  -0.07962641280969396,
+                  -0.005376713990686982
+                ],
+                "point_signed_distance_m": 0.06763662785152463,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "table_collision",
+                "sphere_index": 14,
+                "signed_clearance_m": 0.06111109321675922,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.8199083833934201,
+                  0.2200068896240097,
+                  0.08793504702295676
+                ],
+                "center_geometry": [
+                  0.15990838339342006,
+                  0.2200068896240097,
+                  0.1249350470229568
+                ],
+                "point_signed_distance_m": 0.0999350470229568,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g4",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.06364393969658072,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7016461003683361,
+                  0.1121679981604008,
+                  0.08822759508940115
+                ],
+                "center_geometry": [
+                  -0.083446257516846,
+                  0.029822456448621804,
+                  0.09047384485011273
+                ],
+                "point_signed_distance_m": 0.10246789350277831,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g7",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.07412681717359143,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7016461003683361,
+                  0.1121679981604008,
+                  0.08822759508940115
+                ],
+                "center_geometry": [
+                  -0.09463999579187321,
+                  0.011569721426187396,
+                  -0.09389705865892489
+                ],
+                "point_signed_distance_m": 0.112950770979789,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g1",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.07595275960022241,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7016461003683361,
+                  0.1121679981604008,
+                  0.08822759508940115
+                ],
+                "center_geometry": [
+                  0.09207497009517038,
+                  -0.09992273198509849,
+                  0.023771022610948767
+                ],
+                "point_signed_distance_m": 0.11477671340642,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 0,
+                "signed_clearance_m": 0.07662546706483525,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7124848606579287,
+                  0.19514341842640964,
+                  0.10388870244219996
+                ],
+                "center_geometry": [
+                  0.24699298431025796,
+                  -0.022073276930178243,
+                  -0.0001112975578000247
+                ],
+                "point_signed_distance_m": 0.11792401057563545,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 0,
+                "signed_clearance_m": 0.08800295062608804,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7124848606579287,
+                  0.19514341842640964,
+                  0.10388870244219996
+                ],
+                "center_geometry": [
+                  0.13899298431025797,
+                  0.018926723069821794,
+                  -0.0001112975578000247
+                ],
+                "point_signed_distance_m": 0.12930149413688824,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "plate_1_g6",
+                "sphere_index": 14,
+                "signed_clearance_m": 0.08889588285860348,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7607941066455981,
+                  0.07638199610416914,
+                  0.09875600047920105
+                ],
+                "center_geometry": [
+                  -0.0772931668377034,
+                  -0.08343870803515901,
+                  -0.024499704637692965
+                ],
+                "point_signed_distance_m": 0.09860854872381423,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g2",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.08934587611161524,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7016461003683361,
+                  0.1121679981604008,
+                  0.08822759508940115
+                ],
+                "center_geometry": [
+                  -0.10709707476430569,
+                  -0.03758106490110025,
+                  0.10030750428746
+                ],
+                "point_signed_distance_m": 0.1281698299178128,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g3",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.08934587611161524,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7016461003683361,
+                  0.1121679981604008,
+                  0.08822759508940115
+                ],
+                "center_geometry": [
+                  -0.10709707476430569,
+                  -0.03758106490110025,
+                  0.10030750428746
+                ],
+                "point_signed_distance_m": 0.1281698299178128,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link5",
+                "obstacle": "plate_1_g4",
+                "sphere_index": 47,
+                "signed_clearance_m": 0.08991369974730759,
+                "sphere_radius_m": 0.045600415314094665,
+                "center_base": [
+                  0.6174445363749343,
+                  0.203145377499958,
+                  0.0527293882202822
+                ],
+                "center_geometry": [
+                  -0.008482175125718666,
+                  0.13433934516634338,
+                  0.09961255074181669
+                ],
+                "point_signed_distance_m": 0.13551411506140226,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "plate_1_g7",
+                "sphere_index": 14,
+                "signed_clearance_m": 0.08998132310163762,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7607941066455981,
+                  0.07638199610416914,
+                  0.09875600047920105
+                ],
+                "center_geometry": [
+                  -0.08440438559110094,
+                  0.06916874735368439,
+                  -0.0555883598319354
+                ],
+                "point_signed_distance_m": 0.09969398896684838,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 3,
+                "signed_clearance_m": 0.09061504496392997,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7390826492592015,
+                  0.2079158340659097,
+                  0.07430810980752765
+                ],
+                "center_geometry": [
+                  0.1394502283011251,
+                  0.03528653784779991,
+                  0.027103383165006156
+                ],
+                "point_signed_distance_m": 0.13191358847473017,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link5",
+                "obstacle": "plate_1_g5",
+                "sphere_index": 47,
+                "signed_clearance_m": 0.0906578257532831,
+                "sphere_radius_m": 0.045600415314094665,
+                "center_base": [
+                  0.6174445363749343,
+                  0.203145377499958,
+                  0.0527293882202822
+                ],
+                "center_geometry": [
+                  -0.005296630808845626,
+                  0.15397002045077585,
+                  -0.047923349278105376
+                ],
+                "point_signed_distance_m": 0.13625824106737777,
+                "method": "exact_obb_sdf"
+              }
+            ],
+            "sphere_count": 291,
+            "interpretation": "planning sphere proxies vs exported world, not MuJoCo physical contacts",
+            "includes_attachment": false,
+            "robot_sphere_buffer_m": 0.001
+          }
+        },
+        "label": "cuRobo代理模型把当前起点判为不可规划",
+        "evidence": "cuRobo rejected the current state before evaluating a target; see its proxy-collision diagnostics"
+      },
+      "steps": 1087,
+      "after_video_sha256": "c15ef3568ff85f653d043775c7bf7cac850f9e2637009349bc7983847f4e705a",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE6_close_the_microwave",
+      "initial_state_id": 0,
+      "category": "microwave",
+      "category_name": "微波炉门开关",
+      "before_success": false,
+      "after_success": true,
+      "change": "improved",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 883,
+      "after_video_sha256": "d4e626cdb56bcb2d3af8527dae816b3e4b46a6d9df7d969cf535808567a98110",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_10_KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "initial_state_id": 0,
+      "category": "microwave_place",
+      "category_name": "微波炉门＋抓放",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "failure": {
+        "code": "selection_budget_exhausted",
+        "category": "planning",
+        "phase": "select_candidate",
+        "details": {
+          "screened_candidates": 104,
+          "unchecked_candidates": 14,
+          "approach_distances_m": [
+            0.1,
+            0.05
+          ],
+          "rounds": 6,
+          "budget_exhausted": false
+        },
+        "label": "抓取候选搜索预算耗尽",
+        "evidence": "No executable path found in checked candidates; grasp not executed"
+      },
+      "steps": 412,
+      "after_video_sha256": "596b4d0614a12576f0a6899d1205971f6f5228432f1c2bd5705ea9ec2a09e438",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_10_KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "initial_state_id": 0,
+      "category": "drawer_place",
+      "category_name": "抽屉开关＋抓放",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "steps": 40,
+      "after_video_sha256": "a78798c3ed04c43e625e8cdace19f1327fd251f72d781fc7654d68c18156ca84",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet_and_put_the_black_bowl_on_top_of_it",
+      "initial_state_id": 0,
+      "category": "drawer_place",
+      "category_name": "抽屉开关＋抓放",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "failure": {
+        "code": "checked_candidates_rejected",
+        "category": "planning",
+        "phase": "select_candidate",
+        "details": {
+          "screened_candidates": 4,
+          "unchecked_candidates": 0,
+          "approach_distances_m": [
+            0.1,
+            0.05
+          ],
+          "rounds": 3,
+          "budget_exhausted": false
+        },
+        "label": "检查过的抓取候选均未通过规划或预检",
+        "evidence": "No executable path found in checked candidates; grasp not executed"
+      },
+      "steps": 532,
+      "after_video_sha256": "469c46c122c5bb4da3f0d7173f48927577dfbb64f31f21f7a9c4908bb7c9a326",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_put_the_butter_at_the_back_in_the_top_drawer_of_the_cabinet_and_close_it",
+      "initial_state_id": 0,
+      "category": "drawer_place",
+      "category_name": "抽屉开关＋抓放",
+      "before_success": false,
+      "after_success": true,
+      "change": "improved",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 1221,
+      "after_video_sha256": "65e9f227b7eb2b9bf67d0d6052f9418d84b25afbe1ba4a998bf62aeb6e3dec37",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_put_the_butter_at_the_front_in_the_top_drawer_of_the_cabinet_and_close_it",
+      "initial_state_id": 0,
+      "category": "drawer_place",
+      "category_name": "抽屉开关＋抓放",
+      "before_success": false,
+      "after_success": true,
+      "change": "improved",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 1557,
+      "after_video_sha256": "8b8af42d22c316b7a85192007700124b079f0a11ddee6768e5e6640b8309a635",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_put_the_chocolate_pudding_in_the_top_drawer_of_the_cabinet_and_close_it",
+      "initial_state_id": 0,
+      "category": "drawer_place",
+      "category_name": "抽屉开关＋抓放",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "failure": {
+        "code": "checked_candidates_rejected",
+        "category": "planning",
+        "phase": "select_candidate",
+        "details": {
+          "screened_candidates": 2,
+          "unchecked_candidates": 0,
+          "approach_distances_m": [
+            0.1,
+            0.05
+          ],
+          "rounds": 2,
+          "budget_exhausted": false
+        },
+        "label": "检查过的抓取候选均未通过规划或预检",
+        "evidence": "No executable path found in checked candidates; grasp not executed"
+      },
+      "steps": 369,
+      "after_video_sha256": "3f7c3fc01809816f7f029cae4a1674fbeeb6e780d8d8a7b9ee60956a8c0eaec3",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet_and_put_the_bowl_in_it",
+      "initial_state_id": 0,
+      "category": "drawer_place",
+      "category_name": "抽屉开关＋抓放",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "failure": {
+        "code": "motion_plan_failed",
+        "category": "planning",
+        "phase": "lift",
+        "details": {
+          "success": false,
+          "status": "MotionGenStatus.IK_FAIL",
+          "wall_s": 4.939451187849045,
+          "contact_policy": {
+            "obstacle_names": [
+              "floor",
+              "plate_1_g1",
+              "plate_1_g10",
+              "plate_1_g2",
+              "plate_1_g3",
+              "plate_1_g4",
+              "plate_1_g5",
+              "plate_1_g6",
+              "plate_1_g7",
+              "plate_1_g8",
+              "plate_1_g9",
+              "wooden_cabinet_1_g1",
+              "wooden_cabinet_1_g11",
+              "wooden_cabinet_1_g12",
+              "wooden_cabinet_1_g13",
+              "wooden_cabinet_1_g14",
+              "wooden_cabinet_1_g15",
+              "wooden_cabinet_1_g16",
+              "wooden_cabinet_1_g18",
+              "wooden_cabinet_1_g19",
+              "wooden_cabinet_1_g2",
+              "wooden_cabinet_1_g20",
+              "wooden_cabinet_1_g22",
+              "wooden_cabinet_1_g23",
+              "wooden_cabinet_1_g24",
+              "wooden_cabinet_1_g25",
+              "wooden_cabinet_1_g26",
+              "wooden_cabinet_1_g27",
+              "wooden_cabinet_1_g29",
+              "wooden_cabinet_1_g3",
+              "wooden_cabinet_1_g30",
+              "wooden_cabinet_1_g31",
+              "wooden_cabinet_1_g33",
+              "wooden_cabinet_1_g34",
+              "wooden_cabinet_1_g35",
+              "wooden_cabinet_1_g36",
+              "wooden_cabinet_1_g37",
+              "wooden_cabinet_1_g38",
+              "wooden_cabinet_1_g4",
+              "wooden_cabinet_1_g40",
+              "wooden_cabinet_1_g41",
+              "wooden_cabinet_1_g42",
+              "wooden_cabinet_1_g5",
+              "wooden_cabinet_1_g6",
+              "wooden_cabinet_1_g7",
+              "wooden_cabinet_1_g8",
+              "wooden_cabinet_1_g9"
+            ],
+            "target_in_world": false,
+            "target_attached": true,
+            "ignored_obstacles": [
+              "table_collision"
+            ],
+            "allow_target_contact": true,
+            "approximations": [],
+            "target_contact_limitation": null,
+            "robot_collision_model": "conservative per-geom AABB sphere cover; fixed base omitted",
+            "path_validation": "sampled cuRobo sphere-world/self constraints, not a continuous exact-mesh certificate"
+          },
+          "reason": "curobo_plan_failed"
+        },
+        "label": "阶段路径规划未通过",
+        "evidence": "lift planning failed: {'success': False, 'status': 'MotionGenStatus.IK_FAIL', 'wall_s': 4.939451187849045, 'contact_policy': {'obstacle_names': ['floor', 'plate_1_g1', 'plate_1_g10', 'plate_1_g2', 'plate_1_g3', 'plate_1_g4', 'plate_1_g5', 'plate_1_g6', 'plate_1_g7', 'plate_1_g8', 'plate_1_g9', 'wooden_cabinet_1_g1', 'wooden_cabinet_1_g11', 'wooden_cabinet_1_g12', 'wooden_cabinet_1_g13', 'wooden_cabinet_1_g14', 'wooden_cabinet_1_g15', 'wooden_cabinet_1_g16', 'wooden_cabinet_1_g18', 'wooden_cabinet_1_g19', 'wooden_cabinet_1_g2', 'wooden_cabinet_1_g20', 'wooden_cabinet_1_g22', 'wooden_cabinet_1_g23', 'wooden_cabinet_1_g24', 'wooden_cabinet_1_g25', 'wooden_cabinet_1_g26', 'wooden_cabinet_1_g27', 'wooden_cabinet_1_g29', 'wooden_cabinet_1_g3', 'wooden_cabinet_1_g30', 'wooden_cabinet_1_g31', 'wooden_cabinet_1_g33', 'wooden_cabinet_1_g34', 'wooden_cabinet_1_g35', 'wooden_cabinet_1_g36', 'wooden_cabinet_1_g37', 'wooden_cabinet_1_g38', 'wooden_cabinet_1_g4', 'wooden_cabinet_1_g40', 'wooden_cabinet_1_g41', 'wooden_cabinet_1_g42', 'wooden_cabinet_1_g5', 'wooden_cabinet_1_g6', 'wooden_cabinet_1_g7', 'wooden_cabinet_1_g8', 'wooden_cabinet_1_g9'], 'target_in_world': False, 'target_attached': True, 'ignored_obstacles': ['table_collision'], 'allow_target_contact': True, 'approximations': [], 'target_contact_limitation': None, 'robot_collision_model': 'conservative per-geom AABB sphere cover; fixed base omitted', 'path_validation': 'sampled cuRobo sphere-world/self constraints, not a continuous exact-mesh certificate'}, 'reason': 'curobo_plan_failed'}"
+      },
+      "steps": 671,
+      "after_video_sha256": "a1d664a5c5383131c79f583cc47967f9d1b0afb211c283fa3e4abcd05d1af27f",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_goal_open_the_top_drawer_and_put_the_bowl_inside",
+      "initial_state_id": 0,
+      "category": "drawer_place",
+      "category_name": "抽屉开关＋抓放",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "failure": {
+        "code": "checked_candidates_rejected",
+        "category": "planning",
+        "phase": "select_candidate",
+        "details": {
+          "screened_candidates": 1,
+          "unchecked_candidates": 0,
+          "approach_distances_m": [
+            0.1,
+            0.05
+          ],
+          "rounds": 2,
+          "budget_exhausted": false
+        },
+        "label": "检查过的抓取候选均未通过规划或预检",
+        "evidence": "No executable path found in checked candidates; grasp not executed"
+      },
+      "steps": 546,
+      "after_video_sha256": "89c0b07f58c3cdb4c4c306cb083686bf32d526af52b8caf2aa8f02f0145a7f36",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_10_KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "initial_state_id": 0,
+      "category": "stove_place",
+      "category_name": "炉子旋钮＋抓放",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 929,
+      "after_video_sha256": "93d3b0a8cca9197531ccd23b174e218c430176d06b4a0bdeacec045bd1186aaa",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE3_turn_on_the_stove_and_put_the_frying_pan_on_it",
+      "initial_state_id": 0,
+      "category": "stove_place",
+      "category_name": "炉子旋钮＋抓放",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 1112,
+      "after_video_sha256": "092ca1de42f33fc8d0edca6dea2eb8ffcac83b41c5a70e38913d1071c7d72059",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE9_turn_on_the_stove_and_put_the_frying_pan_on_it",
+      "initial_state_id": 0,
+      "category": "stove_place",
+      "category_name": "炉子旋钮＋抓放",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 977,
+      "after_video_sha256": "5ae2d46882e06521a2d9949c4389c8ed54d345eb69d4e4865beb3d814e8bda02",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 0,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 503,
+      "after_video_sha256": "ab76b0c0f3ea6e383ce520c306a8a0f9b23415d3576bba9590787075c601a3ba",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE1_open_the_bottom_drawer_of_the_cabinet",
+      "initial_state_id": 0,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "steps": 40,
+      "after_video_sha256": "5a0a01510dbbc77fe4feb37cd7702ff7fa0ba7ab7e8af253987374fb72767b98",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 0,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 510,
+      "after_video_sha256": "02939d8a729d8cee504fc81af93a4597ac852bc00147d76a527c7123525e90c0",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE2_open_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 0,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 513,
+      "after_video_sha256": "952b1700e44c74b5e0acf70399671aec39ee241fc81a5d865d171ec45736e16c",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet",
+      "initial_state_id": 0,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "steps": 65,
+      "after_video_sha256": "ef48ff98e8759cd059a51b87316081f6358db5ff1609c65f720bba1b8850e272",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet_and_open_the_top_drawer",
+      "initial_state_id": 0,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "steps": 65,
+      "after_video_sha256": "87f8747eb00278e147d0e0847caa0e236dd6d065cf0c9ce135858adedff772a6",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE5_close_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 0,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 490,
+      "after_video_sha256": "660259b6828709e476d6a8ced7c2a4955ae45d2136b388df87c5d32ca5da54cb",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_goal_open_the_middle_drawer_of_the_cabinet",
+      "initial_state_id": 0,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 525,
+      "after_video_sha256": "f6800923c1392e96fbb2db2a631fe86ef76371ae1ea88107b6a9d71a17188b00",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE3_turn_on_the_stove",
+      "initial_state_id": 0,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 369,
+      "after_video_sha256": "b30f603e2e0a84fb60b98b578bef7a022d94ddbf6cd2ce7913558ab09a2a3206",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE8_turn_off_the_stove",
+      "initial_state_id": 0,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 446,
+      "after_video_sha256": "d68a4c4ff3ab97c43f8492025283f4ac77c2423bc7272d1f16aa3d19a5a40101",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE9_turn_on_the_stove",
+      "initial_state_id": 0,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 401,
+      "after_video_sha256": "18e6503daf55942e96978ab3333619ccbfa2c96881fbd1bd19279743c9ce6c87",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_goal_turn_on_the_stove",
+      "initial_state_id": 0,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": true,
+      "after_success": true,
+      "change": "retained",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 556,
+      "after_video_sha256": "dd6b600d15175df611d8ebc9abe8660e5d42ee3d5d650a4ee48795e39db28dd9",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_goal_push_the_plate_to_the_front_of_the_stove",
+      "initial_state_id": 0,
+      "category": "push",
+      "category_name": "接触推移",
+      "before_success": false,
+      "after_success": false,
+      "change": "failed",
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "steps": 432,
+      "after_video_sha256": "9221cd308a0c7bb684b878bfcfdbd73cb209d5bd7347b18614c31db3133b7391",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE7_open_the_microwave",
+      "initial_state_id": 1,
+      "category": "microwave",
+      "category_name": "微波炉门开关",
+      "before_success": null,
+      "after_success": false,
+      "change": "additional",
+      "failure": {
+        "code": "contact_global_start_invalid",
+        "category": "planning",
+        "phase": "approach",
+        "details": {
+          "success": false,
+          "reason": "invalid_start_state",
+          "status": "MotionGenStatus.INVALID_START_STATE_WORLD_COLLISION",
+          "contact_policy": {
+            "obstacle_names": [
+              "floor",
+              "microwave_1_g14",
+              "microwave_1_g15",
+              "microwave_1_g16",
+              "microwave_1_g17",
+              "microwave_1_g3",
+              "microwave_1_g4",
+              "microwave_1_g5",
+              "microwave_1_g6",
+              "microwave_1_g7",
+              "microwave_1_g8",
+              "plate_1_g1",
+              "plate_1_g10",
+              "plate_1_g2",
+              "plate_1_g3",
+              "plate_1_g4",
+              "plate_1_g5",
+              "plate_1_g6",
+              "plate_1_g7",
+              "plate_1_g8",
+              "plate_1_g9",
+              "table_collision",
+              "white_bowl_1_g1",
+              "white_bowl_1_g10",
+              "white_bowl_1_g11",
+              "white_bowl_1_g12",
+              "white_bowl_1_g13",
+              "white_bowl_1_g14",
+              "white_bowl_1_g15",
+              "white_bowl_1_g16",
+              "white_bowl_1_g17",
+              "white_bowl_1_g18",
+              "white_bowl_1_g19",
+              "white_bowl_1_g2",
+              "white_bowl_1_g20",
+              "white_bowl_1_g21",
+              "white_bowl_1_g22",
+              "white_bowl_1_g23",
+              "white_bowl_1_g24",
+              "white_bowl_1_g25",
+              "white_bowl_1_g26",
+              "white_bowl_1_g27",
+              "white_bowl_1_g28",
+              "white_bowl_1_g29",
+              "white_bowl_1_g3",
+              "white_bowl_1_g30",
+              "white_bowl_1_g31",
+              "white_bowl_1_g32",
+              "white_bowl_1_g33",
+              "white_bowl_1_g34",
+              "white_bowl_1_g35",
+              "white_bowl_1_g36",
+              "white_bowl_1_g4",
+              "white_bowl_1_g5",
+              "white_bowl_1_g6",
+              "white_bowl_1_g7",
+              "white_bowl_1_g8",
+              "white_bowl_1_g9"
+            ],
+            "target_in_world": true,
+            "target_attached": false,
+            "ignored_obstacles": [],
+            "allow_target_contact": false,
+            "approximations": [],
+            "target_contact_limitation": null,
+            "robot_collision_model": "conservative per-geom AABB sphere cover; fixed base omitted",
+            "path_validation": "sampled cuRobo sphere-world/self constraints, not a continuous exact-mesh certificate"
+          },
+          "world_collision_diagnostics": {
+            "minimum_signed_clearance_m": -0.008505023377216264,
+            "blocking_pairs": [
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 4,
+                "signed_clearance_m": -0.008505023377216264,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7761689073795974,
+                  0.08390883375455058,
+                  0.09874377905941373
+                ],
+                "center_geometry": [
+                  0.011207642487994496,
+                  0.007134901974171215,
+                  -0.005256220940586254
+                ],
+                "point_signed_distance_m": 0.0012076424879944956,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 13,
+                "signed_clearance_m": -0.005674391251780983,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7555708252667257,
+                  0.08593385109479013,
+                  0.09877011279853097
+                ],
+                "center_geometry": [
+                  0.12971400705620353,
+                  -0.016032600009096676,
+                  -0.005229887201469011
+                ],
+                "point_signed_distance_m": 0.004038274613429776,
+                "method": "exact_obb_sdf"
+              }
+            ],
+            "closest_pairs": [
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 4,
+                "signed_clearance_m": -0.008505023377216264,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7761689073795974,
+                  0.08390883375455058,
+                  0.09874377905941373
+                ],
+                "center_geometry": [
+                  0.011207642487994496,
+                  0.007134901974171215,
+                  -0.005256220940586254
+                ],
+                "point_signed_distance_m": 0.0012076424879944956,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 13,
+                "signed_clearance_m": -0.005674391251780983,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7555708252667257,
+                  0.08593385109479013,
+                  0.09877011279853097
+                ],
+                "center_geometry": [
+                  0.12971400705620353,
+                  -0.016032600009096676,
+                  -0.005229887201469011
+                ],
+                "point_signed_distance_m": 0.004038274613429776,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.00915860711557668,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7010886829231338,
+                  0.11205923037951697,
+                  0.08824751930277046
+                ],
+                "center_geometry": [
+                  0.17634346230358458,
+                  0.022393083855354434,
+                  -0.015752480697229523
+                ],
+                "point_signed_distance_m": 0.04798256092177426,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link5",
+                "obstacle": "table_collision",
+                "sphere_index": 23,
+                "signed_clearance_m": 0.015109638788577615,
+                "sphere_radius_m": 0.045600415314094665,
+                "center_base": [
+                  0.5989714357083638,
+                  0.25500809434101784,
+                  0.04871005410267225
+                ],
+                "center_geometry": [
+                  -0.06102856429163628,
+                  0.25500809434101784,
+                  0.08571005410267228
+                ],
+                "point_signed_distance_m": 0.06071005410267228,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "table_collision",
+                "sphere_index": 6,
+                "signed_clearance_m": 0.015445979929461326,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7651657880671936,
+                  0.22055306476441783,
+                  0.044744523440261495
+                ],
+                "center_geometry": [
+                  0.10516578806719357,
+                  0.22055306476441783,
+                  0.08174452344026154
+                ],
+                "point_signed_distance_m": 0.056744523440261534,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 19,
+                "signed_clearance_m": 0.019125638306544544,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8175616595783116,
+                  0.10379011887649961,
+                  0.09864636964357965
+                ],
+                "center_geometry": [
+                  0.011820596725511806,
+                  -0.03878077856948514,
+                  -0.005353630356420336
+                ],
+                "point_signed_distance_m": 0.028838304171755303,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 11,
+                "signed_clearance_m": 0.020246223425188323,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7471544061824966,
+                  0.13418499190244287,
+                  0.08815621361866302
+                ],
+                "center_geometry": [
+                  0.06902562351371291,
+                  0.012293819296449238,
+                  -0.01584378638133696
+                ],
+                "point_signed_distance_m": 0.059070177231385905,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 11,
+                "signed_clearance_m": 0.032006617135174394,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7471544061824966,
+                  0.13418499190244287,
+                  0.08815621361866302
+                ],
+                "center_geometry": [
+                  0.06902562351371291,
+                  0.049152848538748115,
+                  0.004245323775807663
+                ],
+                "point_signed_distance_m": 0.07083057094137198,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g15",
+                "sphere_index": 3,
+                "signed_clearance_m": 0.032058073730745644,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7471986192001514,
+                  0.13422344980084439,
+                  0.119782009456881
+                ],
+                "center_geometry": [
+                  0.06904190055541531,
+                  -0.04922136925902035,
+                  0.004223278369109296
+                ],
+                "point_signed_distance_m": 0.07088202753694323,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g15",
+                "sphere_index": 29,
+                "signed_clearance_m": 0.04002779102670796,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7602369549697277,
+                  0.07626229134411566,
+                  0.10926250439488354
+                ],
+                "center_geometry": [
+                  0.010976895588583335,
+                  -0.05973086292058315,
+                  -0.008352882301579267
+                ],
+                "point_signed_distance_m": 0.04974045689191872,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 4,
+                "signed_clearance_m": 0.040038295740252,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7761689073795974,
+                  0.08390883375455058,
+                  0.09874377905941373
+                ],
+                "center_geometry": [
+                  0.01120764248799444,
+                  0.05973630243885668,
+                  0.00941267062351947
+                ],
+                "point_signed_distance_m": 0.04975096160546276,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link6",
+                "obstacle": "table_collision",
+                "sphere_index": 16,
+                "signed_clearance_m": 0.04622351670255011,
+                "sphere_radius_m": 0.04597422208530709,
+                "center_base": [
+                  0.6822708693560151,
+                  0.3348667308938566,
+                  0.08019773878785716
+                ],
+                "center_geometry": [
+                  0.022270869356015077,
+                  0.3348667308938566,
+                  0.11719773878785719
+                ],
+                "point_signed_distance_m": 0.0921977387878572,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 19,
+                "signed_clearance_m": 0.0484552714196041,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8175616595783116,
+                  0.10379011887649961,
+                  0.09864636964357965
+                ],
+                "center_geometry": [
+                  0.011820596725511778,
+                  0.05960232917104963,
+                  0.05532825903905547
+                ],
+                "point_signed_distance_m": 0.05816793728481486,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g5",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.04865804907458771,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7010886829231338,
+                  0.11205923037951697,
+                  0.08824751930277046
+                ],
+                "center_geometry": [
+                  -0.0699203035615951,
+                  0.07102029788391187,
+                  0.049013475449296684
+                ],
+                "point_signed_distance_m": 0.0874820028807853,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g15",
+                "sphere_index": 4,
+                "signed_clearance_m": 0.04867880513823954,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8175763206206468,
+                  0.10380287152055093,
+                  0.10913348760707241
+                ],
+                "center_geometry": [
+                  0.011825994194631706,
+                  -0.05991052983647066,
+                  0.05525175437211405
+                ],
+                "point_signed_distance_m": 0.0583914710034503,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g6",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.05008822603889335,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7010886829231338,
+                  0.11205923037951697,
+                  0.08824751930277046
+                ],
+                "center_geometry": [
+                  -0.06960923114737026,
+                  -0.07750022508493537,
+                  0.028613834678199945
+                ],
+                "point_signed_distance_m": 0.08891217984509094,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 18,
+                "signed_clearance_m": 0.05793304801133875,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8129101909176449,
+                  0.11347443127122536,
+                  0.09864109601071984
+                ],
+                "center_geometry": [
+                  0.13056310566225174,
+                  -0.07963735958934892,
+                  -0.005358903989280142
+                ],
+                "point_signed_distance_m": 0.06764571387654951,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "table_collision",
+                "sphere_index": 14,
+                "signed_clearance_m": 0.06112709622590095,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.8193942637964425,
+                  0.21985060908383106,
+                  0.0879510500320985
+                ],
+                "center_geometry": [
+                  0.1593942637964425,
+                  0.21985060908383106,
+                  0.12495105003209853
+                ],
+                "point_signed_distance_m": 0.09995105003209853,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g7",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.06747413228731988,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7010886829231338,
+                  0.11205923037951697,
+                  0.08824751930277046
+                ],
+                "center_geometry": [
+                  -0.0888038666940052,
+                  0.02780487560642597,
+                  -0.09001264175916991
+                ],
+                "point_signed_distance_m": 0.10629808609351747,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g4",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.07271293239735724,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7010886829231338,
+                  0.11205923037951697,
+                  0.08824751930277046
+                ],
+                "center_geometry": [
+                  -0.08825549151632106,
+                  0.015639002733573604,
+                  0.09987758016144466
+                ],
+                "point_signed_distance_m": 0.11153688620355481,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g1",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.07456151533319813,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7010886829231338,
+                  0.11205923037951697,
+                  0.08824751930277046
+                ],
+                "center_geometry": [
+                  0.0921765074304222,
+                  -0.09671492172234306,
+                  0.04116150771752114
+                ],
+                "point_signed_distance_m": 0.11338546913939572,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 0,
+                "signed_clearance_m": 0.0766917132900721,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7119610619025808,
+                  0.1950305387938219,
+                  0.10390710843523211
+                ],
+                "center_geometry": [
+                  0.24703182870075524,
+                  -0.022390858587822415,
+                  -9.289156476786908e-05
+                ],
+                "point_signed_distance_m": 0.11799025680087231,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link5",
+                "obstacle": "plate_1_g4",
+                "sphere_index": 47,
+                "signed_clearance_m": 0.08423024738486043,
+                "sphere_radius_m": 0.045600415314094665,
+                "center_base": [
+                  0.616811078725638,
+                  0.2031140920649515,
+                  0.05309878907978122
+                ],
+                "center_geometry": [
+                  -0.01358434395791941,
+                  0.12037478069276653,
+                  0.10903029449686974
+                ],
+                "point_signed_distance_m": 0.1298306626989551,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link5",
+                "obstacle": "plate_1_g5",
+                "sphere_index": 47,
+                "signed_clearance_m": 0.08543980018239689,
+                "sphere_radius_m": 0.045600415314094665,
+                "center_base": [
+                  0.616811078725638,
+                  0.2031140920649515,
+                  0.05309878907978122
+                ],
+                "center_geometry": [
+                  -0.006627447680310976,
+                  0.15008626251372492,
+                  -0.030809599370331786
+                ],
+                "point_signed_distance_m": 0.13104021549649156,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 0,
+                "signed_clearance_m": 0.08802017181577554,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7119610619025808,
+                  0.1950305387938219,
+                  0.10390710843523211
+                ],
+                "center_geometry": [
+                  0.1390318287007553,
+                  0.01860914141217762,
+                  -9.289156476786908e-05
+                ],
+                "point_signed_distance_m": 0.12931871532657574,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 3,
+                "signed_clearance_m": 0.0905855305612214,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7385634249848871,
+                  0.20779180177911988,
+                  0.0743258159377468
+                ],
+                "center_geometry": [
+                  0.13941118173316078,
+                  0.035303990753006984,
+                  0.027421381472022555
+                ],
+                "point_signed_distance_m": 0.1318840740720216,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "microwave_1_g15",
+                "sphere_index": 1,
+                "signed_clearance_m": 0.09067909614810538,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7385934591234303,
+                  0.20783838719292566,
+                  0.1333827989376725
+                ],
+                "center_geometry": [
+                  0.13944079904560103,
+                  -0.03563904106241292,
+                  0.027411739159231008
+                ],
+                "point_signed_distance_m": 0.13197763965890558,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "plate_1_g6",
+                "sphere_index": 14,
+                "signed_clearance_m": 0.09280154714961839,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7602222939273925,
+                  0.07624953870006435,
+                  0.09877538643139078
+                ],
+                "center_geometry": [
+                  -0.07394955138936256,
+                  -0.09182643669426371,
+                  -0.03969337750309193
+                ],
+                "point_signed_distance_m": 0.10251421301482914,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "plate_1_g7",
+                "sphere_index": 14,
+                "signed_clearance_m": 0.09376715983962516,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7602222939273925,
+                  0.07624953870006435,
+                  0.09877538643139078
+                ],
+                "center_geometry": [
+                  -0.07857233939159813,
+                  0.08538910723360893,
+                  -0.05168085244761555
+                ],
+                "point_signed_distance_m": 0.10347982570483592,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g8",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.09525556791073816,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7010886829231338,
+                  0.11205923037951697,
+                  0.08824751930277046
+                ],
+                "center_geometry": [
+                  -0.11595746338779839,
+                  0.048499065687063136,
+                  0.09371164969683382
+                ],
+                "point_signed_distance_m": 0.13407952171693574,
+                "method": "exact_obb_sdf"
+              }
+            ],
+            "sphere_count": 291,
+            "interpretation": "planning sphere proxies vs exported world, not MuJoCo physical contacts",
+            "includes_attachment": false,
+            "robot_sphere_buffer_m": 0.001
+          }
+        },
+        "label": "cuRobo代理模型把当前起点判为不可规划",
+        "evidence": "cuRobo rejected the current state before evaluating a target; see its proxy-collision diagnostics"
+      },
+      "steps": 1087,
+      "after_video_sha256": "00170d8121dc2ac18582da272bdd9387b678a72776d9d1d7853e298e48023790",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE6_close_the_microwave",
+      "initial_state_id": 1,
+      "category": "microwave",
+      "category_name": "微波炉门开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 816,
+      "after_video_sha256": "d7c8a1734b7a6c1b57bf4b3920f07d8a842b2b327f4896773b21d0cc46b82b4d",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 1,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 497,
+      "after_video_sha256": "71c8561ce4cbf58668421cdae2eb4155ed9ccc2f118a3b84f27e061129662086",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE1_open_the_bottom_drawer_of_the_cabinet",
+      "initial_state_id": 1,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": false,
+      "change": "additional",
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "steps": 40,
+      "after_video_sha256": "a63c55a952c4988a0907bcb62c80a9ed4c56acacb7f38cbcf1ebbd64c2de52ec",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 1,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 504,
+      "after_video_sha256": "d0c54ecdecd3ccd250a93cbff469d7b1befcfc6077dc7fdc91a5c3d09e748a85",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE2_open_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 1,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 509,
+      "after_video_sha256": "63e2b8303c770ffb3bba3bcd87152e3949c93135d30124c36f662d563ea929b5",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet",
+      "initial_state_id": 1,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 346,
+      "after_video_sha256": "912d54d87ba8d40aa3e107b39e65e2b73dac9151363df4a37d68b7484ec0914e",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet_and_open_the_top_drawer",
+      "initial_state_id": 1,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": false,
+      "change": "additional",
+      "failure": {
+        "code": "contact_ik_failed",
+        "category": "planning",
+        "phase": "articulate",
+        "details": {
+          "success": false,
+          "planner": "mujoco_cartesian_dls",
+          "state_restored": true,
+          "collision_checks": 1,
+          "accepted_ik_steps": 0,
+          "allow_finger_target": true,
+          "path_validation": "sampled actual MuJoCo contacts; existing monitor tolerance and phase permissions",
+          "limitation": "Kinematic contact-phase preview; actual execution must use closed-loop control and contact monitoring",
+          "linear_distance_m": 0.005769141483798754,
+          "rotation_distance_rad": 0.0004549224165136418,
+          "linear_waypoints": 2,
+          "max_linear_step_m": 0.005,
+          "held": false,
+          "allowed_support_geoms": [],
+          "joint_names": [
+            "robot0_joint1",
+            "robot0_joint2",
+            "robot0_joint3",
+            "robot0_joint4",
+            "robot0_joint5",
+            "robot0_joint6",
+            "robot0_joint7"
+          ],
+          "position_tolerance_m": 0.0004,
+          "rotation_tolerance_rad": 0.003,
+          "reason": "cartesian_start_outside_joint_limits",
+          "wall_s": 0.0008425936102867126,
+          "coupled_articulation_preview": true
+        },
+        "label": "机构运动的局部IK未通过",
+        "evidence": "Joint-constrained contact IK rejected"
+      },
+      "steps": 554,
+      "after_video_sha256": "3d984374e7c68b27ec30c5ecc8a4020b540b3c1039f995d96087ae3dceee8c90",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE5_close_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 1,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 499,
+      "after_video_sha256": "c7441e76535dd23715e9120d5487261f9b6df6ea0fbbbc4289f56ca92eb8e634",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_goal_open_the_middle_drawer_of_the_cabinet",
+      "initial_state_id": 1,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 533,
+      "after_video_sha256": "eabc4dd3a3c1800b6f4997b86bea808d7d7a7303861596ff791aa96df1faaba5",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE3_turn_on_the_stove",
+      "initial_state_id": 1,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 370,
+      "after_video_sha256": "09afc291b34d59de19170e9b73a375e1eac86918631f30e2f450fe742631f6c3",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE8_turn_off_the_stove",
+      "initial_state_id": 1,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 527,
+      "after_video_sha256": "00be3f2bca0ae196fc749baf62013d3509bc4210e17019d151b23ba9f266b685",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE9_turn_on_the_stove",
+      "initial_state_id": 1,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 407,
+      "after_video_sha256": "77d1f215a7a27ae09f5b027249a116da702b8a9a2d36f8a748764cbc8ebda124",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_goal_turn_on_the_stove",
+      "initial_state_id": 1,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 524,
+      "after_video_sha256": "6f62296bdfe1bc8215a0801c9d61e94861c52345ce19692ec003d85a140d9a35",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_goal_push_the_plate_to_the_front_of_the_stove",
+      "initial_state_id": 1,
+      "category": "push",
+      "category_name": "接触推移",
+      "before_success": null,
+      "after_success": false,
+      "change": "additional",
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "steps": 25,
+      "after_video_sha256": "2c871e73678bcffa1e997fd42c4021ccd07f9a837db2f37959a96574fca09572",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE7_open_the_microwave",
+      "initial_state_id": 2,
+      "category": "microwave",
+      "category_name": "微波炉门开关",
+      "before_success": null,
+      "after_success": false,
+      "change": "additional",
+      "failure": {
+        "code": "contact_global_start_invalid",
+        "category": "planning",
+        "phase": "approach",
+        "details": {
+          "success": false,
+          "reason": "invalid_start_state",
+          "status": "MotionGenStatus.INVALID_START_STATE_WORLD_COLLISION",
+          "contact_policy": {
+            "obstacle_names": [
+              "floor",
+              "microwave_1_g14",
+              "microwave_1_g15",
+              "microwave_1_g16",
+              "microwave_1_g17",
+              "microwave_1_g3",
+              "microwave_1_g4",
+              "microwave_1_g5",
+              "microwave_1_g6",
+              "microwave_1_g7",
+              "microwave_1_g8",
+              "plate_1_g1",
+              "plate_1_g10",
+              "plate_1_g2",
+              "plate_1_g3",
+              "plate_1_g4",
+              "plate_1_g5",
+              "plate_1_g6",
+              "plate_1_g7",
+              "plate_1_g8",
+              "plate_1_g9",
+              "table_collision",
+              "white_bowl_1_g1",
+              "white_bowl_1_g10",
+              "white_bowl_1_g11",
+              "white_bowl_1_g12",
+              "white_bowl_1_g13",
+              "white_bowl_1_g14",
+              "white_bowl_1_g15",
+              "white_bowl_1_g16",
+              "white_bowl_1_g17",
+              "white_bowl_1_g18",
+              "white_bowl_1_g19",
+              "white_bowl_1_g2",
+              "white_bowl_1_g20",
+              "white_bowl_1_g21",
+              "white_bowl_1_g22",
+              "white_bowl_1_g23",
+              "white_bowl_1_g24",
+              "white_bowl_1_g25",
+              "white_bowl_1_g26",
+              "white_bowl_1_g27",
+              "white_bowl_1_g28",
+              "white_bowl_1_g29",
+              "white_bowl_1_g3",
+              "white_bowl_1_g30",
+              "white_bowl_1_g31",
+              "white_bowl_1_g32",
+              "white_bowl_1_g33",
+              "white_bowl_1_g34",
+              "white_bowl_1_g35",
+              "white_bowl_1_g36",
+              "white_bowl_1_g4",
+              "white_bowl_1_g5",
+              "white_bowl_1_g6",
+              "white_bowl_1_g7",
+              "white_bowl_1_g8",
+              "white_bowl_1_g9"
+            ],
+            "target_in_world": true,
+            "target_attached": false,
+            "ignored_obstacles": [],
+            "allow_target_contact": false,
+            "approximations": [],
+            "target_contact_limitation": null,
+            "robot_collision_model": "conservative per-geom AABB sphere cover; fixed base omitted",
+            "path_validation": "sampled cuRobo sphere-world/self constraints, not a continuous exact-mesh certificate"
+          },
+          "world_collision_diagnostics": {
+            "minimum_signed_clearance_m": -0.008423198323734787,
+            "blocking_pairs": [
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 4,
+                "signed_clearance_m": -0.008423198323734787,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7745900143006191,
+                  0.08361182287004215,
+                  0.09877758050472933
+                ],
+                "center_geometry": [
+                  0.011289467541475973,
+                  0.007002292202469507,
+                  -0.00522241949527065
+                ],
+                "point_signed_distance_m": 0.0012894675414759724,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 13,
+                "signed_clearance_m": -0.00540776660565793,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7539998058091724,
+                  0.08571533382667137,
+                  0.09880809864335896
+                ],
+                "center_geometry": [
+                  0.1299842505630565,
+                  -0.016277576302893726,
+                  -0.005191901356641021
+                ],
+                "point_signed_distance_m": 0.00430489925955283,
+                "method": "exact_obb_sdf"
+              }
+            ],
+            "closest_pairs": [
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 4,
+                "signed_clearance_m": -0.008423198323734787,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7745900143006191,
+                  0.08361182287004215,
+                  0.09877758050472933
+                ],
+                "center_geometry": [
+                  0.011289467541475973,
+                  0.007002292202469507,
+                  -0.00522241949527065
+                ],
+                "point_signed_distance_m": 0.0012894675414759724,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 13,
+                "signed_clearance_m": -0.00540776660565793,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7539998058091724,
+                  0.08571533382667137,
+                  0.09880809864335896
+                ],
+                "center_geometry": [
+                  0.1299842505630565,
+                  -0.016277576302893726,
+                  -0.005191901356641021
+                ],
+                "point_signed_distance_m": 0.00430489925955283,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 1,
+                "signed_clearance_m": 0.009659178276793252,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.6996654335733835,
+                  0.11207693525250738,
+                  0.11993182887175799
+                ],
+                "center_geometry": [
+                  0.17702396077319635,
+                  0.021596210137571514,
+                  0.015931828871758008
+                ],
+                "point_signed_distance_m": 0.048483132082990835,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "table_collision",
+                "sphere_index": 6,
+                "signed_clearance_m": 0.015543718539764481,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7640995325601934,
+                  0.2203216540505849,
+                  0.04484226205056465
+                ],
+                "center_geometry": [
+                  0.10409953256019333,
+                  0.2203216540505849,
+                  0.08184226205056469
+                ],
+                "point_signed_distance_m": 0.05684226205056469,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link5",
+                "obstacle": "table_collision",
+                "sphere_index": 23,
+                "signed_clearance_m": 0.015791430833391795,
+                "sphere_radius_m": 0.045600415314094665,
+                "center_base": [
+                  0.5977379660894558,
+                  0.25533748374989695,
+                  0.04939184614748643
+                ],
+                "center_geometry": [
+                  -0.06226203391054419,
+                  0.25533748374989695,
+                  0.08639184614748646
+                ],
+                "point_signed_distance_m": 0.06139184614748646,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 19,
+                "signed_clearance_m": 0.019239348712811005,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8160583014110762,
+                  0.10333524483895953,
+                  0.09868266242513946
+                ],
+                "center_geometry": [
+                  0.011415732938488243,
+                  -0.03891737969410203,
+                  -0.005317337574860526
+                ],
+                "point_signed_distance_m": 0.028952014578021764,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 3,
+                "signed_clearance_m": 0.02035935106367818,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7458151529352864,
+                  0.1340269713308041,
+                  0.1198432959139366
+                ],
+                "center_geometry": [
+                  0.06916448071253622,
+                  0.011492580763841298,
+                  0.015843295913936614
+                ],
+                "point_signed_distance_m": 0.05918330486987576,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g15",
+                "sphere_index": 3,
+                "signed_clearance_m": 0.032126693308745395,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7458151529352864,
+                  0.1340269713308041,
+                  0.1198432959139366
+                ],
+                "center_geometry": [
+                  0.06916448071253631,
+                  -0.04916067604172693,
+                  0.004968272851989974
+                ],
+                "point_signed_distance_m": 0.07095064711494298,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 11,
+                "signed_clearance_m": 0.03215543832314111,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.7457658389197825,
+                  0.1340030944735884,
+                  0.08821749324862722
+                ],
+                "center_geometry": [
+                  0.06916394915328683,
+                  0.04921353373055939,
+                  0.004991823153836061
+                ],
+                "point_signed_distance_m": 0.0709793921293387,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g15",
+                "sphere_index": 29,
+                "signed_clearance_m": 0.04000094913436711,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7586306763748352,
+                  0.07602127642198009,
+                  0.10929534826687519
+                ],
+                "center_geometry": [
+                  0.011240999890976322,
+                  -0.059698123059094,
+                  -0.008222256414149864
+                ],
+                "point_signed_distance_m": 0.04971361499957787,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 4,
+                "signed_clearance_m": 0.04007403371018003,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7745900143006191,
+                  0.08361182287004215,
+                  0.09877758050472933
+                ],
+                "center_geometry": [
+                  0.011289467541476028,
+                  0.0597699982727516,
+                  0.009545307270168557
+                ],
+                "point_signed_distance_m": 0.04978669957539079,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link6",
+                "obstacle": "table_collision",
+                "sphere_index": 16,
+                "signed_clearance_m": 0.04638177512564169,
+                "sphere_radius_m": 0.04597422208530709,
+                "center_base": [
+                  0.6815461086496126,
+                  0.33488654812617913,
+                  0.08035599721094876
+                ],
+                "center_geometry": [
+                  0.021546108649612594,
+                  0.33488654812617913,
+                  0.11735599721094879
+                ],
+                "point_signed_distance_m": 0.09235599721094878,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g5",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.04753907144928463,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.6996161195578796,
+                  0.11205305839529169,
+                  0.08830602620644862
+                ],
+                "center_geometry": [
+                  -0.06992910853301904,
+                  0.07178143050203742,
+                  0.04055603870544855
+                ],
+                "point_signed_distance_m": 0.08636302525548221,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 19,
+                "signed_clearance_m": 0.04854620257353756,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8160583014110762,
+                  0.10333524483895953,
+                  0.09868266242513946
+                ],
+                "center_geometry": [
+                  0.011415732938488299,
+                  0.05963851316197789,
+                  0.05546488902127189
+                ],
+                "point_signed_distance_m": 0.05825886843874832,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g6",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.04870548811374379,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.6996161195578796,
+                  0.11205305839529169,
+                  0.08830602620644862
+                ],
+                "center_geometry": [
+                  -0.0716242355804344,
+                  -0.072465750765766,
+                  0.03514847025567808
+                ],
+                "point_signed_distance_m": 0.08752944191994137,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g15",
+                "sphere_index": 4,
+                "signed_clearance_m": 0.04870718077804598,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8160746539449535,
+                  0.10334316240788013,
+                  0.1091697826524966
+                ],
+                "center_geometry": [
+                  0.011415909203603802,
+                  -0.05987434318429147,
+                  0.05538788533090622
+                ],
+                "point_signed_distance_m": 0.05841984664325674,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_leftfinger",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 18,
+                "signed_clearance_m": 0.05817837233789924,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.8114437833792907,
+                  0.11303721981257141,
+                  0.09868253302898039
+                ],
+                "center_geometry": [
+                  0.13015915987568397,
+                  -0.0798878382079915,
+                  -0.005317466971019591
+                ],
+                "point_signed_distance_m": 0.06789103820311,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "table_collision",
+                "sphere_index": 14,
+                "signed_clearance_m": 0.06121592017570792,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.8183317047920382,
+                  0.21939279320156405,
+                  0.08803987398190546
+                ],
+                "center_geometry": [
+                  0.15833170479203817,
+                  0.21939279320156405,
+                  0.1250398739819055
+                ],
+                "point_signed_distance_m": 0.1000398739819055,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g4",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.06771914385768871,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.6996161195578796,
+                  0.11205305839529169,
+                  0.08830602620644862
+                ],
+                "center_geometry": [
+                  -0.0862957575685552,
+                  0.021743396355655475,
+                  0.09430950526730475
+                ],
+                "point_signed_distance_m": 0.10654309766388628,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g7",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.0698177000266087,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.6996161195578796,
+                  0.11205305839529169,
+                  0.08830602620644862
+                ],
+                "center_geometry": [
+                  -0.09170376741294026,
+                  0.01984374347087048,
+                  -0.09057707741239467
+                ],
+                "point_signed_distance_m": 0.10864165383280627,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g1",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.07427033087806281,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.6996161195578796,
+                  0.11205305839529169,
+                  0.08830602620644862
+                ],
+                "center_geometry": [
+                  0.09222916220118967,
+                  -0.09695153622478284,
+                  0.03267334668473909
+                ],
+                "point_signed_distance_m": 0.11309428468426039,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "microwave_1_g17",
+                "sphere_index": 0,
+                "signed_clearance_m": 0.07702485820163704,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7108071679479907,
+                  0.19497517324327984,
+                  0.10400165239718051
+                ],
+                "center_geometry": [
+                  0.24722561081637337,
+                  -0.02387888676242822,
+                  1.6523971805293414e-06
+                ],
+                "point_signed_distance_m": 0.11832340171243724,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link5",
+                "obstacle": "plate_1_g4",
+                "sphere_index": 47,
+                "signed_clearance_m": 0.08608946470672438,
+                "sphere_radius_m": 0.045600415314094665,
+                "center_base": [
+                  0.6154962695084567,
+                  0.20341012522771512,
+                  0.053715435686163035
+                ],
+                "center_geometry": [
+                  -0.012113500438428931,
+                  0.12674626944114098,
+                  0.10380482811471758
+                ],
+                "point_signed_distance_m": 0.13168988002081905,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link5",
+                "obstacle": "plate_1_g5",
+                "sphere_index": 47,
+                "signed_clearance_m": 0.08707691509036103,
+                "sphere_radius_m": 0.045600415314094665,
+                "center_base": [
+                  0.6154962695084567,
+                  0.20341012522771512,
+                  0.053715435686163035
+                ],
+                "center_geometry": [
+                  -0.0070603330229597715,
+                  0.1513084246678376,
+                  -0.03907904181765942
+                ],
+                "point_signed_distance_m": 0.1326773304044557,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "microwave_1_g14",
+                "sphere_index": 3,
+                "signed_clearance_m": 0.08802984265662908,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7374533502540921,
+                  0.20764841364693237,
+                  0.07442195722387258
+                ],
+                "center_geometry": [
+                  0.13930638889150115,
+                  -0.012385217078503374,
+                  -0.029578042776127397
+                ],
+                "point_signed_distance_m": 0.12932838616742928,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "plate_1_g6",
+                "sphere_index": 14,
+                "signed_clearance_m": 0.09011688171636127,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7586143238409578,
+                  0.07601335885305949,
+                  0.09880822803951804
+                ],
+                "center_geometry": [
+                  -0.07602687374480552,
+                  -0.08653584305517426,
+                  -0.03320790161429382
+                ],
+                "point_signed_distance_m": 0.09982954758157203,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "microwave_1_g16",
+                "sphere_index": 3,
+                "signed_clearance_m": 0.09053682116960787,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7374533502540921,
+                  0.20764841364693237,
+                  0.07442195722387258
+                ],
+                "center_geometry": [
+                  0.13930638889150118,
+                  0.03539894392279264,
+                  0.028913415370604323
+                ],
+                "point_signed_distance_m": 0.13183536468040807,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_link7",
+                "obstacle": "microwave_1_g15",
+                "sphere_index": 1,
+                "signed_clearance_m": 0.09056530584975256,
+                "sphere_radius_m": 0.04129854351080021,
+                "center_base": [
+                  0.7374928140346007,
+                  0.2076679713220741,
+                  0.1334789498107893
+                ],
+                "center_geometry": [
+                  0.1393072212746098,
+                  -0.03554407606383986,
+                  0.028900957890879764
+                ],
+                "point_signed_distance_m": 0.13186384936055276,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_rightfinger",
+                "obstacle": "plate_1_g7",
+                "sphere_index": 14,
+                "signed_clearance_m": 0.09112226284515126,
+                "sphere_radius_m": 0.00971266586521076,
+                "center_base": [
+                  0.7586143238409578,
+                  0.07601335885305949,
+                  0.09880822803951804
+                ],
+                "center_geometry": [
+                  -0.08149116370178688,
+                  0.07728160921894145,
+                  -0.052021421552193824
+                ],
+                "point_signed_distance_m": 0.10083492871036202,
+                "method": "exact_obb_sdf"
+              },
+              {
+                "link": "panda_hand",
+                "obstacle": "plate_1_g2",
+                "sphere_index": 9,
+                "signed_clearance_m": 0.09179630935862568,
+                "sphere_radius_m": 0.03882395380619758,
+                "center_base": [
+                  0.6996161195578796,
+                  0.11205305839529169,
+                  0.08830602620644862
+                ],
+                "center_geometry": [
+                  -0.11022025739546806,
+                  -0.045945691199166694,
+                  0.09741235135323295
+                ],
+                "point_signed_distance_m": 0.13062026316482325,
+                "method": "exact_obb_sdf"
+              }
+            ],
+            "sphere_count": 291,
+            "interpretation": "planning sphere proxies vs exported world, not MuJoCo physical contacts",
+            "includes_attachment": false,
+            "robot_sphere_buffer_m": 0.001
+          }
+        },
+        "label": "cuRobo代理模型把当前起点判为不可规划",
+        "evidence": "cuRobo rejected the current state before evaluating a target; see its proxy-collision diagnostics"
+      },
+      "steps": 1086,
+      "after_video_sha256": "08dbb8c32c7242666af404e11d5dd22eb7d5144b55d1e08595fabe9dd3192c4a",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE6_close_the_microwave",
+      "initial_state_id": 2,
+      "category": "microwave",
+      "category_name": "微波炉门开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 1037,
+      "after_video_sha256": "b58c4a32ec484f7ad39901c34beb0e272dac585ecacfdb95d9a2a37426b45fda",
+      "requires_manual_contact_review": true
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE10_close_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 2,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 494,
+      "after_video_sha256": "8726d19b55b764f9aaf42e2e36456eb51b582df053a60ade822d5640dc4dd655",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE1_open_the_bottom_drawer_of_the_cabinet",
+      "initial_state_id": 2,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": false,
+      "change": "additional",
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "steps": 40,
+      "after_video_sha256": "147dabd58525389c24fda368aa56df24f015c556409408e4303b0a276dca4762",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE1_open_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 2,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 506,
+      "after_video_sha256": "fd332dd7d5af3fe616dedd0bf42cf9278852549e0516165fef799b1747021a54",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE2_open_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 2,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 512,
+      "after_video_sha256": "bfd3d31d65c310d12ea207dcea6bda41aed214218a3f1263c6a4cc43c8546aaa",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet",
+      "initial_state_id": 2,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": false,
+      "change": "additional",
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "steps": 65,
+      "after_video_sha256": "4839a296d36865c7534fe6c8eee7037757695480cb9c02c9b22442e2e360fc45",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE4_close_the_bottom_drawer_of_the_cabinet_and_open_the_top_drawer",
+      "initial_state_id": 2,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": false,
+      "change": "additional",
+      "failure": {
+        "code": "stage_failed",
+        "label": "最终目标或后续阶段未完整完成",
+        "evidence": "Contact skill predicate false after release/settling"
+      },
+      "steps": 812,
+      "after_video_sha256": "c9c859962964ee6c015d3f0bca70679ef00ca2bc4cd96ad4f1988ffddfb0ac82",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE5_close_the_top_drawer_of_the_cabinet",
+      "initial_state_id": 2,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 493,
+      "after_video_sha256": "a4f29045a76dd679cd02d7c8ce8fb065af349de569802b03a67ad535ae3299f9",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_goal_open_the_middle_drawer_of_the_cabinet",
+      "initial_state_id": 2,
+      "category": "drawer",
+      "category_name": "抽屉开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 532,
+      "after_video_sha256": "368a9021b1115a0d07a66bfb78ff90e8090176a1b428e0f8c123d7c32660a5de",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE3_turn_on_the_stove",
+      "initial_state_id": 2,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 370,
+      "after_video_sha256": "b99a200b8aa78d69c8f2924aa09d62ba42e07de0f76cf9b0426446906adff880",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE8_turn_off_the_stove",
+      "initial_state_id": 2,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 477,
+      "after_video_sha256": "4620163c02a2666585079981198096110cc8c238b6c6b36b408561fef7f5cd8c",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_90_KITCHEN_SCENE9_turn_on_the_stove",
+      "initial_state_id": 2,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 399,
+      "after_video_sha256": "34023f4f361856a9d7467ff0f0b0f9af7be7c0d54f35a79d5b9d7ba49b63a70c",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_goal_turn_on_the_stove",
+      "initial_state_id": 2,
+      "category": "stove",
+      "category_name": "炉子旋钮开关",
+      "before_success": null,
+      "after_success": true,
+      "change": "additional",
+      "failure": {
+        "code": "completed",
+        "label": "完整流程与官方最终条件通过",
+        "evidence": ""
+      },
+      "steps": 555,
+      "after_video_sha256": "d4aba4d755c9b7f7d2276921af4fdc036d45fec08de8ecb3a25af5eb1bc37a3b",
+      "requires_manual_contact_review": false
+    },
+    {
+      "key": "libero_goal_push_the_plate_to_the_front_of_the_stove",
+      "initial_state_id": 2,
+      "category": "push",
+      "category_name": "接触推移",
+      "before_success": null,
+      "after_success": false,
+      "change": "additional",
+      "failure": {
+        "code": "contact_approach_exhausted",
+        "category": "planning",
+        "phase": "approach",
+        "details": {},
+        "label": "把手或推移接触候选未通过预检",
+        "evidence": "No executable approach/engagement in shared skill candidates"
+      },
+      "steps": 778,
+      "after_video_sha256": "f2ed68c9a40d08fdd75e189149f791f800b5e4bd4167b762274b315078fdc908",
+      "requires_manual_contact_review": false
+    }
+  ]
+}

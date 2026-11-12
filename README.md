@@ -8,6 +8,8 @@
 
 后续迭代新增了 [抓取端点环境筛选与机构位姿修复](grasp-pipeline/docs/GRASP_ENVIRONMENT_SCREEN.md)。39 项同初态复验从 16 项通过增加到 21 项，原通过的 16 项全部保持通过，详见 [本轮结果](grasp-pipeline/docs/LIBERO_ENVSCREEN_20261113.md)。上面的 130 项数字属于修改前的冻结基线，不能作为新版全量成绩。
 
+最新的 [机构接触与反馈控制迭代](grasp-pipeline/docs/LIBERO_CONTACT_FEEDBACK_20261113.md) 冻结 actor 为 `3e87a4a`，171 项回归通过。26 项机构及相关复合任务的同初态对照从 12 项增至 15 项，新增 3 项、无回退；另对 15 项机构/推移任务补测初态 1、2，分别完成 11 项和 10 项。共 56 条新回合均保留视频，按初态分别统计；1 条完成回合标记接触质量人工复核。详见 [机读结果](grasp-pipeline/migration/LIBERO_CONTACT_FEEDBACK_20261113.json)，不能与旧版 130 项结果混算。
+
 - [整理入口与第一阶段交付](pipeline-organization/README.md)
 - [整理后的自有代码与运行入口](grasp-pipeline/README.md)
 - [接入接口、字段与 LIBERO 参考](grasp-pipeline/docs/interfaces/README.md)
@@ -25,11 +27,11 @@
 cd grasp-pipeline
 python3 run.py --help
 python3 run.py list
-python3 tools/verify_preservation.py
-python3 tools/check_integration_docs.py
 ```
 
-上述命令用于配置预览和静态核对，不启动任务。实际仿真与模型运行需要 Linux NVIDIA GPU、三个外部 Python 环境、固定上游源码、模型权重和仿真资产，详见[部署说明](grasp-pipeline/deploy/README.md)。机器路径填写在被 Git 忽略的 `grasp-pipeline/configs/runtime/paths.local.json` 中。
+上述命令用于查看入口和任务清单，不启动任务。实际仿真与模型运行需要 Linux NVIDIA GPU、三个外部 Python 环境、固定上游源码、模型权重和仿真资产，详见[部署说明](grasp-pipeline/deploy/README.md)。机器路径填写在被 Git 忽略的 `grasp-pipeline/configs/runtime/paths.local.json` 中。
+
+`tools/verify_preservation.py` 和 `tools/check_integration_docs.py` 的源码指纹检查用于核对原目录整理版本。后续策略迭代已明确修改这些源码，因此它们会报告历史指纹变化；不要重写历史清单来制造“未修改”的结果。当前版本应使用相应迭代记录中的回归测试和冻结实验审计。
 
 ## 版本管理范围
 
