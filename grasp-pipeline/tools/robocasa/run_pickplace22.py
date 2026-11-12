@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Frozen r12 rerun of the exact 22 r10 task identities and initial states."""
+"""Frozen r13 rerun of the exact 22 r10 task identities and initial states."""
 from __future__ import annotations
 
 import argparse
@@ -42,11 +42,11 @@ def main():
     if old.get("source_digest") != "387084f9bee3cb24489e3cfa7c33815aab7a37dfb6408af09002bde3c0687a67":
         parser.error("Expected the frozen r10 all-65 baseline")
     base = load_config("PickPlaceCounterToStove", paths_file=args.paths, budget_profile="libero-v10-teacher")
-    if base["policy"]["version"] != "robocasa-port-r12-v10":
-        parser.error("This rerun requires the final r12 migration fix")
+    if base["policy"]["version"] != "robocasa-port-r13-v10":
+        parser.error("This rerun requires the final r13 migration fix")
     identity = source_identity()
     if identity["source_digest"] != args.expected_source_digest:
-        parser.error("Source does not match the explicitly frozen r12 actor")
+        parser.error("Source does not match the explicitly frozen r13 actor")
     cells, configs = [], {}
     for previous in old["cells"]:
         if previous["execution_mode"] != "run":

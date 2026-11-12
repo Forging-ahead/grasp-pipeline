@@ -144,7 +144,10 @@ def main(argv=None):
         result["native_budget_success"] = bool(result.get("pipeline_success") and result.get("native_success_at_end")
                                                and result.get("within_native_horizon"))
         result_path = args.output / "RESULT.json"
-        result_path.write_text(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False) + "\n")
+        # Failure details can include native region transforms and numpy
+        # scalars. Use the same checked, atomic writer as all stage records.
+        from graspgen_libero_bridge.adapters.robocasa.native import write_json as write_result_json
+        write_result_json(result_path, result)
         print(json.dumps({key: result.get(key) for key in ("status", "failure_code", "pipeline_success", "physical_steps", "wall_s")}), flush=True)
     return 0 if result["status"] in {"probe_passed", "validation_passed", "success"} else 1
 
