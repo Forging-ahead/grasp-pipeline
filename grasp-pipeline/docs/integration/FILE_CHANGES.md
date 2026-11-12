@@ -2,6 +2,8 @@
 
 下列现有路径均相对本代码根目录。**“拟新增”是接入方的工作建议，仓库尚未提供对应实现。** 当前运行链尚未调用第三阶段 Protocol，因此新增接口类只是起点。
 
+**开发起点必须是 `libero` 分支。新增本环境的 driver/adapter 不代表重写 code policy、cuRobo 规则或控制器。** 优先让原函数通过薄适配器、继承或后端映射继续运行；确需替代时记录差异和对照。具体要求见[基线继承要求](BASELINE_FIRST.md)。
+
 机读定位见 [FILE_CHANGE_MAP.json](FILE_CHANGE_MAP.json)，包含现有函数行号和源码指纹；它不是自动改写代码的脚本。
 
 ## 接入方拟新增的文件
@@ -23,7 +25,7 @@
 | [runtime/cli.py](../../src/graspgen_libero_bridge/runtime/cli.py) | 完整任务固定启动 `apps/libero/run_task.py` | 另建显式入口，或实现并测试新的 dispatch；当前没有可直接启用的插件注册函数 |
 | [runtime/config.py](../../src/graspgen_libero_bridge/runtime/config.py) | 读取固定 LIBERO 清单、15 个覆盖值和六路径格式 | 新增独立配置加载，保持 benchmark/robot/action 参数与部署路径分开 |
 | [apps/libero/run_task.py](../../apps/libero/run_task.py) | 原始 BDDL、私有目标查询、环境共享、阶段构造 | 在新 driver 中接入 TaskPort 与本环境提供方；原任务/初态不可被阶段初始化覆盖 |
-| [policy/evaluate.py](../../src/graspgen_libero_bridge/policy/evaluate.py) | `PickPlace` 构造固定 `EnvAdapter`，内部也读 task_env、sim 和区域 | 拆出或注入环境依赖，或写本环境编排复用纯计算部分；不能只把 adapter 属性换成另一个 env |
+| [policy/evaluate.py](../../src/graspgen_libero_bridge/policy/evaluate.py) | `PickPlace` 构造固定 `EnvAdapter`，内部也读 task_env、sim 和区域 | 优先继承已有候选筛选、恢复、搬运和放置函数，通过适配器提供兼容查询；必须拆分时保留行为与参数对照，不能只复用少量纯计算后另写简化策略 |
 | [adapters/libero/env_adapter.py](../../src/graspgen_libero_bridge/adapters/libero/env_adapter.py) | 单 Panda、OSC、官方初态、私有索引、混合 done | 新提供方实现对应状态/动作/初始化，保留原生 terminated、truncated 和 success |
 | [perception/pointcloud.py](../../src/graspgen_libero_bridge/perception/pointcloud.py) | `robosuite_target_points` 与完整 MuJoCo 几何入口依赖原环境 | 复用通用采样/反投影；本环境负责掩码、深度米制化、标定、目标 ID 和来源 |
 | [adapters/libero/scene.py](../../src/graspgen_libero_bridge/adapters/libero/scene.py) | 从编译 MuJoCo 接触几何导出世界 | 为新环境导出相同语义的场景，解析资产、缩放、附件、未知空间与更新版本 |

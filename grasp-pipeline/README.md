@@ -2,6 +2,8 @@
 
 这是从最终 v10 整理出的独立工作目录。它保留原有 code policy、GraspGen、cuRobo、MuJoCo 局部 IK 和 OSC 执行逻辑，将源码、配置、入口、测试与历史测评工具分开。
 
+接入新 benchmark 时，从 `libero` 分支创建自己的分支，优先直接调用或继承这些成熟实现，只适配环境差异；不要从零重写简化策略。开发起点、复用要求和差异记录见[基线继承说明](docs/integration/BASELINE_FIRST.md)。
+
 目前实际环境仍是 LIBERO、单 Panda 和原有夹爪。接入约定见 [第一版接口](docs/interfaces/README.md)；现有驱动尚未改为通过这些接口调用，本轮没有实现 RoboTwin 或 RoboCasa 适配。
 
 ## 目录
