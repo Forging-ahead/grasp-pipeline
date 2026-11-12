@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import copy
 import numpy as np
 
 from graspgen_libero_bridge.common.rpc import WorkerClient
@@ -10,6 +11,7 @@ from graspgen_libero_bridge.adapters.robocasa.errors import EpisodeFailure
 from graspgen_libero_bridge.adapters.robocasa.native import write_json
 from graspgen_libero_bridge.adapters.robocasa.scene import export_scene
 from graspgen_libero_bridge.runtime.robocasa_worker_env import worker_environment
+from graspgen_libero_bridge.runtime.robocasa_provenance import digest_json
 
 
 class RoboCasaPlanner:
@@ -20,6 +22,7 @@ class RoboCasaPlanner:
         self.attached_target = None
         self.carried_contents = []
         self.plans = 0
+        self.invalid_start_cache = {}
 
     def scene(self, target):
         return export_scene(self.environment, target,
@@ -35,6 +38,7 @@ class RoboCasaPlanner:
 
     def configure(self, target):
         env = self.environment
+        self.invalid_start_cache.clear()
         if self.worker is None:
             paths = env.config["paths"]
             self.worker = WorkerClient(paths["planner_python"], "graspgen_libero_bridge.planning.robocasa_planner_worker",
@@ -100,19 +104,40 @@ class RoboCasaPlanner:
         response["shortcut_report"] = report
         return response
 
-    def global_plan(self, target, goal, *, label, allow_target_contact=False, joint_goal=None):
+    def global_plan(self, target, goal, *, label, allow_target_contact=False, joint_goal=None,
+                    ignore_obstacles=()):
         env = self.environment
         if env.config["policy"]["global_planner"] == "local_ik":
             return self.local_plan(goal, label=label)
         self.ensure_configuration(target)
         if self.attached_target is not None:
             self.local.attach([self.attached_target, *self.carried_contents])
-            self._request({"command": "detach"})
-            self._request({"command": "attach", "scene": self.scene(self.attached_target)})
         self.plans += 1
         directory = env.output / "plans" / (f"{self.plans:04d}_" + label)
-        request = {"command": "plan_pose", "scene": self.scene(target), "goal_pose": np.asarray(goal).tolist(),
+        scene = self.scene(target)
+        ignored = sorted(set(ignore_obstacles))
+        known = {geometry["name"] for geometry in scene.get("obstacles", [])}
+        if not set(ignored) <= known:
+            raise ValueError("Unknown departure support geometry")
+        # Start validity is independent of the goal. Reuse only an exact
+        # unchanged scene/state/contact-policy rejection; local fallback still
+        # runs for every requested goal and retains its actual-geometry checks.
+        start_key = digest_json({"scene": scene, "attached_target": self.attached_target,
+            "carried_contents": self.carried_contents, "allow_target_contact": bool(allow_target_contact),
+            "ignore_obstacles": ignored})
+        cached = self.invalid_start_cache.get(start_key)
+        if cached is not None:
+            response = copy.deepcopy(cached)
+            response.update(reused_start_rejection=True, backend="curobo_global",
+                            current_goal_pose=np.asarray(goal).tolist(), planning_attempts=[])
+            write_json(directory / "BRIDGE_RESULT.json", response)
+            return response
+        if self.attached_target is not None:
+            self._request({"command": "detach"})
+            self._request({"command": "attach", "scene": scene})
+        request = {"command": "plan_pose", "scene": scene, "goal_pose": np.asarray(goal).tolist(),
                    "allow_target_contact": bool(allow_target_contact),
+                   "ignore_obstacles": ignored,
                    "out_dir": str(directory), "timeout_s": max(.1, min(120., env.config["policy"]["plan_timeout_s"], env.remaining_seconds()))}
         if joint_goal is not None:
             request["q_goal"] = np.asarray(joint_goal, float).tolist()
@@ -145,6 +170,10 @@ class RoboCasaPlanner:
                 break
         response["planning_attempts"] = attempts
         response["backend"] = "curobo_global"
+        if response.get("reason") == "invalid_start_state":
+            response["reused_start_rejection"] = False
+            response["start_rejection_source"] = str(directory)
+            self.invalid_start_cache[start_key] = copy.deepcopy(response)
         if (response.get("success") and "graph" in response.get("algorithm", "")
                 and env.config["policy"].get("max_path_shortcut_checks", 0) > 0):
             response = self._shortcut(target, response, directory,

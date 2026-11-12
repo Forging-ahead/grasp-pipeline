@@ -46,6 +46,11 @@ def main(argv=None):
         write_json(args.output / "CAPABILITIES.json", capabilities(config))
         environment.reset()
         recorder = TrajectoryRecorder(environment)
+        if config.get("baseline_case"):
+            from graspgen_libero_bridge.runtime.robocasa_initial_state import verify_initial_state
+            result["initial_state_verified"] = False
+            comparison = verify_initial_state(config, args.output, config["baseline_case"])
+            result["initial_state_verified"] = comparison["matched"]
         result["native_success_at_reset"] = environment.native_success_at_reset
         state = environment.robot_state()
         write_json(args.output / "ROBOT_STATE.json", state)

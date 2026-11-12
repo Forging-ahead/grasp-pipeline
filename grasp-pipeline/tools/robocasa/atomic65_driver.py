@@ -34,7 +34,7 @@ def main():
         result = json.loads(path.read_text()) if path.is_file() else {}
         result.update(status="failed", pipeline_success=False, training_candidate=False, native_budget_success=False,
                       failure_code="WALL_TIMEOUT", failure_stage="recording_deadline",
-                      error="890-second work deadline reached; 10 seconds of the 900-second cap reserved for recording cleanup",
+                      error=f"{budget - 10.:g}-second work deadline reached; 10 seconds of the {budget:g}-second cap reserved for recording cleanup",
                       recording_cleanup_grace_s=10, work_budget_s=budget - 10.)
         path.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
         return 124

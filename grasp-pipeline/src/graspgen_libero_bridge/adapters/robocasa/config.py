@@ -36,6 +36,12 @@ def libero_v10_rules():
         if not values or any(value != values[0] for value in values):
             raise ValueError("Not a shared v10 rule: " + field)
         rules[field] = copy.deepcopy(values[0])
+    # PickPlace.run uses this default even though the catalog omits the key.
+    # Retain the effective bound when mapping native placement regions.
+    limits = [row["config"].get("placement_orientation_trials", 4) for row in rows]
+    if any(type(value) is not int or value <= 0 or value != limits[0] for value in limits):
+        raise ValueError("Not a shared v10 rule: placement_orientation_trials")
+    rules["placement_orientation_trials"] = limits[0]
     overrides = read_json(root / "configs/policy/v10_overrides.json")
     for field in ("selection_rounds", "max_candidates_per_round", "native_candidates_per_round",
                   "selection_timeout_s", "minimum_downward_approach", "geometric_placement_search",

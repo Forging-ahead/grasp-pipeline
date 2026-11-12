@@ -197,8 +197,12 @@ def place_v10(environment, executor, planner, stage, carried, output):
         pose = carried["initial_object_pose"].copy()
         orientations = orientation_candidates(pose, job.object_points, region["frame"], region["half_size"],
                                                region["surface_height_m"], require_origin_containment=False)
-        job.placement_object_options = [p for p in orientations if fits_native_opening(p, job.object_points, region)]
-        audits.append({"region": region, "fitting_orientation_count": len(job.placement_object_options)})
+        fitting = [p for p in orientations if fits_native_opening(p, job.object_points, region)]
+        orientation_limit = job.config["placement_orientation_trials"]
+        job.placement_object_options = fitting[:orientation_limit]
+        audits.append({"region": region, "fitting_orientation_count": len(fitting),
+                       "tried_orientation_limit": orientation_limit,
+                       "selected_orientation_count": len(job.placement_object_options)})
         if not job.placement_object_options:
             continue
         before = environment.steps

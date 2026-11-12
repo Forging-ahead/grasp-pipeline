@@ -68,6 +68,36 @@ def grasp_evidence(environment, target):
             "physical_step": environment.steps}
 
 
+def lift_with_attachment(env, executor, local, recorder, planner, stage, directory, initial_support):
+    """Preserve v10 pre-lift attachment and bounded departure permissions.
+
+    Ignoring observed supports is limited to the global lift fallback, as in
+    LIBERO. The complete path must still pass native geometry checks, which
+    continue to reject robot/world collisions.
+    """
+    target, contents = stage["target"], stage.get("carried_contents", [])
+    support = set(initial_support) | object_contacts(env, target)
+    local.allowed_support_geoms = support
+    planner.attach(target, contents)
+    scene = planner.scene(target)
+    support_names = sorted({g["name"] for g in scene["obstacles"] if g["geom_id"] in support})
+    write_json(directory / "PRE_LIFT_CONTEXT.json", {"target": target, "attached_before_lift": True,
+        "departure_support_geom_ids": sorted(support), "global_lift_departure_support_names": support_names,
+        "native_robot_world_contacts_still_checked": True})
+    executor.ensure_joint_margin("lift", gripper=1)
+    lift = np.asarray(env.robot_state()["world_T_eef"]).copy()
+    lift[2, 3] += env.config["policy"]["lift_clearance_m"]
+    recorder.phase = "lift_decision"
+    recorder.decision("lift_object", {"target": target, "world_T_tcp": lift})
+    path = planner.contact_plan(lift, label="lift")
+    if not path["success"] and path.get("state_restored") and path.get("reason") in {
+            "cartesian_ik_stalled", "cartesian_ik_iteration_limit", "cartesian_ik_collision_blocked", "cartesian_collision"}:
+        path = planner.global_plan(target, lift, label="lift_global", allow_target_contact=True,
+                                   ignore_obstacles=support_names)
+    executor.follow_path(require_plan(path, "lift"), phase="lift", gripper=1)
+    executor.hold(.75, gripper=1, phase="lift_verify")
+
+
 class PickPlaceSkill:
     def __init__(self, environment, executor, local, recorder, planner):
         self.env, self.executor, self.local, self.recorder, self.planner = environment, executor, local, recorder, planner
@@ -134,6 +164,7 @@ class PickPlaceSkill:
         initial_object = env.object_pose(target)
         initial_tcp = np.asarray(env.robot_state()["world_T_eef"])
         initial_q = np.asarray(env.robot_state()["q_arm"])
+        initial_support = object_contacts(env, target)
         grasp_to_tcp = np.asarray(env.robot_state()["grasp_T_tcp"])
         write_json(directory.parent / "GRASP_FRAME_CALIBRATION.json", {
             "grasp_T_tcp": grasp_to_tcp, "native_gripper": type(env.robot.gripper["right"]).__name__,
@@ -180,20 +211,8 @@ class PickPlaceSkill:
         write_json(directory / "CLOSE_EVIDENCE.json", evidence)
         if not evidence["native_bilateral_grasp"]:
             raise EpisodeFailure("GRASP_CONTACT_FAILED", "Native bilateral contact absent after real closure", details=evidence)
-        support = object_contacts(env, target)
         contents = stage.get("carried_contents", [])
-        local.attach([target, *contents]); local.allowed_support_geoms = support
-        executor.ensure_joint_margin("lift", gripper=1)
-        lift = np.asarray(env.robot_state()["world_T_eef"])
-        lift[2, 3] += env.config["policy"]["lift_clearance_m"]
-        self.recorder.phase = "lift_decision"
-        self.recorder.decision("lift_object", {"target": target, "world_T_tcp": lift})
-        path = planner.contact_plan(lift, label="lift")
-        if not path["success"] and path.get("state_restored") and path.get("reason") in {
-                "cartesian_ik_stalled", "cartesian_ik_iteration_limit", "cartesian_ik_collision_blocked", "cartesian_collision"}:
-            path = planner.global_plan(target, lift, label="lift_global", allow_target_contact=True)
-        executor.follow_path(require_plan(path, "lift"), phase="lift", gripper=1)
-        executor.hold(.75, gripper=1, phase="lift_verify")
+        lift_with_attachment(env, executor, local, self.recorder, planner, stage, directory, initial_support)
         evidence = grasp_evidence(env, target)
         evidence["object_lift_m"] = float(env.object_pose(target)[2, 3] - initial_object[2, 3])
         write_json(directory / "LIFT_EVIDENCE.json", evidence)
